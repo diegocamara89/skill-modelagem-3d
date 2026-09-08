@@ -202,6 +202,60 @@ def main():
                               .replace("\\", "/"))
     fora_da_lista = sorted(set(existentes) - set(PERMITIDOS))
 
+    # BYTECODE NA ORIGEM, relatado em vez de ignorado. Achado por validacao
+    # adversarial: a enumeracao acima pula `__pycache__` de proposito, e por isso
+    # `--verificar` dizia "limpo" sobre uma arvore que continha .pyc com caminhos
+    # absolutos do autor. A lista de permissao impede que eles cheguem ao pacote — o
+    # destino montado tem zero — mas quem COPIA a pasta de trabalho direto leva os
+    # binarios. Isto nao barra o pacote; nomeia o risco de copiar a arvore.
+    bytecode_origem = []
+    for raiz, _, arqs in os.walk(ORIGEM):
+        for f in arqs:
+            if f.endswith((".pyc", ".pyo")) or os.path.basename(raiz) == "__pycache__":
+                bytecode_origem.append(os.path.relpath(os.path.join(raiz, f), ORIGEM)
+                                       .replace("\\", "/"))
+
+    # CONFERENCIA DE HASH NA ORIGEM. Achado por validacao adversarial em 08/09/2026:
+    # `--verificar` era apresentado como o teste de integridade e nao conferia hash
+    # nenhum — bytes acrescentados a um arquivo sem atualizar o INVENTARIO passavam
+    # com codigo 0. Integridade e o manifesto resolvendo, nao a lista de arquivos
+    # coincidindo.
+    inv_na_origem = {"resolve": None}
+    caminho_inv = os.path.join(ORIGEM, "INVENTARIO.json")
+    devem = sorted(set(PERMITIDOS) - {"INVENTARIO.json"})
+    if not os.path.isfile(caminho_inv):
+        inv_na_origem = {"resolve": False, "erro": "INVENTARIO.json ausente na origem"}
+    else:
+        try:
+            inv = json.load(io.open(caminho_inv, encoding="utf-8"))
+            decl = inv.get("arquivos") or {}
+            faltam_h, divergem_h = [], []
+            for rel_, esperado in sorted(decl.items()):
+                alvo_ = os.path.join(ORIGEM, rel_.replace("/", os.sep))
+                if not os.path.isfile(alvo_):
+                    faltam_h.append(rel_)
+                    continue
+                real = hashlib.sha256(io.open(alvo_, "rb").read()).hexdigest()
+                if real != esperado:
+                    divergem_h.append(rel_)
+            nao_decl = sorted(set(devem) - set(decl))
+            a_mais = sorted(set(decl) - set(devem))
+            inv_na_origem = {
+                "versao_do_pacote": inv.get("versao_do_pacote"),
+                "n_declarados": len(decl),
+                "n_que_deveriam_ser_declarados": len(devem),
+                "nao_declarados": nao_decl, "declarados_a_mais": a_mais,
+                "nao_existem": faltam_h, "hash_divergente": divergem_h,
+                "resolve": (bool(decl) and not faltam_h and not divergem_h
+                            and not nao_decl and not a_mais),
+                "o_que_resolve_significa": (
+                    "todo arquivo que deve ser identificado ESTA no manifesto, existe "
+                    "e tem o hash declarado. Cobertura, e nao apenas ausencia de "
+                    "divergencia numa lista possivelmente vazia")}
+        except ValueError as e:
+            inv_na_origem = {"resolve": False,
+                             "erro": "%s: %s" % (type(e).__name__, e)}
+
     regexes, erro_de_padroes = carrega_padroes()
     controle = controle_da_varredura(regexes)
     achados = varre(regexes)
@@ -214,6 +268,18 @@ def main():
         "n_padroes": len(regexes),
         "erro_de_padroes": erro_de_padroes,
         "controle_da_varredura": controle,
+        "manifesto_na_origem": inv_na_origem,
+        "bytecode_na_arvore_de_origem": {
+            "arquivos": sorted(bytecode_origem), "quantos": len(bytecode_origem),
+            "entra_no_pacote": False,
+            "por_que_importa": ("um .pyc guarda o caminho absoluto do fonte, portanto "
+                                "carrega nome de usuario e estrutura de pastas. A "
+                                "lista de permissao os exclui do pacote, e o destino "
+                                "montado tem zero. Quem copia a ARVORE direto, em vez "
+                                "de montar o pacote, leva estes arquivos."),
+            "o_que_fazer": ("distribuir o DESTINO montado por --destino, nunca a pasta "
+                            "de trabalho. Para limpar a arvore: apagar os "
+                            "__pycache__.")},
         "achados_de_vazamento": achados,
         "negados_declarados": NEGADOS,
         "autorizacao_de_publicacao": "NAO EMITIDA por esta ferramenta",
@@ -222,12 +288,16 @@ def main():
                    "substitui revisao manual dos recursos novos."),
     }
 
+    # o manifesto da ORIGEM entra no veredito: sem isso, `--verificar` aprovava
+    # arquivo alterado sem atualizacao de hash
     limpo = (not faltando and not achados and not erro_de_padroes
-             and controle.get("varredura_funciona"))
+             and controle.get("varredura_funciona")
+             and bool(inv_na_origem.get("resolve")))
     out["pacote_limpo"] = limpo
     if not limpo:
         out["motivo_de_barrar"] = {
             "faltando": faltando, "achados": len(achados),
+            "manifesto_na_origem_resolve": inv_na_origem.get("resolve"),
             "erro_de_padroes": erro_de_padroes,
             "varredura_funciona": controle.get("varredura_funciona")}
 
@@ -280,6 +350,12 @@ def main():
             # do pacote extraido, relativo a raiz dele, que e o contrato portatil que
             # o usuario tem em maos.
             inv_no_destino = os.path.join(dest, "INVENTARIO.json")
+            # COBERTURA, e nao apenas ausencia de divergencia. Achado por validacao
+            # adversarial: com INVENTARIO substituido por {"arquivos": {}}, a montagem
+            # aprovava com `n_declarados: 0, resolve: true`. Lista vazia nao divergindo
+            # de nada nao e integridade — e a mesma armadilha do "0 achados" sobre
+            # padrao nenhum, que este projeto ja tinha corrigido na varredura.
+            devem_ser_declarados = sorted(set(PERMITIDOS) - {"INVENTARIO.json"})
             manifesto = {"resolve": None}
             if os.path.isfile(inv_no_destino):
                 try:
@@ -292,11 +368,22 @@ def main():
                         real = hashlib.sha256(io.open(alvo, "rb").read()).hexdigest()
                         if real != esperado:
                             divergem.append(rel)
+                    declarados = set((inv.get("arquivos") or {}))
+                    nao_declarados = sorted(set(devem_ser_declarados) - declarados)
+                    declarados_a_mais = sorted(declarados - set(devem_ser_declarados))
                     manifesto = {
                         "versao_do_pacote": inv.get("versao_do_pacote"),
-                        "n_declarados": len(inv.get("arquivos") or {}),
+                        "n_declarados": len(declarados),
+                        "n_que_deveriam_ser_declarados": len(devem_ser_declarados),
+                        "nao_declarados": nao_declarados,
+                        "declarados_a_mais": declarados_a_mais,
                         "nao_resolvem": faltam, "hash_divergente": divergem,
-                        "resolve": not faltam and not divergem}
+                        "resolve": (bool(declarados) and not faltam and not divergem
+                                    and not nao_declarados and not declarados_a_mais),
+                        "o_que_resolve_significa": (
+                            "todo arquivo que deve ser identificado ESTA no manifesto, "
+                            "existe no destino e tem o hash declarado. Cobertura, e nao "
+                            "apenas ausencia de divergencia")}
                 except ValueError as e:
                     manifesto = {"resolve": False, "erro": "%s: %s" % (type(e).__name__, e)}
             else:

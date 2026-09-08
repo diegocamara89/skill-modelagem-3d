@@ -1,0 +1,66 @@
+{
+ "por_que": "as duas APROVACOES INDEVIDAS apontadas por validacao adversarial, reproduzidas com numeros proprios ANTES de tocar em nada, e o comportamento depois da correcao. Os dois arquivos corrigidos eram copias byte a byte da base pos-M0; a divergencia esta registrada em produto/verificadores/PROVENIENCIA.json.",
+ "furo_com_eixo_inclinado": {
+  "peca": "bloco 20x20x10, furo d=4 com eixo inclinado",
+  "requisito": {
+   "id": "FURO_Z",
+   "tipo": "furo",
+   "eixo": "Z",
+   "plano": 2.0,
+   "posicao": [
+    0.0,
+    0.0
+   ],
+   "diametro": 4.0,
+   "tol_pos_mm": 0.2,
+   "tol_mm": 0.2,
+   "circularidade_min": 0.9
+  },
+  "antes": {
+   "estado": "APROVADA",
+   "erro_da_primeira_ao_alvo": 0.19,
+   "centro_da_segunda": [
+    0.29,
+    -0.0
+   ],
+   "distancia_da_segunda_ao_alvo": 0.29,
+   "desvio_entre_secoes": 0.1,
+   "por_que_passava": "ext_ok compara a segunda secao com a PRIMEIRA, e so a primeira e confrontada com o alvo. Uma secao efetivamente medida esta fora da tolerancia e o requisito sai APROVADA"
+  },
+  "depois": {
+   "estado": "REPROVADA",
+   "atende_ao_pedido": false,
+   "erro_de_posicao_da_segunda_mm": 0.29,
+   "posicao_da_segunda_ok": false
+  }
+ },
+ "duas_cascas_sobrepostas": {
+  "peca": "dois cubos de lado 10, deslocados 5 em x, na mesma malha",
+  "antes": {
+   "volume_mm3": 2000.0,
+   "volume_confiavel": true,
+   "acao": "Pode seguir."
+  },
+  "depois": {
+   "volume_mm3": 2000.0,
+   "volume_confiavel": false,
+   "sobreposicao": {
+    "medida": true,
+    "ha_sobreposicao": true,
+    "n_componentes": 2,
+    "volume_da_uniao_mm3": 1500.0,
+    "volume_sobreposto_mm3": 500.0,
+    "por_que": "soma das cascas menos volume da uniao. Positivo significa material contado duas vezes.",
+    "soma_das_cascas_mm3": 2000.0,
+    "tolerancia_mm3": 1e-06
+   },
+   "aviso_de_volume": "VOLUME NAO CONFIAVEL: os 2 componentes se sobrepoem em 500.0 mm3, entao a soma das cascas conta material duas vezes. Volume da uniao: 1500.0 mm3, contra 2000.0 mm3 somados. A malha em si esta apta; o numero de volume nao pode ser usado como material da peca.",
+   "motivos_de_reprovacao": []
+  }
+ },
+ "regressao_das_suites_de_m0": {
+  "casos": "11 de 11",
+  "mutacoes": "30 pegas, 0 escaparam, 0 invalidas, de 30",
+  "como": "copia de prototipo/ com os dois verificadores corrigidos por cima"
+ }
+}

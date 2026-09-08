@@ -1,113 +1,113 @@
 {
  "por_que": "C4 instrumentado: sem Blender alcançável, a rota dependente TEM que informar a\nausência e falhar, e as rotas independentes TEM que continuar funcionando.\n\nA evidencia anterior dizia apenas \"execucao registrada\", o que nao permite conferir\nnada. Aqui cada afirmacao tem comando, ambiente, codigo de saida e saida.",
- "quando": "2026-09-08 04:59:09",
- "pacote": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\pacote_2.1.0",
- "interprete": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\venv\\Scripts\\python.exe",
- "blender_exe_apontado_para": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\blender_que_nao_existe.exe",
+ "quando": "2026-09-08 08:39:35",
+ "pacote": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\pacote_2.3.0",
+ "interprete": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\venv\\Scripts\\python.exe",
+ "blender_exe_apontado_para": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\blender_que_nao_existe.exe",
  "esse_caminho_existe": false,
  "passos": [
   {
    "passo": "dependente_acha_blender",
    "comando": [
-    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\venv\\Scripts\\python.exe",
+    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\venv\\Scripts\\python.exe",
     "scripts/roda_blender.py",
     "--achar"
    ],
-   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\pacote_2.1.0",
-   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\blender_que_nao_existe.exe",
+   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\pacote_2.3.0",
+   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\blender_que_nao_existe.exe",
    "codigo_de_saida": 1,
    "esperado": "codigo 1, com executavel None e o motivo nomeando BLENDER_EXE",
-   "segundos": 0.1,
-   "saida_final": "{\n \"executavel\": null,\n \"como\": \"BLENDER_EXE aponta para caminho inexistente: C:\\\\Users\\\\marce\\\\AppData\\\\Local\\\\Temp\\\\ensaio_isolado_21\\\\blender_que_nao_existe.exe\"\n}\n",
+   "segundos": 0.11,
+   "saida_final": "{\n \"executavel\": null,\n \"como\": \"BLENDER_EXE aponta para caminho inexistente: C:\\\\Users\\\\marce\\\\AppData\\\\Local\\\\Temp\\\\ensaio_isolado_23\\\\blender_que_nao_existe.exe\"\n}\n",
    "erro_final": ""
   },
   {
    "passo": "dependente_roda_cenario",
    "comando": [
-    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\venv\\Scripts\\python.exe",
+    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\venv\\Scripts\\python.exe",
     "scripts/roda_blender.py",
     "cenarios/gera_cenario.py",
     "--resultado",
-    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\nao_deve_existir.json",
+    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\nao_deve_existir.json",
     "--passa-resultado"
    ],
-   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\pacote_2.1.0",
-   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\blender_que_nao_existe.exe",
+   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\pacote_2.3.0",
+   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\blender_que_nao_existe.exe",
    "codigo_de_saida": 1,
    "esperado": "codigo 1, estado SEM_BLENDER, e nenhum arquivo de resultado escrito",
-   "segundos": 0.09,
-   "saida_final": "{\n \"estado\": \"SEM_BLENDER\",\n \"motivo\": \"BLENDER_EXE aponta para caminho inexistente: C:\\\\Users\\\\marce\\\\AppData\\\\Local\\\\Temp\\\\ensaio_isolado_21\\\\blender_que_nao_existe.exe\"\n}\n",
+   "segundos": 0.1,
+   "saida_final": "{\n \"estado\": \"SEM_BLENDER\",\n \"motivo\": \"BLENDER_EXE aponta para caminho inexistente: C:\\\\Users\\\\marce\\\\AppData\\\\Local\\\\Temp\\\\ensaio_isolado_23\\\\blender_que_nao_existe.exe\"\n}\n",
    "erro_final": ""
   },
   {
    "passo": "independente_check_mesh",
    "comando": [
-    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\venv\\Scripts\\python.exe",
+    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\venv\\Scripts\\python.exe",
     "verificadores/check_mesh.py",
     "--malha",
     "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\evidencias_finais\\entrega_peca.stl"
    ],
-   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\pacote_2.1.0",
-   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\blender_que_nao_existe.exe",
+   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\pacote_2.3.0",
+   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\blender_que_nao_existe.exe",
    "codigo_de_saida": 0,
    "esperado": "codigo 0: nao depende do Blender",
-   "segundos": 4.37,
-   "saida_final": "o_ao_contar_componentes\": null,\n \"volume_mm3\": 40800.0,\n \"volume_assinado_negativo\": false,\n \"status_kernel_malha\": \"Error.NoError\",\n \"precisao_no_kernel_de_malha\": \"float64 via Mesh64\",\n \"caixa_mm\": [\n  60.0,\n  40.0,\n  20.0\n ],\n \"apto_para_booleana\": true,\n \"volume_confiavel\": true,\n \"motivos_de_reprovacao\": [],\n \"acao\": \"Pode seguir.\",\n \"aviso\": \"Malha valida NAO significa peca correta. Este portao pega malha quebrada, nao geometria errada. Uma peca pode passar aqui e estar totalmente fora de cota.\",\n \"aviso_kernel\": \"status_kernel_malha nao e oraculo de validade: o construtor do manifold3d solda e conserta em silencio. Quem reprova aqui sao as contagens topologicas acima. E precisao_no_kernel_de_malha diz em que precisao a malha foi entregue ao kernel: float32 nao destroi cota sempre, mas depende de escala, posicao e tolerancia, entao a informacao fica explicita em vez de suposta.\"\n}\n",
+   "segundos": 9.14,
+   "saida_final": "alse,\n  \"n_componentes\": 1,\n  \"volume_da_uniao_mm3\": null,\n  \"volume_sobreposto_mm3\": null,\n  \"por_que\": \"soma das cascas menos volume da uniao. Positivo significa material contado duas vezes.\",\n  \"motivo\": \"componente unico: nao ha par para se sobrepor\"\n },\n \"motivos_de_reprovacao\": [],\n \"aviso_de_volume\": null,\n \"acao\": \"Pode seguir.\",\n \"aviso\": \"Malha valida NAO significa peca correta. Este portao pega malha quebrada, nao geometria errada. Uma peca pode passar aqui e estar totalmente fora de cota.\",\n \"aviso_kernel\": \"status_kernel_malha nao e oraculo de validade: o construtor do manifold3d solda e conserta em silencio. Quem reprova aqui sao as contagens topologicas acima. E precisao_no_kernel_de_malha diz em que precisao a malha foi entregue ao kernel: float32 nao destroi cota sempre, mas depende de escala, posicao e tolerancia, entao a informacao fica explicita em vez de suposta.\"\n}\n",
    "erro_final": ""
   },
   {
    "passo": "independente_matriz",
    "comando": [
-    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\venv\\Scripts\\python.exe",
+    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\venv\\Scripts\\python.exe",
     "verificadores/matriz.py",
     "--ajuda-tipos"
    ],
-   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\pacote_2.1.0",
-   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\blender_que_nao_existe.exe",
+   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\pacote_2.3.0",
+   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\blender_que_nao_existe.exe",
    "codigo_de_saida": 0,
    "esperado": "codigo 0",
-   "segundos": 0.16,
+   "segundos": 0.21,
    "saida_final": "uso: python matriz.py <modalidade> <representacao> <finalidade> [topologia-json]\nexemplo de topologia: {\"borda\":\"proibida\",\"estanqueidade\":\"exigida\"}\nmodalidades  : criar, editar, reconstruir, reparar, parametrizar\nrepresentacoes: solido, superficie, malha, montagem\nfinalidades  : visualizacao, intercambio, montagem, impressao_fdm, usinagem\n",
    "erro_final": ""
   },
   {
    "passo": "independente_valida_requisitos",
    "comando": [
-    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\venv\\Scripts\\python.exe",
+    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\venv\\Scripts\\python.exe",
     "scripts/valida_requisitos.py",
     "--tipos"
    ],
-   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\pacote_2.1.0",
-   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\blender_que_nao_existe.exe",
+   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\pacote_2.3.0",
+   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\blender_que_nao_existe.exe",
    "codigo_de_saida": 0,
    "esperado": "codigo 0",
-   "segundos": 0.09,
+   "segundos": 0.08,
    "saida_final": "  \"tol_mm\",\n   \"circularidade_min\"\n  ],\n  \"n_furos_no_plano\": [],\n  \"distancia_entre_furos\": [\n   \"tol_mm\"\n  ],\n  \"regiao_intacta\": [\n   \"tol_fracao\"\n  ],\n  \"interferencia\": [\n   \"tol_mm3\"\n  ]\n },\n \"valor_que_decide_se_voce_nao_declarar\": {\n  \"caixa\": {\n   \"tol_mm\": 0.05\n  },\n  \"volume\": {\n   \"tol_mm3\": \"max(1.0, 0.01 * esp)\"\n  },\n  \"n_solidos\": {},\n  \"furo\": {\n   \"tol_pos_mm\": 0.2,\n   \"tol_mm\": 0.2,\n   \"circularidade_min\": 0.9\n  },\n  \"n_furos_no_plano\": {},\n  \"distancia_entre_furos\": {\n   \"tol_mm\": 0.2\n  },\n  \"regiao_intacta\": {\n   \"tol_fracao\": 1e-09\n  },\n  \"interferencia\": {\n   \"tol_mm3\": 0.0\n  }\n },\n \"nome_diferente_na_saida\": {\n  \"furo/tol_mm\": \"tol_diam_mm\"\n },\n \"campos_alternativos_por_tipo\": {\n  \"interferencia\": [\n   [\n    \"entre\",\n    \"com\"\n   ]\n  ]\n },\n \"tipos_de_contagem_sem_tolerancia\": [\n  \"n_solidos\",\n  \"n_furos_no_plano\"\n ],\n \"exigem_referencia\": [\n  \"regiao_intacta\"\n ]\n}\n",
    "erro_final": ""
   },
   {
    "passo": "independente_paridade",
    "comando": [
-    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\venv\\Scripts\\python.exe",
+    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\venv\\Scripts\\python.exe",
     "scripts/testa_paridade_validador.py"
    ],
-   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\pacote_2.1.0",
-   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\blender_que_nao_existe.exe",
+   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\pacote_2.3.0",
+   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\blender_que_nao_existe.exe",
    "codigo_de_saida": 0,
    "esperado": "codigo 0",
-   "segundos": 0.18,
+   "segundos": 0.16,
    "saida_final": "{\n \"veredito\": \"ATENDIDO\",\n \"n_casos\": 339,\n \"por_estado\": {\n  \"ESPELHO_OK\": 324,\n  \"EXTRA_DECLARADO\": 15\n },\n \"n_falhas\": 0,\n \"paridade_da_tabela_de_tolerancia\": \"ATENDIDO\",\n \"divergentes\": {},\n \"padroes_divergentes\": {},\n \"falhas\": [],\n \"controle_positivo\": []\n}\n",
    "erro_final": ""
   },
   {
    "passo": "independente_check_intent_importa",
    "comando": [
-    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\venv\\Scripts\\python.exe",
+    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\venv\\Scripts\\python.exe",
     "-c",
     "import sys;sys.path.insert(0,'verificadores');import check_intent;print('ok')"
    ],
-   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\pacote_2.1.0",
-   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\blender_que_nao_existe.exe",
+   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\pacote_2.3.0",
+   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\blender_que_nao_existe.exe",
    "codigo_de_saida": 0,
    "esperado": "codigo 0",
    "segundos": 0.15,
@@ -117,15 +117,15 @@
   {
    "passo": "independente_sweep_params",
    "comando": [
-    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\venv\\Scripts\\python.exe",
+    "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\venv\\Scripts\\python.exe",
     "-c",
     "import sys;sys.path.insert(0,'verificadores');import sweep_params;print('ok')"
    ],
-   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\pacote_2.1.0",
-   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_21\\blender_que_nao_existe.exe",
+   "diretorio_corrente": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\pacote_2.3.0",
+   "BLENDER_EXE": "C:\\Users\\marce\\AppData\\Local\\Temp\\ensaio_isolado_23\\blender_que_nao_existe.exe",
    "codigo_de_saida": 0,
    "esperado": "codigo 0",
-   "segundos": 0.16,
+   "segundos": 0.15,
    "saida_final": "ok\n",
    "erro_final": ""
   }

@@ -235,7 +235,7 @@
     "codigo_de_saida": 1,
     "houve_json": true,
     "copiados_para": null,
-    "erro_de_destino": "o destino C:\\Users\\marce\\AppData\\Local\\Temp\\skill3d_dest_sujo_99raex_9\\pacote existe e NAO esta vazio. Monte o pacote em diretorio novo: copiar por cima deixa a",
+    "erro_de_destino": "o destino C:\\Users\\marce\\AppData\\Local\\Temp\\skill3d_dest_sujo_0z1y31fh\\pacote existe e NAO esta vazio. Monte o pacote em diretorio novo: copiar por cima deixa a",
     "o_arquivo_sujo_continua_la": true,
     "quantos_arquivos_foram_copiados": 0,
     "stderr": ""
@@ -287,7 +287,7 @@
    "detalhe": {
     "estado_da_primeira": "APROVADA",
     "estado_da_segunda": "ERRO",
-    "detalhe_da_segunda": "{'_erro': 'sem JSON na saida de sweep_params.py', '_stdout': '', '_stderr': 'OneDrive\\\\Documentos\\\\Modelagem 3D\\\\06_skill_universal\\\\prototipo\\\\sweep_params.py\", line 383, in <module>\\n    sys.exit(ma",
+    "detalhe_da_segunda": "{'_erro': 'sem JSON na saida de sweep_params.py', '_stdout': '', '_stderr': 'e 383, in <module>\\n    sys.exit(main())\\n             ^^^^^^\\n  File \"C:\\\\Users\\\\marce\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--U",
     "segunda_passou": false
    }
   },
@@ -321,7 +321,7 @@
    "estado": "PEGOU",
    "detalhe": {
     "codigo_de_saida": 1,
-    "mensagem": "NTRO do destino (C:\\Users\\marce\\AppData\\Local\\Temp\\skill3d_rel_jd1gh96w\\pacote). O relatorio e gravado depois da auditoria, entao ele invalidaria o que foi auditado. Grave o relatorio fora do pacote.\n",
+    "mensagem": "NTRO do destino (C:\\Users\\marce\\AppData\\Local\\Temp\\skill3d_rel_vfgx7p76\\pacote). O relatorio e gravado depois da auditoria, entao ele invalidaria o que foi auditado. Grave o relatorio fora do pacote.\n",
     "destino_foi_criado": false,
     "arquivos_no_destino": [],
     "colisao_de_nome_codigo_de_saida": 1,
@@ -448,7 +448,7 @@
     "controle_positivo": {
      "estado": "AVALIADA",
      "passou_tudo": true,
-     "bytes_do_3mf": 13673,
+     "bytes_do_3mf": 13671,
      "aprovadas": 1,
      "codigo_de_saida": 0
     },

@@ -890,17 +890,54 @@ def compara_regiao_protegida(nome_do_objeto, assinatura_anterior_por_indice,
     atual = _posicoes_na_caixa(obj, minimo, maximo, casas)
     faltando = sorted(anterior - atual)
     novas = sorted(atual - anterior)
+    identico = not faltando and not novas
+
+    # CORRIGIDO 08/09/2026, depois de validacao adversarial. A versao anterior
+    # comparava SOMENTE o conjunto de posicoes e declarava, no proprio campo
+    # `limite`, que conjunto identico com contagem de faces diferente e
+    # "retesselacao, nao alteracao da superficie". Isso e falso: apagando uma face de
+    # um tetraedro, os quatro vertices continuam nas tres faces restantes, o conjunto
+    # fica identico e 3,4641 mm2 de superficie desapareceram. Area distingue.
+    area_agora, faces_agora = _area_na_caixa(obj, minimo, maximo)
+    area_antes = assinatura_anterior_por_indice.get("area_total_mm2")
+    faces_antes = assinatura_anterior_por_indice.get("n_faces")
+    tol_area = max(1e-6, 1e-6 * abs(area_agora))
+    if area_antes is None:
+        area_ok = None
+        veredito = "INDETERMINADO"
+        nota = ("a captura anterior nao traz area: ela foi feita por uma versao que "
+                "nao a media. Conjunto de posicoes identico NAO prova superficie "
+                "preservada, entao nenhum veredito de preservacao e emitido aqui.")
+    else:
+        area_ok = abs(area_agora - float(area_antes)) <= tol_area
+        if identico and area_ok:
+            veredito = "PRESERVADA"
+            nota = ("conjunto de posicoes identico E area identica dentro da "
+                    "tolerancia: a superficie desta caixa nao mudou. Diferenca na "
+                    "CONTAGEM de faces, com estes dois iguais, e retesselacao.")
+        elif identico and not area_ok:
+            veredito = "ALTERADA"
+            nota = ("conjunto de posicoes identico e AREA DIFERENTE: face removida ou "
+                    "acrescentada. E exatamente o caso que a versao anterior desta "
+                    "funcao chamava de retesselacao.")
+        else:
+            veredito = "ALTERADA"
+            nota = "o conjunto de posicoes mudou: ha vertice novo ou desaparecido."
     return {"objeto": obj.name,
             "caixa_mundo": {"min": list(minimo), "max": list(maximo)},
             "criterio": "faces com TODOS os vertices dentro da caixa",
             "n_posicoes_antes": len(anterior), "n_posicoes_agora": len(atual),
             "posicoes_que_desapareceram": len(faltando),
             "posicoes_novas": len(novas),
-            "conjunto_de_posicoes_identico": not faltando and not novas,
+            "conjunto_de_posicoes_identico": identico,
+            "area_antes_mm2": area_antes, "area_agora_mm2": area_agora,
+            "area_dentro_da_tolerancia": area_ok, "tolerancia_de_area_mm2": tol_area,
+            "n_faces_antes": faces_antes, "n_faces_agora": faces_agora,
+            "veredito": veredito, "nota": nota,
             "exemplos_desaparecidas": faltando[:6], "exemplos_novas": novas[:6],
-            "limite": ("a conclusao vale SO para a caixa declarada. Conjunto de "
-                       "posicoes identico com contagem de faces diferente indica "
-                       "retesselacao, nao alteracao da superficie.")}
+            "limite": ("a conclusao vale SO para a caixa declarada, e exige as DUAS "
+                       "medidas: conjunto de posicoes e area. Conjunto identico "
+                       "sozinho nao prova superficie preservada.")}
 
 
 def captura_regiao_protegida(nome_do_objeto, minimo, maximo, casas=CASAS):
@@ -916,9 +953,49 @@ def captura_regiao_protegida(nome_do_objeto, minimo, maximo, casas=CASAS):
             "existe regiao capturada para comparar depois. Caixa min=%s max=%s. A "
             "caixa precisa CONTER as faces inteiras: encolher os limites para excluir "
             "a vizinhanca costuma excluir tambem a face alvo." % (list(minimo), list(maximo)))
+    area, n_faces = _area_na_caixa(obj, minimo, maximo)
     return {"objeto": obj.name, "casas": casas,
             "caixa_mundo": {"min": list(minimo), "max": list(maximo)},
-            "posicoes": sorted(pos), "n": len(pos)}
+            "posicoes": sorted(pos), "n": len(pos),
+            "area_total_mm2": area, "n_faces": n_faces,
+            "por_que_a_area": ("conjunto de posicoes nao distingue retesselacao de "
+                               "face removida: os vertices de uma face apagada "
+                               "continuam nas faces vizinhas. A area distingue.")}
+
+
+def _area_na_caixa(obj, minimo, maximo):
+    """Area total das faces com TODOS os vertices na caixa, e quantas sao.
+
+    Acrescentado em 08/09/2026, depois de validacao adversarial: a comparacao usava
+    somente o conjunto de POSICOES, e remover uma face mantem as posicoes dos seus
+    vertices nas faces vizinhas. Area distingue retesselacao de superficie alterada:
+    retesselar preserva area, remover face nao."""
+    M = obj.matrix_world
+    mn, mx = Vector(minimo), Vector(maximo)
+    bm = bmesh.new()
+    try:
+        if bpy.context.mode == "EDIT_MESH" and bpy.context.edit_object is obj:
+            bm = bmesh.from_edit_mesh(obj.data).copy()
+        else:
+            bm.from_mesh(obj.data)
+        area, n = 0.0, 0
+        for f in bm.faces:
+            mundo = [M @ v.co for v in f.verts]
+            if all(mn.x <= c.x <= mx.x and mn.y <= c.y <= mx.y and mn.z <= c.z <= mx.z
+                   for c in mundo):
+                # area no espaco de MUNDO: a matriz pode ter escala
+                soma = Vector((0.0, 0.0, 0.0))
+                for i in range(len(mundo)):
+                    a_, b_ = mundo[i], mundo[(i + 1) % len(mundo)]
+                    soma += a_.cross(b_)
+                area += soma.length / 2.0
+                n += 1
+        return round(area, 6), n
+    finally:
+        try:
+            bm.free()
+        except Exception:                                         # noqa: BLE001
+            pass
 
 
 def _posicoes_na_caixa(obj, minimo, maximo, casas):

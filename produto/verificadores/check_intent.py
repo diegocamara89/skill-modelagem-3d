@@ -239,11 +239,34 @@ def v_furo(m, r, ctx):
         # CORRIGIDO 07/09/2026: a circularidade da segunda secao era medida e nao entrava
         # na decisao, entao uma segunda secao QUADRADA de mesma area e centro passava.
         circ2_ok = b["circularidade"] >= circ_min
-        ext_ok = dc <= tol_pos and dd <= tol_d and circ2_ok
+        # CORRIGIDO 08/09/2026, depois de validacao adversarial: a decisao usava SOMENTE
+        # o desvio entre as duas secoes, e apenas a PRIMEIRA era confrontada com o alvo.
+        # Um furo de eixo inclinado passava com uma secao efetivamente medida FORA da
+        # tolerancia. Reproduzido: bloco 20x20x10, furo d=4, primeira secao a 0,19 do
+        # alvo e segunda a 0,29, com tolerancia 0,20 e desvio entre secoes de 0,10 ->
+        # APROVADA. Agora CADA secao medida e confrontada com o pedido, e o desvio entre
+        # secoes continua sendo conferido, porque ele pega conicidade e inclinacao que a
+        # comparacao absoluta de duas amostras pode nao pegar.
+        erro_pos_b = float(np.linalg.norm(np.array(b["centro"]) - alvo))
+        erro_d_b = abs(b["diametro_equivalente_mm"] - float(r["diametro"]))
+        pos_b_ok = erro_pos_b <= tol_pos
+        diam_b_ok = erro_d_b <= tol_d
+        ext_ok = (dc <= tol_pos and dd <= tol_d and circ2_ok
+                  and pos_b_ok and diam_b_ok)
         ext = {"verificada": True, "deslocamento_mm": round(d2, 4),
                "desvio_de_centro_mm": round(dc, 4), "desvio_de_diametro_mm": round(dd, 4),
+               "erro_de_posicao_da_segunda_mm": round(erro_pos_b, 4),
+               "erro_de_diametro_da_segunda_mm": round(erro_d_b, 4),
+               "posicao_da_segunda_ok": pos_b_ok,
+               "diametro_da_segunda_ok": diam_b_ok,
                "circularidade_da_segunda_secao": b["circularidade"],
                "circularidade_da_segunda_ok": circ2_ok,
+               "o_que_cada_numero_decide": (
+                   "desvio_de_centro_mm e desvio_de_diametro_mm comparam as duas "
+                   "secoes ENTRE SI, e pegam inclinacao e conicidade. "
+                   "erro_de_posicao_da_segunda_mm e erro_de_diametro_da_segunda_mm "
+                   "comparam a segunda secao com o PEDIDO. Os dois pares decidem: "
+                   "concordancia entre amostras nao e atendimento ao pedido."),
                "segunda_secao": b, "passou": ext_ok}
 
     ok = bool(erro_pos <= tol_pos and erro_d <= tol_d and circ_ok and ext_ok)

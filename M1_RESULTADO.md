@@ -6,10 +6,12 @@ Executado em 07–08/09/2026, sobre o plano enxuto versão 3. Ambiente medido: B
 Caminhos completos neste documento são relativos a
 `C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\`.
 
-> **Estado final:** pacote **2.1.0**, `bl_ferramentas` **1.5.0**, hash
-> `8a4182c2…`, medido em pacote recém-montado e nunca executado — e **idêntico** ao
-> hash do pacote que os ensaios executaram, o que é a prova de que os bytes medidos
-> são os bytes entregues. A evidência que sustenta as tabelas deste documento foi **regerada sobre
+> **Estado final:** pacote **2.4.0**, `bl_ferramentas` **1.5.0**, hash
+> `6fc1727d…`, medido em pacote recém-montado e nunca executado. Os ensaios foram
+> executados sobre os bytes de **código** de 2.3.0 (`435d7bb5…`), que são idênticos
+> aos de 2.4.0: a diferença entre as duas versões é `SKILL.md` e
+> `criar_e_parametrizar.md`, texto. Dizer «idêntico ao hash executado» sem esse
+> delta foi um achado da validação adversarial, e a regra agora é declará-lo aqui. A evidência que sustenta as tabelas deste documento foi **regerada sobre
 > esses bytes** e vive em `evidencias_finais/`, depois que a segunda revisão
 > independente apontou que a anterior era de uma versão já superada. Os oito ensaios
 > mais o do venv isolado saem com **VEREDITO ATENDIDO** e critérios executáveis.

@@ -10,6 +10,24 @@
   "padroes_que_casaram": 1,
   "nota": "semente de controle vem do arquivo LOCAL de padroes, que nao entra no pacote nem no repositorio"
  },
+ "manifesto_na_origem": {
+  "versao_do_pacote": "2.4.0",
+  "n_declarados": 24,
+  "n_que_deveriam_ser_declarados": 24,
+  "nao_declarados": [],
+  "declarados_a_mais": [],
+  "nao_existem": [],
+  "hash_divergente": [],
+  "resolve": true,
+  "o_que_resolve_significa": "todo arquivo que deve ser identificado ESTA no manifesto, existe e tem o hash declarado. Cobertura, e nao apenas ausencia de divergencia numa lista possivelmente vazia"
+ },
+ "bytecode_na_arvore_de_origem": {
+  "arquivos": [],
+  "quantos": 0,
+  "entra_no_pacote": false,
+  "por_que_importa": "um .pyc guarda o caminho absoluto do fonte, portanto carrega nome de usuario e estrutura de pastas. A lista de permissao os exclui do pacote, e o destino montado tem zero. Quem copia a ARVORE direto, em vez de montar o pacote, leva estes arquivos.",
+  "o_que_fazer": "distribuir o DESTINO montado por --destino, nunca a pasta de trabalho. Para limpar a arvore: apagar os __pycache__."
+ },
  "achados_de_vazamento": [],
  "negados_declarados": [
   "__pycache__",
@@ -43,11 +61,15 @@
   "esperado": 0
  },
  "resolucao_do_manifesto": {
-  "versao_do_pacote": "2.2.0",
+  "versao_do_pacote": "2.4.0",
   "n_declarados": 24,
+  "n_que_deveriam_ser_declarados": 24,
+  "nao_declarados": [],
+  "declarados_a_mais": [],
   "nao_resolvem": [],
   "hash_divergente": [],
-  "resolve": true
+  "resolve": true,
+  "o_que_resolve_significa": "todo arquivo que deve ser identificado ESTA no manifesto, existe no destino e tem o hash declarado. Cobertura, e nao apenas ausencia de divergencia"
  },
  "auditoria_do_destino": {
   "arquivos_no_destino": [
@@ -82,11 +104,11 @@
   "hashes_iguais_a_origem": true,
   "hashes": {
    "SKILL.md": {
-    "sha256": "07a8049dc2dc0c7d127541b92ed7a2969bedc81bac4925f4dcd4821616e84c73",
+    "sha256": "b1a88fc7ac06246cd7d726f11ab747435fdc93767db0998429241e8993f2fe25",
     "bytes": 7081
    },
    "INVENTARIO.json": {
-    "sha256": "f34a303eb01bbb97838a57d23d3540d1830f963b84dc30ad8f60cdcade883426",
+    "sha256": "22d1a9317a2859746dced2cda356edc2d31fbf5457d8caed8b2eb4a599932173",
     "bytes": 2984
    },
    "LICENSE": {
@@ -94,20 +116,20 @@
     "bytes": 1827
    },
    "referencias/criar_e_parametrizar.md": {
-    "sha256": "fa9e0016b4ae01664f64c821f7cfd21652802a8fb3f85dc2f08afe2842875a95",
-    "bytes": 12653
+    "sha256": "19a226ec45119716e86d04151843879d4f8b6809a7c6aed987611b509f8134a8",
+    "bytes": 14136
    },
    "referencias/editar_localizado.md": {
-    "sha256": "a410a21796fcb64e6525ad1dd8e6e95e0ca22ffe7c27c6cf85c7e3c556f04f06",
-    "bytes": 26006
+    "sha256": "849c7d911d8534484a81f850ccfc3d7f93900afcc613a14ebef30a87332306e0",
+    "bytes": 26230
    },
    "referencias/inspecionar_e_selecionar.md": {
     "sha256": "4ed9a45bbcfeb33f8dbb48f6ea42ccace60011de2d4c3b709fcc85ea14f3b932",
     "bytes": 10957
    },
    "referencias/mapa_de_ferramentas.md": {
-    "sha256": "3e3e54d2321adb4671cfc536f443775d9016b72045297ddee61a09dab479f2a0",
-    "bytes": 20590
+    "sha256": "93015a070f6b139efe428caa26b503c8f0a30f683f8b7d8bbcce785e5ee62410",
+    "bytes": 20836
    },
    "referencias/recuperar_salvar_exportar.md": {
     "sha256": "ecdfc089194d97fb35341990529bfd89aec4df889d38fe1f7bbe1419b9c5e3ce",
@@ -118,20 +140,20 @@
     "bytes": 5388
    },
    "referencias/verificar.md": {
-    "sha256": "6366e99f154cdb6be5c131c66a571c5b00591477173e191674cc85f5faa578b5",
-    "bytes": 15518
+    "sha256": "3c00ce5addb7f23c3bd7b6a3b0c8ff2b635057b163f6521d7d52ad3bb1b374eb",
+    "bytes": 15585
    },
    "scripts/bl_ferramentas.py": {
-    "sha256": "32780db5d1f868f8e511ab38ace4d0ed482815b58de20f64e5ae311ad306c60f",
-    "bytes": 73737
+    "sha256": "f53af28e939ac46ac4be43364ac3512b0bc91a26d2606006628052a297683c21",
+    "bytes": 77804
    },
    "scripts/mcp_blender.py": {
     "sha256": "6c5549990fa78237c03150017b575aa5cf15ee60c8573cd20327abba307ca0e4",
     "bytes": 7905
    },
    "scripts/roda_blender.py": {
-    "sha256": "ce4203e495bab1898e9de3f2d324ae556a567bd7180f7a9c297426d3e3821241",
-    "bytes": 12561
+    "sha256": "245c049e6a0ff6859bce1c12ff97459f2c6cb3af00596745a9c050c71981bea5",
+    "bytes": 14742
    },
    "scripts/valida_requisitos.py": {
     "sha256": "ba5de3a65cd7ec2c50b0b1d27ccf86a1d1be42b7dace65be9f1641b2fffee1cd",
@@ -158,16 +180,16 @@
     "bytes": 9141
    },
    "verificadores/PROVENIENCIA.json": {
-    "sha256": "05597535abc70a5abbd1339fb2fc425c9448a937d0ad9698bfc53e323f35fad1",
-    "bytes": 897
+    "sha256": "886175cc3e76e6a4e67c2765cf8f888222411dfb342b607cb452be4611afb95e",
+    "bytes": 3375
    },
    "verificadores/check_intent.py": {
-    "sha256": "4f54003797a947e7ec854fcc9b66cd81350af61c910d97739193c0a30226b1b7",
-    "bytes": 26401
+    "sha256": "4cc777c08c94d5501fd539ee4b670ddf3b968554fe5344f773dc30d4dda1bb45",
+    "bytes": 28066
    },
    "verificadores/check_mesh.py": {
-    "sha256": "4ddcbf1e6670d85017daa746559960005ee53be571130a42b93b5d3c9ab1da8d",
-    "bytes": 8097
+    "sha256": "2fab3ad98adfd7233f1a151cbc5c1c9ca4d92e891c7695ec031c21729b048cae",
+    "bytes": 12321
    },
    "verificadores/matriz.py": {
     "sha256": "d3c9e740d42de945ccc0688c3e09933de0588b838d5d7b4ca28b51c3d0a3b712",
@@ -183,5 +205,5 @@
    }
   }
  },
- "copiados_para": "C:\\Users\\marce\\AppData\\Local\\Temp\\pacote_intocado_22"
+ "copiados_para": "C:\\Users\\marce\\AppData\\Local\\Temp\\pacote_intocado_24"
 }

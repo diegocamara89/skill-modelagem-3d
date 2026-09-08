@@ -1,9 +1,9 @@
 {
- "sha256_do_pacote": "723a6a32194a16b10bfcae1fe9e8c1b7d745371b8974205d81456ce1eb2e15e8",
+ "sha256_do_pacote": "6fc1727d6e90bdfa65ec3ca80f15c19e1a9e33da9203ff98f33269a36116135b",
  "n_arquivos": 25,
- "versao_do_pacote": "2.2.0",
+ "versao_do_pacote": "2.4.0",
  "versao_de_bl_ferramentas": "1.5.0",
- "pacote_medido": "C:\\Users\\marce\\AppData\\Local\\Temp\\pacote_intocado_22",
+ "pacote_medido": "C:\\Users\\marce\\AppData\\Local\\Temp\\pacote_intocado_24",
  "como": "sha256 sobre a sequencia ordenada de (caminho relativo, NUL, sha256 do conteudo) de todos os arquivos do pacote extraido",
  "medido_em": "pacote recem-montado e NUNCA executado, FORA da raiz do ensaio isolado",
  "por_que_fora_da_raiz": "o ensaio de ambiente isolado apaga a raiz dele inteira ao comecar, e uma medicao anterior perdeu a pasta por estar dentro dela: o hash saiu sobre 0 arquivos",

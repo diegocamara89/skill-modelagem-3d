@@ -15,6 +15,46 @@ import argparse, json, sys
 import numpy as np
 
 
+def mede_sobreposicao(m, n_componentes, tolerancia_mm3=1e-6):
+    """Os componentes desta malha se sobrepoem? Mede, em vez de supor.
+
+    Acrescentado em 08/09/2026. `volume_confiavel` afirmava confianca a partir de
+    estanqueidade, e casca fechada sobreposta a outra casca fechada e estanque. A
+    unica forma de saber e comparar a soma dos volumes com o volume da UNIAO."""
+    fora = {"medida": False, "ha_sobreposicao": False,
+            "n_componentes": int(n_componentes) if n_componentes else None,
+            "volume_da_uniao_mm3": None, "volume_sobreposto_mm3": None,
+            "por_que": ("soma das cascas menos volume da uniao. Positivo significa "
+                        "material contado duas vezes.")}
+    if not n_componentes or n_componentes < 2:
+        fora["motivo"] = "componente unico: nao ha par para se sobrepor"
+        fora["medida"] = True
+        return fora
+    try:
+        partes = m.split(only_watertight=False)
+        if len(partes) < 2:
+            fora["motivo"] = "a divisao em componentes nao devolveu duas partes"
+            return fora
+        soma = float(sum(abs(p.volume) for p in partes))
+        uniao = partes[0]
+        for p in partes[1:]:
+            uniao = uniao.union(p)
+        v_uniao = float(abs(uniao.volume))
+        excesso = soma - v_uniao
+        fora.update({"medida": True,
+                     "soma_das_cascas_mm3": round(soma, 6),
+                     "volume_da_uniao_mm3": round(v_uniao, 6),
+                     "volume_sobreposto_mm3": round(excesso, 6),
+                     "ha_sobreposicao": bool(excesso > tolerancia_mm3),
+                     "tolerancia_mm3": tolerancia_mm3})
+    except Exception as e:                                        # noqa: BLE001
+        fora["motivo"] = ("nao foi possivel medir a uniao: %s: %s. Sem esta medida, "
+                          "volume_confiavel NAO pode ser afirmado."
+                          % (type(e).__name__, e))
+        fora["ha_sobreposicao"] = True     # na duvida, nao afirmar confianca
+    return fora
+
+
 def analisa(caminho):
     import trimesh
     m = trimesh.load(caminho, force="mesh", process=False)
@@ -117,6 +157,27 @@ def analisa(caminho):
                        "A malha entregue nao e a malha que o kernel considera valida." % st)
 
     apto = len(motivos) == 0
+    # A sobreposicao entre componentes NAO entra em motivos_de_reprovacao, e a
+    # distincao e deliberada: esta lista e sobre malha quebrada, e uma malha com duas
+    # cascas sobrepostas nao esta quebrada — ela e apta a booleana. O que ela nao tem e
+    # volume confiavel. Misturar as duas coisas seria o mesmo erro que este portao
+    # existe para evitar: confundir malha valida com peca correta.
+    sobreposicao = mede_sobreposicao(m, n_componentes)
+    aviso_de_volume = None
+    if sobreposicao["ha_sobreposicao"]:
+        aviso_de_volume = (
+            "VOLUME NAO CONFIAVEL: os %s componentes se sobrepoem em %s mm3, entao a "
+            "soma das cascas conta material duas vezes. Volume da uniao: %s mm3, "
+            "contra %s mm3 somados. A malha em si esta apta; o numero de volume nao "
+            "pode ser usado como material da peca."
+            % (n_componentes, sobreposicao["volume_sobreposto_mm3"],
+               sobreposicao["volume_da_uniao_mm3"],
+               sobreposicao.get("soma_das_cascas_mm3")))
+    elif not sobreposicao["medida"]:
+        aviso_de_volume = (
+            "VOLUME NAO CONFIAVEL: nao foi possivel medir sobreposicao entre "
+            "componentes (%s). Sem essa medida, confianca no volume nao pode ser "
+            "afirmada." % sobreposicao.get("motivo"))
     return {
         "arquivo": caminho,
         "triangulos": int(len(m.faces)),
@@ -137,9 +198,20 @@ def analisa(caminho):
         "precisao_no_kernel_de_malha": precisao,
         "caixa_mm": [round(float(x), 4) for x in m.extents],
         "apto_para_booleana": apto,
-        "volume_confiavel": bool(fechada and not vol_negativo),
+        # CORRIGIDO 08/09/2026, depois de validacao adversarial: era
+        # `fechada and not vol_negativo`, e isso NAO basta. Duas cascas fechadas
+        # SOBREPOSTAS somam volume e contam o material comum duas vezes. Reproduzido:
+        # dois cubos de lado 10 deslocados 5 em x, na mesma malha -> 2000 mm3
+        # declarados confiaveis, uniao real 1500, excesso de 500 (33% sobre a uniao),
+        # com "Pode seguir". A contagem de componentes ja estava exposta e nao
+        # participava desta conclusao.
+        "volume_confiavel": bool(fechada and not vol_negativo
+                                 and not sobreposicao["ha_sobreposicao"]),
+        "sobreposicao_entre_componentes": sobreposicao,
         "motivos_de_reprovacao": motivos,
-        "acao": ("Pode seguir." if apto else
+        "aviso_de_volume": aviso_de_volume,
+        "acao": (("Pode seguir na malha. " + aviso_de_volume) if (apto and aviso_de_volume)
+                 else "Pode seguir." if apto else
                  "BARRADO. Conserte os motivos acima e rode de novo. Nao faca booleana nem "
                  "exporte para impressao com a malha neste estado."),
         "aviso": ("Malha valida NAO significa peca correta. Este portao pega malha quebrada, "

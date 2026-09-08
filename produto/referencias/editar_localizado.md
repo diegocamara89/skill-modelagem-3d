@@ -384,7 +384,7 @@ Três ferramentas, e escolher errado dá resposta errada:
 |---|---|---|
 | **`check_intent.py`, tipo `regiao_intacta`** | você exportou a peça **antes** de editar e pode passá-la em `--referencia` | **exata**: recorta as duas peças pela caixa e mede o volume da diferença simétrica |
 | `mede_topo_em_pontos` sobre a região | houve booleana e não há referência em arquivo | amostragem: prova os pontos amostrados |
-| `captura_regiao_protegida` + `compara_regiao_protegida` | a operação **não** retessela, por exemplo um deslocamento puro | conjunto de posições; depois de booleana acusaria retesselação como alteração |
+| `captura_regiao_protegida` + `compara_regiao_protegida` | a operação **não** retessela, por exemplo um deslocamento puro | conjunto de posições **e área**; depois de booleana acusaria retesselação como alteração. Devolve `veredito`: `PRESERVADA` só com as duas medidas iguais; `ALTERADA` se a área mudar, ainda que o conjunto de posições seja idêntico; `INDETERMINADO` se a captura vier de versão que não media área |
 
 **Exporte a peça antes de editar.** Custa um comando e transforma "0,0 em 45 pontos"
 em "0,0 mm³ na caixa inteira". Medido num ensaio independente: `regiao_intacta`

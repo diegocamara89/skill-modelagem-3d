@@ -17,7 +17,7 @@
     "representacao": "solido",
     "finalidade": "impressao_fdm"
    },
-   "tempo_de_construcao_s": 5.236,
+   "tempo_de_construcao_s": 4.127,
    "ambiente": {
     "maquina": "Bambu Lab A1 0.4 nozzle",
     "processo": "0.20mm Standard @BBL A1",
@@ -167,7 +167,7 @@
     "representacao": "solido",
     "finalidade": "intercambio"
    },
-   "tempo_de_construcao_s": 0.063,
+   "tempo_de_construcao_s": 0.039,
    "ambiente": {
     "maquina": "Bambu Lab A1 0.4 nozzle",
     "processo": "0.20mm Standard @BBL A1",
@@ -199,7 +199,7 @@
     "entrada_intacta": {
      "estado": "APROVADA",
      "detalhe": {
-      "arquivo": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\prototipo\\casos_saida\\c2_entrada.stl",
+      "arquivo": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\prototipo_com_correcao\\casos_saida\\c2_entrada.stl",
       "sha_antes": "0296923a39bd79ca51b6726c2e1db4a5d8290799d43d0f942a2324935879f275",
       "sha_depois": "0296923a39bd79ca51b6726c2e1db4a5d8290799d43d0f942a2324935879f275",
       "ok": true
@@ -329,7 +329,7 @@
     "representacao": "montagem",
     "finalidade": "montagem"
    },
-   "tempo_de_construcao_s": 0.815,
+   "tempo_de_construcao_s": 0.5,
    "ambiente": {
     "maquina": "Bambu Lab A1 0.4 nozzle",
     "processo": "0.20mm Standard @BBL A1",
@@ -499,7 +499,7 @@
     "representacao": "superficie",
     "finalidade": "visualizacao"
    },
-   "tempo_de_construcao_s": 0.008,
+   "tempo_de_construcao_s": 0.005,
    "ambiente": {
     "maquina": "Bambu Lab A1 0.4 nozzle",
     "processo": "0.20mm Standard @BBL A1",
@@ -607,7 +607,7 @@
     "representacao": "solido",
     "finalidade": "impressao_fdm"
    },
-   "tempo_de_construcao_s": 0.171,
+   "tempo_de_construcao_s": 0.112,
    "ambiente": {
     "maquina": "Bambu Lab A1 0.4 nozzle",
     "processo": "0.20mm Standard @BBL A1",
@@ -639,7 +639,7 @@
     "entrada_intacta": {
      "estado": "APROVADA",
      "detalhe": {
-      "arquivo": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\prototipo\\casos_saida\\c5_referencia.stl",
+      "arquivo": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\prototipo_com_correcao\\casos_saida\\c5_referencia.stl",
       "sha_antes": "34393c8d3bf790f05d99fd3c9b27b516d017414657b3c934e4c952d414392463",
       "sha_depois": "34393c8d3bf790f05d99fd3c9b27b516d017414657b3c934e4c952d414392463",
       "ok": true
@@ -842,7 +842,7 @@
     "representacao": "solido",
     "finalidade": "visualizacao"
    },
-   "tempo_de_construcao_s": 0.014,
+   "tempo_de_construcao_s": 0.016,
    "ambiente": {
     "maquina": "Bambu Lab A1 0.4 nozzle",
     "processo": "0.20mm Standard @BBL A1",
@@ -925,7 +925,7 @@
      "nome": "termina abaixo do limite de tempo",
      "passou": true,
      "detalhe": {
-      "tempo_de_construcao_s": 0.014,
+      "tempo_de_construcao_s": 0.016,
       "limite_s": 20.0
      }
     },
@@ -951,7 +951,7 @@
     "representacao": "solido",
     "finalidade": "impressao_fdm"
    },
-   "tempo_de_construcao_s": 0.031,
+   "tempo_de_construcao_s": 0.029,
    "ambiente": {
     "maquina": "Bambu Lab A1 0.4 nozzle",
     "processo": "0.20mm Standard @BBL A1",
@@ -1115,7 +1115,7 @@
     "representacao": "superficie",
     "finalidade": "intercambio"
    },
-   "tempo_de_construcao_s": 0.01,
+   "tempo_de_construcao_s": 0.009,
    "ambiente": {
     "maquina": "Bambu Lab A1 0.4 nozzle",
     "processo": "0.20mm Standard @BBL A1",
@@ -1236,7 +1236,7 @@
     "representacao": "montagem",
     "finalidade": "montagem"
    },
-   "tempo_de_construcao_s": 0.033,
+   "tempo_de_construcao_s": 0.051,
    "ambiente": {
     "maquina": "Bambu Lab A1 0.4 nozzle",
     "processo": "0.20mm Standard @BBL A1",
@@ -1424,7 +1424,7 @@
     "representacao": "superficie",
     "finalidade": "visualizacao"
    },
-   "tempo_de_construcao_s": 0.009,
+   "tempo_de_construcao_s": 0.006,
    "ambiente": {
     "maquina": "Bambu Lab A1 0.4 nozzle",
     "processo": "0.20mm Standard @BBL A1",
@@ -1578,7 +1578,7 @@
     "representacao": "superficie",
     "finalidade": "visualizacao"
    },
-   "tempo_de_construcao_s": 0.007,
+   "tempo_de_construcao_s": 0.009,
    "ambiente": {
     "maquina": "Bambu Lab A1 0.4 nozzle",
     "processo": "0.20mm Standard @BBL A1",
