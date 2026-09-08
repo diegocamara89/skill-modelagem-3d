@@ -98,7 +98,7 @@ erra. `secoes.py` resolve os dois casos.
 |---|---|---|
 | há uma **referência** do estado anterior, em arquivo | **`check_intent.py`, tipo `regiao_intacta`** | é a única **exata**: recorta as duas peças pela caixa e mede o volume da **diferença simétrica**. Zero é zero, não amostra |
 | a operação retessela e não há referência em arquivo | `mede_topo_em_pontos` sobre a região | amostragem; o conjunto de vértices muda por retesselação sem a superfície mudar |
-| a operação não retessela (deslocamento puro) | `captura_regiao_protegida` + `compara_regiao_protegida` | compara posições, não índices |
+| a operação não retessela (deslocamento puro) | `captura_regiao_protegida` + `compara_regiao_protegida` | compara posições **e área**, não índices. Área é o que separa retesselação de face removida |
 
 **Prefira `regiao_intacta` quando puder.** Basta exportar a peça original antes de
 editar e passá-la em `--referencia`:

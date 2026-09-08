@@ -5,7 +5,7 @@ description: Use quando o pedido envolver criar, inspecionar, editar ou verifica
 
 # Modelagem 3D — receitas para executar e conferir
 
-**Pacote 2.2.0**, com `scripts/bl_ferramentas.py` na **versão 1.5.0**. Os dois
+**Pacote 2.4.0**, com `scripts/bl_ferramentas.py` na **versão 1.5.0**. Os dois
 números são independentes: o do pacote muda a cada correção em qualquer arquivo, o da
 biblioteca só quando ela muda. Ambos estão em `INVENTARIO.json`, junto do hash de cada
 arquivo, e é ali que se confere qual versão está em mãos.

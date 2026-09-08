@@ -107,6 +107,32 @@ def roda(script, resultado, args=(), blender=None, tempo_limite_s=300,
     # auxiliar espera aqui, o script escreve la, e o veredito sai SEM_RESULTADO com
     # o arquivo existindo em outro lugar.
     resultado = os.path.abspath(resultado)
+
+    # CONFERIR A ENTRADA ANTES DE APAGAR QUALQUER COISA. A ordem aqui e o defeito, nao
+    # um detalhe: a versao anterior removia o arquivo de resultado e SO DEPOIS conferia
+    # a cena. Com o mesmo caminho nos dois papeis — um descuido banal de linha de
+    # comando — a cena era DESTRUIDA e o retorno dizia "cena nao encontrada",
+    # apresentando a perda como ausencia. Achado por validacao adversarial em
+    # 08/09/2026.
+    if cena:
+        cena = os.path.abspath(cena)
+        if not os.path.isfile(cena):
+            return {"estado": "SEM_CENA", "motivo": "cena nao encontrada: %s" % cena,
+                    "nada_foi_apagado": True}
+        mesmo = os.path.normcase(cena) == os.path.normcase(resultado)
+        if not mesmo and os.path.isfile(resultado):
+            try:
+                mesmo = os.path.samefile(cena, resultado)
+            except OSError:
+                mesmo = False
+        if mesmo:
+            return {"estado": "COLISAO_DE_CAMINHO", "nada_foi_apagado": True,
+                    "cena": cena, "resultado": resultado,
+                    "motivo": ("a cena e o resultado apontam para o MESMO arquivo. "
+                               "Este auxiliar apaga o resultado antes de executar, "
+                               "entao seguir adiante destruiria a cena de entrada. "
+                               "Informe caminhos distintos.")}
+
     if os.path.exists(resultado):
         os.remove(resultado)            # nunca aceitar resultado de execucao anterior
 
@@ -114,8 +140,6 @@ def roda(script, resultado, args=(), blender=None, tempo_limite_s=300,
     if fabrica:
         cmd.append("--factory-startup")
     if cena:
-        if not os.path.isfile(cena):
-            return {"estado": "SEM_CENA", "motivo": "cena nao encontrada: %s" % cena}
         cmd.append(cena)
     cmd += ["--python", script]
     # `passa_resultado` entrega o caminho de resultado ao script. Sem isso, o caminho
@@ -195,6 +219,20 @@ def roda(script, resultado, args=(), blender=None, tempo_limite_s=300,
     except ValueError as e:
         r["estado"] = "RESULTADO_ILEGIVEL"
         r["motivo"] = "%s: %s" % (type(e).__name__, e)
+        return r
+
+    # CORRIGIDO 08/09/2026, depois de validacao adversarial: o codigo de saida era
+    # REGISTRADO e nao participava do veredito. Um processo terminando em 7, com um
+    # relatorio favoravel no disco, saia como OK e codigo 0 — inclusive com --exigir.
+    # E o proprio cabecalho deste arquivo documenta que codigo nao zero e sinal
+    # confiavel de falha: medir um sinal e nao usa-lo e pior que nao medir.
+    if proc.returncode not in (0, None):
+        r["estado"] = "PROCESSO_COM_ERRO"
+        r["motivo"] = ("o relatorio existe e e legivel, mas o processo terminou com "
+                       "codigo %s. Codigo nao zero e sinal confiavel de falha: o "
+                       "relatorio pode ter sido escrito antes do erro, ou por outra "
+                       "execucao. Nao aceite o conteudo sem inspecionar."
+                       % proc.returncode)
         return r
     # CORRIGIDO depois da terceira revisao: este invocador classificava como OK
     # QUALQUER JSON legivel, sem olhar o conteudo. Um relatorio que diz

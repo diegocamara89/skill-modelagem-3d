@@ -1,14 +1,18 @@
 {
  "gerado_em": "2026-09-08",
- "versao_do_pacote": "2.2.0",
+ "versao_do_pacote": "2.4.0",
  "versao_de_bl_ferramentas": "1.5.0",
  "licenca": "MIT",
- "hash_do_pacote": "723a6a32194a16b10bfcae1fe9e8c1b7d745371b8974205d81456ce1eb2e15e8",
- "nota": "evidencia sobre os bytes do pacote 2.2.0, que difere de 2.1.0 apenas por LICENSE, SKILL.md e INVENTARIO.json. Nao regerado, com motivo declarado: as suites de M0, os relatorios de sessao limpa, as revisoes e a medicao de A1.",
+ "hash_do_pacote": "6fc1727d6e90bdfa65ec3ca80f15c19e1a9e33da9203ff98f33269a36116135b",
+ "nota": "evidencia sobre 2.4.0, que difere de 2.3.0 apenas por SKILL.md e criar_e_parametrizar.md — texto, sem codigo. Os ensaios, a paridade, o ambiente isolado, a rota sem Blender, os controles da validacao e as suites de M0 foram executados sobre os bytes de CODIGO de 2.3.0, identicos aos de 2.4.0. Os tres relatorios de sessao limpa e as cinco revisoes sao registros datados e nao se reescrevem.",
  "arquivos": {
   "AMBIENTE_ISOLADO.json": {
-   "bytes": 29001,
-   "sha256": "27e4f1b82b5213bf4fe462721f94dc0cbfcaaffba30a2d8c986096e4b250fe83"
+   "bytes": 29037,
+   "sha256": "715e969fe34ece9bb84bad2966d10a89f64a0592fde4a92708e60db2bd985b3b"
+  },
+  "APROVACAO_INDEVIDA_CORRIGIDA.json": {
+   "bytes": 2370,
+   "sha256": "b4d8a22dffe21d4f11c8107ff19e9fda376cba0921e8be6e4968246d68991621"
   },
   "CODIGO_DE_SAIDA_DO_LANCADOR.json": {
    "bytes": 3043,
@@ -18,13 +22,17 @@
    "bytes": 1723,
    "sha256": "9f8192541ca3b3506714d7d8346dc593fc701a5cbba864f95ed696eb6eea9522"
   },
+  "CONTROLES_DA_VALIDACAO.json": {
+   "bytes": 1602,
+   "sha256": "db4228a9c09898c06a40e7d74a81416d19214de74cd9281d3099b72207c14e0a"
+  },
   "IDENTIDADE_DAS_FUNCOES_DE_A1.json": {
    "bytes": 6747,
    "sha256": "6f28b19de1dc86043efb4487603903d551e56663b32a77b9bdc1720845060adb"
   },
   "SEM_BLENDER.json": {
-   "bytes": 9142,
-   "sha256": "5983f84974a1731a54d3f9a311bde92fe9ae2427dd1d678570bb3b27d54d4de8"
+   "bytes": 9135,
+   "sha256": "399b3e0f02986c28f9b4baa4f7c7ae1b7195b16368e73bbb2bba33c6f443da24"
   },
   "SESSAO_LIMPA_D.md": {
    "bytes": 30160,
@@ -55,8 +63,8 @@
    "sha256": "a1fdaa3026212751d0926f9084544e4d7ab1152842ad5d4f578399f72586e23e"
   },
   "empacotamento.json": {
-   "bytes": 6402,
-   "sha256": "13a198a2f0fdfec76db7a0ccc9e81fb8f63161813d2ddc7c62189f1eae1d3578"
+   "bytes": 7641,
+   "sha256": "e4d4d94955d7a9fa0b48fdde6e2c45c5e4f059e2765e3d90b290cd1ad60a435f"
   },
   "ensaio_correta.json": {
    "bytes": 58060,
@@ -68,7 +76,7 @@
   },
   "ensaio_entrega.json": {
    "bytes": 8890,
-   "sha256": "300941bf7661e89b9d97bd19494c0c0541b24474d4470c04f044e35ba6ad8a55"
+   "sha256": "92a86f58cfe4657cb851f826ef5affa3c55b1658c4121a035405c45601b86d39"
   },
   "ensaio_flutuante.json": {
    "bytes": 25102,
@@ -100,7 +108,7 @@
   },
   "entrega_peca.blend": {
    "bytes": 95057,
-   "sha256": "2849d5ee4e5d25819a21a14ddce90523e9a989ee36b5182b3875ed1d285202a9"
+   "sha256": "28fc95edbef10c824fb6d3b7221644cf98bcd7fc52f112ac6c5046056ed70090"
   },
   "entrega_peca.stl": {
    "bytes": 3884,
@@ -108,11 +116,11 @@
   },
   "entrega_tamanhos.json": {
    "bytes": 855,
-   "sha256": "bd36022853f29bd0c5224a7459aafe1cd00ff72e89eea7ceb50f7849694302fe"
+   "sha256": "6637f3cda778af1e63a0cab379d7068822d82ee9eaa39ac256bac52203167d63"
   },
   "hash_do_pacote.txt": {
    "bytes": 1748,
-   "sha256": "b699520722cb196737ae258d595142c63afd42c03dfb9cafad2a652eb7afd9bd"
+   "sha256": "d4980b27e3f76533f45ca3bcc91ff5d0cd6367db635a7bd6498d3503cd80b029"
   },
   "paridade_do_validador.json": {
    "bytes": 147582,
@@ -159,16 +167,16 @@
    "sha256": "63611364b83438025e869648f4f12473e15c2668ba296f2bdebaca6a9ae29623"
   },
   "suite_m0_casos.json": {
-   "bytes": 47236,
-   "sha256": "481a0b4cdcd1db6a42e1864d69d5e780a16965f8504a926ef15dc65866550cbe"
+   "bytes": 47407,
+   "sha256": "433cc50dfc2d3be30ebaac8df048280872224e46ec42de621b1866f17bfa5587"
   },
   "suite_m0_mutacoes.json": {
-   "bytes": 15959,
-   "sha256": "37a0cf2cd6674e629cefae5cc5ba87f0892f8ee904e664e67bc4e376f283a7ff"
+   "bytes": 15965,
+   "sha256": "4bf7ce8f976fb0b9f4ee41e1d120db3c60394f0a5bc5edc1286abe01bc99aed6"
   },
   "tolerancia_extraida.json": {
    "bytes": 3291,
-   "sha256": "79822ff4d788986957c35574c2e43a3aad74b1c4e7c40dc94c6b84c1d44d4a90"
+   "sha256": "15ee67dfbe5b3094852ea45c0b2834c5a3e0164bdf30644182a483647b52b600"
   },
   "venv_isolado_ensaio.json": {
    "bytes": 58295,

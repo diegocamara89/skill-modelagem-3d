@@ -1,0 +1,47 @@
+{
+ "por_que": "Controles positivos dos achados da validacao adversarial: cada ataque que ELE usou,\nrefeito por mim, exigindo que agora seja RECUSADO.",
+ "controles": {
+  "colisao_nao_apaga_a_entrada": {
+   "estado": "COLISAO_DE_CAMINHO",
+   "nada_foi_apagado": true,
+   "arquivo_ainda_existe": true,
+   "bytes_intactos": true,
+   "esperado": "COLISAO_DE_CAMINHO, com o arquivo intacto",
+   "passou": true
+  },
+  "codigo_de_saida_entra_no_veredito": {
+   "estado": "PROCESSO_COM_ERRO",
+   "codigo_do_processo": 7,
+   "relatorio_lido": "ATENDIDO",
+   "esperado": "PROCESSO_COM_ERRO: relatorio favoravel NAO pode absolver processo que terminou em 7",
+   "passou": true
+  },
+  "a_CLI_devolve_codigo_nao_zero": {
+   "codigo_da_cli": 1,
+   "esperado": "diferente de zero",
+   "passou": true
+  },
+  "verificar_pega_byte_alterado": {
+   "codigo": 1,
+   "pacote_limpo": false,
+   "hash_divergente": [
+    "scripts/valida_requisitos.py"
+   ],
+   "esperado": "codigo 1, pacote_limpo false, valida_requisitos.py divergente",
+   "passou": true
+  },
+  "manifesto_vazio_nao_resolve": {
+   "codigo": 1,
+   "pacote_limpo": false,
+   "n_declarados": null,
+   "nao_declarados": 0,
+   "resolve": null,
+   "destino_desfeito": null,
+   "manifesto_na_origem_resolve": false,
+   "esperado": "recusa SEM montar. Com o manifesto vazio, a recusa acontece ja na auditoria da ORIGEM, antes de existir destino para auditar — por isso `resolve` do destino vem nulo, e exigir False ali era rigor errado meu",
+   "passou": true
+  }
+ },
+ "veredito": "ATENDIDO",
+ "controles_falhos": []
+}

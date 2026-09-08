@@ -1,26 +1,57 @@
 {
  "origem": "base_pos_m0/arquivos (copia congelada pos-M0)",
- "regra": "copias BYTE A BYTE. Nao alterar aqui: o comportamento e a agregacao destes verificadores foram estabilizados em M0 e reescreve-los mudaria resultado sem teste.",
+ "regra": "copias da base pos-M0. DUAS delas deixaram de ser byte a byte em 08/09/2026, e a divergencia esta registrada abaixo, arquivo por arquivo. A regra original — nao alterar aqui — vale enquanto nao houver divergencia CONCRETA; nos dois casos houve, e era aprovacao de peca errada.",
  "arquivos": {
-  "check_mesh.py": {
-   "sha256": "4ddcbf1e6670d85017daa746559960005ee53be571130a42b93b5d3c9ab1da8d",
-   "bytes": 8097
-  },
   "check_intent.py": {
-   "sha256": "4f54003797a947e7ec854fcc9b66cd81350af61c910d97739193c0a30226b1b7",
-   "bytes": 26401
+   "sha256": "4cc777c08c94d5501fd539ee4b670ddf3b968554fe5344f773dc30d4dda1bb45",
+   "bytes": 28066,
+   "sha256_na_base_pos_m0": "4f54003797a947e7ec854fcc9b66cd81350af61c910d97739193c0a30226b1b7",
+   "identico_a_base": false
   },
-  "secoes.py": {
-   "sha256": "721d250b67f4fea47af7e86a28e87e8143ae81102228f3d6cd419c3a5813bf92",
-   "bytes": 5521
+  "check_mesh.py": {
+   "sha256": "2fab3ad98adfd7233f1a151cbc5c1c9ca4d92e891c7695ec031c21729b048cae",
+   "bytes": 12321,
+   "sha256_na_base_pos_m0": "4ddcbf1e6670d85017daa746559960005ee53be571130a42b93b5d3c9ab1da8d",
+   "identico_a_base": false
   },
   "matriz.py": {
    "sha256": "d3c9e740d42de945ccc0688c3e09933de0588b838d5d7b4ca28b51c3d0a3b712",
-   "bytes": 11933
+   "bytes": 11933,
+   "sha256_na_base_pos_m0": "d3c9e740d42de945ccc0688c3e09933de0588b838d5d7b4ca28b51c3d0a3b712",
+   "identico_a_base": true
+  },
+  "secoes.py": {
+   "sha256": "721d250b67f4fea47af7e86a28e87e8143ae81102228f3d6cd419c3a5813bf92",
+   "bytes": 5521,
+   "sha256_na_base_pos_m0": "721d250b67f4fea47af7e86a28e87e8143ae81102228f3d6cd419c3a5813bf92",
+   "identico_a_base": true
   },
   "sweep_params.py": {
    "sha256": "584015bd4b3750fa5f6f1ec0f1c5303ec3e20dd2847ec2ffa936d07d3020fce7",
-   "bytes": 20814
+   "bytes": 20814,
+   "sha256_na_base_pos_m0": "584015bd4b3750fa5f6f1ec0f1c5303ec3e20dd2847ec2ffa936d07d3020fce7",
+   "identico_a_base": true
   }
+ },
+ "divergencias": {
+  "check_intent.py": {
+   "o_que_mudou": "v_furo confrontava a SEGUNDA secao com a primeira, e so a primeira com o alvo. Agora cada secao medida e confrontada com o pedido, e o desvio entre secoes continua sendo conferido.",
+   "por_que": "aprovacao indevida reproduzida: bloco 20x20x10, furo d=4 de eixo inclinado, primeira secao a 0,19 do alvo e segunda a 0,29, tolerancia 0,20, desvio entre secoes 0,10 -> APROVADA. Depois da correcao: REPROVADA, com erro_de_posicao_da_segunda_mm 0,29.",
+   "achado_por": "validacao adversarial independente, 08/09/2026"
+  },
+  "check_mesh.py": {
+   "o_que_mudou": "`volume_confiavel` era `fechada and not negativo`. Agora tambem exige ausencia de sobreposicao entre componentes, medida comparando a soma das cascas com o volume da uniao. A sobreposicao NAO entra em motivos_de_reprovacao, porque a malha nao esta quebrada: entra em aviso_de_volume e em acao.",
+   "por_que": "dois cubos de lado 10 deslocados 5 em x, na mesma malha: 2000 mm3 declarados confiaveis, uniao real 1500, excesso de 500 (33% sobre a uniao), com 'Pode seguir'. Depois da correcao: volume_confiavel false, sobreposicao 500 mm3 medida e nomeada.",
+   "achado_por": "validacao adversarial independente, 08/09/2026"
+  }
+ },
+ "regressao": {
+  "suite_de_casos": "11 de 11 passaram com os verificadores corrigidos",
+  "suite_de_mutacoes": "30 pegas, 0 escaparam, 0 invalidas, de 30",
+  "como": "as duas suites de M0 rodaram numa COPIA de prototipo/ com os dois arquivos corrigidos por cima, para nao tocar em prototipo/, que segue com diff vazio desde c9cf867",
+  "evidencia": [
+   "evidencias_finais/suite_m0_casos.json",
+   "evidencias_finais/suite_m0_mutacoes.json"
+  ]
  }
 }

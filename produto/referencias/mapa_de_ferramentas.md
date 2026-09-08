@@ -211,7 +211,7 @@ levanta `ErroDePrecondicao` em vez de operar sobre pré-condição falsa.
 | `mede_malha` | bordas, não-manifold, soltas, degeneradas **e componentes conexos** — cada um separado | "sem borda aberta" não é "sem degeneração". A contagem de componentes foi acrescentada depois de uma revisão notar que o docstring a prometia e o retorno não a trazia |
 | `mede_topo_em_pontos` | altura do material contra o valor **esperado** | é a única medida aqui que pega ranhura e desnível |
 | `secao_por_plano` | interseção das arestas com um plano, tratando coplanar e duplicado | inspeção independente da junção |
-| `captura_regiao_protegida` / `compara_regiao_protegida` | conjunto de posições de faces inteiras dentro de uma caixa | contar faces cujos vértices caem na caixa não prova preservação |
+| `captura_regiao_protegida` / `compara_regiao_protegida` | conjunto de posições **e área** das faces inteiras dentro de uma caixa | contar faces cujos vértices caem na caixa não prova preservação; e conjunto de posições **sozinho** também não: apagando uma face de um tetraedro, os quatro vértices continuam nas faces vizinhas e 3,4641 mm² desaparecem sem o conjunto mudar. Medido por validação adversarial em 08/09/2026 |
 | `marca_recuperacao` / `contexto_de_historico` / `desfaz_e_confere` / `refaz_e_confere` | histórico conferido pelo conteúdo | `ed.undo` falha de dois modos diferentes; ver `recuperar_salvar_exportar.md` |
 | `salva_cena` / `exporta_malha` | entrega com hash e assinatura | recusa sobrescrever a origem por padrão |
 

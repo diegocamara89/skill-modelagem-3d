@@ -2,8 +2,8 @@
 
 Escrito para você abrir primeiro. Nada aqui exige ler os relatórios de fase.
 
-**O que existe:** `produto/` é o pacote, versão **2.2.0**, 25 arquivos, hash
-`723a6a32194a16b10bfcae1fe9e8c1b7d745371b8974205d81456ce1eb2e15e8`. Licença **MIT**. É um conjunto de
+**O que existe:** `produto/` é a **árvore de trabalho** do pacote, versão **2.4.0**, 25 arquivos, hash
+`6fc1727d6e90bdfa65ec3ca80f15c19e1a9e33da9203ff98f33269a36116135b`. Licença **MIT**. É um conjunto de
 receitas para um agente **sem histórico** interpretar um pedido de modelagem 3D,
 executar com as ferramentas que já existem, e **conferir** o resultado com número
 medido.
@@ -23,8 +23,17 @@ do Blender.
 python empacota_produto.py --verificar
 ```
 
+> **O que se distribui é o pacote MONTADO, nunca a pasta `produto/` copiada.** Rodar
+> os scripts de dentro dela cria `__pycache__`, e um `.pyc` guarda o caminho absoluto
+> do fonte — logo carrega nome de usuário e estrutura de pastas. A lista de permissão
+> exclui esses arquivos: o destino montado por `--destino` tem **zero**. O relatório
+> de `--verificar` traz `bytecode_na_arvore_de_origem`, que **nomeia** o que existe na
+> árvore, justamente para a distinção não ficar implícita.
+
 Espere `"pacote_limpo": true`, 25 permitidos, `na_origem_e_fora_da_lista: []`,
-`"varredura_funciona": true`. Esse último é um **controle positivo**: um dado privado
+`"varredura_funciona": true` e `manifesto_na_origem.resolve: true` — este último
+confere os **hashes** e exige que todo arquivo que deve ser identificado esteja no
+manifesto. Esse último é um **controle positivo**: um dado privado
 plantado fora do pacote tem que casar, senão a varredura estaria reportando "0 achados"
 sobre padrão nenhum — o que já aconteceu uma vez e foi pego por este controle.
 
@@ -90,7 +99,7 @@ dele — inclusive nos pontos em que ele me contradiz.
 
 ## O que está pendente, e por quê
 
-**1. Nenhuma revisão independente passou sobre 2.2.0.** Foram **seis** tentativas: cinco
+**1. Nenhuma revisão independente passou sobre 2.4.0.** Foram **seis** tentativas: cinco
 concluíram, todas com `BLOQUEIA`, e os 43 achados foram corrigidos e medidos. A sexta
 não concluiu — o Codex bateu no limite de uso da conta. A estrutura disto é o resultado
 mais importante da noite e vale dizer sem enfeite: **cada correção regenera a evidência
@@ -117,7 +126,7 @@ obrigatória.
 ## Se você quiser o teste que mais informa
 
 Peça a um agente **sem histórico deste projeto** para usar
-`C:\Users\marce\AppData\Local\Temp\pacote_intocado_22` e fazer uma peça sua de verdade,
+`C:\Users\marce\AppData\Local\Temp\pacote_intocado_24` e fazer uma peça sua de verdade,
 com a instrução de registrar **onde a pasta o deixou na mão**. Foi assim que apareceram
 os 34 defeitos que as revisões não tinham visto — inclusive o pior de todos, que era o
 validador recusando uma tolerância que o verificador **usa para decidir**.

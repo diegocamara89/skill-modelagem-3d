@@ -144,10 +144,24 @@ Nota medida, que contraria uma crença comum: o escritor de 3MF **não** é port
 graça. Na variante com tangência ele **aceitou** a malha, e quem reprovou foi o
 portão de malha.
 
-## Passo 4 — declarar o que a peça tem que atender
+## Passo 4 — exportar para poder medir, e declarar o que a peça tem que atender
+
+**A ordem aqui já esteve errada, e uma validação independente bateu nela:** o passo 4
+mandava rodar `check_intent.py --malha peca.stl` e o passo 5 dizia «só então
+exportar» — de modo que o arquivo a medir ainda não existia, e a sequência literal
+devolvia traceback de arquivo inexistente. Os `v_*.stl` que a varredura grava são das
+**variantes**, não o `peca.stl` deste comando.
+
+Então exporte **antes de medir**, e trate esta exportação como intermediária:
+
+```python
+from build123d import export_stl
+export_stl(peca, "peca_para_medir.stl", tolerance=0.01, angular_tolerance=0.1)
+```
 
 A varredura prova que a geometria é bem formada. Ela **não** prova que a peça é a
-pedida. Para isso, declare requisitos e verifique:
+pedida. Para isso, declare requisitos e verifique **contra o arquivo que você acabou
+de exportar**:
 
 ```json
 {"requisitos": [
@@ -172,7 +186,11 @@ python verificadores/check_intent.py --malha peca.stl --requisitos req.json
 Requisitos com o mesmo identificador são recusados; um requisito sem medidor sai como
 `NAO_IMPLEMENTADA`, que barra quando o papel é decisivo.
 
-## Passo 5 — só então exportar
+## Passo 5 — a exportação final
+
+A do passo 4 existe para **medir**. Esta é a que você entrega, e vale re-exportar com
+o nome final depois de os requisitos passarem — inclusive porque o formato de
+intercâmbio pode ser outro:
 
 ```python
 from build123d import export_stl, export_step
@@ -195,7 +213,7 @@ python verificadores/check_mesh.py --malha peca.stl
 | Sintoma | Diagnóstico | Ação |
 |---|---|---|
 | uma variante da grade quebra e as vizinhas não | provável coincidência paramétrica | procure a **igualdade** entre expressões, não o valor |
-| malha com arestas não-manifold e você não mudou nada | corte com altura igual à parede | atravesse com folga; a folga é parâmetro, não constante |
+| malha com arestas não-manifold e você não mudou nada | **pode ser** corte com altura igual à parede, e há outras causas | atravesse com folga; a folga é parâmetro, não constante. **A igualdade de altura não implica degeneração:** uma validação independente construiu placa 30 × 20 × 4 com corte cilíndrico de altura 4, ambos `Align.MIN` em Z, e mediu **zero** não-manifold e zero degeneradas. O que produz o defeito é a coincidência de **faces** — que depende do alinhamento, e não só do número. Com os dois começando em z=0 e a mesma altura, as faces de topo e de base coincidem em par e o kernel resolve; foi com outro alinhamento que as 6 arestas foram medidas. Diagnostique pela medida, não por esta linha |
 | a varredura devolve erro operacional | ambiente, não geometria | corrija o ambiente; **não** conte como reprovação |
 | tolerância de malha "não faz efeito" | triangulação em cache | construa do zero em vez de reexportar |
 | pedem folga de encaixe | não há valor calibrado | diga que é `A_CALIBRAR` e o que seria preciso medir |

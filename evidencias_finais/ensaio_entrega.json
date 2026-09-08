@@ -194,7 +194,7 @@
     ],
     "havia_arquivo_antes": false,
     "bytes": 95057,
-    "sha256": "2849d5ee4e5d25819a21a14ddce90523e9a989ee36b5182b3875ed1d285202a9",
+    "sha256": "28fc95edbef10c824fb6d3b7221644cf98bcd7fc52f112ac6c5046056ed70090",
     "origem_preservada": null,
     "limite": "hash de .blend prova integridade do arquivo. Ele NAO separa mudanca de geometria de mudanca de camera, selecao ou iluminacao. Para geometria, usar a assinatura."
    },

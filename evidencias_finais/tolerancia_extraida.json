@@ -50,7 +50,7 @@
     {
      "tolerancia": "tol_mm",
      "padrao_quando_nao_declarada": 0.2,
-     "linha": 289,
+     "linha": 312,
      "funcao": "v_distancia_entre_furos"
     }
    ]
@@ -96,7 +96,7 @@
     {
      "tolerancia": "tol_mm3",
      "padrao_quando_nao_declarada": 0.0,
-     "linha": 395,
+     "linha": 418,
      "funcao": "v_interferencia"
     }
    ]
@@ -128,7 +128,7 @@
     {
      "tolerancia": "tol_fracao",
      "padrao_quando_nao_declarada": 1e-09,
-     "linha": 354,
+     "linha": 377,
      "funcao": "v_regiao_intacta"
     }
    ]
