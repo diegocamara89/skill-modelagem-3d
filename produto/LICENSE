@@ -1,0 +1,39 @@
+MIT License
+
+Copyright (c) 2026 Marcelo Diego
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Nota sobre as dependencias, para quem receber este pacote.
+
+Este pacote contem SOMENTE codigo do autor. Nenhuma biblioteca de terceiros e
+nenhum binario sao redistribuidos aqui.
+
+Os scripts que importam `bpy` / `bmesh` executam DENTRO do Blender, que e
+licenciado sob GPL. Eles nao sao distribuidos junto com o Blender nem contem
+codigo dele.
+
+As dependencias do Python do hospedeiro sao pre-requisito, instalado pelo
+usuario, e nao acompanham este pacote. Versoes medidas e licencas em
+`DEPENDENCIAS_E_LICENCAS.md`, no repositorio de origem: sete pacotes pedidos
+diretamente, que trazem 48 no total por transitividade. A licenca foi verificada
+uma a uma nas oito da tabela; para as demais ha versao medida e nao ha
+verificacao individual de licenca.

@@ -1,0 +1,17 @@
+{
+ "veredito_global": "ESPEC_INVALIDA",
+ "variante_pedida": "corretta",
+ "variantes_validas": [
+  "correta",
+  "duplicado",
+  "flutuante",
+  "parcial",
+  "ranhura",
+  "tangente"
+ ],
+ "motivo": "variante 'corretta' nao existe. O vocabulario e fechado: um erro de digitacao nao pode cair no caminho da variante 'correta' e terminar ATENDIDO com o nome invalido no relatorio.",
+ "passos": [],
+ "vereditos": [],
+ "n_criterios": 0,
+ "n_falhos": 0
+}

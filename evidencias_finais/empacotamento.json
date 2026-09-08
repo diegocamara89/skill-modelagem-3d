@@ -1,0 +1,187 @@
+{
+ "origem": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\produto",
+ "n_permitidos": 25,
+ "faltando_na_origem": [],
+ "na_origem_e_fora_da_lista": [],
+ "n_padroes": 5,
+ "erro_de_padroes": null,
+ "controle_da_varredura": {
+  "varredura_funciona": true,
+  "padroes_que_casaram": 1,
+  "nota": "semente de controle vem do arquivo LOCAL de padroes, que nao entra no pacote nem no repositorio"
+ },
+ "achados_de_vazamento": [],
+ "negados_declarados": [
+  "__pycache__",
+  ".pyc",
+  "padroes_de_vazamento.json",
+  "M0_RESULTADO.md",
+  "M1_RESULTADO.md",
+  "M2_RESULTADO.md",
+  "M3_RESULTADO.md",
+  "PLANO_IMPLEMENTACAO_PLUGIN.md",
+  "DESENHO_PLUGIN.md",
+  "DESENHO.md",
+  "REFERENCIA_BLENDER_EDICAO_GUIADA.md",
+  "REVISAO_M1_CONTEXTO.md",
+  "LACUNAS_PARA_M2.md",
+  "PENDENCIAS_PRODUTO.md",
+  "base_congelada",
+  "base_pos_m0",
+  "evidencias_m1",
+  "evidencias_finais",
+  "cenas_de_teste",
+  "prototipo"
+ ],
+ "autorizacao_de_publicacao": "NAO EMITIDA por esta ferramenta",
+ "limite": "a varredura prova ausencia dos padroes TESTADOS na cobertura testada. Nao prova ausencia de qualquer dado privado, e nao substitui revisao manual dos recursos novos.",
+ "pacote_limpo": true,
+ "bytecode_no_destino": {
+  "arquivos": [],
+  "quantos": 0,
+  "por_que_importa": "um .pyc guarda o caminho absoluto do arquivo de origem, portanto carrega nome de usuario e estrutura de pastas do autor",
+  "esperado": 0
+ },
+ "resolucao_do_manifesto": {
+  "versao_do_pacote": "2.2.0",
+  "n_declarados": 24,
+  "nao_resolvem": [],
+  "hash_divergente": [],
+  "resolve": true
+ },
+ "auditoria_do_destino": {
+  "arquivos_no_destino": [
+   "INVENTARIO.json",
+   "LICENSE",
+   "SKILL.md",
+   "cenarios/ensaio_preenchimento.py",
+   "cenarios/familia_exemplo.py",
+   "cenarios/gera_cenario.py",
+   "referencias/criar_e_parametrizar.md",
+   "referencias/editar_localizado.md",
+   "referencias/inspecionar_e_selecionar.md",
+   "referencias/mapa_de_ferramentas.md",
+   "referencias/recuperar_salvar_exportar.md",
+   "referencias/registro_de_trabalho.md",
+   "referencias/verificar.md",
+   "scripts/bl_ferramentas.py",
+   "scripts/extrai_tolerancias.py",
+   "scripts/mcp_blender.py",
+   "scripts/roda_blender.py",
+   "scripts/testa_paridade_validador.py",
+   "scripts/valida_requisitos.py",
+   "verificadores/PROVENIENCIA.json",
+   "verificadores/check_intent.py",
+   "verificadores/check_mesh.py",
+   "verificadores/matriz.py",
+   "verificadores/secoes.py",
+   "verificadores/sweep_params.py"
+  ],
+  "sobrando": [],
+  "nao_chegou": [],
+  "hashes_iguais_a_origem": true,
+  "hashes": {
+   "SKILL.md": {
+    "sha256": "07a8049dc2dc0c7d127541b92ed7a2969bedc81bac4925f4dcd4821616e84c73",
+    "bytes": 7081
+   },
+   "INVENTARIO.json": {
+    "sha256": "f34a303eb01bbb97838a57d23d3540d1830f963b84dc30ad8f60cdcade883426",
+    "bytes": 2984
+   },
+   "LICENSE": {
+    "sha256": "6e3aa103a8e780659b3a189c5257dfe0edfc20018a7895d31fcbe41a267d276f",
+    "bytes": 1827
+   },
+   "referencias/criar_e_parametrizar.md": {
+    "sha256": "fa9e0016b4ae01664f64c821f7cfd21652802a8fb3f85dc2f08afe2842875a95",
+    "bytes": 12653
+   },
+   "referencias/editar_localizado.md": {
+    "sha256": "a410a21796fcb64e6525ad1dd8e6e95e0ca22ffe7c27c6cf85c7e3c556f04f06",
+    "bytes": 26006
+   },
+   "referencias/inspecionar_e_selecionar.md": {
+    "sha256": "4ed9a45bbcfeb33f8dbb48f6ea42ccace60011de2d4c3b709fcc85ea14f3b932",
+    "bytes": 10957
+   },
+   "referencias/mapa_de_ferramentas.md": {
+    "sha256": "3e3e54d2321adb4671cfc536f443775d9016b72045297ddee61a09dab479f2a0",
+    "bytes": 20590
+   },
+   "referencias/recuperar_salvar_exportar.md": {
+    "sha256": "ecdfc089194d97fb35341990529bfd89aec4df889d38fe1f7bbe1419b9c5e3ce",
+    "bytes": 5577
+   },
+   "referencias/registro_de_trabalho.md": {
+    "sha256": "85feea4cd7ddf2eeb5b7711296b5dd873e0e7a74306f085cda63434dfe11f8a5",
+    "bytes": 5388
+   },
+   "referencias/verificar.md": {
+    "sha256": "6366e99f154cdb6be5c131c66a571c5b00591477173e191674cc85f5faa578b5",
+    "bytes": 15518
+   },
+   "scripts/bl_ferramentas.py": {
+    "sha256": "32780db5d1f868f8e511ab38ace4d0ed482815b58de20f64e5ae311ad306c60f",
+    "bytes": 73737
+   },
+   "scripts/mcp_blender.py": {
+    "sha256": "6c5549990fa78237c03150017b575aa5cf15ee60c8573cd20327abba307ca0e4",
+    "bytes": 7905
+   },
+   "scripts/roda_blender.py": {
+    "sha256": "ce4203e495bab1898e9de3f2d324ae556a567bd7180f7a9c297426d3e3821241",
+    "bytes": 12561
+   },
+   "scripts/valida_requisitos.py": {
+    "sha256": "ba5de3a65cd7ec2c50b0b1d27ccf86a1d1be42b7dace65be9f1641b2fffee1cd",
+    "bytes": 19208
+   },
+   "scripts/testa_paridade_validador.py": {
+    "sha256": "6d3cdc8c4da786783abed9639fbfa8c97c9538af548934ff115c046ec37ad49b",
+    "bytes": 15161
+   },
+   "scripts/extrai_tolerancias.py": {
+    "sha256": "a2a807440a38ad26c91147b56eac2df4ce16ce3b58ffd8262213dca7fe564e84",
+    "bytes": 7359
+   },
+   "cenarios/ensaio_preenchimento.py": {
+    "sha256": "482716b25c11e21986b44ac6fcdab138aecdb07dba26a8b862efca133b27e7e4",
+    "bytes": 39219
+   },
+   "cenarios/familia_exemplo.py": {
+    "sha256": "5b68f77452e7ce256168dbb9c0d5b3815fcfb45af81c8bc4a087406e417cae90",
+    "bytes": 1773
+   },
+   "cenarios/gera_cenario.py": {
+    "sha256": "85caca62279e5635906af704ea6d25e740f264597b6901a2762c56dc2c93be45",
+    "bytes": 9141
+   },
+   "verificadores/PROVENIENCIA.json": {
+    "sha256": "05597535abc70a5abbd1339fb2fc425c9448a937d0ad9698bfc53e323f35fad1",
+    "bytes": 897
+   },
+   "verificadores/check_intent.py": {
+    "sha256": "4f54003797a947e7ec854fcc9b66cd81350af61c910d97739193c0a30226b1b7",
+    "bytes": 26401
+   },
+   "verificadores/check_mesh.py": {
+    "sha256": "4ddcbf1e6670d85017daa746559960005ee53be571130a42b93b5d3c9ab1da8d",
+    "bytes": 8097
+   },
+   "verificadores/matriz.py": {
+    "sha256": "d3c9e740d42de945ccc0688c3e09933de0588b838d5d7b4ca28b51c3d0a3b712",
+    "bytes": 11933
+   },
+   "verificadores/secoes.py": {
+    "sha256": "721d250b67f4fea47af7e86a28e87e8143ae81102228f3d6cd419c3a5813bf92",
+    "bytes": 5521
+   },
+   "verificadores/sweep_params.py": {
+    "sha256": "584015bd4b3750fa5f6f1ec0f1c5303ec3e20dd2847ec2ffa936d07d3020fce7",
+    "bytes": 20814
+   }
+  }
+ },
+ "copiados_para": "C:\\Users\\marce\\AppData\\Local\\Temp\\pacote_intocado_22"
+}

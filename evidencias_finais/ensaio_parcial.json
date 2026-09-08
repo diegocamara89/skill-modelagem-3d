@@ -1,0 +1,1037 @@
+{
+ "variante": "parcial",
+ "gabarito": {
+  "objeto": "peca_de_ensaio",
+  "topo_do_patamar_alto": {
+   "x_de": 0.0,
+   "x_ate": 20.0,
+   "z": 20.0
+  },
+  "topo_do_patamar_baixo": {
+   "x_de": 40.0,
+   "x_ate": 60.0,
+   "z": 14.0
+  },
+  "vao": {
+   "x_de": 20.0,
+   "x_ate": 40.0,
+   "z_do_piso": 10.0,
+   "largura_em_y": 40.0,
+   "queda_esperada_da_rampa": 6.0,
+   "comprimento_do_vao": 20.0
+  },
+  "volume_da_peca_antes": 35200.0,
+  "rotacao_z_graus": 0.0
+ },
+ "passos": [
+  {
+   "passo": "diagnostico",
+   "estado": "OK",
+   "resultado": {
+    "versao_blender": "5.2.1 LTS",
+    "versao_ferramentas": "1.5.0",
+    "modo": "OBJECT",
+    "em_background": true,
+    "escala_de_unidade": 1.0,
+    "sistema_de_unidade": "METRIC",
+    "objetos_na_cena": [
+     "peca_de_ensaio"
+    ],
+    "objeto": {
+     "nome": "peca_de_ensaio",
+     "tipo": "MESH",
+     "location": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "rotation_euler": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "dimensions_mundo": [
+      60.0,
+      40.0,
+      20.0
+     ],
+     "matriz_mundo_e_identidade": true,
+     "modificadores": [],
+     "vertices": 20,
+     "faces": 16,
+     "caixa_mundo_min": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "caixa_mundo_max": [
+      60.0,
+      40.0,
+      20.0
+     ]
+    },
+    "selecao_viva": {
+     "fonte": "objeto fora de Edit Mode",
+     "faces_selecionadas_em_object_mode": 0,
+     "nota": "contagem de Object Mode pode estar desatualizada. Entrar em Edit Mode e reler antes de decidir."
+    },
+    "sobreposicoes": {
+     "disponivel": false,
+     "motivo": "modo background nao tem interface; o estado nao existe"
+    }
+   },
+   "esperado": null
+  },
+  {
+   "passo": "entra_em_edicao",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "modo": "EDIT_MESH",
+    "modo_de_selecao": "face"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "seleciona_topo_do_patamar_alto",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "criterio": "centro",
+    "caixa_mundo": {
+     "min": [
+      -0.001,
+      -0.001,
+      19.999001
+     ],
+     "max": [
+      20.000999,
+      40.000999,
+      20.000999
+     ]
+    },
+    "faces_que_atendem": 1,
+    "faces_marcadas": 1,
+    "indices": [
+     10
+    ],
+    "confirmacao": "a contagem foi lida DEPOIS de marcar, na propria bmesh: e medida, nao intencao"
+   },
+   "esperado": "1 face, contada na propria bmesh depois de marcar"
+  },
+  {
+   "passo": "le_selecao",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "faces_selecionadas": [
+     10
+    ],
+    "n": 1,
+    "centros_em_mundo": [
+     [
+      10.0,
+      20.0,
+      20.0
+     ]
+    ],
+    "assinatura_do_estado": "66d7b210c0758c18a445ba4eb57d42cda56da7601d4a2d208799b2fbb035d081"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "controle_negativo_caixa_vazia",
+   "estado": "PRECONDICAO",
+   "mensagem": "a caixa de mundo informada nao contem nenhuma face pelo criterio 'centro'. Editar agora nao mudaria nada e o operador devolveria CANCELLED sem erro. Confira a caixa contra o diagnostico: a caixa do objeto em mundo e min=[0.0, 0.0, 0.0] max=[60.0, 40.0, 20.0].",
+   "esperado": "PRECONDICAO"
+  },
+  {
+   "passo": "limpa_selecao",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "faces_selecionadas": 0
+   },
+   "esperado": null
+  },
+  {
+   "passo": "controle_negativo_deslocar_selecao_vazia",
+   "estado": "PRECONDICAO",
+   "mensagem": "nenhum vertice selecionado. O operador de deslocamento devolveria CANCELLED sem erro e a geometria ficaria intacta, o que se parece com sucesso em qualquer registro que so olhe excecao.",
+   "esperado": "PRECONDICAO"
+  },
+  {
+   "passo": "reseleciona_topo",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "criterio": "centro",
+    "caixa_mundo": {
+     "min": [
+      -0.001,
+      -0.001,
+      19.999001
+     ],
+     "max": [
+      20.000999,
+      40.000999,
+      20.000999
+     ]
+    },
+    "faces_que_atendem": 1,
+    "faces_marcadas": 1,
+    "indices": [
+     10
+    ],
+    "confirmacao": "a contagem foi lida DEPOIS de marcar, na propria bmesh: e medida, nao intencao"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "sai_de_edicao_para_medir",
+   "estado": "OK",
+   "resultado": {
+    "modo_anterior": "EDIT_MESH",
+    "modo": "OBJECT"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "patamar_baixo_antes_do_deslocamento",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "tolerancia": 0.01,
+    "n_pontos": 15,
+    "n_medidos": 15,
+    "n_sem_material": 0,
+    "desvio_maximo_absoluto": 0.0,
+    "todos_dentro_da_tolerancia": true,
+    "amostras": [
+     {
+      "x": 41.0,
+      "y": 10.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 45.5,
+      "y": 10.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 50.0,
+      "y": 10.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 54.5,
+      "y": 10.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 59.0,
+      "y": 10.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 41.0,
+      "y": 20.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 45.5,
+      "y": 20.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 50.0,
+      "y": 20.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 54.5,
+      "y": 20.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 59.0,
+      "y": 20.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 41.0,
+      "y": 30.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 45.5,
+      "y": 30.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 50.0,
+      "y": 30.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 54.5,
+      "y": 30.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 59.0,
+      "y": 30.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     }
+    ],
+    "limite": "a conclusao vale para os 15 pontos amostrados, nas posicoes listadas. Amostragem nao prova toda a superficie."
+   },
+   "esperado": null
+  },
+  {
+   "passo": "volta_para_edicao",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "modo": "EDIT_MESH",
+    "modo_de_selecao": "face"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "reseleciona_topo_para_subir",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "criterio": "centro",
+    "caixa_mundo": {
+     "min": [
+      -0.001,
+      -0.001,
+      19.999001
+     ],
+     "max": [
+      20.000999,
+      40.000999,
+      20.000999
+     ]
+    },
+    "faces_que_atendem": 1,
+    "faces_marcadas": 1,
+    "indices": [
+     10
+    ],
+    "confirmacao": "a contagem foi lida DEPOIS de marcar, na propria bmesh: e medida, nao intencao"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "controle_positivo_deslocamento",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "vetor": [
+     0,
+     0,
+     2.0
+    ],
+    "faces_selecionadas_antes": 1,
+    "vertices_selecionados_antes": 4,
+    "retorno_do_operador": [
+     "FINISHED"
+    ],
+    "assinatura_antes": "66d7b210c0758c18a445ba4eb57d42cda56da7601d4a2d208799b2fbb035d081",
+    "assinatura_depois": "21c0800011d6bc9ae2347f77f98bafab5e6962d4cc9c672ccd3e1e625d92555c",
+    "geometria_mudou": true
+   },
+   "esperado": "geometria_mudou verdadeiro; assinatura lida da malha VIVA"
+  },
+  {
+   "passo": "confere_altura_apos_deslocamento",
+   "estado": "OK",
+   "resultado": {
+    "versao_blender": "5.2.1 LTS",
+    "versao_ferramentas": "1.5.0",
+    "modo": "EDIT_MESH",
+    "em_background": true,
+    "escala_de_unidade": 1.0,
+    "sistema_de_unidade": "METRIC",
+    "objetos_na_cena": [
+     "peca_de_ensaio"
+    ],
+    "objeto": {
+     "nome": "peca_de_ensaio",
+     "tipo": "MESH",
+     "location": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "rotation_euler": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "dimensions_mundo": [
+      60.0,
+      40.0,
+      22.0
+     ],
+     "matriz_mundo_e_identidade": true,
+     "modificadores": [],
+     "vertices": 20,
+     "faces": 16,
+     "caixa_mundo_min": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "caixa_mundo_max": [
+      60.0,
+      40.0,
+      22.0
+     ]
+    },
+    "selecao_viva": {
+     "fonte": "bmesh.from_edit_mesh, que e a selecao REAL em Edit Mode",
+     "faces_selecionadas": 1,
+     "arestas_selecionadas": 4,
+     "vertices_selecionados": 4,
+     "modo_de_selecao": [
+      "face"
+     ]
+    },
+    "sobreposicoes": {
+     "disponivel": false,
+     "motivo": "modo background nao tem interface; o estado nao existe"
+    }
+   },
+   "esperado": "dimensions_mundo z = altura_alta + 2"
+  },
+  {
+   "passo": "sai_de_edicao_apos_deslocar",
+   "estado": "OK",
+   "resultado": {
+    "modo_anterior": "EDIT_MESH",
+    "modo": "OBJECT"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "patamar_baixo_depois_do_deslocamento",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "tolerancia": 0.01,
+    "n_pontos": 15,
+    "n_medidos": 15,
+    "n_sem_material": 0,
+    "desvio_maximo_absoluto": 0.0,
+    "todos_dentro_da_tolerancia": true,
+    "amostras": [
+     {
+      "x": 41.0,
+      "y": 10.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 45.5,
+      "y": 10.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 50.0,
+      "y": 10.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 54.5,
+      "y": 10.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 59.0,
+      "y": 10.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 41.0,
+      "y": 20.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 45.5,
+      "y": 20.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 50.0,
+      "y": 20.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 54.5,
+      "y": 20.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 59.0,
+      "y": 20.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 41.0,
+      "y": 30.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 45.5,
+      "y": 30.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 50.0,
+      "y": 30.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 54.5,
+      "y": 30.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 59.0,
+      "y": 30.0,
+      "z_esperado": 14.0,
+      "z_medido": 14.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     }
+    ],
+    "limite": "a conclusao vale para os 15 pontos amostrados, nas posicoes listadas. Amostragem nao prova toda a superficie."
+   },
+   "esperado": "identico ao de antes: a regiao nao selecionada nao se move"
+  },
+  {
+   "passo": "volta_para_edicao_2",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "modo": "EDIT_MESH",
+    "modo_de_selecao": "face"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "reseleciona_topo_para_descer",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "criterio": "centro",
+    "caixa_mundo": {
+     "min": [
+      -0.001,
+      -0.001,
+      21.999001
+     ],
+     "max": [
+      20.000999,
+      40.000999,
+      22.000999
+     ]
+    },
+    "faces_que_atendem": 1,
+    "faces_marcadas": 1,
+    "indices": [
+     10
+    ],
+    "confirmacao": "a contagem foi lida DEPOIS de marcar, na propria bmesh: e medida, nao intencao"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "devolve_o_deslocamento",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "vetor": [
+     0,
+     0,
+     -2.0
+    ],
+    "faces_selecionadas_antes": 1,
+    "vertices_selecionados_antes": 4,
+    "retorno_do_operador": [
+     "FINISHED"
+    ],
+    "assinatura_antes": "21c0800011d6bc9ae2347f77f98bafab5e6962d4cc9c672ccd3e1e625d92555c",
+    "assinatura_depois": "66d7b210c0758c18a445ba4eb57d42cda56da7601d4a2d208799b2fbb035d081",
+    "geometria_mudou": true
+   },
+   "esperado": null
+  },
+  {
+   "passo": "sai_de_edicao",
+   "estado": "OK",
+   "resultado": {
+    "modo_anterior": "EDIT_MESH",
+    "modo": "OBJECT"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "confere_altura_restaurada",
+   "estado": "OK",
+   "resultado": {
+    "versao_blender": "5.2.1 LTS",
+    "versao_ferramentas": "1.5.0",
+    "modo": "OBJECT",
+    "em_background": true,
+    "escala_de_unidade": 1.0,
+    "sistema_de_unidade": "METRIC",
+    "objetos_na_cena": [
+     "peca_de_ensaio"
+    ],
+    "objeto": {
+     "nome": "peca_de_ensaio",
+     "tipo": "MESH",
+     "location": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "rotation_euler": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "dimensions_mundo": [
+      60.0,
+      40.0,
+      20.0
+     ],
+     "matriz_mundo_e_identidade": true,
+     "modificadores": [],
+     "vertices": 20,
+     "faces": 16,
+     "caixa_mundo_min": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "caixa_mundo_max": [
+      60.0,
+      40.0,
+      20.0
+     ]
+    },
+    "selecao_viva": {
+     "fonte": "objeto fora de Edit Mode",
+     "faces_selecionadas_em_object_mode": 1,
+     "nota": "contagem de Object Mode pode estar desatualizada. Entrar em Edit Mode e reler antes de decidir."
+    },
+    "sobreposicoes": {
+     "disponivel": false,
+     "motivo": "modo background nao tem interface; o estado nao existe"
+    }
+   },
+   "esperado": "dimensions_mundo z de volta a altura_alta"
+  },
+  {
+   "passo": "marca_recuperacao",
+   "estado": "OK",
+   "resultado": {
+    "marcado": "antes do preenchimento",
+    "em_background": true,
+    "nota": "em background o primeiro push tambem INICIALIZA o sistema de undo. Sem ele, ed.undo nem e chamavel."
+   },
+   "esperado": null
+  },
+  {
+   "passo": "superficie_protegida_antes",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "tolerancia": 0.01,
+    "n_pontos": 18,
+    "n_medidos": 18,
+    "n_sem_material": 0,
+    "desvio_maximo_absoluto": 0.0,
+    "todos_dentro_da_tolerancia": true,
+    "amostras": [
+     {
+      "x": 1.0,
+      "y": 8.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 4.4,
+      "y": 8.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 7.8,
+      "y": 8.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.2,
+      "y": 8.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 14.6,
+      "y": 8.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 18.0,
+      "y": 8.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 1.0,
+      "y": 20.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 4.4,
+      "y": 20.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 7.8,
+      "y": 20.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.2,
+      "y": 20.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 14.6,
+      "y": 20.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 18.0,
+      "y": 20.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 1.0,
+      "y": 32.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 4.4,
+      "y": 32.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 7.8,
+      "y": 32.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.2,
+      "y": 32.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 14.6,
+      "y": 32.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 18.0,
+      "y": 32.0,
+      "z_esperado": 20.0,
+      "z_medido": 20.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     }
+    ],
+    "limite": "a conclusao vale para os 18 pontos amostrados, nas posicoes listadas. Amostragem nao prova toda a superficie."
+   },
+   "esperado": "todos em z=20.0"
+  },
+  {
+   "passo": "preenche_entre_limites",
+   "estado": "PRECONDICAO",
+   "mensagem": "o volume de preenchimento nao encontraria material em ['extremo_do_limite_b'], e a receita promete interceptar nos DOIS extremos e abaixo do piso. Nada foi alterado na peca: a medida e feita em copia, antes da uniao. Medidas por zona: {'extremo_do_limite_a': 440.0, 'extremo_do_limite_b': 0.0, 'abaixo_do_piso': 1640.0}. Causa mais comum: limites calculados em coordenada local e usados como se fossem de mundo.",
+   "esperado": "PRECONDICAO na tangente; na flutuante a uniao conclui e houve_interseccao tem que ser falso; uniao normal nas outras"
+  }
+ ],
+ "vereditos": [
+  {
+   "criterio": "selecao_por_mundo_encontra_o_topo",
+   "descricao": "a caixa de mundo do topo do patamar alto seleciona pelo menos uma face",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "deslocamento_tem_efeito_medido",
+   "descricao": "com selecao valida, a assinatura muda",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "altura_externa_confere_com_o_pedido",
+   "descricao": "subir 2 leva a altura externa para altura_alta + 2",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "altura_restaurada_apos_desfazer_o_deslocamento",
+   "descricao": "descer 2 devolve a altura externa ao valor original",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "regiao_nao_selecionada_nao_se_move",
+   "descricao": "o topo do patamar baixo, fora da selecao, mede o mesmo antes e depois",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "caixa_vazia_barra",
+   "descricao": "caixa sem nenhuma face levanta ErroDePrecondicao",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "caixa_vazia_barra_PELO_MOTIVO_certo",
+   "descricao": "a mensagem diz que a caixa nao contem nenhuma face, e nao outro impedimento qualquer, como estar fora de Edit Mode",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "selecao_vazia_barra_a_edicao",
+   "descricao": "deslocar sem selecao levanta ErroDePrecondicao",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "selecao_vazia_barra_PELO_MOTIVO_certo",
+   "descricao": "a mensagem diz que nao ha vertice selecionado, e nao que falta Edit Mode",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "os_dois_controles_nao_alteraram_a_peca",
+   "descricao": "depois dos dois controles negativos, a assinatura e a mesma de antes: barrar nao pode ter mexido na peca",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "preenchimento_barrado_na_precondicao",
+   "descricao": "a pre-condicao barra antes de alterar a peca",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "barrou_pelo_motivo_previsto",
+   "descricao": "a mensagem contem 'extremo_do_limite_b', e nao outro motivo qualquer",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "geometria_intacta_apos_o_barrado",
+   "descricao": "a peca nao foi alterada: a assinatura e a mesma de antes",
+   "veredito": "ATENDIDO"
+  },
+  {
+   "criterio": "nada_medido_depois_do_barrado",
+   "descricao": "resultado de uma etapa nao prova outra: nada a jusante foi medido",
+   "veredito": "ATENDIDO"
+  }
+ ],
+ "versao_blender": "5.2.1 LTS",
+ "versao_ferramentas": "1.5.0",
+ "parametros_derivados": {
+  "sobreposicao": 1.0,
+  "origem": "um vigesimo do comprimento do vao (20.0 unidades). Em planta ela ALCANCA a regiao protegida e a retessela, o que e esperado e e como ela intercepta material; em ALTURA o topo da sobreposicao e horizontal na altura de cada limite, portanto nao ultrapassa a superficie protegida. O que se verifica e a altura.",
+  "tolerancia_de_perfil": 0.01
+ },
+ "assinatura_antes_da_uniao": "66d7b210c0758c18a445ba4eb57d42cda56da7601d4a2d208799b2fbb035d081",
+ "conclusao": "o preenchimento nao foi executado; nada depois dele foi medido. Um resultado de etapa nao prova outra.",
+ "resumo": {
+  "diagnostico": "OK",
+  "entra_em_edicao": "OK",
+  "seleciona_topo_do_patamar_alto": "OK",
+  "le_selecao": "OK",
+  "controle_negativo_caixa_vazia": "PRECONDICAO",
+  "limpa_selecao": "OK",
+  "controle_negativo_deslocar_selecao_vazia": "PRECONDICAO",
+  "reseleciona_topo": "OK",
+  "sai_de_edicao_para_medir": "OK",
+  "patamar_baixo_antes_do_deslocamento": "OK",
+  "volta_para_edicao": "OK",
+  "reseleciona_topo_para_subir": "OK",
+  "controle_positivo_deslocamento": "OK",
+  "confere_altura_apos_deslocamento": "OK",
+  "sai_de_edicao_apos_deslocar": "OK",
+  "patamar_baixo_depois_do_deslocamento": "OK",
+  "volta_para_edicao_2": "OK",
+  "reseleciona_topo_para_descer": "OK",
+  "devolve_o_deslocamento": "OK",
+  "sai_de_edicao": "OK",
+  "confere_altura_restaurada": "OK",
+  "marca_recuperacao": "OK",
+  "superficie_protegida_antes": "OK",
+  "preenche_entre_limites": "PRECONDICAO"
+ },
+ "passos_com_estado_inesperado": [],
+ "passos_que_barram_de_proposito": [
+  "controle_negativo_caixa_vazia",
+  "controle_negativo_deslocar_selecao_vazia",
+  "preenche_entre_limites"
+ ],
+ "n_criterios": 14,
+ "n_falhos": 0,
+ "criterios_falhos": [],
+ "veredito_global": "ATENDIDO"
+}

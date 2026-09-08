@@ -1,0 +1,37 @@
+{
+ "versao_ferramentas": "1.1.0",
+ "medidas": [
+  {
+   "faces": 6,
+   "pontos": 100,
+   "segundos": 0.002,
+   "us_por_par_ponto_face": 2.5765,
+   "desvio_max": 0.0,
+   "sem_material": 0
+  },
+  {
+   "faces": 54,
+   "pontos": 100,
+   "segundos": 0.009,
+   "us_por_par_ponto_face": 1.7285,
+   "desvio_max": 0.0,
+   "sem_material": 0
+  },
+  {
+   "faces": 93750,
+   "pontos": 100,
+   "segundos": 24.424,
+   "us_por_par_ponto_face": 2.6052,
+   "desvio_max": 0.0,
+   "sem_material": 0
+  },
+  {
+   "faces": 705894,
+   "pontos": 100,
+   "segundos": 185.714,
+   "us_por_par_ponto_face": 2.6309,
+   "desvio_max": 0.0,
+   "sem_material": 0
+  }
+ ]
+}

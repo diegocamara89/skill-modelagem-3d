@@ -1,0 +1,41 @@
+{
+ "em_background": true,
+ "versao": "5.2.1 LTS",
+ "casos": [
+  {
+   "caso": "A_push_mover_push",
+   "janelas": 1,
+   "preparo": "ok",
+   "undo_pollavel": true,
+   "undo": "ok"
+  },
+  {
+   "caso": "B_push_modo_push",
+   "janelas": 1,
+   "preparo": "ok",
+   "undo_pollavel": true,
+   "undo": "ok"
+  },
+  {
+   "caso": "C_push_booleana_push",
+   "janelas": 1,
+   "preparo": "ok",
+   "undo_pollavel": true,
+   "undo": "ok"
+  },
+  {
+   "caso": "D_push_edicao_push",
+   "janelas": 1,
+   "preparo": "ok",
+   "undo_pollavel": true,
+   "undo": "ok"
+  },
+  {
+   "caso": "E_sem_push",
+   "janelas": 1,
+   "preparo": "ok",
+   "undo_pollavel": true,
+   "undo": "ok"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+PEGOU     finalidade visualizacao exige fatiador
+PEGOU     superficie para impressao perde a dispensa
+PEGOU     impressao deixa de exigir o fatiador
+PEGOU     verificador obrigatorio ausente do registro
+PEGOU     caixa declarada com 2 mm de erro
+PEGOU     furo central declarado 3 mm fora
+PEGOU     abertura quadrada com a mesma area do furo
+PEGOU     reconstrucao alinhada por eixo, geometria mudada
+PEGOU     regiao editada declarada como intacta
+PEGOU     intercambio da montagem com um componente so
+PEGOU     particao deslocada que estoura o envelope
+PEGOU     verificador devolve estado fora do contrato
+PEGOU     requisito de preservacao com id neutro
+PEGOU     caso sem nenhum requisito de preservacao
+PEGOU     reconstrucao com a inclinacao invertida
+PEGOU     destino de pacote previamente contaminado
+PEGOU     perfil de maquina sem envelope
+PEGOU     medicao de folga sem estado explicito
+PEGOU     grade com variante geometricamente invalida
+PEGOU     varredura reaproveitando execucao anterior
+PEGOU     erro operacional em variante da varredura
+PEGOU     relatorio gravado dentro do destino
+PEGOU     perfil com envelope de valor invalido
+PEGOU     dois requisitos com o mesmo identificador
+
+24 pegas, 0 escaparam, 0 invalidas, de 24.

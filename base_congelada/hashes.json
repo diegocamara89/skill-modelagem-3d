@@ -1,0 +1,106 @@
+{
+  "origem": "prototipo",
+  "nota": "copia congelada de M0. O hash confere a integridade da copia; a copia e o ponto de retorno.",
+  "arquivos": {
+    "LEIA-ME.md": {
+      "sha256": "850c3eea131bf4da7c52c1a878ebb0d8c94427e050357dd6935ee3f81e97e289",
+      "bytes": 26523
+    },
+    "align_rigid.py": {
+      "sha256": "b23d8abdb5c8af5d18e8c009805bd4bf731cc0db919a39556c3e628e99a61137",
+      "bytes": 9127
+    },
+    "ambiente.json": {
+      "sha256": "063bad2c963022120a4df18c13353f7b818c6cf7bc5b89903b8a4510aff4a11d",
+      "bytes": 2464
+    },
+    "caso2_abrigo.stl": {
+      "sha256": "a76ce55c0b81e0fd7db17231126f1b931e17e88ad0b5b09257008d5f2d80c48c",
+      "bytes": 9884
+    },
+    "caso3_cubo_ok.stl": {
+      "sha256": "86faa933b956bbcb40398cf9bdb69c3280f20cf99da76b152b545ede13d35828",
+      "bytes": 684
+    },
+    "casos.py": {
+      "sha256": "348846da44703c5e6522f25c2325caff3c700d0d618f05da44fdf0a89d88f25f",
+      "bytes": 36763
+    },
+    "check_intent.py": {
+      "sha256": "4f54003797a947e7ec854fcc9b66cd81350af61c910d97739193c0a30226b1b7",
+      "bytes": 26401
+    },
+    "check_mesh.py": {
+      "sha256": "34cd80ffac6cf059654ac8451570fb472f9390221d0b2430373518586d145bf3",
+      "bytes": 7531
+    },
+    "empacota.py": {
+      "sha256": "2c6bd758428183a662aab99948b3206c94772f9a8bbad11482d3a68e47bdeef0",
+      "bytes": 12666
+    },
+    "exemplo_b123d.py": {
+      "sha256": "750d4be2e789cf9743db31ee0ac596e2a89e3f4fa93f107b3248de0518b2e71d",
+      "bytes": 7453
+    },
+    "exemplo_suporte.step": {
+      "sha256": "202512be457ef7ab9f6647bbc98335168b7d08311d7b3a743d5d4974974944f8",
+      "bytes": 157630
+    },
+    "exemplo_suporte.stl": {
+      "sha256": "e46e788f95b7e3f6cd768fa6a98489687746a809e27b03d253e03a0e72dba337",
+      "bytes": 124884
+    },
+    "find_datums.py": {
+      "sha256": "c5b551dad06dbcf0b15a26077f322a495aabfcddfdb5bfa7eabdc4debf7ff4a5",
+      "bytes": 11717
+    },
+    "folgas_publicadas.json": {
+      "sha256": "2fae268675e103a24ac6aa68257b4b5f81319079e0ef3e676495d1701297ecd8",
+      "bytes": 3480
+    },
+    "gera_caso2.py": {
+      "sha256": "b480148b31cad4750cc5c5c9c0f40f4e6e8b9dc8f1d3d3ded386a02eead5d3a1",
+      "bytes": 2074
+    },
+    "matriz.py": {
+      "sha256": "7196173c58e82b20d21c8b5d0c040a690e950d5d8bb3e4d5a4bb30bde6370416",
+      "bytes": 5301
+    },
+    "mutacoes.py": {
+      "sha256": "5035075495ca2f0b7045a4b869dacc68a366b852ebf4e3cd0d45c7f669435800",
+      "bytes": 37109
+    },
+    "padroes_de_vazamento.json": {
+      "sha256": "a413b6680b7cb66e0bdfedd8f5561f5d8281ffe6e82f82bf2a755ea64d71ac8c",
+      "bytes": 710
+    },
+    "req_exemplo.json": {
+      "sha256": "de2b4b371722725bcb3b9fe3aa24f333b29fd455056d2fcc0914b88e2f2a76fb",
+      "bytes": 2213
+    },
+    "roda_casos.py": {
+      "sha256": "9384b6122c2a169a4a3b78cb700bc454afb20fb7df4e3dae7d22baaa0a139508",
+      "bytes": 28061
+    },
+    "secoes.py": {
+      "sha256": "721d250b67f4fea47af7e86a28e87e8143ae81102228f3d6cd419c3a5813bf92",
+      "bytes": 5521
+    },
+    "slice_check.py": {
+      "sha256": "1c6b4e9c03ceb6dcee52c74498b4505bc5e5c530db0d9137067c969b355e9df9",
+      "bytes": 21223
+    },
+    "split_for_volume.py": {
+      "sha256": "a727a8592366d5bdfea45917def24b389ab2c045aac63f33e76bad1fecf05695",
+      "bytes": 14794
+    },
+    "sweep_params.py": {
+      "sha256": "33e58498d19c9646f2168092538080426fae9f920c0ecd6c2b45fc4224c68700",
+      "bytes": 12061
+    },
+    "tolerance_lookup.py": {
+      "sha256": "e9e0a6a29eb8061d16dab05f06dc07d1936eabeadcb4851609b8a4a306aaeb9d",
+      "bytes": 16365
+    }
+  }
+}

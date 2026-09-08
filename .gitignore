@@ -1,0 +1,35 @@
+# saidas geradas por execucao: nao sao fonte, e algumas carregam dados de execucao
+__pycache__/
+*.pyc
+prototipo/casos_saida/
+prototipo/varredura/
+prototipo/casos_resultado.json
+prototipo/mutacoes_resultado.json
+prototipo/varredura.json
+prototipo/caso2_split.json
+
+# FICA FORA DO GIT DE PROPOSITO: este arquivo nomeia o projeto privado.
+# Ele e local por contrato e nao pode viajar num repositorio que talvez seja
+# empurrado para um remoto algum dia. Continua no disco, so nao e versionado.
+padroes_de_vazamento.json
+prototipo/padroes_de_vazamento.json
+base_congelada/arquivos/padroes_de_vazamento.json
+base_pos_m0/arquivos/padroes_de_vazamento.json
+# esta evidencia de M1 EMBUTE a lista de padroes, portanto nomeia o projeto
+# privado do mesmo jeito. Continua no disco; nao e versionada. A evidencia
+# vigente da varredura e evidencias_finais/empacotamento.json, que reporta so
+# contagens.
+evidencias_m1/auditoria_de_vazamento.json
+
+# cenas de teste geradas: sinteticas, mas grandes e reproduziveis pelo gerador
+cenas_de_teste/*.blend
+
+# acrescentado em 08/09/2026: bytecode guarda o caminho absoluto do arquivo de
+# origem, portanto carrega nome de usuario e estrutura de pastas do autor
+*.pyo
+
+# lixo de execucao: um relatorio que o instrumento de entrega gravou num arquivo
+# com o NOME DA BANDEIRA, quando ele ainda lia o contrato posicional, e uma
+# tabela intermediaria de manifesto. Os dois estavam rastreados por descuido.
+*.tmp
+--resultado-em

@@ -1,0 +1,57 @@
+A revisão bloqueia. Confirmei como fechados: os 21 hashes internos do inventário correspondem aos bytes atuais; o hash agregado `e7bfa05c…` é reproduzível; os cinco verificadores são idênticos à base pós-M0; `prototipo/` continua sem diferenças; e a correção de `--malha` está aplicada nas três referências do produto. `PENDENCIAS_PRODUTO.md` e a seção 3 do contexto ficaram desatualizados quanto a esse último ponto, mas o produto está correto.
+
+Defeitos concretos:
+
+1. **O pacote final 1.4.0 não é o pacote exercitado pelas evidências que aprovam M3.**  
+   Arquivos: [M3_RESULTADO.md](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/M3_RESULTADO.md:28), [m3_ensaio_venv_isolado.json](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/evidencias_m1/m3_ensaio_venv_isolado.json:32), [m3_montagem.json](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/evidencias_m1/m3_montagem.json:67).  
+   Evidência: C2 admite que a sessão limpa usou pacote 1.3.0; os dois ensaios de M3 registram `bl_ferramentas: 1.2.0`. Depois disso mudaram quatro arquivos comportamentais/documentais. Por exemplo, `bl_ferramentas.py` armazenado na montagem tem hash `322b1362…`, enquanto o atual tem `9ae8fa2a…`; o ensaio armazenado tem `0095d4c3…`, enquanto o atual tem `24b38d02…`. C1, C2, C3, C5, C7, C9 e B11 não têm evidência preservada para os bytes finais.  
+   Correção mínima: montar novamente o 1.4.0 em destino vazio, repetir ambiente isolado, auditoria e oito variantes, preservar os relatórios com versão e hashes finais e só então atualizar os estados.
+
+2. **O ensaio registra `OK` por ausência de exceção, sem validar o resultado esperado.**  
+   Arquivo: [ensaio_preenchimento.py](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:49).  
+   Evidência: `passo()` grava `estado: "OK"` para qualquer retorno normal; `esperado` é apenas texto. Assim, `todos_dentro_da_tolerancia: false`, degenerações restantes, recuperação falsa ou dimensão errada continuam “OK”. O resumo das linhas 303–304 apenas copia esses estados. Portanto “25 passos, só dois controles barrando” não prova geometria correta.  
+   Correção mínima: definir predicados executáveis por passo/variante, produzir veredito global e código de saída não zero quando qualquer valor divergir.
+
+3. **A correção da amostragem simétrica deixou afirmações numéricas falsas.**  
+   Arquivos: [ensaio_preenchimento.py](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:259), [editar_localizado.md](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/referencias/editar_localizado.md:323), [M3_RESULTADO.md](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/M3_RESULTADO.md:32).  
+   Evidência: no cenário padrão, o código atual produz 33 valores distintos de `x`; com três valores de `y`, são **99 pontos**, não 87. Os 87 aparecem somente nas evidências da versão anterior.  
+   Correção mínima: corrigir as contagens e gerar evidência 1.4.0 que confirme explicitamente as duas costuras `xa−ov` e `xb+ov`.
+
+4. **A justificativa falsa de sobreposição permanece no cenário distribuído e no modelo de registro.**  
+   Arquivos: [ensaio_preenchimento.py](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:103), [registro_de_trabalho.md](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/referencias/registro_de_trabalho.md:44).  
+   Evidência: ambos ainda registram que a sobreposição “não alcança a região protegida”. O próprio relatório reconhece que isso é geometricamente impossível: ela alcança e retessela a região em planta; o critério correto é não ultrapassá-la em altura. A correção da terceira sessão alterou somente o exemplo de `editar_localizado.md`.  
+   Correção mínima: substituir as duas procedências pela justificativa baseada em altura e regenerar as evidências.
+
+5. **`tolerancia_de_uniao` não implementa união por proximidade.**  
+   Arquivo: [bl_ferramentas.py](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/scripts/bl_ferramentas.py:1122).  
+   Evidência: a função converte a tolerância em casas decimais e compara chaves arredondadas. Dois pontos `0,999994` e `1,000001` distam `0,000007`, portanto estão dentro de `1e-5`, mas viram chaves `0,99999` e `1,00000` e não são unidos. A correção fecha o exemplo específico medido, não o contrato anunciado.  
+   Correção mínima: comparar distância real — ou consultar células vizinhas de uma grade espacial — e acrescentar um controle que atravesse uma fronteira de arredondamento.
+
+6. **Requisitos de contagem fracionários podem receber aprovação.**  
+   Arquivos: [valida_requisitos.py](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/scripts/valida_requisitos.py:136), [check_intent.py](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/verificadores/check_intent.py:178).  
+   Evidência: o validador aceita qualquer `int` ou `float` para `n_solidos` e `n_furos_no_plano`; o verificador converte com `int()`. Logo `valor: 1.9` passa pela validação, vira `1` e aprova uma peça com um corpo, embora o requisito declarado seja impossível como contagem exata.  
+   Correção mínima: exigir inteiro finito e não negativo no validador para os dois tipos de contagem.
+
+7. **As booleanas críticas ainda inferem sucesso por ausência de exceção.**  
+   Arquivo: [bl_ferramentas.py](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/scripts/bl_ferramentas.py:545), também linha 824.  
+   Evidência: os dois `bpy.ops.object.modifier_apply(...)` ignoram o conjunto retornado. Se houver `CANCELLED`, o preflight pode medir o volume integral da cópia como se estivesse dentro da caixa; na união principal, `volume_depois == volume_antes` faz a fórmula declarar como interseção todo o volume da ferramenta. É o mesmo padrão já corrigido na exportação, mas ainda presente na operação central.  
+   Correção mínima: exigir `FINISHED`, verificar que o modificador desapareceu e que a assinatura/volume resultante corresponde a uma aplicação efetiva antes de emitir medidas.
+
+8. **A receita executável da varredura não funciona no ambiente Windows/PowerShell declarado.**  
+   Arquivos: [criar_e_parametrizar.md](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/referencias/criar_e_parametrizar.md:62), [mapa_de_ferramentas.md](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/referencias/mapa_de_ferramentas.md:136).  
+   Evidência: `PYTHONPATH=cenarios python ...` é sintaxe POSIX, não PowerShell. O operador precisa improvisar justamente o caminho de importação necessário a `familia_exemplo`. Isso contradiz C1/C3 e a obrigação de sequência executável.  
+   Correção mínima: documentar o comando PowerShell correspondente ou fazer `sweep_params.py` resolver um diretório de módulo explicitamente.
+
+9. **Os caminhos do manifesto não resolvem no pacote montado.**  
+   Arquivos: [INVENTARIO.json](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/INVENTARIO.json:6), [m3_montagem.json](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/evidencias_m1/m3_montagem.json:39).  
+   Evidência: o pacote montado contém `SKILL.md`, `scripts/...` e `cenarios/...` na raiz, mas o inventário registra `produto/SKILL.md`, `produto/scripts/...`. Interpretados relativamente ao próprio manifesto — o contrato portátil natural — os 21 caminhos não existem. A montagem validou uma lista paralela, não a resolução do manifesto, portanto C8 foi aprovado pelo mecanismo errado.  
+   Correção mínima: usar caminhos relativos à raiz do pacote no inventário e fazer o empacotador/auditor consumir esse mesmo inventário.
+
+10. **A4 foi aprovado sem evidência para metade do critério.**  
+    Arquivos: [M1_RESULTADO.md](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/M1_RESULTADO.md:43), [bl_ferramentas.py](C:/Users/marce/OneDrive/Documentos/Modelagem%203D/06_skill_universal/produto/scripts/bl_ferramentas.py:383).  
+    Evidência: A4 exige deslocamento correto **e preservação da região declarada**, mas o método citado mede somente a dimensão externa 20→22. `desloca_selecao` comprova apenas que a assinatura global mudou; nenhuma região não selecionada é comparada durante esse deslocamento.  
+    Correção mínima: capturar uma região protegida não vazia antes do deslocamento, compará-la imediatamente depois e vincular essa medição ao mesmo estado geométrico.
+
+C18 continua explicitamente pendente e impede publicação; não o tratei como achado novo. Não encontrei caminho pessoal, nome de cliente ou segredo concreto nos 22 arquivos permitidos.
+
+VEREDITO: BLOQUEIA

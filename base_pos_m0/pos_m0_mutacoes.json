@@ -1,0 +1,600 @@
+{
+ "n": 30,
+ "pegou": 30,
+ "escapou": 0,
+ "invalido": 0,
+ "mutacoes": [
+  {
+   "mutacao": "finalidade visualizacao exige fatiador",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "cobrado_indevidamente": [
+     "portao_do_fatiador"
+    ]
+   }
+  },
+  {
+   "mutacao": "superficie para impressao perde a dispensa",
+   "estado": "PEGOU",
+   "detalhe": {
+    "com_a_dispensa_passou": true,
+    "sem_a_dispensa_passou": false,
+    "sem_a_dispensa_cobrou": [
+     "portao_do_fatiador",
+     "malha_estanque",
+     "zero_nao_manifold",
+     "envelope_e_particao"
+    ],
+    "sem_a_dispensa_reprovou_em": [
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "zero_nao_manifold"
+    ],
+    "o_fatiador_reprovou": false,
+    "nota": "o fatiador aceita casca aberta; quem reprova e a estanqueidade"
+   }
+  },
+  {
+   "mutacao": "impressao deixa de exigir o fatiador",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "faltando": [
+     "portao_do_fatiador"
+    ]
+   }
+  },
+  {
+   "mutacao": "verificador obrigatorio ausente do registro",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [],
+    "bloqueios": [
+     "portao_do_fatiador"
+    ],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "caixa declarada com 2 mm de erro",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "furo central declarado 3 mm fora",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "abertura quadrada com a mesma area do furo",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "reconstrucao alinhada por eixo, geometria mudada",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": [
+     "o assento reconstruido mantem a NORMAL da referencia"
+    ]
+   }
+  },
+  {
+   "mutacao": "regiao editada declarada como intacta",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao",
+     "regiao_preservada"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "intercambio da montagem com um componente so",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "folga_calibrada",
+     "reabre_em_cad"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "particao deslocada que estoura o envelope",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "envelope_e_particao",
+     "portao_do_fatiador"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "verificador devolve estado fora do contrato",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "evidencia_completa": false,
+    "erros": [
+     "orientacao_anisotropia"
+    ],
+    "bloqueios": [
+     "orientacao_anisotropia"
+    ]
+   }
+  },
+  {
+   "mutacao": "requisito de preservacao com id neutro",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao",
+     "regiao_preservada"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "caso sem nenhum requisito de preservacao",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [],
+    "bloqueios": [
+     "regiao_preservada"
+    ],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "reconstrucao com a inclinacao invertida",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": [
+     "o assento reconstruido mantem a NORMAL da referencia"
+    ]
+   }
+  },
+  {
+   "mutacao": "destino de pacote previamente contaminado",
+   "estado": "PEGOU",
+   "detalhe": {
+    "codigo_de_saida": 1,
+    "houve_json": true,
+    "copiados_para": null,
+    "erro_de_destino": "o destino C:\\Users\\marce\\AppData\\Local\\Temp\\skill3d_dest_sujo_wwh7_b_5\\pacote existe e NAO esta vazio. Monte o pacote em diretorio novo: copiar por cima deixa a",
+    "o_arquivo_sujo_continua_la": true,
+    "quantos_arquivos_foram_copiados": 0,
+    "stderr": ""
+   }
+  },
+  {
+   "mutacao": "perfil de maquina sem envelope",
+   "estado": "PEGOU",
+   "detalhe": {
+    "com_envelope_cabe": true,
+    "sem_envelope_cabe": null,
+    "sem_envelope_desconhecido_em": [
+     "altura",
+     "planta"
+    ],
+    "sem_envelope_problemas": [
+     "envelope do perfil desconhecido em ['altura', 'planta']: nao e possivel afirmar que a peca cabe"
+    ]
+   }
+  },
+  {
+   "mutacao": "medicao de folga sem estado explicito",
+   "estado": "PEGOU",
+   "detalhe": {
+    "medicao_aplicavel": false,
+    "valor_a_usar_mm": null,
+    "n_invalidas": 2,
+    "origem": "NAO EXISTE medicao para este contexto"
+   }
+  },
+  {
+   "mutacao": "grade com variante geometricamente invalida",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "varredura_de_familia"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "varredura reaproveitando execucao anterior",
+   "estado": "PEGOU",
+   "detalhe": {
+    "estado_da_primeira": "APROVADA",
+    "estado_da_segunda": "ERRO",
+    "detalhe_da_segunda": "{'_erro': 'sem JSON na saida de sweep_params.py', '_stdout': '', '_stderr': 'OneDrive\\\\Documentos\\\\Modelagem 3D\\\\06_skill_universal\\\\prototipo\\\\sweep_params.py\", line 383, in <module>\\n    sys.exit(ma",
+    "segunda_passou": false
+   }
+  },
+  {
+   "mutacao": "erro operacional em variante da varredura",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [],
+    "bloqueios": [
+     "varredura_de_familia"
+    ],
+    "erros": [
+     "varredura_de_familia"
+    ],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": [],
+    "causas": {
+     "varredura_de_familia": {
+      "codigos_encontrados": [
+       "E_CONSTRUCAO"
+      ],
+      "evidencia_conferida": true
+     }
+    }
+   }
+  },
+  {
+   "mutacao": "relatorio gravado dentro do destino",
+   "estado": "PEGOU",
+   "detalhe": {
+    "codigo_de_saida": 1,
+    "mensagem": "NTRO do destino (C:\\Users\\marce\\AppData\\Local\\Temp\\skill3d_rel_s_nndgm3\\pacote). O relatorio e gravado depois da auditoria, entao ele invalidaria o que foi auditado. Grave o relatorio fora do pacote.\n",
+    "destino_foi_criado": false,
+    "arquivos_no_destino": [],
+    "colisao_de_nome_codigo_de_saida": 1,
+    "colisao_de_nome_codigo": "E_CAMINHO_NOME_DE_PACOTE",
+    "colisao_de_nome_mensagem": "HO_NOME_DE_PACOTE recusado: o relatorio se chama 'matriz.py', que e nome de arquivo do pacote. Isso confunde evidencia com codigo entregue.\n"
+   }
+  },
+  {
+   "mutacao": "perfil com envelope de valor invalido",
+   "estado": "PEGOU",
+   "detalhe": {
+    "com_perfil_valido_cabe": true,
+    "resultados": {
+     "altura_nan": {
+      "cabe": null,
+      "invalidos": [
+       "printable_height nao e finito: 'nan'"
+      ]
+     },
+     "altura_negativa": {
+      "cabe": null,
+      "invalidos": [
+       "printable_height tem que ser positivo: '-10'"
+      ]
+     },
+     "area_degenerada": {
+      "cabe": null,
+      "invalidos": [
+       "printable_area com 1 vertices utilizaveis: uma mesa precisa de pelo menos 3"
+      ]
+     },
+     "area_com_ponto_repetido": {
+      "cabe": null,
+      "invalidos": [
+       "printable_area degenerada: extensao 0.0 x 0.0"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "mutacao": "dois requisitos com o mesmo identificador",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao"
+    ],
+    "bloqueios": [
+     "regiao_preservada"
+    ],
+    "erros": [
+     "regiao_preservada"
+    ],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": [],
+    "causas": {
+     "regiao_preservada": {
+      "codigos_encontrados": [],
+      "evidencia_conferida": false
+     }
+    }
+   }
+  },
+  {
+   "mutacao": "identidade fisica de caminho, com controle positivo",
+   "estado": "PEGOU",
+   "detalhe": {
+    "recusa_caixa": {
+     "codigo_de_saida": 1,
+     "codigo": "E_CAMINHO_NO_DESTINO",
+     "destino_recebeu_arquivo": false
+    },
+    "recusa_sobre_entrada": {
+     "codigo_de_saida": 1,
+     "codigo": "E_CAMINHO_SOBRE_ENTRADA",
+     "entrada_alterada": false
+    },
+    "recusa_junção": {
+     "codigo_de_saida": 1,
+     "codigo": "E_CAMINHO_NO_DESTINO",
+     "destino_recebeu_arquivo": false
+    },
+    "aceita_relatorio_externo": {
+     "codigo_de_saida": 0,
+     "codigo": null,
+     "pacote_montado": true,
+     "relatorio_gravado": true,
+     "sobrando": [],
+     "faltou": []
+    },
+    "aceita_auditoria_sem_destino": {
+     "codigo_de_saida": 0,
+     "codigo": null,
+     "relatorio_gravado": true,
+     "entradas_alteradas": []
+    },
+    "entradas_alteradas_no_conjunto": []
+   }
+  },
+  {
+   "mutacao": "escrita do formato fechado, com controle positivo",
+   "estado": "PEGOU",
+   "detalhe": {
+    "falha_operacional": {
+     "estado": "ERRO_OPERACIONAL",
+     "codigo": "E_EXPORT_3MF",
+     "etapa": "exportacao",
+     "etapas_concluidas": [
+      "portao_1_solido",
+      "exportacao_malha"
+     ],
+     "saida": "v_L80_d5.3mf",
+     "reprovadas_por_geometria": 0
+    },
+    "reprovacao_geometrica": {
+     "estado": "AVALIADA",
+     "codigo": null,
+     "passou_tudo": false,
+     "reprovadas_por_geometria": 1,
+     "houve_erro_operacional": false
+    },
+    "controle_positivo": {
+     "estado": "AVALIADA",
+     "passou_tudo": true,
+     "bytes_do_3mf": 13669,
+     "aprovadas": 1,
+     "codigo_de_saida": 0
+    },
+    "nota": "sem o caso 3 os dois primeiros seriam satisfeitos por quem nunca aprova; sem a prova de etapa, a injecao poderia ter atingido a exportacao de malha"
+   }
+  },
+  {
+   "mutacao": "causa divergente no mesmo verificador",
+   "estado": "PEGOU",
+   "detalhe": {
+    "A_tempo_esgotado": {
+     "estado_do_oraculo": "INVALIDO",
+     "causa_divergente": {
+      "verificador": "varredura_de_familia",
+      "codigo_esperado": "E_CONSTRUCAO",
+      "codigos_encontrados": [],
+      "motivo": "o erro apareceu no verificador previsto, mas com outra causa. Credito aqui seria credito por defeito nao exercitado."
+     },
+     "codigos_encontrados": []
+    },
+    "B_controle_positivo": {
+     "estado_do_oraculo": "PEGOU",
+     "causas": {
+      "varredura_de_familia": {
+       "codigos_encontrados": [
+        "E_CONSTRUCAO"
+       ],
+       "evidencia_conferida": true
+      }
+     }
+    },
+    "nota": "o oraculo antigo aceitava os dois como deteccao, porque conferia so em QUAL verificador o erro apareceu"
+   }
+  },
+  {
+   "mutacao": "area da mesa degenerada e autointersectante",
+   "estado": "PEGOU",
+   "detalhe": {
+    "recusas": {
+     "colinear": {
+      "cabe": null,
+      "area_mm2": 0.0,
+      "invalidos": [
+       "printable_area com area nula: 3 vertices, extensao 256.000 x 256.000 mm e area 0 mm2. Pontos colineares tem extensao positiva nos dois eixos e area zero, e por isso a extensao sozinha nao valida a mesa."
+      ]
+     },
+     "autointersectante_simetrico": {
+      "cabe": null,
+      "area_mm2": 0.0,
+      "invalidos": [
+       "printable_area com area nula: 4 vertices, extensao 256.000 x 256.000 mm e area 0 mm2. Pontos colineares tem extensao positiva nos dois eixos e area zero, e por isso a extensao sozinha nao valida a mesa."
+      ]
+     },
+     "autointersectante_assimetrico": {
+      "cabe": null,
+      "area_mm2": 8000.0,
+      "invalidos": [
+       "printable_area autointersectante: as arestas 0 e 2 se cruzam. A area calculada nao representa a regiao da mesa."
+      ]
+     }
+    },
+    "aceitacoes": {
+     "retangular": {
+      "cabe": true,
+      "area_mm2": 65536.0,
+      "invalidos": []
+     },
+     "triangular_valida": {
+      "cabe": true,
+      "area_mm2": 28160.0,
+      "invalidos": []
+     }
+    },
+    "assimetrico_pego_por_autointersecao": true,
+    "assimetrico_area_nao_nula": true,
+    "declara_a_base_da_comparacao": true
+   }
+  },
+  {
+   "mutacao": "borda declarada ao contrario nos dois sentidos",
+   "estado": "PEGOU",
+   "detalhe": {
+    "A_aberta_declarada_proibida": {
+     "estado": "PEGOU",
+     "reprovadas": [
+      "topologia"
+     ]
+    },
+    "B_fechada_declarada_obrigatoria": {
+     "estado": "PEGOU",
+     "reprovadas": [
+      "topologia"
+     ]
+    },
+    "C_varredura_com_borda_invertida": {
+     "estado": "PEGOU",
+     "reprovadas": [
+      "varredura_de_familia"
+     ]
+    },
+    "nota": "os casos 10 e 11 sem inversao ja aprovam na suite de casos: esse e o controle positivo deste par"
+   }
+  },
+  {
+   "mutacao": "papel da metrica em tres pares",
+   "estado": "PEGOU",
+   "detalhe": {
+    "par1": {
+     "medida_em_decisiva": 2,
+     "medida_em_informativa": 2,
+     "metrica_em_reprovadas_decisiva": true,
+     "metrica_em_reprovadas_informativa": false,
+     "metrica_em_informativas": true,
+     "estado_em_informativa": "REPROVADA",
+     "estados_dos_outros_identicos": true,
+     "divergencias_nos_outros": {},
+     "exigidas_identicas": true
+    },
+    "par2": {
+     "resultado_decisiva": "barrado_em ['topologia']",
+     "resultado_informativa": "aprovado",
+     "reprovadas_decisiva": [
+      "topologia"
+     ],
+     "reprovadas_informativa": [],
+     "topologia_em_informativas": true,
+     "outras_verificacoes_decisiva": {
+      "geometria_nao_vazia": "APROVADA",
+      "intencao": "APROVADA",
+      "malha_estanque": "APROVADA",
+      "topologia": "REPROVADA"
+     },
+     "passou_decisiva": true,
+     "passou_informativa": true
+    },
+    "par3": {
+     "estado_decisiva": "NAO_IMPLEMENTADA",
+     "estado_informativa": "NAO_IMPLEMENTADA",
+     "barra_em_decisiva": true,
+     "barra_em_informativa": false,
+     "sem_medida_em_decisiva": true,
+     "sem_medida_em_informativa": true
+    },
+    "nota": "sem o par 2 o efeito do papel na entrega nao estaria demonstrado, e sem o par 1 a igualdade das outras verificacoes nao estaria controlada"
+   }
+  }
+ ],
+ "nota": "PEGOU exige reprovacao no verificador que a mutacao previu. Erro de execucao vira INVALIDO em vez de credito."
+}

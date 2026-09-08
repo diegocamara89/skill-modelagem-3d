@@ -1,0 +1,12 @@
+PASSOU 1_dimensional_do_zero          peca dimensional criada do zero, para impressao
+PASSOU 2_edicao_localizada            edicao localizada preservando o resto, para intercambio
+PASSOU 3_montagem_dois_corpos         montagem com dois corpos legitimos
+PASSOU 4_superficie_para_render       superficie aberta destinada a visualizacao
+PASSOU 5_reconstrucao_incompleta      reconstrucao com informacao incompleta, cota rotulada
+PASSOU 6_simples_e_rapido             projeto simples para visualizacao, sem fatiador e sem perg
+PASSOU 7_familia_parametrica          familia parametrica varrida pelo executor real
+PASSOU 8_superficie_em_intercambio    superficie aberta entregue como intercambio analitico
+PASSOU 9_montagem_parametrica         familia parametrica de montagem com dois corpos
+PASSOU 10_superficie_parametrica      familia parametrica de superficie aberta, para visualizaca
+
+10 de 10 casos passaram.

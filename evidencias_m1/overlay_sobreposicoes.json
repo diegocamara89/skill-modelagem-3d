@@ -1,0 +1,35 @@
+{
+ "overlay_inicial": {
+  "disponivel": true,
+  "show_overlays": true,
+  "shading_type": "SOLID",
+  "show_xray": false,
+  "atalho_medido_5_2_1": "Shift+Alt+Z alterna sobreposicoes; confirmar em mapa personalizado"
+ },
+ "overlay_desligado": {
+  "disponivel": true,
+  "show_overlays": false,
+  "shading_type": "SOLID",
+  "show_xray": false,
+  "atalho_medido_5_2_1": "Shift+Alt+Z alterna sobreposicoes; confirmar em mapa personalizado"
+ },
+ "selecao_com_overlay_desligado": {
+  "faces_marcadas": 1,
+  "diagnostico_le_selecao": 1,
+  "diagnostico_le_overlay": {
+   "disponivel": true,
+   "show_overlays": false,
+   "shading_type": "SOLID",
+   "show_xray": false,
+   "atalho_medido_5_2_1": "Shift+Alt+Z alterna sobreposicoes; confirmar em mapa personalizado"
+  }
+ },
+ "overlay_restaurado": {
+  "disponivel": true,
+  "show_overlays": true,
+  "shading_type": "SOLID",
+  "show_xray": false,
+  "atalho_medido_5_2_1": "Shift+Alt+Z alterna sobreposicoes; confirmar em mapa personalizado"
+ },
+ "erro": null
+}

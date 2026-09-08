@@ -1,0 +1,96 @@
+{
+ "por_que": "A sessao limpa F contesta a afirmacao fundadora do produto: que o lancador do\nBlender devolve codigo 0 mesmo quando o Blender falha. Ela mediu 0, 1 e 2 propagados.\n\nIsto mede de novo, do zero, com quatro modos de falha e os dois caminhos de\ninvocacao. E a afirmacao mais consequente do pacote — ela e o motivo pelo qual o\ncontrato \"o script de dentro escreve um arquivo\" existe.",
+ "executavel": "C:\\Users\\marce\\AppData\\Local\\Microsoft\\WindowsApps\\blender-launcher.exe",
+ "como_foi_achado": "alias de execucao do Windows",
+ "quando": "2026-09-08 04:54:41",
+ "casos": {
+  "sai_zero": {
+   "codigo_de_saida": 0,
+   "segundos": 1.81,
+   "stdout_bytes": 0,
+   "stderr_bytes": 0,
+   "stdout_final": "",
+   "stderr_final": "",
+   "escreveu_arquivo": false
+  },
+  "sai_um": {
+   "codigo_de_saida": 1,
+   "segundos": 1.93,
+   "stdout_bytes": 0,
+   "stderr_bytes": 0,
+   "stdout_final": "",
+   "stderr_final": "",
+   "escreveu_arquivo": false
+  },
+  "sai_dois": {
+   "codigo_de_saida": 2,
+   "segundos": 2.0,
+   "stdout_bytes": 0,
+   "stderr_bytes": 0,
+   "stdout_final": "",
+   "stderr_final": "",
+   "escreveu_arquivo": false
+  },
+  "excecao_nao_tratada": {
+   "codigo_de_saida": 0,
+   "segundos": 1.94,
+   "stdout_bytes": 0,
+   "stderr_bytes": 0,
+   "stdout_final": "",
+   "stderr_final": "",
+   "escreveu_arquivo": false
+  },
+  "erro_de_sintaxe": {
+   "codigo_de_saida": 0,
+   "segundos": 1.91,
+   "stdout_bytes": 0,
+   "stderr_bytes": 0,
+   "stdout_final": "",
+   "stderr_final": "",
+   "escreveu_arquivo": false
+  },
+  "importa_o_que_nao_existe": {
+   "codigo_de_saida": 0,
+   "segundos": 2.04,
+   "stdout_bytes": 0,
+   "stderr_bytes": 0,
+   "stdout_final": "",
+   "stderr_final": "",
+   "escreveu_arquivo": false
+  },
+  "erro_de_api_do_blender": {
+   "codigo_de_saida": 0,
+   "segundos": 1.91,
+   "stdout_bytes": 0,
+   "stderr_bytes": 0,
+   "stdout_final": "",
+   "stderr_final": "",
+   "escreveu_arquivo": false
+  },
+  "escreve_e_sai_zero": {
+   "codigo_de_saida": 0,
+   "segundos": 1.96,
+   "stdout_bytes": 0,
+   "stderr_bytes": 0,
+   "stdout_final": "",
+   "stderr_final": "",
+   "escreveu_arquivo": true
+  }
+ },
+ "conclusao": {
+  "codigos_por_caso": {
+   "sai_zero": 0,
+   "sai_um": 1,
+   "sai_dois": 2,
+   "excecao_nao_tratada": 0,
+   "erro_de_sintaxe": 0,
+   "importa_o_que_nao_existe": 0,
+   "erro_de_api_do_blender": 0,
+   "escreve_e_sai_zero": 0
+  },
+  "todos_os_modos_de_falha_devolvem_zero": false,
+  "algum_modo_de_falha_devolve_nao_zero": true,
+  "stdout_sempre_vazio": true,
+  "o_que_isto_muda": "se algum modo de falha devolve codigo NAO ZERO, a afirmacao de que o codigo de saida 'nao serve de prova' esta ERRADA como escrita — ele serve de prova NEGATIVA (codigo nao zero significa falha) e continua nao servindo de prova POSITIVA (codigo zero nao significa que o trabalho foi feito). O contrato do arquivo de resultado continua necessario, mas por um motivo mais estreito do que o documentado."
+ }
+}

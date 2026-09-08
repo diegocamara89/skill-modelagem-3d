@@ -1,0 +1,45 @@
+{
+ "preenchimento": {
+  "inclinacao": 0.0,
+  "perfil": [
+   [
+    19.0,
+    18.0
+   ],
+   [
+    20.0,
+    18.0
+   ],
+   [
+    40.0,
+    18.0
+   ],
+   [
+    41.0,
+    18.0
+   ],
+   [
+    41.0,
+    9.0
+   ],
+   [
+    19.0,
+    9.0
+   ]
+  ],
+  "volume_antes": 36800.0,
+  "volume_depois": 43200.0,
+  "malha_depois": {
+   "arestas_abertas": 0,
+   "arestas_nao_manifold": 0,
+   "faces_degeneradas": 0,
+   "faces": 27
+  }
+ },
+ "perfil": {
+  "desvio_max": 0.0,
+  "todos_dentro": true,
+  "sem_material": 0
+ },
+ "erro": null
+}

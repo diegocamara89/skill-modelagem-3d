@@ -1,0 +1,369 @@
+{
+ "n": 24,
+ "pegou": 24,
+ "escapou": 0,
+ "invalido": 0,
+ "mutacoes": [
+  {
+   "mutacao": "finalidade visualizacao exige fatiador",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "cobrado_indevidamente": [
+     "portao_do_fatiador"
+    ]
+   }
+  },
+  {
+   "mutacao": "superficie para impressao perde a dispensa",
+   "estado": "PEGOU",
+   "detalhe": {
+    "com_a_dispensa_passou": true,
+    "sem_a_dispensa_passou": false,
+    "sem_a_dispensa_cobrou": [
+     "portao_do_fatiador",
+     "malha_estanque",
+     "zero_nao_manifold",
+     "envelope_e_particao"
+    ],
+    "sem_a_dispensa_reprovou_em": [
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "zero_nao_manifold"
+    ],
+    "o_fatiador_reprovou": false,
+    "nota": "o fatiador aceita casca aberta; quem reprova e a estanqueidade"
+   }
+  },
+  {
+   "mutacao": "impressao deixa de exigir o fatiador",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "faltando": [
+     "portao_do_fatiador"
+    ]
+   }
+  },
+  {
+   "mutacao": "verificador obrigatorio ausente do registro",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [],
+    "bloqueios": [
+     "portao_do_fatiador"
+    ],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "caixa declarada com 2 mm de erro",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "furo central declarado 3 mm fora",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "abertura quadrada com a mesma area do furo",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "reconstrucao alinhada por eixo, geometria mudada",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": [
+     "o assento reconstruido mantem a NORMAL da referencia"
+    ]
+   }
+  },
+  {
+   "mutacao": "regiao editada declarada como intacta",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao",
+     "regiao_preservada"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "intercambio da montagem com um componente so",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "folga_calibrada",
+     "reabre_em_cad"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "particao deslocada que estoura o envelope",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "envelope_e_particao",
+     "portao_do_fatiador"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "verificador devolve estado fora do contrato",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "evidencia_completa": false,
+    "erros": [
+     "orientacao_anisotropia"
+    ],
+    "bloqueios": [
+     "orientacao_anisotropia"
+    ]
+   }
+  },
+  {
+   "mutacao": "requisito de preservacao com id neutro",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao",
+     "regiao_preservada"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "caso sem nenhum requisito de preservacao",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [],
+    "bloqueios": [
+     "regiao_preservada"
+    ],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "reconstrucao com a inclinacao invertida",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": [
+     "o assento reconstruido mantem a NORMAL da referencia"
+    ]
+   }
+  },
+  {
+   "mutacao": "destino de pacote previamente contaminado",
+   "estado": "PEGOU",
+   "detalhe": {
+    "codigo_de_saida": 1,
+    "houve_json": true,
+    "copiados_para": null,
+    "erro_de_destino": "o destino C:\\Users\\marce\\AppData\\Local\\Temp\\skill3d_dest_sujo_du_kol5s\\pacote existe e NAO esta vazio. Monte o pacote em diretorio novo: copiar por cima deixa a",
+    "o_arquivo_sujo_continua_la": true,
+    "quantos_arquivos_foram_copiados": 0,
+    "stderr": ""
+   }
+  },
+  {
+   "mutacao": "perfil de maquina sem envelope",
+   "estado": "PEGOU",
+   "detalhe": {
+    "com_envelope_cabe": true,
+    "sem_envelope_cabe": null,
+    "sem_envelope_desconhecido_em": [
+     "altura",
+     "planta"
+    ],
+    "sem_envelope_problemas": [
+     "envelope do perfil desconhecido em ['altura', 'planta']: nao e possivel afirmar que a peca cabe"
+    ]
+   }
+  },
+  {
+   "mutacao": "medicao de folga sem estado explicito",
+   "estado": "PEGOU",
+   "detalhe": {
+    "medicao_aplicavel": false,
+    "valor_a_usar_mm": null,
+    "n_invalidas": 2,
+    "origem": "NAO EXISTE medicao para este contexto"
+   }
+  },
+  {
+   "mutacao": "grade com variante geometricamente invalida",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "varredura_de_familia"
+    ],
+    "bloqueios": [],
+    "erros": [],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  },
+  {
+   "mutacao": "varredura reaproveitando execucao anterior",
+   "estado": "PEGOU",
+   "detalhe": {
+    "estado_da_primeira": "APROVADA",
+    "estado_da_segunda": "ERRO",
+    "detalhe_da_segunda": "{'_erro': 'sem JSON na saida de sweep_params.py', '_stdout': '', '_stderr': 'OneDrive\\\\Documentos\\\\Modelagem 3D\\\\06_skill_universal\\\\prototipo\\\\sweep_params.py\", line 231, in <module>\\n    sys.exit(ma",
+    "segunda_passou": false
+   }
+  },
+  {
+   "mutacao": "erro operacional em variante da varredura",
+   "estado": "PEGOU",
+   "detalhe": {
+    "estado": "ERRO",
+    "passou": false,
+    "detalhe": "{'n_variantes': 1, 'n_aprovadas': 0, 'n_reprovadas': 1, 'n_reprovadas_por_geometria': 0, 'n_com_erro_operacional': 1, 'erros_operacionais': [{'parametros': {'L': 80, 'd': 5}, 'erro': 'RuntimeError: falha operacional simu"
+   }
+  },
+  {
+   "mutacao": "relatorio gravado dentro do destino",
+   "estado": "PEGOU",
+   "detalhe": {
+    "codigo_de_saida": 1,
+    "mensagem": "NTRO do destino (C:\\Users\\marce\\AppData\\Local\\Temp\\skill3d_rel_st8mh5p2\\pacote). O relatorio e gravado depois da auditoria, entao ele invalidaria o que foi auditado. Grave o relatorio fora do pacote.\n",
+    "destino_foi_criado": false,
+    "arquivos_no_destino": [],
+    "colisao_de_nome_codigo_de_saida": 1,
+    "colisao_de_nome_mensagem": "recusado: o relatorio se chama 'matriz.py', que e nome de arquivo do pacote. Isso confunde evidencia com codigo entregue.\n"
+   }
+  },
+  {
+   "mutacao": "perfil com envelope de valor invalido",
+   "estado": "PEGOU",
+   "detalhe": {
+    "com_perfil_valido_cabe": true,
+    "resultados": {
+     "altura_nan": {
+      "cabe": null,
+      "invalidos": [
+       "printable_height nao e finito: 'nan'"
+      ]
+     },
+     "altura_negativa": {
+      "cabe": null,
+      "invalidos": [
+       "printable_height tem que ser positivo: '-10'"
+      ]
+     },
+     "area_degenerada": {
+      "cabe": null,
+      "invalidos": [
+       "printable_area com 1 vertices utilizaveis: uma mesa precisa de pelo menos 3"
+      ]
+     },
+     "area_com_ponto_repetido": {
+      "cabe": null,
+      "invalidos": [
+       "printable_area degenerada: extensao 0.0 x 0.0"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "mutacao": "dois requisitos com o mesmo identificador",
+   "estado": "PEGOU",
+   "detalhe": {
+    "passou": false,
+    "reprovadas": [
+     "intencao"
+    ],
+    "bloqueios": [
+     "regiao_preservada"
+    ],
+    "erros": [
+     "regiao_preservada"
+    ],
+    "cobrado_indevidamente": [],
+    "faltando_no_roteamento": [],
+    "extras_que_falharam": []
+   }
+  }
+ ],
+ "nota": "PEGOU exige reprovacao no verificador que a mutacao previu. Erro de execucao vira INVALIDO em vez de credito."
+}

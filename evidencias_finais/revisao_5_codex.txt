@@ -1,0 +1,25 @@
+A integridade binária está boa: os 23 hashes do inventário conferem, os cinco verificadores coincidem com `base_pos_m0`, os hashes das evidências conferem e `prototipo/` permanece sem regressão. Não encontrei dado privado no pacote nem infraestrutura duplicada.
+
+Há, porém, bloqueadores concretos:
+
+1. **O contrato de `--passa-resultado` só funciona no exemplo ensaiado.**  
+   O lançador aceita vários `--args` e acrescenta o resultado por último ([roda_blender.py:100](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/roda_blender.py:100>)), mas a receita e os dois cenários leem `argv[1]`, não o último argumento ([mapa_de_ferramentas.md:85](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/mapa_de_ferramentas.md:85>), [ensaio_preenchimento.py:163](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:163>), [gera_cenario.py:163](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/gera_cenario.py:163>)). Com dois argumentos próprios, o script grava no segundo — podendo sobrescrevê-lo — e o chamador espera outro arquivo. Toda evidência usa exatamente um argumento, portanto não discrimina o erro.  
+   **Correção mínima:** usar e documentar `argv[-1]` para o resultado e acrescentar controle com dois `--args`, conferindo que o arquivo intermediário não mudou.
+
+2. **C32 aprova um “exemplo completo” que não implementa o contrato descrito.**  
+   A referência exige capturar exceções, gravar sempre e emitir `veredito_global`, afirmando que ambos os cenários são exemplos completos ([mapa_de_ferramentas.md:68](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/mapa_de_ferramentas.md:68>), [M3_RESULTADO.md:62](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M3_RESULTADO.md:62>)). `gera_cenario.py`, contudo, não tem `try/except`, não grava falha e não produz `veredito_global` ([gera_cenario.py:155](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/gera_cenario.py:155>)).  
+   **Correção mínima:** implementar o contrato no gerador ou deixar de apresentá-lo como exemplo completo, com controle negativo que provoque erro interno e exija relatório `ERRO`.
+
+3. **Há critérios `ATENDIDO` apontando para evidência antiga.**  
+   A2, A5, A7, A12, A19–A21 e A23 ainda citam `evidencias_m1/` ([M1_RESULTADO.md:49](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:49>)); por exemplo, o ensaio citado registra `bl_ferramentas 1.1.0` ([ensaio_correta.json:32](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/evidencias_m1/ensaio_correta.json:32>)) e não possui os atuais predicados/veredito. A18 também aprova instruções 1.9.0 usando sessões executadas sobre 1.6.0 e 1.8.0 ([M1_RESULTADO.md:65](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:65>)).  
+   **Correção mínima:** reapontar cada critério para a evidência final correspondente e marcar A18 pendente até uma sessão limpa executar as instruções modificadas de 1.9.0.
+
+4. **O relatório final contradiz a própria evidência atual.**  
+   Ele declara 22 arquivos ([M3_RESULTADO.md:20](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M3_RESULTADO.md:20>)), mas o pacote tem 24; C1/C3 ainda descrevem 1.6.0 ([M3_RESULTADO.md:37](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M3_RESULTADO.md:37>)); C16 aprova o hash de 1.7.0 ([M3_RESULTADO.md:52](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M3_RESULTADO.md:52>)), embora a evidência atual seja 1.9.0; e C17 ainda chama 1.8.0 de estado atual.  
+   **Correção mínima:** atualizar essas linhas a partir dos JSONs de 1.9.0 e transformar os `\n` literais de C27–C34 em linhas reais da tabela.
+
+5. **C13 contém uma contagem/classificação falsa de dependências.**  
+   O documento chama as oito entradas de “diretas” e afirma instalar oito ([DEPENDENCIAS_E_LICENCAS.md:25](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/DEPENDENCIAS_E_LICENCAS.md:25>), [DEPENDENCIAS_E_LICENCAS.md:32](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/DEPENDENCIAS_E_LICENCAS.md:32>)), mas o comando medido declara sete; `cadquery-ocp-novtk` não está nele e é transitiva. Logo são sete solicitadas e 41 transitivas entre os 48 instalados, não oito e 40.  
+   **Correção mínima:** corrigir a classificação e C13, mantendo a lista medida de 48.
+
+BLOQUEIA

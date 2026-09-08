@@ -1,0 +1,282 @@
+{
+ "versao_de_bl_ferramentas": "1.5.0",
+ "passos": [
+  {
+   "passo": "assinatura_antes",
+   "esperado": null,
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "sha256": "66d7b210c0758c18a445ba4eb57d42cda56da7601d4a2d208799b2fbb035d081",
+    "espaco": "mundo",
+    "fonte_da_leitura": "obj.data (fora de Edit Mode)",
+    "casas_de_arredondamento": 6,
+    "n_vertices": 20,
+    "n_faces": 16,
+    "cobertura": "todos os vertices e faces do objeto",
+    "limite": "indices de face valem SO para esta geometria capturada. Retesselacao muda a assinatura sem mudar a superficie."
+   },
+   "estado": "OK"
+  },
+  {
+   "passo": "preenche_entre_limites",
+   "esperado": "uniao concluida, com houve_interseccao verdadeiro",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "interseccao_por_zona": {
+     "extremo_do_limite_a": {
+      "caixa": {
+       "min": [
+        19.0,
+        0.0,
+        9.0
+       ],
+       "max": [
+        20.0,
+        40.0,
+        20.0
+       ]
+      },
+      "volume_de_material": 440.0,
+      "intercepta": true
+     },
+     "extremo_do_limite_b": {
+      "caixa": {
+       "min": [
+        40.0,
+        0.0,
+        9.0
+       ],
+       "max": [
+        41.0,
+        40.0,
+        14.0
+       ]
+      },
+      "volume_de_material": 200.0,
+      "intercepta": true
+     },
+     "abaixo_do_piso": {
+      "caixa": {
+       "min": [
+        19.0,
+        0.0,
+        9.0
+       ],
+       "max": [
+        41.0,
+        40.0,
+        10.0
+       ]
+      },
+      "volume_de_material": 880.0,
+      "intercepta": true
+     }
+    },
+    "interseccao_com_o_material": {
+     "volume_da_peca_antes": 35200.0,
+     "volume_do_volume_de_preenchimento": 7040.0,
+     "soma_se_nao_houvesse_interseccao": 42240.0,
+     "volume_da_uniao": 40800.0,
+     "interseccao_medida": 1440.0,
+     "houve_interseccao": true,
+     "nota": "uniao de solidos que se interceptam tem volume MENOR que a soma. Este escalar prova que houve ALGUMA interseccao; quem prova as TRES prometidas e interseccao_por_zona, medida em copia antes da uniao."
+    },
+    "perfil_do_volume_em_xz": [
+     [
+      19.0,
+      20.0
+     ],
+     [
+      20.0,
+      20.0
+     ],
+     [
+      40.0,
+      14.0
+     ],
+     [
+      41.0,
+      14.0
+     ],
+     [
+      41.0,
+      9.0
+     ],
+     [
+      19.0,
+      9.0
+     ]
+    ],
+    "faixa_em_y": [
+     0.0,
+     40.0
+    ],
+    "sobreposicao": 1.0,
+    "origem_da_sobreposicao": "um vigesimo do comprimento do vao (20.0 unidades)",
+    "inclinacao_entre_os_limites": -0.3,
+    "topo_nas_zonas_de_sobreposicao": "horizontal na altura do limite, para nao ultrapassar a superficie existente",
+    "volume_da_ferramenta": 7040.0,
+    "volume_antes": 35200.0,
+    "volume_depois": 40800.0,
+    "solver": "EXACT",
+    "assinatura_antes": "66d7b210c0758c18a445ba4eb57d42cda56da7601d4a2d208799b2fbb035d081",
+    "assinatura_depois": "ed373565a41a16d3b8f0da71fe80841946462c9bc2e334f565ec47710bec62b1",
+    "malha_antes": {
+     "objeto": "peca_de_ensaio",
+     "n_componentes_conexos": 1,
+     "arestas_abertas": 0,
+     "arestas_nao_manifold": 0,
+     "arestas_soltas": 0,
+     "faces_degeneradas": 0,
+     "limite_de_area_usado": 1e-09,
+     "faces": 16,
+     "vertices": 20,
+     "indices_degeneradas": [],
+     "indices_nao_manifold": [],
+     "limite": "estas sao medidas TOPOLOGICAS. Nenhuma delas detecta ranhura, desnivel ou forma errada: malha fechada pode ter a forma errada."
+    },
+    "malha_depois": {
+     "objeto": "peca_de_ensaio",
+     "n_componentes_conexos": 1,
+     "arestas_abertas": 0,
+     "arestas_nao_manifold": 0,
+     "arestas_soltas": 0,
+     "faces_degeneradas": 0,
+     "limite_de_area_usado": 1e-09,
+     "faces": 27,
+     "vertices": 40,
+     "indices_degeneradas": [],
+     "indices_nao_manifold": [],
+     "limite": "estas sao medidas TOPOLOGICAS. Nenhuma delas detecta ranhura, desnivel ou forma errada: malha fechada pode ter a forma errada."
+    },
+    "historico": {
+     "marcado_aqui": false,
+     "contexto": {
+      "em_background": true,
+      "janelas": 1,
+      "modo": "OBJECT",
+      "undo_pollavel": false,
+      "redo_pollavel": false,
+      "objeto_ativo": "peca_de_ensaio"
+     }
+    },
+    "limite": "uniao concluida NAO prova junção correta. Ranhura e desnivel exigem secao ou comparacao de superficie; degeneracao exige contagem propria. Sao medidas separadas."
+   },
+   "estado": "OK"
+  },
+  {
+   "passo": "mede_malha_apos_uniao",
+   "esperado": null,
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "n_componentes_conexos": 1,
+    "arestas_abertas": 0,
+    "arestas_nao_manifold": 0,
+    "arestas_soltas": 0,
+    "faces_degeneradas": 0,
+    "limite_de_area_usado": 1e-09,
+    "faces": 27,
+    "vertices": 40,
+    "indices_degeneradas": [],
+    "indices_nao_manifold": [],
+    "limite": "estas sao medidas TOPOLOGICAS. Nenhuma delas detecta ranhura, desnivel ou forma errada: malha fechada pode ter a forma errada."
+   },
+   "estado": "OK"
+  },
+  {
+   "passo": "salva_cena",
+   "esperado": "arquivo novo, com retorno FINISHED e hash proprio",
+   "resultado": {
+    "arquivo": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\entrega\\entrega_peca.blend",
+    "existe": true,
+    "retorno_do_operador": [
+     "FINISHED"
+    ],
+    "havia_arquivo_antes": false,
+    "bytes": 95057,
+    "sha256": "2849d5ee4e5d25819a21a14ddce90523e9a989ee36b5182b3875ed1d285202a9",
+    "origem_preservada": null,
+    "limite": "hash de .blend prova integridade do arquivo. Ele NAO separa mudanca de geometria de mudanca de camera, selecao ou iluminacao. Para geometria, usar a assinatura."
+   },
+   "estado": "OK"
+  },
+  {
+   "passo": "controle_salva_duas_vezes_no_mesmo_destino",
+   "esperado": "PRECONDICAO: identico byte a byte nao prova salvamento",
+   "estado": "PRECONDICAO",
+   "mensagem": "havia um arquivo em C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\entrega\\entrega_peca.blend e ele esta BYTE A BYTE identico depois do salvamento. Nao ha como distinguir salvamento efetivo de cancelado, entao o hash nao pode ser vinculado a esta cena. Salve em destino novo."
+  },
+  {
+   "passo": "exporta_malha",
+   "esperado": "STL com hash do arquivo E assinatura da geometria",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "arquivo": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\entrega\\entrega_peca.stl",
+    "tentativas": [
+     {
+      "operador": "wm.stl_export",
+      "ok": true,
+      "retorno_do_operador": [
+       "FINISHED"
+      ]
+     }
+    ],
+    "removeu_arquivo_anterior": false,
+    "existe": true,
+    "bytes": 3884,
+    "sha256": "57b9582b534399bf72f35a8609a23368c639cf9ca90425afd6c4320b4dd25eea",
+    "assinatura_da_geometria": "ed373565a41a16d3b8f0da71fe80841946462c9bc2e334f565ec47710bec62b1",
+    "modificadores_ativos": [],
+    "aviso_de_modificador": null,
+    "limite": "exportacao bem-sucedida NAO prova validade geometrica. Conferir o artefato entregue com os verificadores."
+   },
+   "estado": "OK"
+  },
+  {
+   "passo": "assinatura_depois",
+   "esperado": null,
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "sha256": "ed373565a41a16d3b8f0da71fe80841946462c9bc2e334f565ec47710bec62b1",
+    "espaco": "mundo",
+    "fonte_da_leitura": "obj.data (fora de Edit Mode)",
+    "casas_de_arredondamento": 6,
+    "n_vertices": 40,
+    "n_faces": 27,
+    "cobertura": "todos os vertices e faces do objeto",
+    "limite": "indices de face valem SO para esta geometria capturada. Retesselacao muda a assinatura sem mudar a superficie."
+   },
+   "estado": "OK"
+  }
+ ],
+ "gabarito": {
+  "objeto": "peca_de_ensaio",
+  "topo_do_patamar_alto": {
+   "x_de": 0.0,
+   "x_ate": 20.0,
+   "z": 20.0
+  },
+  "topo_do_patamar_baixo": {
+   "x_de": 40.0,
+   "x_ate": 60.0,
+   "z": 14.0
+  },
+  "vao": {
+   "x_de": 20.0,
+   "x_ate": 40.0,
+   "z_do_piso": 10.0,
+   "largura_em_y": 40.0,
+   "queda_esperada_da_rampa": 6.0,
+   "comprimento_do_vao": 20.0
+  },
+  "volume_da_peca_antes": 35200.0,
+  "rotacao_z_graus": 0.0
+ },
+ "conferencia": {
+  "salvou": true,
+  "recusou_o_segundo_salvamento": true,
+  "mensagem_do_segundo": "havia um arquivo em C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\entrega\\entrega_peca.blend e ele esta BYTE A BYTE identico depo",
+  "exportou": true
+ },
+ "veredito": "ATENDIDO"
+}

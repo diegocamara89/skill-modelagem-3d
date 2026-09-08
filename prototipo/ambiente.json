@@ -1,0 +1,42 @@
+{
+ "_nota": "Contrato de ambiente do pacote. Existe porque a terceira revisao externa apontou que a lista de permissao nao trazia manifesto de dependencias, e o comprador nao recebia versao nenhuma travada. As versoes abaixo sao as EXERCITADAS: os testes passaram com elas nesta maquina, em 07/09/2026. Nao sao as unicas que funcionam, e nao ha garantia fora delas.",
+ "python": {
+  "exercitado": "3.12",
+  "faixa_declarada_pelo_motor_cad": ">=3.10,<3.15",
+  "nota": "trocar de versao maior de Python costuma quebrar o nucleo CAD antes de quebrar o codigo"
+ },
+ "pacotes_exercitados": {
+  "build123d": "0.11.1",
+  "cadquery-ocp-novtk": "7.9.3.1.1",
+  "lib3mf": "2.5.0",
+  "trimesh": "5.0.0",
+  "manifold3d": "3.5.2",
+  "shapely": "2.1.2",
+  "numpy": "2.2.6",
+  "scipy": "1.16.3"
+ },
+ "ausentes_nesta_maquina": {
+  "rtree": "modulo nativo. NENHUM script do pacote pode exigi-lo: o caminho de poligonos do trimesh e o ponto-dentro-do-solido dependem dele, e os dois foram substituidos.",
+  "matplotlib": "nao usado por nenhum script do pacote",
+  "fast_simplification": "nao usado"
+ },
+ "regras_de_instalacao": [
+  "Travar versao exata do motor CAD e do nucleo geometrico. Um pacote de modelagem por codigo ja chegou quebrado ao repositorio publico por causa de faixa frouxa no nucleo.",
+  "Nunca atualizar o nucleo geometrico sobre a instalacao existente. Criar ambiente novo.",
+  "Instalar em ambiente virtual dedicado, nao no Python do sistema."
+ ],
+ "ferramenta_externa": {
+  "fatiador": {
+   "exercitado": "OrcaSlicer 2.4.2",
+   "obrigatorio_para": ["portao_do_fatiador"],
+   "sem_ele": "rode a suite com --sem-fatiador. Os casos de finalidade impressao ficam INCOMPLETOS e reprovam por falta de evidencia, o que e o comportamento correto: eles nao devem passar sem o portao.",
+   "configuracao": "passe --orca, --perfis, --vendor e --trabalho, ou use as variaveis SKILL3D_ORCA, SKILL3D_PERFIS, SKILL3D_VENDOR e SKILL3D_TRABALHO"
+  }
+ },
+ "dados_da_oficina_ficam_fora_do_pacote": {
+  "folgas_medidas": "SKILL3D_DADOS, ou o diretorio de dados local do usuario",
+  "registro_de_calibracao": "SKILL3D_REGISTRO",
+  "motivo": "instalacao distribuida e dado mutavel da oficina nao podem morar no mesmo lugar"
+ },
+ "limite_desta_declaracao": "Nada aqui foi testado numa instalacao limpa. Todos os resultados registrados usaram as dependencias ja presentes na maquina de desenvolvimento. Instalar do zero a partir deste manifesto e um teste que ainda nao foi feito."
+}

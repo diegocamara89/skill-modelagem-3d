@@ -1,0 +1,153 @@
+{
+  "nota": "evidencia preservada de M1. Sao os JSONs e artefatos efetivamente usados nas linhas da tabela de aceite. Geometria toda sintetica.",
+  "arquivos": {
+    "ensaio_correta.json": {
+      "sha256": "b94712a535717ae64ed5cd4e4a27b862555353c1a637b86c867b2560afba5554",
+      "bytes": 42489,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\ensaios\\ensaio_correta.json"
+    },
+    "ensaio_ranhura.json": {
+      "sha256": "7a9a106b06f7baa9586c5cd861bac5334236fc97d443b8f43215c59df469fd69",
+      "bytes": 41453,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\ensaios\\ensaio_ranhura.json"
+    },
+    "ensaio_tangente.json": {
+      "sha256": "0fe6598887aea564f90c898bfea7ebb49c4a9d222edfdfd8fd781a3866be9d19",
+      "bytes": 12437,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\ensaios\\ensaio_tangente.json"
+    },
+    "ensaio_duplicado.json": {
+      "sha256": "f0e01343cee3d74ee7b74427b3a0361cb421fee344b23cf2c1c652f8c95d375e",
+      "bytes": 44791,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\ensaios\\ensaio_duplicado.json"
+    },
+    "ensaio_flutuante.json": {
+      "sha256": "e1d4367a9a6af5e83475f68642c12958816d09ce975a9fdecee22c64a2eb1bc2",
+      "bytes": 12698,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\ensaios\\ensaio_flutuante.json"
+    },
+    "ensaio_parcial.json": {
+      "sha256": "c119d1d23cc67f031cd7f24be4853fc11b1dfe4ddfaba2f12341ee6b6bac59ea",
+      "bytes": 12660,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\ensaios\\ensaio_parcial.json"
+    },
+    "ensaio_variante_outra_medida.json": {
+      "sha256": "0353b01fda33747296c51e940f53ed53f305f450bab62532340710f12ff73f07",
+      "bytes": 41312,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\ensaios\\ensaio_variante_outra_medida.json"
+    },
+    "ensaio_variante_girada.json": {
+      "sha256": "76cfd0c69999e981d6736cbaa26d531d3cac7821b308717be17332808a32e997",
+      "bytes": 11835,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\ensaios\\ensaio_variante_girada.json"
+    },
+    "overlay_sobreposicoes.json": {
+      "sha256": "63611364b83438025e869648f4f12473e15c2668ba296f2bdebaca6a9ae29623",
+      "bytes": 1029,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\overlay.json"
+    },
+    "captura_envelhecida.json": {
+      "sha256": "b42f08d0168a64916ee3cfd4090bbd7fff949b4a288b3e0066702547657401db",
+      "bytes": 913,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\captura.json"
+    },
+    "custo_do_perfil.json": {
+      "sha256": "a1fdaa3026212751d0926f9084544e4d7ab1152842ad5d4f578399f72586e23e",
+      "bytes": 672,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\custo.json"
+    },
+    "sonda_undo.json": {
+      "sha256": "a52cb7eb41230398c49a50e9c40db4a963884196886c482501f4e051605c7486",
+      "bytes": 701,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\sonda_undo.json"
+    },
+    "preenchimento_plano.json": {
+      "sha256": "2c2cf734c9368579734fbe855c1b3c13c11ad9e88cd0a2b1ff3ca0e5c2e51ac5",
+      "bytes": 560,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\plano.json"
+    },
+    "rota_criar_varredura.json": {
+      "sha256": "d0db757c3093a22b6b7bb5740e4beee1dd8baebe0fb4e6585896bb70ed2470c6",
+      "bytes": 5602,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\rota_criar.json"
+    },
+    "familia_grade_limpa.json": {
+      "sha256": "026da74dd49a8a2cba9d5def404f6e07a3fd83b3d4566bdf443a7c0898fb0dd5",
+      "bytes": 5592,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\fam_a.json"
+    },
+    "familia_defeito_plantado.json": {
+      "sha256": "949279ba3cf4bff182493811ea145b45611230953e27b51b84b712b4ebd8da81",
+      "bytes": 3547,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\fam_b.json"
+    },
+    "suite_m0_casos.json": {
+      "sha256": "e68b2e445b38f796e5b70f31aa4d1c10de912cfeedb3747fdb68f84ff40fae30",
+      "bytes": 47236,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\m1_casos.json"
+    },
+    "suite_m0_mutacoes.json": {
+      "sha256": "ae684c26142cffeed0376a0d63c6886c20a7735c8271b89d431615f62d58c5dc",
+      "bytes": 15959,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\m1_mutacoes.json"
+    },
+    "revisao_independente_codex.txt": {
+      "sha256": "ffa52bc50de127114064a114e20b7ee81915822177519062ffe5763653f332c3",
+      "bytes": 10551,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\rev_m1.txt"
+    },
+    "entrega_peca.stl": {
+      "sha256": "57b9582b534399bf72f35a8609a23368c639cf9ca90425afd6c4320b4dd25eea",
+      "bytes": 3884,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\ensaios\\entrega2\\peca.stl",
+      "nota": "reexecutado sobre a construcao atual, achado 1 da revisao"
+    },
+    "entrega_peca.blend": {
+      "sha256": "1d1f5154ca7008c0cd34a9dcd3c5f9eac364a524768382372368d7269df3a924",
+      "bytes": 93613,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\ensaios\\entrega2\\peca.blend",
+      "nota": "reexecutado sobre a construcao atual, achado 1 da revisao"
+    },
+    "auditoria_de_vazamento.json": {
+      "sha256": "30fd9231268774ae89a72fa1e605e1442904ef7ea8538be1c511be437bd38ade",
+      "bytes": 1723,
+      "origem_da_execucao": "gerada nesta auditoria"
+    },
+    "ensaio_entrega.json": {
+      "sha256": "8b018cb622e0237c844a40ae47aaf8347d3ec3243b90bd7dc1bf03248ba1020b",
+      "bytes": 44124,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\ensaios\\ensaio_entrega2.json",
+      "nota": "reexecutado sobre a construcao atual, achado 1 da revisao"
+    },
+    "m3_auditoria_arvore.json": {
+      "sha256": "5c49eacb230c32d7a14c94a0bbfee04486f8ad2455797d39373ed2c383c36809",
+      "bytes": 1154,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\emp_audit.json",
+      "fase": "M3"
+    },
+    "m3_montagem.json": {
+      "sha256": "b4eb319e63138db38d404d6fabdb888023da77edfef8eef707f579c8afd399fd",
+      "bytes": 5505,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\emp_montagem.json",
+      "fase": "M3"
+    },
+    "m3_ensaio_do_pacote.json": {
+      "sha256": "2b061940be9ee939cd42c65af59b0a39ab432fe644a1a041d0ddf198284c9345",
+      "bytes": 43417,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\pkg_ensaio.json",
+      "fase": "M3"
+    },
+    "m3_ensaio_venv_isolado.json": {
+      "sha256": "da1ff59e1d8d4583fd46ed88af67ab559df8d70665c3b149045ac09988639028",
+      "bytes": 42461,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\venv_ensaio.json",
+      "fase": "M3"
+    },
+    "m3_varredura_venv.json": {
+      "sha256": "dfe4a18b567e63e556790b31c4080ab68203720e7f3613a40eba2359a5f8c333",
+      "bytes": 5612,
+      "origem_da_execucao": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\venv_varredura.json",
+      "fase": "M3"
+    }
+  }
+}

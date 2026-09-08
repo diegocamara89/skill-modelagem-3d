@@ -1,0 +1,30 @@
+{
+ "arquivo": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\entrega\\entrega_peca.stl",
+ "triangulos": 76,
+ "vertices_antes_de_soldar": 228,
+ "vertices_depois_de_soldar": 40,
+ "fechada_watertight": true,
+ "euler": 2,
+ "arestas_abertas": 0,
+ "arestas_com_mais_de_2_faces": 0,
+ "facetas_degeneradas": 0,
+ "facetas_duplicadas": 0,
+ "orientacao_consistente": true,
+ "n_componentes_conexos": 1,
+ "erro_ao_contar_componentes": null,
+ "volume_mm3": 40800.0,
+ "volume_assinado_negativo": false,
+ "status_kernel_malha": "Error.NoError",
+ "precisao_no_kernel_de_malha": "float64 via Mesh64",
+ "caixa_mm": [
+  60.0,
+  40.0,
+  20.0
+ ],
+ "apto_para_booleana": true,
+ "volume_confiavel": true,
+ "motivos_de_reprovacao": [],
+ "acao": "Pode seguir.",
+ "aviso": "Malha valida NAO significa peca correta. Este portao pega malha quebrada, nao geometria errada. Uma peca pode passar aqui e estar totalmente fora de cota.",
+ "aviso_kernel": "status_kernel_malha nao e oraculo de validade: o construtor do manifold3d solda e conserta em silencio. Quem reprova aqui sao as contagens topologicas acima. E precisao_no_kernel_de_malha diz em que precisao a malha foi entregue ao kernel: float32 nao destroi cota sempre, mas depende de escala, posicao e tolerancia, entao a informacao fica explicita em vez de suposta."
+}

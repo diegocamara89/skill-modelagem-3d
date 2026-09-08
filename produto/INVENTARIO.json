@@ -1,0 +1,33 @@
+{
+ "versao_do_pacote": "2.2.0",
+ "versao_de_bl_ferramentas": "1.5.0",
+ "congelado_em": "2026-09-08",
+ "nota": "caminhos RELATIVOS A RAIZ DO PACOTE, que e a pasta onde este arquivo vive. A versao anterior gravava 'produto/...', que nao resolve no pacote extraido, e a conferencia passava por remover o prefixo — ou seja, validava uma lista paralela, nao a resolucao do manifesto.",
+ "como_conferir": "para cada entrada, sha256 do arquivo em <raiz>/<caminho>, com <raiz> = a pasta deste arquivo",
+ "arquivos": {
+  "LICENSE": "6e3aa103a8e780659b3a189c5257dfe0edfc20018a7895d31fcbe41a267d276f",
+  "SKILL.md": "07a8049dc2dc0c7d127541b92ed7a2969bedc81bac4925f4dcd4821616e84c73",
+  "cenarios/ensaio_preenchimento.py": "482716b25c11e21986b44ac6fcdab138aecdb07dba26a8b862efca133b27e7e4",
+  "cenarios/familia_exemplo.py": "5b68f77452e7ce256168dbb9c0d5b3815fcfb45af81c8bc4a087406e417cae90",
+  "cenarios/gera_cenario.py": "85caca62279e5635906af704ea6d25e740f264597b6901a2762c56dc2c93be45",
+  "referencias/criar_e_parametrizar.md": "fa9e0016b4ae01664f64c821f7cfd21652802a8fb3f85dc2f08afe2842875a95",
+  "referencias/editar_localizado.md": "a410a21796fcb64e6525ad1dd8e6e95e0ca22ffe7c27c6cf85c7e3c556f04f06",
+  "referencias/inspecionar_e_selecionar.md": "4ed9a45bbcfeb33f8dbb48f6ea42ccace60011de2d4c3b709fcc85ea14f3b932",
+  "referencias/mapa_de_ferramentas.md": "3e3e54d2321adb4671cfc536f443775d9016b72045297ddee61a09dab479f2a0",
+  "referencias/recuperar_salvar_exportar.md": "ecdfc089194d97fb35341990529bfd89aec4df889d38fe1f7bbe1419b9c5e3ce",
+  "referencias/registro_de_trabalho.md": "85feea4cd7ddf2eeb5b7711296b5dd873e0e7a74306f085cda63434dfe11f8a5",
+  "referencias/verificar.md": "6366e99f154cdb6be5c131c66a571c5b00591477173e191674cc85f5faa578b5",
+  "scripts/bl_ferramentas.py": "32780db5d1f868f8e511ab38ace4d0ed482815b58de20f64e5ae311ad306c60f",
+  "scripts/extrai_tolerancias.py": "a2a807440a38ad26c91147b56eac2df4ce16ce3b58ffd8262213dca7fe564e84",
+  "scripts/mcp_blender.py": "6c5549990fa78237c03150017b575aa5cf15ee60c8573cd20327abba307ca0e4",
+  "scripts/roda_blender.py": "ce4203e495bab1898e9de3f2d324ae556a567bd7180f7a9c297426d3e3821241",
+  "scripts/testa_paridade_validador.py": "6d3cdc8c4da786783abed9639fbfa8c97c9538af548934ff115c046ec37ad49b",
+  "scripts/valida_requisitos.py": "ba5de3a65cd7ec2c50b0b1d27ccf86a1d1be42b7dace65be9f1641b2fffee1cd",
+  "verificadores/PROVENIENCIA.json": "05597535abc70a5abbd1339fb2fc425c9448a937d0ad9698bfc53e323f35fad1",
+  "verificadores/check_intent.py": "4f54003797a947e7ec854fcc9b66cd81350af61c910d97739193c0a30226b1b7",
+  "verificadores/check_mesh.py": "4ddcbf1e6670d85017daa746559960005ee53be571130a42b93b5d3c9ab1da8d",
+  "verificadores/matriz.py": "d3c9e740d42de945ccc0688c3e09933de0588b838d5d7b4ca28b51c3d0a3b712",
+  "verificadores/secoes.py": "721d250b67f4fea47af7e86a28e87e8143ae81102228f3d6cd419c3a5813bf92",
+  "verificadores/sweep_params.py": "584015bd4b3750fa5f6f1ec0f1c5303ec3e20dd2847ec2ffa936d07d3020fce7"
+ }
+}

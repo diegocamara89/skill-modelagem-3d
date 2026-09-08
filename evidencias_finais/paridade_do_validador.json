@@ -1,0 +1,6740 @@
+{
+ "validador": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\produto\\scripts\\valida_requisitos.py",
+ "verificador": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\produto\\verificadores\\check_intent.py",
+ "extras_declarados": [
+  "nao declara tolerancia que o verificador LEIA",
+  "que o verificador NAO le para este tipo",
+  "e de CONTAGEM, comparada de forma exata",
+  "e CONTAGEM e traz valor fracionario",
+  "traz contagem negativa",
+  "identificador repetido",
+  "que nao existe. Tipos:"
+ ],
+ "casos": [
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "base_caixa",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "base_distancia_entre_furos",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "base_furo",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "base_interferencia",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "base_n_furos_no_plano",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "base_n_solidos",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": 1
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "base_regiao_intacta",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "base_volume",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'valor'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'caixa' nao tem o campo obrigatorio 'valor'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=ausente",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser lista de 3 numeros, e veio 'NoneType'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser lista de 3 numeros, e veio NoneType"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=nulo",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": null,
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser lista de 3 numeros, e veio 'str'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser lista de 3 numeros, e veio str"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=texto",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": "abc",
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser lista de 3 numeros, e veio 'str'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser lista de 3 numeros, e veio str"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=texto_numerico",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": "30",
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=nan",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": NaN,
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=infinito",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": Infinity,
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=negativo",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": -1.0,
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=zero",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": 0.0,
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser lista de 3 numeros, e veio 'bool'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser lista de 3 numeros, e veio bool"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=booleano",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": true,
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ter exatamente 3 valores, e veio 0"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ter exatamente 3 valores, e veio 0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=lista_vazia",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [],
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ter exatamente 3 valores, e veio 1"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ter exatamente 3 valores, e veio 1"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=lista_curta",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     1.0
+    ],
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ter exatamente 3 valores, e veio 4"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ter exatamente 3 valores, e veio 4"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=lista_longa",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser lista de 3 numeros, e veio 'dict'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser lista de 3 numeros, e veio dict"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=dicionario",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": {
+     "x": 1
+    },
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.valor=fracionario",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": 1.9,
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'caixa' nao declara tolerancia que o verificador LEIA. Para este tipo ele le ['tol_mm']. Comparacao de medida sem margem declarada nao decide nada."
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "caixa.tol_mm=ausente",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=nulo",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": null
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=texto",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": "abc"
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_mm' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=texto_numerico",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": "30"
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=nan",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": NaN
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=infinito",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": Infinity
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=negativo",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": -1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=zero",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": 0.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_mm' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=booleano",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": true
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=lista_vazia",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": []
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=lista_curta",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": [
+     1.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=lista_longa",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=dicionario",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": {
+     "x": 1
+    }
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "caixa.tol_mm=fracionario",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": 1.9
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'eixo'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'distancia_entre_furos' nao tem o campo obrigatorio 'eixo'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=ausente",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=nulo",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": null,
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=texto",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "abc",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio '30'"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio '30'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=texto_numerico",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "30",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=nan",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": NaN,
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=infinito",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": Infinity,
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio -1.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio -1.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=negativo",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": -1.0,
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio 0.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio 0.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=zero",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": 0.0,
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio True"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio True"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=booleano",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": true,
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=lista_vazia",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": [],
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=lista_curta",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": [
+     1.0
+    ],
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=lista_longa",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=dicionario",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": {
+     "x": 1
+    },
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio 1.9"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio 1.9"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.eixo=fracionario",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": 1.9,
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'plano'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'distancia_entre_furos' nao tem o campo obrigatorio 'plano'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=ausente",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=nulo",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": null,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=texto",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": "abc",
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'plano' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=texto_numerico",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": "30",
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' nao e finito: nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' nao e finito: nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=nan",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": NaN,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' nao e finito: inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' nao e finito: inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=infinito",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": Infinity,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=negativo",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": -1.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=zero",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 0.0,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'plano' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=booleano",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": true,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=lista_vazia",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": [],
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=lista_curta",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": [
+     1.0
+    ],
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=lista_longa",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=dicionario",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": {
+     "x": 1
+    },
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.plano=fracionario",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 1.9,
+    "valor": 20.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'valor'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'distancia_entre_furos' nao tem o campo obrigatorio 'valor'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=ausente",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=nulo",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": null,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=texto",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": "abc",
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'valor' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=texto_numerico",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": "30",
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'valor' nao e finito: nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' nao e finito: nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=nan",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": NaN,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'valor' nao e finito: inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' nao e finito: inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=infinito",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": Infinity,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=negativo",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": -1.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=zero",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 0.0,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'valor' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=booleano",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": true,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=lista_vazia",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": [],
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=lista_curta",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": [
+     1.0
+    ],
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=lista_longa",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=dicionario",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": {
+     "x": 1
+    },
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.valor=fracionario",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 1.9,
+    "tol_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'distancia_entre_furos' nao declara tolerancia que o verificador LEIA. Para este tipo ele le ['tol_mm']. Comparacao de medida sem margem declarada nao decide nada."
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "distancia_entre_furos.tol_mm=ausente",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=nulo",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": null
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=texto",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": "abc"
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_mm' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=texto_numerico",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": "30"
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=nan",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": NaN
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=infinito",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": Infinity
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=negativo",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": -1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=zero",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 0.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_mm' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=booleano",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": true
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=lista_vazia",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": []
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=lista_curta",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": [
+     1.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=lista_longa",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=dicionario",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": {
+     "x": 1
+    }
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "distancia_entre_furos.tol_mm=fracionario",
+   "requisito": {
+    "id": "R6",
+    "tipo": "distancia_entre_furos",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 20.0,
+    "tol_mm": 1.9
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'eixo'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'furo' nao tem o campo obrigatorio 'eixo'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=ausente",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=nulo",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": null,
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=texto",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "abc",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio '30'"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio '30'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=texto_numerico",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "30",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=nan",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": NaN,
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=infinito",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": Infinity,
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio -1.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio -1.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=negativo",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": -1.0,
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio 0.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio 0.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=zero",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": 0.0,
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio True"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio True"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=booleano",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": true,
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=lista_vazia",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": [],
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=lista_curta",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": [
+     1.0
+    ],
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=lista_longa",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=dicionario",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": {
+     "x": 1
+    },
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio 1.9"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio 1.9"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.eixo=fracionario",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": 1.9,
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'plano'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'furo' nao tem o campo obrigatorio 'plano'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=ausente",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=nulo",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": null,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=texto",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": "abc",
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'plano' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=texto_numerico",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": "30",
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' nao e finito: nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' nao e finito: nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=nan",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": NaN,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' nao e finito: inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' nao e finito: inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=infinito",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": Infinity,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=negativo",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": -1.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=zero",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 0.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'plano' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=booleano",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": true,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=lista_vazia",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": [],
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=lista_curta",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": [
+     1.0
+    ],
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=lista_longa",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=dicionario",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": {
+     "x": 1
+    },
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.plano=fracionario",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 1.9,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'posicao'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'furo' nao tem o campo obrigatorio 'posicao'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=ausente",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ser lista de 2 numeros, e veio 'NoneType'"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ser lista de 2 numeros, e veio NoneType"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=nulo",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": null,
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ser lista de 2 numeros, e veio 'str'"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ser lista de 2 numeros, e veio str"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=texto",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": "abc",
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ser lista de 2 numeros, e veio 'str'"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ser lista de 2 numeros, e veio str"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=texto_numerico",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": "30",
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ser lista de 2 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ser lista de 2 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=nan",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": NaN,
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ser lista de 2 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ser lista de 2 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=infinito",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": Infinity,
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ser lista de 2 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ser lista de 2 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=negativo",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": -1.0,
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ser lista de 2 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ser lista de 2 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=zero",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": 0.0,
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ser lista de 2 numeros, e veio 'bool'"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ser lista de 2 numeros, e veio bool"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=booleano",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": true,
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ter exatamente 2 valores, e veio 0"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ter exatamente 2 valores, e veio 0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=lista_vazia",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ter exatamente 2 valores, e veio 1"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ter exatamente 2 valores, e veio 1"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=lista_curta",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     1.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ter exatamente 2 valores, e veio 4"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ter exatamente 2 valores, e veio 4"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=lista_longa",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ser lista de 2 numeros, e veio 'dict'"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ser lista de 2 numeros, e veio dict"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=dicionario",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": {
+     "x": 1
+    },
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'posicao' tem que ser lista de 2 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'posicao' tem que ser lista de 2 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.posicao=fracionario",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": 1.9,
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'diametro'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'furo' nao tem o campo obrigatorio 'diametro'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=ausente",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'diametro' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'diametro' tem que ser numero, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=nulo",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": null,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'diametro' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'diametro' tem que ser numero, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=texto",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": "abc",
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'diametro' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=texto_numerico",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": "30",
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'diametro' nao e finito: nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'diametro' nao e finito: nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=nan",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": NaN,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'diametro' nao e finito: inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'diametro' nao e finito: inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=infinito",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": Infinity,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=negativo",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": -1.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=zero",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 0.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'diametro' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=booleano",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": true,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'diametro' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'diametro' tem que ser numero, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=lista_vazia",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": [],
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'diametro' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'diametro' tem que ser numero, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=lista_curta",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": [
+     1.0
+    ],
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'diametro' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'diametro' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=lista_longa",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'diametro' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'diametro' tem que ser numero, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=dicionario",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": {
+     "x": 1
+    },
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.diametro=fracionario",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 1.9,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'furo' nao declara tolerancia que o verificador LEIA. Para este tipo ele le ['tol_pos_mm', 'tol_mm', 'circularidade_min']. Comparacao de medida sem margem declarada nao decide nada."
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "furo.tol_pos_mm=ausente",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0
+   }
+  },
+  {
+   "verificador": [
+    "'tol_pos_mm' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_pos_mm' tem que ser numero finito nao negativo, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=nulo",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": null
+   }
+  },
+  {
+   "verificador": [
+    "'tol_pos_mm' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_pos_mm' tem que ser numero finito nao negativo, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=texto",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": "abc"
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_pos_mm' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=texto_numerico",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": "30"
+   }
+  },
+  {
+   "verificador": [
+    "'tol_pos_mm' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_pos_mm' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=nan",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": NaN
+   }
+  },
+  {
+   "verificador": [
+    "'tol_pos_mm' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_pos_mm' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=infinito",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": Infinity
+   }
+  },
+  {
+   "verificador": [
+    "'tol_pos_mm' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_pos_mm' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=negativo",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": -1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=zero",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_pos_mm' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=booleano",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": true
+   }
+  },
+  {
+   "verificador": [
+    "'tol_pos_mm' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_pos_mm' tem que ser numero finito nao negativo, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=lista_vazia",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": []
+   }
+  },
+  {
+   "verificador": [
+    "'tol_pos_mm' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_pos_mm' tem que ser numero finito nao negativo, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=lista_curta",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": [
+     1.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_pos_mm' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_pos_mm' tem que ser numero finito nao negativo, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=lista_longa",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_pos_mm' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_pos_mm' tem que ser numero finito nao negativo, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=dicionario",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": {
+     "x": 1
+    }
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "furo.tol_pos_mm=fracionario",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "Z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 1.9
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=None com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=ausente",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=None com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=nulo",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": null,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre='abc' com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=texto",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": "abc",
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre='30' com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=texto_numerico",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": "30",
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=nan com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=nan",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": NaN,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=inf com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=infinito",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": Infinity,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=-1.0 com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=negativo",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": -1.0,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=0.0 com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=zero",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": 0.0,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=True com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=booleano",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": true,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=[] com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=lista_vazia",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [],
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=[1.0] com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=lista_curta",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     1.0
+    ],
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=[1.0, 2.0, 3.0, 4.0] com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=lista_longa",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre={'x': 1} com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=dicionario",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": {
+     "x": 1
+    },
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=1.9 com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.entre=fracionario",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": 1.9,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' nao declara tolerancia que o verificador LEIA. Para este tipo ele le ['tol_mm3']. Comparacao de medida sem margem declarada nao decide nada."
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "interferencia.tol_mm3=ausente",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=nulo",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": null
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=texto",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": "abc"
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_mm3' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=texto_numerico",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": "30"
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=nan",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": NaN
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=infinito",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": Infinity
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=negativo",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": -1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=zero",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": 0.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_mm3' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=booleano",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": true
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=lista_vazia",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": []
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=lista_curta",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": [
+     1.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=lista_longa",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=dicionario",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": {
+     "x": 1
+    }
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "interferencia.tol_mm3=fracionario",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl",
+     "b.stl"
+    ],
+    "tol_mm3": 1.9
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'eixo'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'n_furos_no_plano' nao tem o campo obrigatorio 'eixo'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=ausente",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=nulo",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": null,
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=texto",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "abc",
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio '30'"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio '30'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=texto_numerico",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "30",
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=nan",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": NaN,
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=infinito",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": Infinity,
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio -1.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio -1.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=negativo",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": -1.0,
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio 0.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio 0.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=zero",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": 0.0,
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio True"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio True"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=booleano",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": true,
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=lista_vazia",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": [],
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=lista_curta",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": [
+     1.0
+    ],
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=lista_longa",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=dicionario",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": {
+     "x": 1
+    },
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio 1.9"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio 1.9"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.eixo=fracionario",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": 1.9,
+    "plano": 5.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'plano'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'n_furos_no_plano' nao tem o campo obrigatorio 'plano'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=ausente",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=nulo",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": null,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=texto",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": "abc",
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'plano' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=texto_numerico",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": "30",
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' nao e finito: nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' nao e finito: nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=nan",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": NaN,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' nao e finito: inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' nao e finito: inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=infinito",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": Infinity,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=negativo",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": -1.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=zero",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 0.0,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'plano' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=booleano",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": true,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=lista_vazia",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": [],
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=lista_curta",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": [
+     1.0
+    ],
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=lista_longa",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "'plano' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'plano' tem que ser numero, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=dicionario",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": {
+     "x": 1
+    },
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.plano=fracionario",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 1.9,
+    "valor": 2
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'valor'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'n_furos_no_plano' nao tem o campo obrigatorio 'valor'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=ausente",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=nulo",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": null
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=texto",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": "abc"
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'valor' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=texto_numerico",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": "30"
+   }
+  },
+  {
+   "verificador": [
+    "'valor' nao e finito: nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' nao e finito: nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=nan",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": NaN
+   }
+  },
+  {
+   "verificador": [
+    "'valor' nao e finito: inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' nao e finito: inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=infinito",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": Infinity
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'n_furos_no_plano' traz contagem negativa -1.0"
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "n_furos_no_plano.valor=negativo",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": -1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=zero",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 0.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'valor' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=booleano",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": true
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=lista_vazia",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": []
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=lista_curta",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": [
+     1.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=lista_longa",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_furos_no_plano.valor=dicionario",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": {
+     "x": 1
+    }
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'n_furos_no_plano' e CONTAGEM e traz valor fracionario 1.9. O verificador converte com int() e aprovaria por truncamento; contagem fracionaria e especificacao invalida."
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "n_furos_no_plano.valor=fracionario",
+   "requisito": {
+    "id": "R5",
+    "tipo": "n_furos_no_plano",
+    "eixo": "Z",
+    "plano": 5.0,
+    "valor": 1.9
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'valor'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'n_solidos' nao tem o campo obrigatorio 'valor'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=ausente",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos"
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=nulo",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": null
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=texto",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": "abc"
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'valor' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=texto_numerico",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": "30"
+   }
+  },
+  {
+   "verificador": [
+    "'valor' nao e finito: nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' nao e finito: nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=nan",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": NaN
+   }
+  },
+  {
+   "verificador": [
+    "'valor' nao e finito: inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' nao e finito: inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=infinito",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": Infinity
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'n_solidos' traz contagem negativa -1.0"
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "n_solidos.valor=negativo",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": -1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=zero",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": 0.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'valor' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=booleano",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": true
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=lista_vazia",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": []
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=lista_curta",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": [
+     1.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=lista_longa",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "n_solidos.valor=dicionario",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": {
+     "x": 1
+    }
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'n_solidos' e CONTAGEM e traz valor fracionario 1.9. O verificador converte com int() e aprovaria por truncamento; contagem fracionaria e especificacao invalida."
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "n_solidos.valor=fracionario",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": 1.9
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'caixa_min'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'regiao_intacta' nao tem o campo obrigatorio 'caixa_min'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=ausente",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ser lista de 3 numeros, e veio 'NoneType'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ser lista de 3 numeros, e veio NoneType"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=nulo",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": null,
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ser lista de 3 numeros, e veio 'str'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ser lista de 3 numeros, e veio str"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=texto",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": "abc",
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ser lista de 3 numeros, e veio 'str'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ser lista de 3 numeros, e veio str"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=texto_numerico",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": "30",
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=nan",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": NaN,
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=infinito",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": Infinity,
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=negativo",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": -1.0,
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=zero",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": 0.0,
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ser lista de 3 numeros, e veio 'bool'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ser lista de 3 numeros, e veio bool"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=booleano",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": true,
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ter exatamente 3 valores, e veio 0"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ter exatamente 3 valores, e veio 0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=lista_vazia",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ter exatamente 3 valores, e veio 1"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ter exatamente 3 valores, e veio 1"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=lista_curta",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     1.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ter exatamente 3 valores, e veio 4"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ter exatamente 3 valores, e veio 4"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=lista_longa",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ser lista de 3 numeros, e veio 'dict'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ser lista de 3 numeros, e veio dict"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=dicionario",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": {
+     "x": 1
+    },
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_min' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_min' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_min=fracionario",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": 1.9,
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'caixa_max'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'regiao_intacta' nao tem o campo obrigatorio 'caixa_max'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=ausente",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ser lista de 3 numeros, e veio 'NoneType'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ser lista de 3 numeros, e veio NoneType"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=nulo",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": null,
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ser lista de 3 numeros, e veio 'str'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ser lista de 3 numeros, e veio str"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=texto",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": "abc",
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ser lista de 3 numeros, e veio 'str'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ser lista de 3 numeros, e veio str"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=texto_numerico",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": "30",
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=nan",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": NaN,
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=infinito",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": Infinity,
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=negativo",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": -1.0,
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=zero",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": 0.0,
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ser lista de 3 numeros, e veio 'bool'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ser lista de 3 numeros, e veio bool"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=booleano",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": true,
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ter exatamente 3 valores, e veio 0"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ter exatamente 3 valores, e veio 0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=lista_vazia",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ter exatamente 3 valores, e veio 1"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ter exatamente 3 valores, e veio 1"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=lista_curta",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     1.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ter exatamente 3 valores, e veio 4"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ter exatamente 3 valores, e veio 4"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=lista_longa",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ser lista de 3 numeros, e veio 'dict'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ser lista de 3 numeros, e veio dict"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=dicionario",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": {
+     "x": 1
+    },
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'caixa_max' tem que ser lista de 3 numeros, e veio 'float'"
+   ],
+   "validador": [
+    "requisitos[0]: 'caixa_max' tem que ser lista de 3 numeros, e veio float"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.caixa_max=fracionario",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": 1.9,
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'regiao_intacta' nao declara tolerancia que o verificador LEIA. Para este tipo ele le ['tol_fracao']. Comparacao de medida sem margem declarada nao decide nada."
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "regiao_intacta.tol_fracao=ausente",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_fracao' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_fracao' tem que ser numero finito nao negativo, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=nulo",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": null
+   }
+  },
+  {
+   "verificador": [
+    "'tol_fracao' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_fracao' tem que ser numero finito nao negativo, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=texto",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": "abc"
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_fracao' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=texto_numerico",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": "30"
+   }
+  },
+  {
+   "verificador": [
+    "'tol_fracao' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_fracao' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=nan",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": NaN
+   }
+  },
+  {
+   "verificador": [
+    "'tol_fracao' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_fracao' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=infinito",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": Infinity
+   }
+  },
+  {
+   "verificador": [
+    "'tol_fracao' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_fracao' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=negativo",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": -1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=zero",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 0.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_fracao' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=booleano",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": true
+   }
+  },
+  {
+   "verificador": [
+    "'tol_fracao' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_fracao' tem que ser numero finito nao negativo, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=lista_vazia",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": []
+   }
+  },
+  {
+   "verificador": [
+    "'tol_fracao' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_fracao' tem que ser numero finito nao negativo, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=lista_curta",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": [
+     1.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_fracao' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_fracao' tem que ser numero finito nao negativo, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=lista_longa",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_fracao' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_fracao' tem que ser numero finito nao negativo, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=dicionario",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": {
+     "x": 1
+    }
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "regiao_intacta.tol_fracao=fracionario",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1.9
+   }
+  },
+  {
+   "verificador": [
+    "falta o campo obrigatorio 'valor'"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'volume' nao tem o campo obrigatorio 'valor'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=ausente",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=nulo",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": null,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=texto",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": "abc",
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'valor' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=texto_numerico",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": "30",
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "'valor' nao e finito: nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' nao e finito: nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=nan",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": NaN,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "'valor' nao e finito: inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' nao e finito: inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=infinito",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": Infinity,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=negativo",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": -1.0,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=zero",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 0.0,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'valor' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=booleano",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": true,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=lista_vazia",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": [],
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=lista_curta",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": [
+     1.0
+    ],
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=lista_longa",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ],
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "'valor' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'valor' tem que ser numero, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=dicionario",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": {
+     "x": 1
+    },
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.valor=fracionario",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1.9,
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'volume' nao declara tolerancia que o verificador LEIA. Para este tipo ele le ['tol_mm3']. Comparacao de medida sem margem declarada nao decide nada."
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "volume.tol_mm3=ausente",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio None"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio None"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=nulo",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": null
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio 'abc'"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio 'abc'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=texto",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": "abc"
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_mm3' veio como texto '30'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=texto_numerico",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": "30"
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=nan",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": NaN
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=infinito",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": Infinity
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio -1.0"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=negativo",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": -1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=zero",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": 0.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_mm3' veio como booleano True; o verificador converte para 1.0, mas escrever medida como True/False esconde a intencao."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=booleano",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": true
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio []"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio []"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=lista_vazia",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": []
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio [1.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio [1.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=lista_curta",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": [
+     1.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio [1.0, 2.0, 3.0, 4.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=lista_longa",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": [
+     1.0,
+     2.0,
+     3.0,
+     4.0
+    ]
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm3' tem que ser numero, e veio {'x': 1}"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm3' tem que ser numero finito nao negativo, e veio {'x': 1}"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=dicionario",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": {
+     "x": 1
+    }
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "volume.tol_mm3=fracionario",
+   "requisito": {
+    "id": "R2",
+    "tipo": "volume",
+    "valor": 1000.0,
+    "tol_mm3": 1.9
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio 'W'"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio 'W'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.eixo_fora_do_vocabulario",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "W",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.eixo_minusculo_e_valido",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "z",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "'eixo' tem que ser X, Y ou Z, e veio 'eixo x'"
+   ],
+   "validador": [
+    "requisitos[0]: 'eixo' tem que ser X, Y ou Z, e veio 'eixo x'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.eixo_com_prosa",
+   "requisito": {
+    "id": "R4",
+    "tipo": "furo",
+    "eixo": "eixo x",
+    "plano": 5.0,
+    "posicao": [
+     10.0,
+     10.0
+    ],
+    "diametro": 6.0,
+    "tol_pos_mm": 0.2
+   }
+  },
+  {
+   "verificador": [
+    "caixa_min tem que ser menor que caixa_max em todos os eixos"
+   ],
+   "validador": [
+    "requisitos[0]: caixa_min tem que ser menor que caixa_max em todos os eixos, e veio min=[10.0, 0.0, 0.0] max=[10.0, 10.0, 10.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.caixa_invertida",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     10.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "caixa_min tem que ser menor que caixa_max em todos os eixos"
+   ],
+   "validador": [
+    "requisitos[0]: caixa_min tem que ser menor que caixa_max em todos os eixos, e veio min=[0.0, 0.0, 0.0] max=[10.0, 10.0, 0.0]"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.caixa_degenerada_igual",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     0.0
+    ],
+    "tol_fracao": 1e-09
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero finito nao negativo, e veio -0.05"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio -0.05"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.tolerancia_negativa",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": -0.05
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio nan"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.tolerancia_nan",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": NaN
+   }
+  },
+  {
+   "verificador": [
+    "'tol_mm' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "validador": [
+    "requisitos[0]: 'tol_mm' tem que ser numero finito nao negativo, e veio inf"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.tolerancia_infinita",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": Infinity
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.tolerancia_zero_e_valida",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": 0.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'tol_mm' veio como texto '0.05'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.tolerancia_texto",
+   "requisito": {
+    "id": "R1",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": "0.05"
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=['a.stl'] com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.entre_com_um_caminho",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a.stl"
+    ],
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre='a.stl' com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.entre_como_texto",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": "a.stl",
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=['a', 'b', 'c'] com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.entre_com_tres",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "entre": [
+     "a",
+     "b",
+     "c"
+    ],
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.interferencia_por_com",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "com": "b.stl",
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "interferencia exige 'entre' com dois caminhos, ou 'com' com um"
+   ],
+   "validador": [
+    "requisitos[0] de tipo 'interferencia' exige 'entre' com DOIS caminhos, ou 'com' com um. Presenca da chave nao basta: veio entre=None com=None."
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.interferencia_sem_nada",
+   "requisito": {
+    "id": "R8",
+    "tipo": "interferencia",
+    "tol_mm3": 1.0
+   }
+  },
+  {
+   "verificador": [
+    "requisito sem 'id'"
+   ],
+   "validador": [
+    "requisitos[0] nao tem 'id'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.sem_id",
+   "requisito": {
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [
+    "requisito sem 'id'"
+   ],
+   "validador": [
+    "requisitos[0] nao tem 'id'"
+   ],
+   "avisos": [],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.id_vazio",
+   "requisito": {
+    "id": "",
+    "tipo": "caixa",
+    "valor": [
+     60.0,
+     40.0,
+     20.0
+    ],
+    "tol_mm": 0.05
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] tem tipo 'parafuso', que nao existe. Tipos: ['caixa', 'distancia_entre_furos', 'furo', 'interferencia', 'n_furos_no_plano', 'n_solidos', 'regiao_intacta', 'volume']"
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "especial.tipo_inexistente",
+   "requisito": {
+    "id": "R9",
+    "tipo": "parafuso",
+    "valor": 1
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'n_solidos' e CONTAGEM e traz valor fracionario 1.9. O verificador converte com int() e aprovaria por truncamento; contagem fracionaria e especificacao invalida."
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "especial.contagem_fracionaria",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": 1.9
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'n_solidos' traz contagem negativa -1"
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "especial.contagem_negativa",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": -1
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [],
+   "avisos": [
+    "requisitos[0]: 'valor' veio como texto '3'; o verificador converte com float() e aceita, porem numero escrito como texto quebra no primeiro separador decimal trocado."
+   ],
+   "estado": "ESPELHO_OK",
+   "caso": "especial.contagem_como_texto",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": "3"
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'n_solidos' e de CONTAGEM, comparada de forma exata, e traz ['tol_mm']. Tolerancia aqui nao e lida e sugere margem que nao existe."
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "especial.tolerancia_de_outro_tipo",
+   "requisito": {
+    "id": "R3",
+    "tipo": "n_solidos",
+    "valor": 1,
+    "tol_mm": 0.1
+   }
+  },
+  {
+   "verificador": [],
+   "validador": [
+    "requisitos[0] de tipo 'regiao_intacta' nao declara tolerancia que o verificador LEIA. Para este tipo ele le ['tol_fracao'], e o requisito traz ['tol_mm3'], que sao ignoradas para este tipo. Comparacao de medida sem margem declarada nao decide nada."
+   ],
+   "avisos": [],
+   "estado": "EXTRA_DECLARADO",
+   "caso": "especial.regiao_intacta_com_tol_errada",
+   "requisito": {
+    "id": "R7",
+    "tipo": "regiao_intacta",
+    "caixa_min": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "caixa_max": [
+     10.0,
+     10.0,
+     10.0
+    ],
+    "tol_mm3": 1.0
+   }
+  }
+ ],
+ "por_estado": {
+  "ESPELHO_OK": 324,
+  "EXTRA_DECLARADO": 15
+ },
+ "n_casos": 339,
+ "controle_positivo": {
+  "bases_divergentes": [],
+  "bases_recusadas_por_algum_dos_dois": [],
+  "por_que": "se um requisito bem formado ja nascer recusado, toda a bateria de mutacao mede a partir de um caso quebrado e a concordancia vira coincidencia"
+ },
+ "paridade_da_tabela_de_tolerancia": {
+  "tipos_no_verificador_e_nao_no_validador": [],
+  "tipos_no_validador_e_nao_no_verificador": [],
+  "divergentes": {},
+  "padroes_divergentes": {},
+  "padroes_medidos": {
+   "caixa": {
+    "tol_mm": [
+     "numero",
+     0.05
+    ]
+   },
+   "distancia_entre_furos": {
+    "tol_mm": [
+     "numero",
+     0.2
+    ]
+   },
+   "furo": {
+    "tol_pos_mm": [
+     "numero",
+     0.2
+    ],
+    "tol_mm": [
+     "numero",
+     0.2
+    ],
+    "circularidade_min": [
+     "numero",
+     0.9
+    ]
+   },
+   "interferencia": {
+    "tol_mm3": [
+     "numero",
+     0.0
+    ]
+   },
+   "n_furos_no_plano": {},
+   "n_solidos": {},
+   "regiao_intacta": {
+    "tol_fracao": [
+     "numero",
+     1e-09
+    ]
+   },
+   "volume": {
+    "tol_mm3": [
+     "expressao",
+     "max(1.0,0.01*esp)"
+    ]
+   }
+  },
+  "estado": "ATENDIDO",
+  "por_que": "tolerancia que o verificador LE e o validador recusa e um numero que decide sendo apagado; o contrario e margem prometida que ninguem consulta. E padrao divergente e margem prometida diferente da aplicada, no caso mais comum de todos: o de quem nao declarou nada"
+ },
+ "n_falhas": 0,
+ "falhas": [],
+ "veredito": "ATENDIDO"
+}

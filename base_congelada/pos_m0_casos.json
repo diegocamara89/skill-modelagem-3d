@@ -1,0 +1,1722 @@
+{
+ "n_casos": 11,
+ "n_passaram": 11,
+ "ambiente": {
+  "maquina": "Bambu Lab A1 0.4 nozzle",
+  "processo": "0.20mm Standard @BBL A1",
+  "filamento": "Generic PLA @BBL A1",
+  "envelope": "256x256x256",
+  "sem_fatiador": false
+ },
+ "casos": [
+  {
+   "id": "1_dimensional_do_zero",
+   "titulo": "peca dimensional criada do zero, para impressao",
+   "classificacao": {
+    "modalidade": "criar",
+    "representacao": "solido",
+    "finalidade": "impressao_fdm"
+   },
+   "tempo_de_construcao_s": 5.15,
+   "ambiente": {
+    "maquina": "Bambu Lab A1 0.4 nozzle",
+    "processo": "0.20mm Standard @BBL A1",
+    "filamento": "Generic PLA @BBL A1",
+    "envelope": "256x256x256",
+    "sem_fatiador": false
+   },
+   "roteamento": {
+    "exigidas": [
+     "envelope_e_particao",
+     "folga_calibrada",
+     "geometria_nao_vazia",
+     "intencao",
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "portao_do_fatiador",
+     "zero_nao_manifold"
+    ],
+    "dispensadas": [
+     "reabre_em_cad"
+    ],
+    "faltando_no_roteamento": [],
+    "cobrado_indevidamente": [],
+    "ok": true
+   },
+   "verificacoes": {
+    "envelope_e_particao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "cabe_inteira": true,
+      "particao_validada": false,
+      "pecas": [
+       1,
+       1,
+       1
+      ],
+      "veredito": "Cabe inteira nesta orientacao. Nenhum corte necessario."
+     }
+    },
+    "folga_calibrada": {
+     "estado": "NAO_APLICAVEL",
+     "detalhe": {
+      "motivo": "nenhum encaixe declarado nesta peca"
+     }
+    },
+    "geometria_nao_vazia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "ok": true,
+      "n_solidos": 1,
+      "volume_mm3": 21240.752
+     }
+    },
+    "intencao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovados": 5,
+      "reprovados": 0,
+      "nao_verificados": 0,
+      "por_estado": {
+       "APROVADA": [
+        "envelope",
+        "corpo_unico",
+        "tres_furos",
+        "furo_central",
+        "vao_de_fixacao"
+       ]
+      },
+      "quais_reprovaram": [],
+      "quais_nao_verificados": []
+     }
+    },
+    "malha_estanque": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "fechada": true,
+      "arestas_abertas": 0,
+      "veredito_da_ferramenta": true,
+      "motivos_da_ferramenta": []
+     }
+    },
+    "orientacao_anisotropia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "orientacao_de_impressao": "face de 70 x 40 mm na mesa",
+      "direcao_da_carga": "compressao ao longo de Z, atravessando as camadas",
+      "nota": "confere que a decisao foi DECLARADA, nao que ela esta estruturalmente correta"
+     }
+    },
+    "portao_do_fatiador": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovado": true,
+      "codigo": "0: sucesso",
+      "processo_concluido": true,
+      "saida_gerada": true,
+      "checagens_aprovadas": true,
+      "motivos": []
+     }
+    },
+    "zero_nao_manifold": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "arestas_com_mais_de_2_faces": 0,
+      "veredito_da_ferramenta": true,
+      "motivos_da_ferramenta": []
+     }
+    }
+   },
+   "papeis": {
+    "envelope_e_particao": "DECISIVA",
+    "folga_calibrada": "DECISIVA",
+    "geometria_nao_vazia": "DECISIVA",
+    "intencao": "DECISIVA",
+    "malha_estanque": "DECISIVA",
+    "orientacao_anisotropia": "DECISIVA",
+    "portao_do_fatiador": "DECISIVA",
+    "reabre_em_cad": "NAO_APLICAVEL",
+    "zero_nao_manifold": "DECISIVA"
+   },
+   "informativas": {},
+   "reprovadas_em_papel_informativo": [],
+   "nao_implementadas": [],
+   "nao_implementadas_que_barram": [],
+   "nota_de_papel": "verificacao INFORMATIVA aparece medida e nao barra. Ela NAO e contada como evidencia favoravel: nao entra em reprovadas nem em aprovadas, e o motivo dela fica em informativas.",
+   "reprovadas": [],
+   "ausentes": [],
+   "erros": [],
+   "nao_aplicaveis": [
+    "folga_calibrada"
+   ],
+   "nao_aplicaveis_indevidas": [],
+   "bloqueios": [],
+   "evidencia_completa": true,
+   "resultado_esperado": "aprovado",
+   "resultado_obtido": "aprovado",
+   "resultado_ok": true,
+   "extras": [],
+   "extras_ok": true,
+   "PASSOU": true
+  },
+  {
+   "id": "2_edicao_localizada",
+   "titulo": "edicao localizada preservando o resto, para intercambio",
+   "classificacao": {
+    "modalidade": "editar",
+    "representacao": "solido",
+    "finalidade": "intercambio"
+   },
+   "tempo_de_construcao_s": 0.07,
+   "ambiente": {
+    "maquina": "Bambu Lab A1 0.4 nozzle",
+    "processo": "0.20mm Standard @BBL A1",
+    "filamento": "Generic PLA @BBL A1",
+    "envelope": "256x256x256",
+    "sem_fatiador": false
+   },
+   "roteamento": {
+    "exigidas": [
+     "entrada_intacta",
+     "geometria_nao_vazia",
+     "intencao",
+     "reabre_em_cad",
+     "regiao_preservada"
+    ],
+    "dispensadas": [
+     "envelope_e_particao",
+     "folga_calibrada",
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "portao_do_fatiador",
+     "zero_nao_manifold"
+    ],
+    "faltando_no_roteamento": [],
+    "cobrado_indevidamente": [],
+    "ok": true
+   },
+   "verificacoes": {
+    "entrada_intacta": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "arquivo": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\prototipo\\casos_saida\\c2_entrada.stl",
+      "sha_antes": "0296923a39bd79ca51b6726c2e1db4a5d8290799d43d0f942a2324935879f275",
+      "sha_depois": "0296923a39bd79ca51b6726c2e1db4a5d8290799d43d0f942a2324935879f275",
+      "ok": true
+     }
+    },
+    "geometria_nao_vazia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "ok": true,
+      "n_solidos": 1,
+      "volume_mm3": 21141.792
+     }
+    },
+    "intencao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovados": 4,
+      "reprovados": 0,
+      "nao_verificados": 0,
+      "por_estado": {
+       "APROVADA": [
+        "envelope",
+        "corpo_unico",
+        "regiao_do_furo_central_intacta",
+        "furo_direito_intacto"
+       ]
+      },
+      "quais_reprovaram": [],
+      "quais_nao_verificados": []
+     }
+    },
+    "reabre_em_cad": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "arquivo": "c2_editada.step",
+      "representacao": "solido",
+      "solidos": 1,
+      "faces": 9,
+      "shells": 1,
+      "bytes": 26405,
+      "solidos_esperados": 1
+     }
+    },
+    "regiao_preservada": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "obrigacao": "regiao_preservada",
+      "tipos_que_satisfazem": [
+       "regiao_intacta"
+      ],
+      "requisitos_desse_tipo": {
+       "regiao_do_furo_central_intacta#2": {
+        "id": "regiao_do_furo_central_intacta",
+        "tipo": "regiao_intacta",
+        "estado": "APROVADA"
+       },
+       "furo_direito_intacto#3": {
+        "id": "furo_direito_intacto",
+        "tipo": "regiao_intacta",
+        "estado": "APROVADA"
+       }
+      },
+      "nota": "a obrigacao exige pelo menos um requisito deste tipo, medido e aprovado. Ausencia de requisito NAO e aprovacao."
+     }
+    }
+   },
+   "papeis": {
+    "entrada_intacta": "DECISIVA",
+    "envelope_e_particao": "NAO_APLICAVEL",
+    "folga_calibrada": "NAO_APLICAVEL",
+    "geometria_nao_vazia": "DECISIVA",
+    "intencao": "DECISIVA",
+    "malha_estanque": "NAO_APLICAVEL",
+    "orientacao_anisotropia": "NAO_APLICAVEL",
+    "portao_do_fatiador": "NAO_APLICAVEL",
+    "reabre_em_cad": "DECISIVA",
+    "regiao_preservada": "DECISIVA",
+    "zero_nao_manifold": "NAO_APLICAVEL"
+   },
+   "informativas": {},
+   "reprovadas_em_papel_informativo": [],
+   "nao_implementadas": [],
+   "nao_implementadas_que_barram": [],
+   "nota_de_papel": "verificacao INFORMATIVA aparece medida e nao barra. Ela NAO e contada como evidencia favoravel: nao entra em reprovadas nem em aprovadas, e o motivo dela fica em informativas.",
+   "reprovadas": [],
+   "ausentes": [],
+   "erros": [],
+   "nao_aplicaveis": [],
+   "nao_aplicaveis_indevidas": [],
+   "bloqueios": [],
+   "evidencia_completa": true,
+   "resultado_esperado": "aprovado",
+   "resultado_obtido": "aprovado",
+   "resultado_ok": true,
+   "extras": [
+    {
+     "nome": "a regiao EDITADA tem que divergir",
+     "passou": true,
+     "detalhe": {
+      "reprovados": [
+       "regiao_editada_DEVE_divergir"
+      ]
+     }
+    },
+    {
+     "nome": "o fatiador NAO foi invocado",
+     "passou": true,
+     "detalhe": {
+      "verificacoes_rodadas": [
+       "entrada_intacta",
+       "geometria_nao_vazia",
+       "intencao",
+       "reabre_em_cad",
+       "regiao_preservada"
+      ]
+     }
+    }
+   ],
+   "extras_ok": true,
+   "PASSOU": true
+  },
+  {
+   "id": "3_montagem_dois_corpos",
+   "titulo": "montagem com dois corpos legitimos",
+   "classificacao": {
+    "modalidade": "criar",
+    "representacao": "montagem",
+    "finalidade": "montagem"
+   },
+   "tempo_de_construcao_s": 0.784,
+   "ambiente": {
+    "maquina": "Bambu Lab A1 0.4 nozzle",
+    "processo": "0.20mm Standard @BBL A1",
+    "filamento": "Generic PLA @BBL A1",
+    "envelope": "256x256x256",
+    "sem_fatiador": false
+   },
+   "roteamento": {
+    "exigidas": [
+     "folga_calibrada",
+     "geometria_nao_vazia",
+     "intencao",
+     "interferencia",
+     "n_corpos_esperado",
+     "reabre_em_cad"
+    ],
+    "dispensadas": [
+     "envelope_e_particao",
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "portao_do_fatiador",
+     "zero_nao_manifold"
+    ],
+    "faltando_no_roteamento": [],
+    "cobrado_indevidamente": [],
+    "ok": true
+   },
+   "verificacoes": {
+    "folga_calibrada": {
+     "estado": "REPROVADA",
+     "detalhe": {
+      "aplicavel": false,
+      "valor_a_usar_mm": null,
+      "origem": "NAO EXISTE medicao para este contexto",
+      "bloqueio": "Ha pendencia dimensional aberta no registro de calibracao, logo NENHUMA folga medida e aplicavel a projeto agora, nem as definitivas. Feche a pendencia e remeca, ou registre a medida com --estado provisoria e trate a folga do projeto como suposicao declarada.",
+      "faixa_publicada_mm": [
+       0.2,
+       0.25
+      ]
+     }
+    },
+    "geometria_nao_vazia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "ok": true,
+      "n_solidos": 2,
+      "volume_mm3": 4926.331
+     }
+    },
+    "intencao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovados": 2,
+      "reprovados": 0,
+      "nao_verificados": 0,
+      "por_estado": {
+       "APROVADA": [
+        "dois_corpos",
+        "sem_interferencia"
+       ]
+      },
+      "quais_reprovaram": [],
+      "quais_nao_verificados": []
+     }
+    },
+    "interferencia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "obrigacao": "interferencia",
+      "tipos_que_satisfazem": [
+       "interferencia"
+      ],
+      "requisitos_desse_tipo": {
+       "sem_interferencia#1": {
+        "id": "sem_interferencia",
+        "tipo": "interferencia",
+        "estado": "APROVADA"
+       }
+      },
+      "nota": "a obrigacao exige pelo menos um requisito deste tipo, medido e aprovado. Ausencia de requisito NAO e aprovacao."
+     }
+    },
+    "n_corpos_esperado": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "obrigacao": "n_corpos_esperado",
+      "tipos_que_satisfazem": [
+       "n_solidos"
+      ],
+      "requisitos_desse_tipo": {
+       "dois_corpos#0": {
+        "id": "dois_corpos",
+        "tipo": "n_solidos",
+        "estado": "APROVADA"
+       }
+      },
+      "nota": "a obrigacao exige pelo menos um requisito deste tipo, medido e aprovado. Ausencia de requisito NAO e aprovacao."
+     }
+    },
+    "reabre_em_cad": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "arquivo": "c3_montagem.step",
+      "representacao": "montagem",
+      "solidos": 2,
+      "faces": 7,
+      "shells": 2,
+      "bytes": 16531,
+      "solidos_esperados": 2
+     }
+    }
+   },
+   "papeis": {
+    "envelope_e_particao": "NAO_APLICAVEL",
+    "folga_calibrada": "DECISIVA",
+    "geometria_nao_vazia": "DECISIVA",
+    "intencao": "DECISIVA",
+    "interferencia": "DECISIVA",
+    "malha_estanque": "NAO_APLICAVEL",
+    "n_corpos_esperado": "DECISIVA",
+    "orientacao_anisotropia": "NAO_APLICAVEL",
+    "portao_do_fatiador": "NAO_APLICAVEL",
+    "reabre_em_cad": "DECISIVA",
+    "zero_nao_manifold": "NAO_APLICAVEL"
+   },
+   "informativas": {},
+   "reprovadas_em_papel_informativo": [],
+   "nao_implementadas": [],
+   "nao_implementadas_que_barram": [],
+   "nota_de_papel": "verificacao INFORMATIVA aparece medida e nao barra. Ela NAO e contada como evidencia favoravel: nao entra em reprovadas nem em aprovadas, e o motivo dela fica em informativas.",
+   "reprovadas": [
+    "folga_calibrada"
+   ],
+   "ausentes": [],
+   "erros": [],
+   "nao_aplicaveis": [],
+   "nao_aplicaveis_indevidas": [],
+   "bloqueios": [],
+   "evidencia_completa": true,
+   "resultado_esperado": "barrado_na_folga",
+   "resultado_obtido": "barrado_na_folga",
+   "resultado_ok": true,
+   "extras": [
+    {
+     "nome": "o fatiador NAO foi invocado",
+     "passou": true,
+     "detalhe": {
+      "verificacoes_rodadas": [
+       "folga_calibrada",
+       "geometria_nao_vazia",
+       "intencao",
+       "interferencia",
+       "n_corpos_esperado",
+       "reabre_em_cad"
+      ]
+     }
+    }
+   ],
+   "extras_ok": true,
+   "PASSOU": true
+  },
+  {
+   "id": "4_superficie_para_render",
+   "titulo": "superficie aberta destinada a visualizacao",
+   "classificacao": {
+    "modalidade": "criar",
+    "representacao": "superficie",
+    "finalidade": "visualizacao"
+   },
+   "tempo_de_construcao_s": 0.009,
+   "ambiente": {
+    "maquina": "Bambu Lab A1 0.4 nozzle",
+    "processo": "0.20mm Standard @BBL A1",
+    "filamento": "Generic PLA @BBL A1",
+    "envelope": "256x256x256",
+    "sem_fatiador": false
+   },
+   "roteamento": {
+    "exigidas": [
+     "geometria_nao_vazia",
+     "intencao"
+    ],
+    "dispensadas": [
+     "envelope_e_particao",
+     "folga_calibrada",
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "portao_do_fatiador",
+     "reabre_em_cad",
+     "zero_nao_manifold"
+    ],
+    "faltando_no_roteamento": [],
+    "cobrado_indevidamente": [],
+    "ok": true
+   },
+   "verificacoes": {
+    "geometria_nao_vazia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "ok": true,
+      "n_facetas": 168,
+      "area_mm2": 9422.58
+     }
+    },
+    "intencao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovados": 1,
+      "reprovados": 0,
+      "nao_verificados": 0,
+      "por_estado": {
+       "APROVADA": [
+        "envelope"
+       ]
+      },
+      "quais_reprovaram": [],
+      "quais_nao_verificados": []
+     }
+    }
+   },
+   "papeis": {
+    "envelope_e_particao": "NAO_APLICAVEL",
+    "folga_calibrada": "NAO_APLICAVEL",
+    "geometria_nao_vazia": "DECISIVA",
+    "intencao": "DECISIVA",
+    "malha_estanque": "NAO_APLICAVEL",
+    "orientacao_anisotropia": "NAO_APLICAVEL",
+    "portao_do_fatiador": "NAO_APLICAVEL",
+    "reabre_em_cad": "NAO_APLICAVEL",
+    "zero_nao_manifold": "NAO_APLICAVEL"
+   },
+   "informativas": {},
+   "reprovadas_em_papel_informativo": [],
+   "nao_implementadas": [],
+   "nao_implementadas_que_barram": [],
+   "nota_de_papel": "verificacao INFORMATIVA aparece medida e nao barra. Ela NAO e contada como evidencia favoravel: nao entra em reprovadas nem em aprovadas, e o motivo dela fica em informativas.",
+   "reprovadas": [],
+   "ausentes": [],
+   "erros": [],
+   "nao_aplicaveis": [],
+   "nao_aplicaveis_indevidas": [],
+   "bloqueios": [],
+   "evidencia_completa": true,
+   "resultado_esperado": "aprovado",
+   "resultado_obtido": "aprovado",
+   "resultado_ok": true,
+   "extras": [
+    {
+     "nome": "a malha NAO e fechada e o caso passa mesmo assim",
+     "passou": true,
+     "detalhe": {
+      "fechada_watertight": false,
+      "arestas_abertas": 168
+     }
+    },
+    {
+     "nome": "o fatiador NAO foi invocado",
+     "passou": true,
+     "detalhe": {
+      "verificacoes_rodadas": [
+       "geometria_nao_vazia",
+       "intencao"
+      ]
+     }
+    }
+   ],
+   "extras_ok": true,
+   "PASSOU": true
+  },
+  {
+   "id": "5_reconstrucao_incompleta",
+   "titulo": "reconstrucao com informacao incompleta, cota rotulada",
+   "classificacao": {
+    "modalidade": "reconstruir",
+    "representacao": "solido",
+    "finalidade": "impressao_fdm"
+   },
+   "tempo_de_construcao_s": 0.173,
+   "ambiente": {
+    "maquina": "Bambu Lab A1 0.4 nozzle",
+    "processo": "0.20mm Standard @BBL A1",
+    "filamento": "Generic PLA @BBL A1",
+    "envelope": "256x256x256",
+    "sem_fatiador": false
+   },
+   "roteamento": {
+    "exigidas": [
+     "entrada_intacta",
+     "envelope_e_particao",
+     "folga_calibrada",
+     "geometria_nao_vazia",
+     "intencao",
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "portao_do_fatiador",
+     "proveniencia_de_cota",
+     "zero_nao_manifold"
+    ],
+    "dispensadas": [
+     "reabre_em_cad"
+    ],
+    "faltando_no_roteamento": [],
+    "cobrado_indevidamente": [],
+    "ok": true
+   },
+   "verificacoes": {
+    "entrada_intacta": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "arquivo": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\prototipo\\casos_saida\\c5_referencia.stl",
+      "sha_antes": "34393c8d3bf790f05d99fd3c9b27b516d017414657b3c934e4c952d414392463",
+      "sha_depois": "34393c8d3bf790f05d99fd3c9b27b516d017414657b3c934e4c952d414392463",
+      "ok": true
+     }
+    },
+    "envelope_e_particao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "cabe_inteira": true,
+      "particao_validada": false,
+      "pecas": [
+       1,
+       1,
+       1
+      ],
+      "veredito": "Cabe inteira nesta orientacao. Nenhum corte necessario."
+     }
+    },
+    "folga_calibrada": {
+     "estado": "NAO_APLICAVEL",
+     "detalhe": {
+      "motivo": "nenhum encaixe declarado nesta peca"
+     }
+    },
+    "geometria_nao_vazia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "ok": true,
+      "n_solidos": 1,
+      "volume_mm3": 26142.003
+     }
+    },
+    "intencao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovados": 2,
+      "reprovados": 0,
+      "nao_verificados": 0,
+      "por_estado": {
+       "APROVADA": [
+        "envelope",
+        "corpo_unico"
+       ]
+      },
+      "quais_reprovaram": [],
+      "quais_nao_verificados": []
+     }
+    },
+    "malha_estanque": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "fechada": true,
+      "arestas_abertas": 0,
+      "veredito_da_ferramenta": true,
+      "motivos_da_ferramenta": []
+     }
+    },
+    "orientacao_anisotropia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "orientacao_de_impressao": "base plana na mesa",
+      "direcao_da_carga": "compressao vertical",
+      "nota": "confere que a decisao foi DECLARADA, nao que ela esta estruturalmente correta"
+     }
+    },
+    "portao_do_fatiador": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovado": true,
+      "codigo": "0: sucesso",
+      "processo_concluido": true,
+      "saida_gerada": true,
+      "checagens_aprovadas": true,
+      "motivos": []
+     }
+    },
+    "proveniencia_de_cota": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "n_cotas": 8,
+      "sem_rotulo": [],
+      "por_origem": {
+       "MEDIDO": [
+        "altura_maxima",
+        "angulo_do_assento",
+        "comprimento",
+        "diametro_do_furo",
+        "largura"
+       ],
+       "DERIVADO": [
+        "raio_de_alivio"
+       ],
+       "ESTIMADO": [
+        "altura_da_parede_traseira"
+       ],
+       "ESCOLHA": [
+        "espessura_de_parede"
+       ]
+      },
+      "cotas_usadas_na_construcao": [
+       "comprimento",
+       "largura",
+       "altura_maxima",
+       "angulo_do_assento",
+       "diametro_do_furo"
+      ],
+      "registradas_e_nao_usadas": [
+       "altura_da_parede_traseira",
+       "espessura_de_parede",
+       "raio_de_alivio"
+      ],
+      "cotas_sem_valor": [],
+      "diametro_medido_mm": 7.9985,
+      "ok": true
+     }
+    },
+    "zero_nao_manifold": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "arestas_com_mais_de_2_faces": 0,
+      "veredito_da_ferramenta": true,
+      "motivos_da_ferramenta": []
+     }
+    }
+   },
+   "papeis": {
+    "entrada_intacta": "DECISIVA",
+    "envelope_e_particao": "DECISIVA",
+    "folga_calibrada": "DECISIVA",
+    "geometria_nao_vazia": "DECISIVA",
+    "intencao": "DECISIVA",
+    "malha_estanque": "DECISIVA",
+    "orientacao_anisotropia": "DECISIVA",
+    "portao_do_fatiador": "DECISIVA",
+    "proveniencia_de_cota": "DECISIVA",
+    "reabre_em_cad": "NAO_APLICAVEL",
+    "zero_nao_manifold": "DECISIVA"
+   },
+   "informativas": {},
+   "reprovadas_em_papel_informativo": [],
+   "nao_implementadas": [],
+   "nao_implementadas_que_barram": [],
+   "nota_de_papel": "verificacao INFORMATIVA aparece medida e nao barra. Ela NAO e contada como evidencia favoravel: nao entra em reprovadas nem em aprovadas, e o motivo dela fica em informativas.",
+   "reprovadas": [],
+   "ausentes": [],
+   "erros": [],
+   "nao_aplicaveis": [
+    "folga_calibrada"
+   ],
+   "nao_aplicaveis_indevidas": [],
+   "bloqueios": [],
+   "evidencia_completa": true,
+   "resultado_esperado": "aprovado",
+   "resultado_obtido": "aprovado",
+   "resultado_ok": true,
+   "extras": [
+    {
+     "nome": "o assento reconstruido mantem a NORMAL da referencia",
+     "passou": true,
+     "detalhe": {
+      "criterio": "angulo entre as NORMAIS ORIENTADAS da maior regiao inclinada da referencia e da reconstruida. Comparar apenas o angulo com Z+ aceitaria inclinacao invertida e azimute girado.",
+      "normal_na_referencia": [
+       0.292372,
+       0.0,
+       0.956305
+      ],
+      "normal_na_reconstruida": [
+       0.292372,
+       -0.0,
+       0.956305
+      ],
+      "angulo_entre_normais_deg": 0.0,
+      "angulo_na_referencia_deg": 17.0,
+      "angulo_na_reconstruida_deg": 17.0,
+      "erro_deg": 0.0,
+      "tol_deg": 0.5,
+      "angulo_verdadeiro_da_referencia_deg": 17.0,
+      "nota_de_independencia": "o angulo verdadeiro do gerador fica registrado de proposito: se as duas leituras concordarem entre si e discordarem dele, o erro e do extrator, nao da reconstrucao."
+     }
+    },
+    {
+     "nome": "o extrator concorda com o angulo conhecido do gerador",
+     "passou": true,
+     "detalhe": {
+      "gerador_deg": 17.0,
+      "extrator_deg": 17.0,
+      "tol_deg": 0.5,
+      "motivo": "separa a validacao do EXTRATOR da comparacao entre referencia e reconstrucao. Sem isso, duas leituras erradas pelo mesmo metodo concordam entre si."
+     }
+    }
+   ],
+   "extras_ok": true,
+   "PASSOU": true
+  },
+  {
+   "id": "6_simples_e_rapido",
+   "titulo": "projeto simples para visualizacao, sem fatiador e sem pergunta a mais",
+   "classificacao": {
+    "modalidade": "criar",
+    "representacao": "solido",
+    "finalidade": "visualizacao"
+   },
+   "tempo_de_construcao_s": 0.015,
+   "ambiente": {
+    "maquina": "Bambu Lab A1 0.4 nozzle",
+    "processo": "0.20mm Standard @BBL A1",
+    "filamento": "Generic PLA @BBL A1",
+    "envelope": "256x256x256",
+    "sem_fatiador": false
+   },
+   "roteamento": {
+    "exigidas": [
+     "geometria_nao_vazia",
+     "intencao"
+    ],
+    "dispensadas": [
+     "envelope_e_particao",
+     "folga_calibrada",
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "portao_do_fatiador",
+     "reabre_em_cad",
+     "zero_nao_manifold"
+    ],
+    "faltando_no_roteamento": [],
+    "cobrado_indevidamente": [],
+    "ok": true
+   },
+   "verificacoes": {
+    "geometria_nao_vazia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "ok": true,
+      "n_solidos": 1,
+      "volume_mm3": 23871.333
+     }
+    },
+    "intencao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovados": 2,
+      "reprovados": 0,
+      "nao_verificados": 0,
+      "por_estado": {
+       "APROVADA": [
+        "envelope",
+        "corpo_unico"
+       ]
+      },
+      "quais_reprovaram": [],
+      "quais_nao_verificados": []
+     }
+    }
+   },
+   "papeis": {
+    "envelope_e_particao": "NAO_APLICAVEL",
+    "folga_calibrada": "NAO_APLICAVEL",
+    "geometria_nao_vazia": "DECISIVA",
+    "intencao": "DECISIVA",
+    "malha_estanque": "NAO_APLICAVEL",
+    "orientacao_anisotropia": "NAO_APLICAVEL",
+    "portao_do_fatiador": "NAO_APLICAVEL",
+    "reabre_em_cad": "NAO_APLICAVEL",
+    "zero_nao_manifold": "NAO_APLICAVEL"
+   },
+   "informativas": {},
+   "reprovadas_em_papel_informativo": [],
+   "nao_implementadas": [],
+   "nao_implementadas_que_barram": [],
+   "nota_de_papel": "verificacao INFORMATIVA aparece medida e nao barra. Ela NAO e contada como evidencia favoravel: nao entra em reprovadas nem em aprovadas, e o motivo dela fica em informativas.",
+   "reprovadas": [],
+   "ausentes": [],
+   "erros": [],
+   "nao_aplicaveis": [],
+   "nao_aplicaveis_indevidas": [],
+   "bloqueios": [],
+   "evidencia_completa": true,
+   "resultado_esperado": "aprovado",
+   "resultado_obtido": "aprovado",
+   "resultado_ok": true,
+   "extras": [
+    {
+     "nome": "termina abaixo do limite de tempo",
+     "passou": true,
+     "detalhe": {
+      "tempo_de_construcao_s": 0.015,
+      "limite_s": 20.0
+     }
+    },
+    {
+     "nome": "o fatiador NAO foi invocado",
+     "passou": true,
+     "detalhe": {
+      "verificacoes_rodadas": [
+       "geometria_nao_vazia",
+       "intencao"
+      ]
+     }
+    }
+   ],
+   "extras_ok": true,
+   "PASSOU": true
+  },
+  {
+   "id": "7_familia_parametrica",
+   "titulo": "familia parametrica varrida pelo executor real",
+   "classificacao": {
+    "modalidade": "parametrizar",
+    "representacao": "solido",
+    "finalidade": "impressao_fdm"
+   },
+   "tempo_de_construcao_s": 0.021,
+   "ambiente": {
+    "maquina": "Bambu Lab A1 0.4 nozzle",
+    "processo": "0.20mm Standard @BBL A1",
+    "filamento": "Generic PLA @BBL A1",
+    "envelope": "256x256x256",
+    "sem_fatiador": false
+   },
+   "roteamento": {
+    "exigidas": [
+     "envelope_e_particao",
+     "folga_calibrada",
+     "geometria_nao_vazia",
+     "intencao",
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "portao_do_fatiador",
+     "varredura_de_familia",
+     "zero_nao_manifold"
+    ],
+    "dispensadas": [
+     "reabre_em_cad"
+    ],
+    "faltando_no_roteamento": [],
+    "cobrado_indevidamente": [],
+    "ok": true
+   },
+   "verificacoes": {
+    "envelope_e_particao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "cabe_inteira": true,
+      "particao_validada": false,
+      "pecas": [
+       1,
+       1,
+       1
+      ],
+      "veredito": "Cabe inteira nesta orientacao. Nenhum corte necessario."
+     }
+    },
+    "folga_calibrada": {
+     "estado": "NAO_APLICAVEL",
+     "detalhe": {
+      "motivo": "nenhum encaixe declarado nesta peca"
+     }
+    },
+    "geometria_nao_vazia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "ok": true,
+      "n_solidos": 1
+     }
+    },
+    "intencao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovados": 2,
+      "reprovados": 0,
+      "nao_verificados": 0,
+      "por_estado": {
+       "APROVADA": [
+        "envelope",
+        "corpo_unico"
+       ]
+      },
+      "quais_reprovaram": [],
+      "quais_nao_verificados": []
+     }
+    },
+    "malha_estanque": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "fechada": true,
+      "arestas_abertas": 0,
+      "veredito_da_ferramenta": true,
+      "motivos_da_ferramenta": []
+     }
+    },
+    "orientacao_anisotropia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "orientacao_de_impressao": "face maior na mesa",
+      "direcao_da_carga": "flexao no plano da placa",
+      "nota": "confere que a decisao foi DECLARADA, nao que ela esta estruturalmente correta"
+     }
+    },
+    "portao_do_fatiador": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovado": true,
+      "codigo": "0: sucesso",
+      "processo_concluido": true,
+      "saida_gerada": true,
+      "checagens_aprovadas": true,
+      "motivos": []
+     }
+    },
+    "varredura_de_familia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "n_variantes": 6,
+      "n_aprovadas": 6,
+      "n_reprovadas": 0,
+      "n_reprovadas_por_geometria": 0,
+      "n_com_erro_operacional": 0,
+      "erros_operacionais": [],
+      "identidade_conferida": {
+       "modulo": "casos",
+       "funcao": "familia_placa",
+       "grade": "L=70,80,90;d=4,5"
+      }
+     }
+    },
+    "zero_nao_manifold": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "arestas_com_mais_de_2_faces": 0,
+      "veredito_da_ferramenta": true,
+      "motivos_da_ferramenta": []
+     }
+    }
+   },
+   "papeis": {
+    "envelope_e_particao": "DECISIVA",
+    "folga_calibrada": "DECISIVA",
+    "geometria_nao_vazia": "DECISIVA",
+    "intencao": "DECISIVA",
+    "malha_estanque": "DECISIVA",
+    "orientacao_anisotropia": "DECISIVA",
+    "portao_do_fatiador": "DECISIVA",
+    "reabre_em_cad": "NAO_APLICAVEL",
+    "varredura_de_familia": "DECISIVA",
+    "zero_nao_manifold": "DECISIVA"
+   },
+   "informativas": {},
+   "reprovadas_em_papel_informativo": [],
+   "nao_implementadas": [],
+   "nao_implementadas_que_barram": [],
+   "nota_de_papel": "verificacao INFORMATIVA aparece medida e nao barra. Ela NAO e contada como evidencia favoravel: nao entra em reprovadas nem em aprovadas, e o motivo dela fica em informativas.",
+   "reprovadas": [],
+   "ausentes": [],
+   "erros": [],
+   "nao_aplicaveis": [
+    "folga_calibrada"
+   ],
+   "nao_aplicaveis_indevidas": [],
+   "bloqueios": [],
+   "evidencia_completa": true,
+   "resultado_esperado": "aprovado",
+   "resultado_obtido": "aprovado",
+   "resultado_ok": true,
+   "extras": [],
+   "extras_ok": true,
+   "PASSOU": true
+  },
+  {
+   "id": "8_superficie_em_intercambio",
+   "titulo": "superficie aberta entregue como intercambio analitico",
+   "classificacao": {
+    "modalidade": "criar",
+    "representacao": "superficie",
+    "finalidade": "intercambio"
+   },
+   "tempo_de_construcao_s": 0.009,
+   "ambiente": {
+    "maquina": "Bambu Lab A1 0.4 nozzle",
+    "processo": "0.20mm Standard @BBL A1",
+    "filamento": "Generic PLA @BBL A1",
+    "envelope": "256x256x256",
+    "sem_fatiador": false
+   },
+   "roteamento": {
+    "exigidas": [
+     "geometria_nao_vazia",
+     "intencao",
+     "reabre_em_cad"
+    ],
+    "dispensadas": [
+     "envelope_e_particao",
+     "folga_calibrada",
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "portao_do_fatiador",
+     "zero_nao_manifold"
+    ],
+    "faltando_no_roteamento": [],
+    "cobrado_indevidamente": [],
+    "ok": true
+   },
+   "verificacoes": {
+    "geometria_nao_vazia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "ok": true,
+      "n_facetas": 168,
+      "area_mm2": 5025.38
+     }
+    },
+    "intencao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovados": 1,
+      "reprovados": 0,
+      "nao_verificados": 0,
+      "por_estado": {
+       "APROVADA": [
+        "envelope"
+       ]
+      },
+      "quais_reprovaram": [],
+      "quais_nao_verificados": []
+     }
+    },
+    "reabre_em_cad": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "arquivo": "c8_casca.step",
+      "representacao": "superficie",
+      "solidos": 0,
+      "faces": 1,
+      "shells": 1,
+      "bytes": 5827,
+      "faces_esperadas": 1,
+      "nota": "superficie: o contrato e presenca de faces, nao de solidos. Contar zero solidos NAO seria evidencia de que a casca existe."
+     }
+    }
+   },
+   "papeis": {
+    "envelope_e_particao": "NAO_APLICAVEL",
+    "folga_calibrada": "NAO_APLICAVEL",
+    "geometria_nao_vazia": "DECISIVA",
+    "intencao": "DECISIVA",
+    "malha_estanque": "NAO_APLICAVEL",
+    "orientacao_anisotropia": "NAO_APLICAVEL",
+    "portao_do_fatiador": "NAO_APLICAVEL",
+    "reabre_em_cad": "DECISIVA",
+    "zero_nao_manifold": "NAO_APLICAVEL"
+   },
+   "informativas": {},
+   "reprovadas_em_papel_informativo": [],
+   "nao_implementadas": [],
+   "nao_implementadas_que_barram": [],
+   "nota_de_papel": "verificacao INFORMATIVA aparece medida e nao barra. Ela NAO e contada como evidencia favoravel: nao entra em reprovadas nem em aprovadas, e o motivo dela fica em informativas.",
+   "reprovadas": [],
+   "ausentes": [],
+   "erros": [],
+   "nao_aplicaveis": [],
+   "nao_aplicaveis_indevidas": [],
+   "bloqueios": [],
+   "evidencia_completa": true,
+   "resultado_esperado": "aprovado",
+   "resultado_obtido": "aprovado",
+   "resultado_ok": true,
+   "extras": [
+    {
+     "nome": "a malha NAO e fechada e o caso passa mesmo assim",
+     "passou": true,
+     "detalhe": {
+      "fechada_watertight": false
+     }
+    },
+    {
+     "nome": "o fatiador NAO foi invocado",
+     "passou": true,
+     "detalhe": {
+      "verificacoes_rodadas": [
+       "geometria_nao_vazia",
+       "intencao",
+       "reabre_em_cad"
+      ]
+     }
+    }
+   ],
+   "extras_ok": true,
+   "PASSOU": true
+  },
+  {
+   "id": "9_montagem_parametrica",
+   "titulo": "familia parametrica de montagem com dois corpos",
+   "classificacao": {
+    "modalidade": "parametrizar",
+    "representacao": "montagem",
+    "finalidade": "montagem"
+   },
+   "tempo_de_construcao_s": 0.03,
+   "ambiente": {
+    "maquina": "Bambu Lab A1 0.4 nozzle",
+    "processo": "0.20mm Standard @BBL A1",
+    "filamento": "Generic PLA @BBL A1",
+    "envelope": "256x256x256",
+    "sem_fatiador": false
+   },
+   "roteamento": {
+    "exigidas": [
+     "folga_calibrada",
+     "geometria_nao_vazia",
+     "intencao",
+     "interferencia",
+     "n_corpos_esperado",
+     "reabre_em_cad",
+     "varredura_de_familia"
+    ],
+    "dispensadas": [
+     "envelope_e_particao",
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "portao_do_fatiador",
+     "zero_nao_manifold"
+    ],
+    "faltando_no_roteamento": [],
+    "cobrado_indevidamente": [],
+    "ok": true
+   },
+   "verificacoes": {
+    "folga_calibrada": {
+     "estado": "REPROVADA",
+     "detalhe": {
+      "aplicavel": false,
+      "valor_a_usar_mm": null,
+      "origem": "NAO EXISTE medicao para este contexto",
+      "bloqueio": "Ha pendencia dimensional aberta no registro de calibracao, logo NENHUMA folga medida e aplicavel a projeto agora, nem as definitivas. Feche a pendencia e remeca, ou registre a medida com --estado provisoria e trate a folga do projeto como suposicao declarada.",
+      "faixa_publicada_mm": [
+       0.2,
+       0.25
+      ]
+     }
+    },
+    "geometria_nao_vazia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "ok": true,
+      "n_solidos": 2
+     }
+    },
+    "intencao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovados": 2,
+      "reprovados": 0,
+      "nao_verificados": 0,
+      "por_estado": {
+       "APROVADA": [
+        "dois_corpos",
+        "sem_interferencia"
+       ]
+      },
+      "quais_reprovaram": [],
+      "quais_nao_verificados": []
+     }
+    },
+    "interferencia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "obrigacao": "interferencia",
+      "tipos_que_satisfazem": [
+       "interferencia"
+      ],
+      "requisitos_desse_tipo": {
+       "sem_interferencia#1": {
+        "id": "sem_interferencia",
+        "tipo": "interferencia",
+        "estado": "APROVADA"
+       }
+      },
+      "nota": "a obrigacao exige pelo menos um requisito deste tipo, medido e aprovado. Ausencia de requisito NAO e aprovacao."
+     }
+    },
+    "n_corpos_esperado": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "obrigacao": "n_corpos_esperado",
+      "tipos_que_satisfazem": [
+       "n_solidos"
+      ],
+      "requisitos_desse_tipo": {
+       "dois_corpos#0": {
+        "id": "dois_corpos",
+        "tipo": "n_solidos",
+        "estado": "APROVADA"
+       }
+      },
+      "nota": "a obrigacao exige pelo menos um requisito deste tipo, medido e aprovado. Ausencia de requisito NAO e aprovacao."
+     }
+    },
+    "reabre_em_cad": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "arquivo": "c9_montagem.step",
+      "representacao": "montagem",
+      "solidos": 2,
+      "faces": 7,
+      "shells": 2,
+      "bytes": 16531,
+      "solidos_esperados": 2
+     }
+    },
+    "varredura_de_familia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "n_variantes": 2,
+      "n_aprovadas": 2,
+      "n_reprovadas": 0,
+      "n_reprovadas_por_geometria": 0,
+      "n_com_erro_operacional": 0,
+      "erros_operacionais": [],
+      "identidade_conferida": {
+       "modulo": "casos",
+       "funcao": "familia_montagem",
+       "grade": "folga=0.2,0.3"
+      }
+     }
+    }
+   },
+   "papeis": {
+    "envelope_e_particao": "NAO_APLICAVEL",
+    "folga_calibrada": "DECISIVA",
+    "geometria_nao_vazia": "DECISIVA",
+    "intencao": "DECISIVA",
+    "interferencia": "DECISIVA",
+    "malha_estanque": "NAO_APLICAVEL",
+    "n_corpos_esperado": "DECISIVA",
+    "orientacao_anisotropia": "NAO_APLICAVEL",
+    "portao_do_fatiador": "NAO_APLICAVEL",
+    "reabre_em_cad": "DECISIVA",
+    "varredura_de_familia": "DECISIVA",
+    "zero_nao_manifold": "NAO_APLICAVEL"
+   },
+   "informativas": {},
+   "reprovadas_em_papel_informativo": [],
+   "nao_implementadas": [],
+   "nao_implementadas_que_barram": [],
+   "nota_de_papel": "verificacao INFORMATIVA aparece medida e nao barra. Ela NAO e contada como evidencia favoravel: nao entra em reprovadas nem em aprovadas, e o motivo dela fica em informativas.",
+   "reprovadas": [
+    "folga_calibrada"
+   ],
+   "ausentes": [],
+   "erros": [],
+   "nao_aplicaveis": [],
+   "nao_aplicaveis_indevidas": [],
+   "bloqueios": [],
+   "evidencia_completa": true,
+   "resultado_esperado": "barrado_na_folga",
+   "resultado_obtido": "barrado_na_folga",
+   "resultado_ok": true,
+   "extras": [
+    {
+     "nome": "o fatiador NAO foi invocado",
+     "passou": true,
+     "detalhe": {
+      "verificacoes_rodadas": [
+       "folga_calibrada",
+       "geometria_nao_vazia",
+       "intencao",
+       "interferencia",
+       "n_corpos_esperado",
+       "reabre_em_cad",
+       "varredura_de_familia"
+      ]
+     }
+    }
+   ],
+   "extras_ok": true,
+   "PASSOU": true
+  },
+  {
+   "id": "10_superficie_parametrica",
+   "titulo": "familia parametrica de superficie aberta, para visualizacao",
+   "classificacao": {
+    "modalidade": "parametrizar",
+    "representacao": "superficie",
+    "finalidade": "visualizacao"
+   },
+   "tempo_de_construcao_s": 0.006,
+   "ambiente": {
+    "maquina": "Bambu Lab A1 0.4 nozzle",
+    "processo": "0.20mm Standard @BBL A1",
+    "filamento": "Generic PLA @BBL A1",
+    "envelope": "256x256x256",
+    "sem_fatiador": false
+   },
+   "roteamento": {
+    "exigidas": [
+     "geometria_nao_vazia",
+     "intencao",
+     "topologia",
+     "varredura_de_familia"
+    ],
+    "dispensadas": [
+     "envelope_e_particao",
+     "folga_calibrada",
+     "malha_estanque",
+     "orientacao_anisotropia",
+     "portao_do_fatiador",
+     "reabre_em_cad",
+     "zero_nao_manifold"
+    ],
+    "faltando_no_roteamento": [],
+    "cobrado_indevidamente": [],
+    "ok": true
+   },
+   "verificacoes": {
+    "geometria_nao_vazia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "ok": true,
+      "n_facetas": 168,
+      "area_mm2": 5025.38
+     }
+    },
+    "intencao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovados": 1,
+      "reprovados": 0,
+      "nao_verificados": 0,
+      "por_estado": {
+       "APROVADA": [
+        "envelope"
+       ]
+      },
+      "quais_reprovaram": [],
+      "quais_nao_verificados": []
+     }
+    },
+    "topologia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "declarado": {
+       "borda": "obrigatoria",
+       "orientacao": "indiferente",
+       "componentes": "indiferente",
+       "estanqueidade": "nao_se_aplica"
+      },
+      "medido": {
+       "arestas_abertas": 168,
+       "orientacao_consistente": true,
+       "n_componentes_conexos": 1,
+       "fechada_watertight": false
+      },
+      "estado_por_requisito": {
+       "borda": "APROVADA",
+       "orientacao": "NAO_APLICAVEL",
+       "componentes": "NAO_APLICAVEL",
+       "estanqueidade": "NAO_APLICAVEL"
+      },
+      "motivos": [],
+      "requisitos_sem_medida": []
+     }
+    },
+    "varredura_de_familia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "n_variantes": 4,
+      "n_aprovadas": 4,
+      "n_reprovadas": 0,
+      "n_reprovadas_por_geometria": 0,
+      "n_com_erro_operacional": 0,
+      "erros_operacionais": [],
+      "identidade_conferida": {
+       "modulo": "casos",
+       "funcao": "familia_casca",
+       "grade": "R=15,20;H=30,40"
+      }
+     }
+    }
+   },
+   "papeis": {
+    "envelope_e_particao": "NAO_APLICAVEL",
+    "folga_calibrada": "NAO_APLICAVEL",
+    "geometria_nao_vazia": "DECISIVA",
+    "intencao": "DECISIVA",
+    "malha_estanque": "NAO_APLICAVEL",
+    "orientacao_anisotropia": "NAO_APLICAVEL",
+    "portao_do_fatiador": "NAO_APLICAVEL",
+    "reabre_em_cad": "NAO_APLICAVEL",
+    "topologia": "DECISIVA",
+    "varredura_de_familia": "DECISIVA",
+    "zero_nao_manifold": "NAO_APLICAVEL"
+   },
+   "informativas": {},
+   "reprovadas_em_papel_informativo": [],
+   "nao_implementadas": [],
+   "nao_implementadas_que_barram": [],
+   "nota_de_papel": "verificacao INFORMATIVA aparece medida e nao barra. Ela NAO e contada como evidencia favoravel: nao entra em reprovadas nem em aprovadas, e o motivo dela fica em informativas.",
+   "reprovadas": [],
+   "ausentes": [],
+   "erros": [],
+   "nao_aplicaveis": [],
+   "nao_aplicaveis_indevidas": [],
+   "bloqueios": [],
+   "evidencia_completa": true,
+   "resultado_esperado": "aprovado",
+   "resultado_obtido": "aprovado",
+   "resultado_ok": true,
+   "extras": [
+    {
+     "nome": "a malha NAO e fechada e o caso passa mesmo assim",
+     "passou": true,
+     "detalhe": {
+      "fechada_watertight": false
+     }
+    },
+    {
+     "nome": "o fatiador NAO foi invocado",
+     "passou": true,
+     "detalhe": {
+      "verificacoes_rodadas": [
+       "geometria_nao_vazia",
+       "intencao",
+       "topologia",
+       "varredura_de_familia"
+      ]
+     }
+    }
+   ],
+   "extras_ok": true,
+   "PASSOU": true
+  },
+  {
+   "id": "11_casca_fechada_sem_solido",
+   "titulo": "casca fechada sem solido, com borda proibida",
+   "classificacao": {
+    "modalidade": "criar",
+    "representacao": "superficie",
+    "finalidade": "visualizacao"
+   },
+   "tempo_de_construcao_s": 0.007,
+   "ambiente": {
+    "maquina": "Bambu Lab A1 0.4 nozzle",
+    "processo": "0.20mm Standard @BBL A1",
+    "filamento": "Generic PLA @BBL A1",
+    "envelope": "256x256x256",
+    "sem_fatiador": false
+   },
+   "roteamento": {
+    "exigidas": [
+     "geometria_nao_vazia",
+     "intencao",
+     "malha_estanque",
+     "topologia"
+    ],
+    "dispensadas": [
+     "envelope_e_particao",
+     "folga_calibrada",
+     "orientacao_anisotropia",
+     "portao_do_fatiador",
+     "reabre_em_cad",
+     "zero_nao_manifold"
+    ],
+    "faltando_no_roteamento": [],
+    "cobrado_indevidamente": [],
+    "ok": true
+   },
+   "verificacoes": {
+    "geometria_nao_vazia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "ok": true,
+      "n_facetas": 12,
+      "area_mm2": 2200.0
+     }
+    },
+    "intencao": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "aprovados": 1,
+      "reprovados": 0,
+      "nao_verificados": 0,
+      "por_estado": {
+       "APROVADA": [
+        "envelope"
+       ]
+      },
+      "quais_reprovaram": [],
+      "quais_nao_verificados": []
+     }
+    },
+    "malha_estanque": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "fechada": true,
+      "arestas_abertas": 0,
+      "veredito_da_ferramenta": true,
+      "motivos_da_ferramenta": []
+     }
+    },
+    "topologia": {
+     "estado": "APROVADA",
+     "detalhe": {
+      "declarado": {
+       "borda": "proibida",
+       "orientacao": "exigida",
+       "componentes": 1,
+       "estanqueidade": "exigida"
+      },
+      "medido": {
+       "arestas_abertas": 0,
+       "orientacao_consistente": true,
+       "n_componentes_conexos": 1,
+       "fechada_watertight": true
+      },
+      "estado_por_requisito": {
+       "borda": "APROVADA",
+       "orientacao": "APROVADA",
+       "componentes": "APROVADA",
+       "estanqueidade": "APROVADA"
+      },
+      "motivos": [],
+      "requisitos_sem_medida": []
+     }
+    }
+   },
+   "papeis": {
+    "envelope_e_particao": "NAO_APLICAVEL",
+    "folga_calibrada": "NAO_APLICAVEL",
+    "geometria_nao_vazia": "DECISIVA",
+    "intencao": "DECISIVA",
+    "malha_estanque": "DECISIVA",
+    "orientacao_anisotropia": "NAO_APLICAVEL",
+    "portao_do_fatiador": "NAO_APLICAVEL",
+    "reabre_em_cad": "NAO_APLICAVEL",
+    "topologia": "DECISIVA",
+    "zero_nao_manifold": "NAO_APLICAVEL"
+   },
+   "informativas": {},
+   "reprovadas_em_papel_informativo": [],
+   "nao_implementadas": [],
+   "nao_implementadas_que_barram": [],
+   "nota_de_papel": "verificacao INFORMATIVA aparece medida e nao barra. Ela NAO e contada como evidencia favoravel: nao entra em reprovadas nem em aprovadas, e o motivo dela fica em informativas.",
+   "reprovadas": [],
+   "ausentes": [],
+   "erros": [],
+   "nao_aplicaveis": [],
+   "nao_aplicaveis_indevidas": [],
+   "bloqueios": [],
+   "evidencia_completa": true,
+   "resultado_esperado": "aprovado",
+   "resultado_obtido": "aprovado",
+   "resultado_ok": true,
+   "extras": [
+    {
+     "nome": "a malha E fechada, como a topologia declarada exige, e o caso passa",
+     "passou": true,
+     "detalhe": {
+      "fechada_watertight": true,
+      "n_solidos": 0
+     }
+    },
+    {
+     "nome": "o fatiador NAO foi invocado",
+     "passou": true,
+     "detalhe": {
+      "verificacoes_rodadas": [
+       "geometria_nao_vazia",
+       "intencao",
+       "malha_estanque",
+       "topologia"
+      ]
+     }
+    }
+   ],
+   "extras_ok": true,
+   "PASSOU": true
+  }
+ ],
+ "veredito": "Todos os casos executados passaram.",
+ "aviso": "Passar aqui significa que o roteamento e as verificacoes se comportam como o desenho declara, NESTE ambiente. Nao significa que qualquer peca de qualquer tipo vai sair correta. Com --sem-fatiador a suite fica incompleta de proposito e os casos de impressao reprovam por falta de evidencia, o que e o comportamento correto."
+}
