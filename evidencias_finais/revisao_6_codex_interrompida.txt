@@ -1,0 +1,868 @@
+6c5549990fa78237c03150017b575aa5cf15ee60c8573cd20327abba307ca0e4",
+  22:   "scripts/roda_blender.py": "ce4203e495bab1898e9de3f2d324ae556a567bd7180f7a9c297426d3e3821241",
+  23:   "scripts/testa_paridade_validador.py": "6d3cdc8c4da786783abed9639fbfa8c97c9538af548934ff115c046ec37ad49b",
+  24:   "scripts/valida_requisitos.py": "ba5de3a65cd7ec2c50b0b1d27ccf86a1d1be42b7dace65be9f1641b2fffee1cd",
+  25:   "verificadores/PROVENIENCIA.json": "05597535abc70a5abbd1339fb2fc425c9448a937d0ad9698bfc53e323f35fad1",
+  26:   "verificadores/check_intent.py": "4f54003797a947e7ec854fcc9b66cd81350af61c910d97739193c0a30226b1b7",
+  27:   "verificadores/check_mesh.py": "4ddcbf1e6670d85017daa746559960005ee53be571130a42b93b5d3c9ab1da8d",
+  28:   "verificadores/matriz.py": "d3c9e740d42de945ccc0688c3e09933de0588b838d5d7b4ca28b51c3d0a3b712",
+  29:   "verificadores/secoes.py": "721d250b67f4fea47af7e86a28e87e8143ae81102228f3d6cd419c3a5813bf92",
+  30:   "verificadores/sweep_params.py": "584015bd4b3750fa5f6f1ec0f1c5303ec3e20dd2847ec2ffa936d07d3020fce7"
+  31:  }
+  32: }
+   1: {
+   2:  "sha256_do_pacote": "8a4182c24ee3c9046a8f0e41d05e4b7db88985ecfa5783eadced7ce78b6859ae",
+   3:  "n_arquivos": 24,
+   4:  "versao_do_pacote": "2.1.0",
+   5:  "versao_de_bl_ferramentas": "1.5.0",
+   6:  "pacote_medido": "C:\\Users\\marce\\AppData\\Local\\Temp\\pacote_intocado_21",
+   7:  "como": "sha256 sobre a sequencia ordenada de (caminho relativo, NUL, sha256 do conteudo) de todos os arquivos do pacote extraido",
+   8:  "medido_em": "pacote recem-montado e NUNCA executado, FORA da raiz do ensaio isolado",
+   9:  "por_que_fora_da_raiz": "o ensaio de ambiente isolado apaga a raiz dele inteira ao comecar, e uma medicao anterior perdeu a pasta por estar dentro dela: o hash saiu sobre 0 arquivos",
+  10:  "por_que_intocado": "rodar qualquer script de dentro do pacote cria __pycache__ e o hash passaria a incluir arquivos que nao fazem parte da entrega",
+  11:  "arquivos": [
+  12:   "INVENTARIO.json",
+  13:   "SKILL.md",
+  14:   "cenarios/ensaio_preenchimento.py",
+  15:   "cenarios/familia_exemplo.py",
+  16:   "cenarios/gera_cenario.py",
+  17:   "referencias/criar_e_parametrizar.md",
+  18:   "referencias/editar_localizado.md",
+  19:   "referencias/inspecionar_e_selecionar.md",
+  20:   "referencias/mapa_de_ferramentas.md",
+  21:   "referencias/recuperar_salvar_exportar.md",
+  22:   "referencias/registro_de_trabalho.md",
+  23:   "referencias/verificar.md",
+  24:   "scripts/bl_ferramentas.py",
+  25:   "scripts/extrai_tolerancias.py",
+  26:   "scripts/mcp_blender.py",
+  27:   "scripts/roda_blender.py",
+  28:   "scripts/testa_paridade_validador.py",
+  29:   "scripts/valida_requisitos.py",
+  30:   "verificadores/PROVENIENCIA.json",
+  31:   "verificadores/check_intent.py",
+  32:   "verificadores/check_mesh.py",
+  33:   "verificadores/matriz.py",
+  34:   "verificadores/secoes.py",
+  35:   "verificadores/sweep_params.py"
+  36:  ]
+  37: }
+   1: {
+   2:  "origem": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\produto",
+   3:  "n_permitidos": 24,
+   4:  "faltando_na_origem": [],
+   5:  "na_origem_e_fora_da_lista": [],
+   6:  "n_padroes": 5,
+   7:  "erro_de_padroes": null,
+   8:  "controle_da_varredura": {
+   9:   "varredura_funciona": true,
+  10:   "padroes_que_casaram": 1,
+  11:   "nota": "semente de controle fica FORA do pacote"
+  12:  },
+  13:  "achados_de_vazamento": [],
+  14:  "negados_declarados": [
+  15:   "__pycache__",
+  16:   ".pyc",
+  17:   "padroes_de_vazamento.json",
+  18:   "M0_RESULTADO.md",
+  19:   "M1_RESULTADO.md",
+  20:   "M2_RESULTADO.md",
+  21:   "M3_RESULTADO.md",
+  22:   "PLANO_IMPLEMENTACAO_PLUGIN.md",
+  23:   "DESENHO_PLUGIN.md",
+  24:   "DESENHO.md",
+  25:   "REFERENCIA_BLENDER_EDICAO_GUIADA.md",
+  26:   "REVISAO_M1_CONTEXTO.md",
+  27:   "LACUNAS_PARA_M2.md",
+  28:   "PENDENCIAS_PRODUTO.md",
+  29:   "base_congelada",
+  30:   "base_pos_m0",
+  31:   "evidencias_m1",
+  32:   "evidencias_finais",
+  33:   "cenas_de_teste",
+  34:   "prototipo"
+  35:  ],
+  36:  "autorizacao_de_publicacao": "NAO EMITIDA por esta ferramenta",
+  37:  "limite": "a varredura prova ausencia dos padroes TESTADOS na cobertura testada. Nao prova ausencia de qualquer dado privado, e nao substitui revisao manual dos recursos novos.",
+  38:  "pacote_limpo": true,
+  39:  "resolucao_do_manifesto": {
+  40:   "versao_do_pacote": "2.1.0",
+  41:   "n_declarados": 23,
+  42:   "nao_resolvem": [],
+  43:   "hash_divergente": [],
+  44:   "resolve": true
+  45:  },
+  46:  "auditoria_do_destino": {
+  47:   "arquivos_no_destino": [
+  48:    "INVENTARIO.json",
+  49:    "SKILL.md",
+  50:    "cenarios/ensaio_preenchimento.py",
+
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\produto\\referencias\\mapa_de_ferramentas.md';"'$l=Get-Content $p;for($i=260;$i -le 320;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; $p='"'.\\DEPENDENCIAS_E_LICENCAS.md';"'$l=Get-Content $p;for($i=1;$i -le 120;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}' in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+ succeeded in 110ms:
+ 260: bateria cega de 14 valores ruins em cada campo de cada tipo, e 23 casos especiais
+ 261: vindos de achados concretos. Ele separa `FALHA_PERMISSIVO` (o verificador recusa e o
+ 262: validador diz OK — o lado que engana pior) de `FALHA_ESTRITO`. Existe porque a versão
+ 263: anterior do validador **anunciava** espelhar o esquema e não espelhava, e "eu conferi o
+ 264: fonte tipo por tipo" não é prova de paridade.
+ 265: 
+ 266: ## Verificadores reaproveitados, fora do Blender
+ 267: 
+ 268: Estes são os verificadores estabilizados em M0 e **acompanham o pacote**, em
+ 269: `verificadores/`, como cópias **byte a byte** da base congelada — `PROVENIENCIA.json`
+ 270: traz os hashes. **Não reescreva os resultados nem a agregação deles**, e não os edite
+ 271: ali: o comportamento foi estabilizado com teste, e mudar aqui alteraria resultado sem
+ 272: prova.
+ 273: 
+ 274: Eles precisam, no Python do hospedeiro: `trimesh`, `numpy`, `manifold3d`, `shapely` e,
+ 275: para a varredura, `build123d`. `matriz.py` roda só com a biblioteca padrão.
+ 276: 
+ 277: Eles preservam a distinção entre falha operacional, requisito reprovado, não
+ 278: implementado, não aplicável e indeterminado, e os papéis decisivo e informativo.
+ 279: 
+ 280: ### Incluídos no pacote, em `verificadores/`
+ 281: 
+ 282: | Ferramenta | O que responde | Chamada |
+ 283: |---|---|---|
+ 284: | `check_mesh.py` | malha apta a booleana e a export fechado; contagens topológicas e componentes | `python verificadores/check_mesh.py --malha peca.stl` |
+ 285: | `check_intent.py` | a geometria atende aos **requisitos declarados** | `python verificadores/check_intent.py --malha peca.stl --requisitos req.json` — `--malha` é **obrigatório**; formato do arquivo em `verificar.md` |
+ 286: | `secoes.py` | seção de malha em polígonos 2D | importado por `check_intent.py` |
+ 287: | `sweep_params.py` | varredura de família paramétrica por três portões | precisa do diretório do módulo no caminho de importação. PowerShell: `$env:PYTHONPATH = "cenarios"` e depois `python verificadores/sweep_params.py --modulo familia_exemplo --funcao familia_placa --grade "L=70,80;d=4,5" --json r.json`. Em bash, o prefixo `PYTHONPATH=cenarios` na mesma linha |
+ 288: | `matriz.py` | **o que** verificar, a partir da classificação | `python verificadores/matriz.py criar superficie visualizacao '{"borda":"proibida"}'` — vocabulário fechado; a finalidade de impressão é `impressao_fdm`, não `impressao` |
+ 289: 
+ 290: ### NÃO incluídos neste pacote
+ 291: 
+ 292: Existem no acervo do projeto e **não acompanham esta entrega**, porque nenhuma rota
+ 293: daqui os chama. Se um pedido precisar deles, diga que estão fora do pacote em vez de
+ 294: improvisar substituto.
+ 295: 
+ 296: | Ferramenta | O que faria | Por que ficou fora |
+ 297: |---|---|---|
+ 298: | `find_datums.py` | regiões planas coplanares conexas | nenhuma rota atual usa |
+ 299: | `align_rigid.py` | transformação rígida entre referências | rota de reconstrução, fora do escopo |
+ 300: | `split_for_volume.py` | orientação e planos de corte contra envelope | rota de impressão, fora do escopo |
+ 301: | `slice_check.py` | portão de fatiador, envelope e área de mesa | exige fatiador instalado, que este pacote não pressupõe |
+ 302: | `tolerance_lookup.py` | consulta de folga, que **recusa inventar** | a folga é `A_CALIBRAR`; sem dado medido não há o que consultar |
+ 303: 
+ 304: ## O que NÃO existe — não substitua por improviso
+ 305: 
+ 306: | Capacidade | Estado |
+ 307: |---|---|
+ 308: | folga de encaixe calibrada | **A_CALIBRAR**: não há valor medido. `tolerance_lookup.py` devolve pendência de propósito |
+ 309: | parede mínima | sem medidor |
+ 310: | folga entre peças | sem medidor |
+ 311: | silhueta contra imagem | sem medidor |
+ 312: | reconstrução de CAD a partir de malha | fora do escopo |
+ 313: | seleção por imagem | fora do escopo |
+ 314: | geometria de junta para peça dividida | sem medidor |
+ 315: | detectar declaração inconsistente com a geometria | sem medidor |
+ 316: | preenchimento em superfície curva ou com mais de dois limites | fora do domínio da receita; ela **recusa** e diz isso |
+ 317: | preenchimento em objeto girado | fora do domínio; MEDIDO: a receita recusa com as alternativas |
+ 318: 
+ 319: Requisito declarado sem medidor sai como `NAO_IMPLEMENTADA`, que **barra** quando o
+ 320: papel é decisivo e **não barra** quando é informativo. Em nenhum dos dois casos se
+   1: # Dependências, versões e licenças
+   2: 
+   3: Levantado em 08/09/2026, das versões **efetivamente instaladas** nesta máquina, por
+   4: `importlib.metadata`. Não é lista de intenção: é o que rodou.
+   5: 
+   6: ## O que o pacote redistribui
+   7: 
+   8: **Somente código do autor.** Os quatro auxiliares em `produto/scripts/`, os geradores
+   9: e ensaios em `produto/cenarios/`, as referências em `produto/referencias/`, e as cinco
+  10: cópias byte a byte dos verificadores estabilizados em M0, em `produto/verificadores/`,
+  11: que também são código do autor.
+  12: 
+  13: Nenhuma biblioteca de terceiros é incluída. Elas são **dependências declaradas**, que
+  14: o usuário instala. Usar uma ferramenta não é motivo para redistribuir o código dela.
+  15: 
+  16: ## Dependências do Python do hospedeiro
+  17: 
+  18: | Pacote | Versão medida | Licença | Quem precisa |
+  19: |---|---|---|---|
+  20: | `trimesh` | 5.0.0 | MIT | `check_mesh.py`, `check_intent.py`, `secoes.py`, `sweep_params.py` |
+  21: | `numpy` | 2.2.6 | BSD 3-Clause | os mesmos |
+  22: | `manifold3d` | 3.5.2 | Apache-2.0 | `check_mesh.py`, `check_intent.py` |
+  23: | `shapely` | 2.1.2 | BSD 3-Clause | `secoes.py` |
+  24: | `build123d` | 0.11.1 | Apache-2.0 | `sweep_params.py`, `cenarios/familia_exemplo.py` |
+  25: | `cadquery-ocp-novtk` | 7.9.3.1.1 | Apache-2.0 | vem com `build123d`; é o kernel geométrico |
+  26: | `lib3mf` | 2.5.0 | BSD | escritor de 3MF, usado pelo terceiro portão da varredura |
+  27: | `scipy` | 1.16.3 | BSD 3-Clause | dependência transitiva |
+  28: 
+  29: **Ausentes, e nunca exigidas:** `rtree`, `matplotlib`, `fast_simplification`. Se algo
+  30: parecer precisar delas, é defeito da receita.
+  31: 
+  32: ## Sete são pedidas; a oitava é transitiva. Instalar traz 48 pacotes
+  33: 
+  34: **A classificação da tabela acima estava errada, e a quinta revisão apontou.** O
+  35: comando medido pede **sete**: `trimesh`, `numpy`, `manifold3d`, `shapely`,
+  36: `build123d`, `lib3mf` e `scipy`. `cadquery-ocp-novtk` **não** está no comando — ela
+  37: entra por transitividade do `build123d`, que é exatamente o que a coluna "quem
+  38: precisa" já dizia dela, e ainda assim ela foi contada entre as diretas.
+  39: 
+  40: Isto foi medido, não estimado, e a versão anterior deste documento omitia: num `venv`
+  41: criado do zero, `pip install` das **sete** pedidas instala **48 pacotes**. A lista
+  42: completa, com versão de cada um, está em `evidencias_finais/AMBIENTE_ISOLADO.json`,
+  43: campo `dependencias.instalados_pelo_ensaio` — junto do `pip list` de antes, que traz
+  44: só `pip 24.3.1`, o que é o que torna a diferença conferível.
+  45: 
+  46: Os outros **41** vêm por transitividade, a maioria de `build123d` — incluindo
+  47: `cadquery-ocp-novtk` e `cadquery-ocp-proxy`:
+  48: 
+  49: `anytree` 2.13.0, `asttokens` 3.0.2, `cadquery-ocp-proxy` 7.9.3.1.1, `certifi` 2026.7.22, `charset-normalizer` 3.5.1, `cloudpickle` 3.1.2, `colorama` 0.4.6, `executing` 2.2.1, `ezdxf` 1.4.4, `fonttools` 4.64.0, `idna` 3.19, `ipython` 9.17.1, `ipython_pygments_lexers` 1.1.1, `jedi` 0.20.0, `joblib` 1.6.0, `matplotlib-inline` 0.2.2, `mpmath` 1.3.0, `narwhals` 2.25.0, `ocp_gordon` 0.2.2, `ocpsvg` 0.6.0, `parso` 0.8.7, `prompt_toolkit` 3.0.53, `psutil` 7.2.2, `pure_eval` 0.2.3, `pygments` 2.21.0, `pyparsing` 3.3.2, `requests` 2.34.2, `scikit-learn` 1.9.0, `stack-data` 0.6.3, `svgelements` 1.9.6, `svgpathtools` 1.8.0, `svgwrite` 1.4.3, `sympy` 1.14.0, `threadpoolctl` 3.6.0, `traitlets` 5.16.1, `trianglesolver` 1.2, `typing_extensions` 4.16.0, `urllib3` 2.7.0, `wcwidth` 0.8.3, `webcolors` 24.8.0
+  50: 
+  51: **Limite declarado, e ele importa:** a licença foi identificada **uma a uma** apenas
+  52: para as oito da tabela. Para as outras 40 eu tenho versão medida e **não**
+  53: tenho verificação individual de licença. Isso não afeta o que o pacote redistribui —
+  54: que continua sendo somente código do autor, nenhum binário e nenhuma biblioteca — mas
+  55: afeta o que um operador instala na máquina dele, e por isso está escrito aqui em vez
+  56: de ficar implícito num "oito dependências".
+  57: 
+  58: A conferência que sustenta este parágrafo saiu do próprio instrumento depois de ele
+  59: ser corrigido: a primeira versão gravava a lista de pacotes **truncada** em 1500
+  60: caracteres, o JSON não carregava, e a comparação respondia "0 instalados" sobre lista
+  61: nenhuma — o mesmo defeito da auditoria que extraiu zero padrões e reportou zero
+  62: achados.
+  63: 
+  64: `matriz.py` e `scripts/roda_blender.py`, `scripts/mcp_blender.py` e
+  65: `scripts/valida_requisitos.py` rodam **só com a biblioteca padrão**. É por isso que a
+  66: rota independente continua útil sem Blender e sem as bibliotecas de malha.
+  67: 
+  68: ## Dependência externa: Blender
+  69: 
+  70: | | |
+  71: |---|---|
+  72: | Versão medida | **5.2.1 LTS**, Python interno 3.13.13 |
+  73: | Instalação medida | Microsoft Store |
+  74: | Licença do Blender | **GPL** |
+  75: | Redistribuído? | **Não.** É pré-requisito que o usuário instala |
+  76: | Complemento MCP | comunitário, instalado pelo usuário; **não** redistribuído |
+  77: 
+  78: ## Uma questão de licença que é decisão do autor, não minha
+  79: 
+  80: `produto/scripts/bl_ferramentas.py` e os arquivos de `produto/cenarios/` **importam
+  81: `bpy`** e rodam **dentro** do processo do Blender.
+  82: 
+  83: O fato relevante: a Blender Foundation sustenta publicamente que script que usa a API
+  84: Python do Blender é obra derivada do Blender e, ao ser **distribuído**, precisa ser
+  85: compatível com GPL. Essa é a posição deles; não é consenso universal e há discussão
+  86: sobre onde termina a fronteira entre uso e derivação.
+  87: 
+  88: **Não estou concluindo a licença deste produto.** Registro o fato porque ele afeta
+  89: diretamente a decisão de vender o pacote, e porque neste projeto eu já afirmei uma
+  90: premissa de licença errada uma vez, sobre outro material, e a revisão externa me
+  91: corrigiu. Não vou repetir o padrão.
+  92: 
+  93: Três caminhos possíveis, e a escolha é do autor, com assessoria:
+  94: 
+  95: 1. **distribuir a parte que toca `bpy` sob licença compatível com GPL**, mantendo
+  96:    proprietário o que não importa `bpy` — hoje isso seria `roda_blender.py`,
+  97:    `mcp_blender.py`, `valida_requisitos.py`, os cinco verificadores e todas as
+  98:    referências, que juntos são a maior parte do valor;
+  99: 2. **não distribuir os arquivos que importam `bpy`**, e documentar as chamadas para o
+ 100:    usuário colar, o que degrada a receita justamente no ponto que o plano manda
+ 101:    entregar pronto;
+ 102: 3. **distribuir tudo sob licença compatível com GPL**, tratando o pacote como obra
+ 103:    derivada.
+ 104: 
+ 105: Enquanto a decisão não existir, o pacote fica **local**. Publicação é ação separada e
+ 106: não está autorizada por nenhuma etapa deste plano.
+ 107: 
+ 108: ## Como conferir este levantamento
+ 109: 
+ 110: ```bash
+ 111: python -c "import importlib.metadata as md; [print(a, md.version(a)) for a in ('trimesh','numpy','manifold3d','shapely','build123d','cadquery-ocp-novtk','lib3mf','scipy')]"
+ 112: python produto/scripts/roda_blender.py --achar
+ 113: ```
+ 114: 
+ 115: E, para a versão do Blender, um script que imprima `bpy.app.version_string` pelo
+ 116: contrato de arquivo de resultado descrito em `mapa_de_ferramentas.md`.
+ 117: 
+ 118: 
+ 119: 
+ 120: 
+
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\produto\\referencias\\mapa_de_ferramentas.md';"'$l=Get-Content $p;for($i=1;$i -le 22;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; rg -n "5'"\\.0\\.0|2\\.2\\.6|3\\.5\\.2|2\\.1\\.2|0\\.11\\.1|2\\.5\\.0|1\\.16\\.3|pip install|scipy|cadquery\" produto" in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+ exited 1 in 95ms:
+   1: # Mapa de ferramentas: o que existe, o que exige, o que não existe
+   2: 
+   3: Tudo aqui foi verificado em 07/09/2026 na instalação de ensaio. Onde diz MEDIDO, há
+   4: número atrás. Onde diz NÃO EXISTE, não invente substituto.
+   5: 
+   6: ## Ambiente medido
+   7: 
+   8: | Componente | Versão medida | Como confirmar |
+   9: |---|---|---|
+  10: | Blender | 5.2.1 LTS, Python 3.13.13 | `python scripts/roda_blender.py --achar`, depois um script que imprima `bpy.app.version_string` |
+  11: | build123d + OCP | usado pelos verificadores de M0 | `python -c "import build123d"` |
+  12: | trimesh | usado por `check_mesh.py` | `python -c "import trimesh"` |
+  13: | lib3mf | escritor de 3MF | `python -c "import lib3mf"` |
+  14: 
+  15: **Não disponíveis e nunca exigidos:** `rtree`, `matplotlib`, `fast_simplification`.
+  16: Se uma receita parecer precisar deles, a receita está errada.
+  17: 
+  18: ## Como chamar o Blender — duas lacunas medidas
+  19: 
+  20: Instalação pela Microsoft Store. **Duas coisas quebram quem tenta o caminho óbvio:**
+  21: 
+  22: 1. `C:\Program Files\WindowsApps\...\blender.exe` **não é executável direto**: dá
+
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\M3_RESULTADO.md';"'$l=Get-Content $p;for($i=42;$i -le 58;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; rg -n "depend.n|vers.o|suport|compat|instal" produto'"\\SKILL.md produto\\referencias\\*.md produto\\INVENTARIO.json" in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+ exited 1 in 103ms:
+  42: | C6 | carregar a skill não instala nem baixa componentes | leitura | `produto/SKILL.md` e as referências | nenhum comando de instalação em nenhum arquivo do pacote; as dependências são declaradas em `mapa_de_ferramentas.md` como pré-requisito | **ATENDIDO** |
+  43: | C7 | inventário do pacote extraído coincide com o permitido, e o **manifesto resolve** | auditoria do destino, que **consome o manifesto** | `evidencias_finais/empacotamento.json` e `AMBIENTE_ISOLADO.json`, campo `conferencia_do_manifesto` | **24** arquivos, nada sobrando, nada faltando; o manifesto resolve na **raiz do pacote extraído**: **23** declarados, 0 não resolvem, 0 divergem, e nada no pacote fora do manifesto. Conferido duas vezes: pelo próprio empacotador e, de fora, sobre a pasta montada | **ATENDIDO** |
+  44: | C8 | referências da skill e manifesto resolvem para recursos existentes | varredura de todos os caminhos citados | auditoria descrita em `M1_RESULTADO.md` | **nenhum** caminho citado nas referências deixa de existir no pacote | **ATENDIDO** |
+  45: | C9 | pacote sem contaminação conhecida passa | auditoria da árvore real | `evidencias_finais/empacotamento.json` | **24** permitidos, 5 padrões, **0 achados**, e o controle positivo da varredura **casando** (1 padrão) | **ATENDIDO** |
+  46: | C10 | amostra privada plantada em área de ensaio é **detectada** | contaminação plantada numa **cópia** | `evidencias_finais/empacotamento.json`, campo `controle_da_varredura` | o controle positivo plantado fora do pacote **casa** (`varredura_funciona: true`, 1 padrão), o que prova que a varredura encontra quando há; sobre a árvore do produto, 0 achados. Numa rodada anterior, com contaminação plantada em cópia, foram 2 achados nomeando padrão e trecho, e a montagem foi recusada | **ATENDIDO** |
+  47: | C11 | amostras de regressão ficam fora do pacote | lista de negados e inventário | `empacota_produto.py`, `produto/INVENTARIO.json` | `padroes_de_vazamento.json`, `base_congelada/`, `base_pos_m0/`, `evidencias_m1/`, `cenas_de_teste/`, `prototipo/` e todos os relatórios de fase estão **fora**; nada disso aparece no inventário | **ATENDIDO** |
+  48: | C12 | nenhum caminho, geometria, nome, medida ou captura de projeto real integra exemplos ou receitas | varredura automática **mais** revisão manual dos recursos novos | auditoria e leitura | toda dimensão dos cenários foi escolhida para o exemplo; os quatro cenários das sessões limpas (50 × 30 × 8, 44 × 26 × 21, 72 × 34 × 25, 40 × 22 × 4) são sintéticos e nenhum vem de projeto real | **ATENDIDO** |
+  49: | C13 | licenças e versões dos componentes efetivamente incluídos são identificadas | `pip list` **antes e depois** num venv criado do zero, e a diferença | `DEPENDENCIAS_E_LICENCAS.md`, `evidencias_finais/AMBIENTE_ISOLADO.json` campo `dependencias` | oito dependências **diretas** com versão medida e licença, e o documento passou a dizer o que omitia: instalar as oito traz **48 pacotes**, sendo **40 transitivos** (a maioria de `build123d`), todos com versão medida e **sem** verificação individual de licença — limite declarado, não glosado. **Nenhuma redistribuída**: o pacote contém somente código do autor. O achado é do próprio instrumento, depois de corrigido: a primeira versão gravava o `pip list` truncado, o JSON não carregava, e a conferência respondia *«0 instalados»* sobre lista nenhuma | **ATENDIDO** |
+  50: | C14 | não redistribuir código externo por ter sido usado via ferramenta | inventário | `produto/INVENTARIO.json` | o pacote contém **somente** código do autor. Nenhuma biblioteca de terceiros, nenhum binário | **ATENDIDO** |
+  51: | C15 | dados do trabalho fora da instalação | modelo de registro | `produto/referencias/registro_de_trabalho.md` | uma pasta por trabalho, **fora** da instalação, com entrada, saída, medidas e pendências | **ATENDIDO** |
+  52: | C16 | hash do pacote final | cálculo determinístico sobre pacote **recém-montado e nunca executado** | `evidencias_finais/hash_do_pacote.txt` | `8a4182c24ee3c9046a8f0e41d05e4b7db88985ecfa5783eadced7ce78b6859ae`, sobre **24** arquivos, no pacote **2.1.0** — e **igual** ao hash do pacote que o ensaio da rota Blender executou. Uma medição anterior deu 31 arquivos: rodar um script de dentro do pacote cria `__pycache__`, e o hash passava a incluir arquivos que não fazem parte da entrega | **ATENDIDO** |
+  53: | C17 | revisão independente sobre este mesmo pacote | `codex exec`, somente leitura, cinco passadas | `evidencias_finais/revisao_1_codex.txt` a `revisao_5_codex.txt` | **cinco** revisões, **todas `BLOQUEIA`**: 10, 10, 12, 6 e 5 achados. **Todos os 43 corrigidos**, com o que foi medido em cada correção, e cada rodada regenerou a evidência — o que invalida a passada anterior e é a razão de haver uma seguinte. A quarta apontou defeito **na correção da terceira**. **Não houve passada sobre 2.1.0**, que é o estado atual. Foram **cinco** revisões, todas `BLOQUEIA`: 10, 10, 12, 6 e 5 achados | **PENDENTE** |
+  54: | C19 | o validador de requisitos **espelha** o verificador congelado | comparação das duas respostas na mesma entrada, com o verificador importado | `produto/scripts/testa_paridade_validador.py`, `evidencias_finais/paridade_do_validador.json` | **339 casos**: 324 `ESPELHO_OK`, 15 `EXTRA_DECLARADO`, **0 falhas**. Com divergência plantada, o teste acusa dos dois lados: 1 `FALHA_PERMISSIVO` ao aceitar eixo `W`, 16 `FALHA_ESTRITO` ao recusar número escrito como texto — e volta a 0 ao despatchar. O validador anterior **anunciava** espelhar e aceitava `NaN`, tolerância negativa, caixa invertida, eixo fora do vocabulário e `entre` com um caminho | **ATENDIDO** |
+  55: | C20 | destino de pacote reprovado não continua existindo | manifesto adulterado de propósito numa cópia da origem | `evidencias_finais/AMBIENTE_ISOLADO.json`, campo `controle_do_empacotador` | com um hash trocado por zeros, o empacotador devolve **código 1** e a pasta de destino **não existe** depois. Antes ela ficava no disco, e um ensaio desta própria rodada chegou a rodar dentro de um pacote reprovado sem notar | **ATENDIDO** |
+  56: | C21 | relatório com veredito negativo reprova no invocador | `--exigir CAMPO=VALOR` em `roda_blender.py` | `evidencias_finais/ensaio_nome_invalido.json` | relatório que traz `veredito_global: ESPEC_INVALIDA` sai como `VEREDITO_NEGATIVO`, com código de saída não zero; **sem** a bandeira, o mesmo relatório saía como `OK` e código **zero** — legível estava sendo tratado como aprovado | **ATENDIDO** |
+  57: | C22 | a tabela de tolerância por tipo é **extraída**, não transcrita | `scripts/extrai_tolerancias.py` lê o fonte do verificador; o teste de paridade compara | `evidencias_finais/tolerancia_extraida.json`, `paridade_do_validador.json` | a tabela transcrita estava **errada** em `furo`, que lê `tol_mm` como tolerância de diâmetro e **decide** com ela: o validador recusava um número decisivo e a referência garantia o contrário. Extração e tabela agora coincidem nos 8 tipos; restaurando a tabela errada, o teste acusa `furo` e o veredito vira `FALHOU`. O erro sobreviveu a uma rodada inteira de revisão porque estava protegido pela lista de *extras*, ou seja, por uma afirmação minha | **ATENDIDO** |
+  58: | C23 | o padrão de tolerância que decide quando ninguém declara está escrito | extração do valor padrão de cada leitura | `referencias/verificar.md`, `valida_requisitos.py --tipos` | os oito tipos com o valor que decide na omissão (`caixa` 0,05; `furo` 0,2 / 0,2 / 0,90; `distancia_entre_furos` 0,2; `regiao_intacta` 1e−9; `interferencia` 0,0; `volume` max(1,0; 1%)). Uma sessão limpa teve dois requisitos aprovados por uma tolerância de 0,2 que ela não escolheu e que não estava escrita em lugar nenhum | **ATENDIDO** |
+rg: produto\referencias\*.md: A sintaxe do nome do arquivo, do nome do diretório ou do rótulo do volume está incorreta. (os error 123)
+produto\INVENTARIO.json:2: "versao_do_pacote": "2.1.0",
+produto\INVENTARIO.json:3: "versao_de_bl_ferramentas": "1.5.0",
+produto\INVENTARIO.json:5: "nota": "caminhos RELATIVOS A RAIZ DO PACOTE, que e a pasta onde este arquivo vive. A versao anterior gravava 'produto/...', que nao resolve no pacote extraido, e a conferencia passava por remover o prefixo — ou seja, validava uma lista paralela, nao a resolucao do manifesto.",
+produto\SKILL.md:8:**Pacote 2.1.0**, com `scripts/bl_ferramentas.py` na **versão 1.5.0**. Os dois
+produto\SKILL.md:9:números são independentes: o do pacote muda a cada correção em qualquer arquivo, o da
+produto\SKILL.md:11:arquivo, e é ali que se confere qual versão está em mãos.
+produto\SKILL.md:13:**Onde conferir a versão, e onde não dá.** `bl_ferramentas.confere_versao("1.5.0")` só
+produto\SKILL.md:21:| dentro do Blender | `bl_ferramentas.confere_versao("1.5.0")`, que recusa em vez de deixar descobrir pelo resultado |
+produto\SKILL.md:22:| no Python do hospedeiro (rota de **criar**, verificadores, validação) | leia `versao_de_bl_ferramentas` em `INVENTARIO.json`. A rota de criar não carrega `bl_ferramentas.py`, e um descasamento de versão dela não afeta essa rota |
+produto\SKILL.md:42:Três perguntas, independentes entre si:
+
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command "rg -n \"lib3mf|import scipy|import build123d|import trimesh|import manifold3d|from shapely\" produto\\verificadores produto\\cenarios; "'$p='"'.\\produto\\verificadores\\sweep_params.py';"'$l=Get-Content $p;for($i=180;$i -le 280;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}' in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+ succeeded in 138ms:
+produto\verificadores\check_intent.py:51:    import trimesh
+produto\verificadores\check_intent.py:307:    import manifold3d as m3
+produto\verificadores\check_intent.py:333:    import manifold3d as m3
+produto\verificadores\check_mesh.py:19:    import trimesh
+produto\verificadores\check_mesh.py:58:        import manifold3d as m3
+produto\verificadores\secoes.py:65:    from shapely.geometry import MultiLineString
+produto\verificadores\secoes.py:66:    from shapely.ops import polygonize
+produto\verificadores\secoes.py:89:    from shapely.geometry import Polygon
+produto\verificadores\sweep_params.py:53:    lib3mf.Lib3MF.ELib3MFException com error_code 5, que a propria biblioteca chama de
+produto\verificadores\sweep_params.py:116:    import trimesh
+ 180:             ok_borda = True
+ 181:         mm["borda_declarada"] = borda
+ 182:         mm["tem_borda"] = tem_borda
+ 183:         mm["passou"] = bool(mm["facetas_degeneradas"] == 0 and ok_borda)
+ 184:         mm["contrato"] = ("superficie com borda declarada %r: %s, e nenhuma faceta "
+ 185:                           "degenerada. A borda NAO e deduzida da representacao."
+ 186:                           % (borda, {"obrigatoria": "exige arestas abertas",
+ 187:                                      "proibida": "proibe arestas abertas",
+ 188:                                      "indiferente": "nao julga borda"}[borda]))
+ 189:         r["portao_2_malha"] = mm
+ 190:         r["portao_3_3mf"] = {"passou": None, "erro": None,
+ 191:                              "motivo": ("o formato 3MF exige malha manifold fechada, logo o "
+ 192:                                         "portao nao se aplica a superficie aberta")}
+ 193:         r["passou_tudo"] = bool(ok1 and mm["passou"])
+ 194:         return r
+ 195:     # CORRIGIDO 07/09/2026 depois de revisao externa. A versao anterior media
+ 196:     # arestas_com_mais_de_2_faces e fechada_watertight, e NAO as usava na decisao.
+ 197:     # Resultado: aprovou variante com 6 arestas nao-manifold e nao-fechada, e me levou a
+ 198:     # afirmar que so o 3MF tinha pegado o defeito. Os dados tinham pegado; a decisao os
+ 199:     # ignorou. Era exatamente o defeito que este projeto existe para evitar: portao
+ 200:     # incapaz de revelar o erro que ele guarda.
+ 201:     mm["passou"] = bool(mm["arestas_abertas"] == 0
+ 202:                         and mm["arestas_com_mais_de_2_faces"] == 0
+ 203:                         and mm["facetas_degeneradas"] == 0
+ 204:                         and mm["orientacao_consistente"]
+ 205:                         and mm["fechada_watertight"])
+ 206:     r["portao_2_malha"] = mm
+ 207:     # CORRIGIDO em M0.2: aqui era um except Exception unico que virava passou=False.
+ 208:     # Agora recusa do formato e reprovacao geometrica, e falha do sistema PROPAGA com
+ 209:     # codigo e etapa, sem entrar na contagem de reprovadas por geometria.
+ 210:     alvo_3mf = os.path.splitext(tmp_stl)[0] + ".3mf"
+ 211:     # impedimento de sistema e medido ANTES de chamar o escritor, para que ele nunca
+ 212:     # possa aparecer como reprovacao por geometria
+ 213:     impedimento = confere_escrita(alvo_3mf)
+ 214:     if impedimento:
+ 215:         raise ErroOperacional("E_EXPORT_3MF", "exportacao", impedimento,
+ 216:                               caminho=alvo_3mf, concluidas=r.get("etapas_concluidas", []))
+ 217:     try:
+ 218:         ms = Mesher()
+ 219:         ms.add_shape(peca, linear_deflection=tol, angular_deflection=ang)
+ 220:         ms.write(alvo_3mf)
+ 221:         tam = os.path.getsize(alvo_3mf) if os.path.isfile(alvo_3mf) else 0
+ 222:         if tam <= 0:
+ 223:             raise ErroOperacional("E_CONTRATO_SAIDA", "exportacao",
+ 224:                                   "o escritor retornou sem erro e o arquivo de saida nao "
+ 225:                                   "existe ou esta vazio", caminho=alvo_3mf,
+ 226:                                   concluidas=r.get("etapas_concluidas", []))
+ 227:         r["portao_3_3mf"] = {"passou": True, "erro": None, "caminho": alvo_3mf,
+ 228:                              "bytes": tam}
+ 229:         r["etapas_concluidas"] = r.get("etapas_concluidas", []) + ["escrita_3mf"]
+ 230:     except ErroOperacional:
+ 231:         raise
+ 232:     except Exception as e:
+ 233:         classe, codigo = classifica_falha_de_escrita(e)
+ 234:         if classe == "operacional":
+ 235:             raise ErroOperacional(codigo, "exportacao", "%s: %s" % (type(e).__name__, e),
+ 236:                                   caminho=alvo_3mf,
+ 237:                                   concluidas=r.get("etapas_concluidas", []))
+ 238:         # a biblioteca nao disse a causa. Medir de novo: se o caminho nao aceita escrita,
+ 239:         # a falha e do sistema, e chamar isso de geometria seria inventar evidencia.
+ 240:         residual = confere_escrita(alvo_3mf)
+ 241:         if residual:
+ 242:             raise ErroOperacional("E_EXPORT_3MF", "exportacao",
+ 243:                                   "o escritor falhou e o caminho de saida nao aceita "
+ 244:                                   "escrita: %s (excecao: %s: %s)"
+ 245:                                   % (residual, type(e).__name__, e),
+ 246:                                   caminho=alvo_3mf,
+ 247:                                   concluidas=r.get("etapas_concluidas", []))
+ 248:         r["portao_3_3mf"] = {"passou": False, "erro": "%s: %s" % (type(e).__name__, e),
+ 249:                              "caminho": alvo_3mf,
+ 250:                              "classificacao": ("o caminho de saida aceita escrita, logo a "
+ 251:                                                "recusa e do formato, portanto geometrica")}
+ 252:     r["passou_tudo"] = all(r[k]["passou"] for k in
+ 253:                            ("portao_1_solido", "portao_2_malha", "portao_3_3mf"))
+ 254:     return r
+ 255: 
+ 256: 
+ 257: def main():
+ 258:     ap = argparse.ArgumentParser()
+ 259:     ap.add_argument("--modulo", required=True)
+ 260:     ap.add_argument("--funcao", default="constroi")
+ 261:     ap.add_argument("--grade", required=True)
+ 262:     ap.add_argument("--saida", default="varredura")
+ 263:     ap.add_argument("--representacao", default="solido",
+ 264:                     choices=["solido", "superficie", "montagem", "malha"])
+ 265:     ap.add_argument("--n-solidos", type=int, default=1)
+ 266:     ap.add_argument("--borda", default="obrigatoria",
+ 267:                     choices=("obrigatoria", "proibida", "indiferente"),
+ 268:                     help="requisito de topologia, so usado quando a representacao e "
+ 269:                          "superficie. Nao e deduzido da representacao.")
+ 270:     ap.add_argument("--tol", type=float, default=0.01)
+ 271:     ap.add_argument("--ang", type=float, default=0.1)
+ 272:     ap.add_argument("--json")
+ 273:     a = ap.parse_args()
+ 274: 
+ 275:     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+ 276:     mod = importlib.import_module(a.modulo)
+ 277:     fn = getattr(mod, a.funcao)
+ 278:     eixos = parse_grade(a.grade)
+ 279:     os.makedirs(a.saida, exist_ok=True)
+ 280: 
+
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\produto\\scripts\\valida_requisitos.py';"'$l=Get-Content $p;for($i=100;$i -le 360;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; $p='"'.\\produto\\verificadores\\check_intent.py';"'$l=Get-Content $p;for($i=70;$i -le 195;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}' in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+ succeeded in 96ms:
+ 100: # leu o relatorio: em `furo`, `tol_mm` entra e sai como `tol_diam_mm`.
+ 101: NOME_NA_SAIDA = {("furo", "tol_mm"): "tol_diam_mm"}
+ 102: # A tupla e a MESMA de check_intent.py, na mesma ordem, e nao derivada do mapa
+ 103: # acima: o verificador confere o valor de toda tolerancia que reconhece, nao apenas
+ 104: # das que le para aquele tipo.
+ 105: TOLERANCIAS = ("tol_mm", "tol_mm3", "tol_pos_mm", "tol_fracao", "circularidade_min")
+ 106: EIXOS = ("X", "Y", "Z")
+ 107: 
+ 108: # CHECAGENS ALEM DO ESPELHO. Este auxiliar confere tudo o que o verificador confere,
+ 109: # e mais um punhado de coisas que ele NAO confere. Isso e legitimo — recusar cedo
+ 110: # especificacao que passaria pelo esquema e morreria de outra forma e o proposito
+ 111: # aqui — mas so e legitimo se estiver DECLARADO, porque senao vira a mesma
+ 112: # divergencia do achado, com o sinal trocado.
+ 113: #
+ 114: # Cada texto abaixo e um pedaco literal da mensagem correspondente. O teste
+ 115: # `testa_paridade_validador.py` usa esta lista para separar "extra deliberado" de
+ 116: # "validador mais estrito que o verificador sem motivo declarado". Se uma mensagem
+ 117: # mudar e o pedaco parar de casar, o teste ACUSA em vez de deixar passar.
+ 118: EXTRAS_ALEM_DO_ESPELHO = (
+ 119:     "nao declara tolerancia que o verificador LEIA",   # nome de tolerancia por tipo
+ 120:     "que o verificador NAO le para este tipo",
+ 121:     "e de CONTAGEM, comparada de forma exata",
+ 122:     "e CONTAGEM e traz valor fracionario",             # contagem inteira e exata
+ 123:     "traz contagem negativa",
+ 124:     "identificador repetido",                          # ids repetidos entre requisitos
+ 125:     "que nao existe. Tipos:",                          # tipo fora do vocabulario
+ 126: )
+ 127: 
+ 128: 
+ 129: def _numero_finito(v):
+ 130:     """(ok, x, motivo). Aceita o que float() aceita, como o verificador.
+ 131: 
+ 132:     De proposito NAO usa isinstance: o verificador chama float(v), e portanto ACEITA
+ 133:     "30" e True. Recusar aqui o que ele aceita e divergencia igual a aceitar o que
+ 134:     ele recusa, e foi o outro lado do mesmo achado."""
+ 135:     try:
+ 136:         x = float(v)
+ 137:     except (TypeError, ValueError):
+ 138:         return False, None, "tem que ser numero, e veio %r" % (v,)
+ 139:     if x != x or x in (float("inf"), float("-inf")):
+ 140:         return False, None, "nao e finito: %r" % (v,)
+ 141:     return True, x, None
+ 142: 
+ 143: 
+ 144: def _avisa_forma_fragil(avisos, onde, campo, v):
+ 145:     """Forma que o verificador aceita e que ainda assim merece ser dita."""
+ 146:     if isinstance(v, bool):
+ 147:         avisos.append("%s: %r veio como booleano %r; o verificador converte para "
+ 148:                       "%.1f, mas escrever medida como True/False esconde a intencao."
+ 149:                       % (onde, campo, v, float(v)))
+ 150:     elif isinstance(v, str):
+ 151:         avisos.append("%s: %r veio como texto %r; o verificador converte com float() "
+ 152:                       "e aceita, porem numero escrito como texto quebra no primeiro "
+ 153:                       "separador decimal trocado." % (onde, campo, v))
+ 154: EXIGE_REFERENCIA = ("regiao_intacta",)
+ 155: 
+ 156: # `interferencia` aceita 'entre' com dois caminhos, OU 'com' com um. Sem nenhum dos
+ 157: # dois o verificador nao tem o que comparar. A versao anterior deste validador nao
+ 158: # exigia nada, e por isso podia devolver OK para especificacao que o verificador
+ 159: # rejeita.
+ 160: ALTERNATIVAS_POR_TIPO = {
+ 161:     "interferencia": (("entre", "com"),),
+ 162: }
+ 163: 
+ 164: # Tipos de CONTAGEM: o valor e inteiro e a comparacao e exata. Exigir tolerancia
+ 165: # aqui seria erro, e foi um erro que este proprio auxiliar cometeu na primeira
+ 166: # versao: ele recusava um requisito `n_solidos` que o verificador ACEITA. Contar
+ 167: # tres corpos e exato; medir 30 milimetros nao e. A regra e a mesma do metodo:
+ 168: # igualdade e legitima em contagem inteira e proibida em medida.
+ 169: TIPOS_DE_CONTAGEM = tuple(t for t, ts in TOLERANCIA_POR_TIPO.items() if not ts)
+ 170: 
+ 171: 
+ 172: def valida_estrutura(dados, avisos=None):
+ 173:     """Devolve lista de problemas. Vazia significa forma aceitavel.
+ 174: 
+ 175:     `avisos` opcional: lista onde entram formas que o verificador ACEITA mas que sao
+ 176:     fragis (numero escrito como texto, booleano no lugar de numero). Aviso NAO e
+ 177:     problema: reprovar aqui o que o verificador aceita e a mesma divergencia do
+ 178:     achado, com o sinal trocado."""
+ 179:     p = []
+ 180:     if avisos is None:
+ 181:         avisos = []
+ 182:     if isinstance(dados, list):
+ 183:         p.append("o arquivo e uma LISTA nua. O verificador espera um OBJETO com a "
+ 184:                  "chave 'requisitos': {\"requisitos\": [ ... ]}. Lista nua produz "
+ 185:                  "erro nao tratado dentro do verificador.")
+ 186:         return p
+ 187:     if not isinstance(dados, dict):
+ 188:         p.append("o arquivo tem que ser um objeto JSON, e veio %s" % type(dados).__name__)
+ 189:         return p
+ 190:     reqs = dados.get("requisitos")
+ 191:     if reqs is None:
+ 192:         p.append("falta a chave 'requisitos'. Chaves presentes: %s" % sorted(dados))
+ 193:         return p
+ 194:     if not isinstance(reqs, list):
+ 195:         p.append("'requisitos' tem que ser uma lista, e veio %s" % type(reqs).__name__)
+ 196:         return p
+ 197:     if not reqs:
+ 198:         p.append("'requisitos' esta vazia. Requisito que ninguem escreveu nao e "
+ 199:                  "verificado por ninguem: a lista vazia nao prova nada.")
+ 200:         return p
+ 201: 
+ 202:     vistos = {}
+ 203:     for i, r in enumerate(reqs):
+ 204:         onde = "requisitos[%d]" % i
+ 205:         if not isinstance(r, dict):
+ 206:             p.append("%s nao e objeto: %s" % (onde, type(r).__name__))
+ 207:             continue
+ 208:         rid = r.get("id")
+ 209:         if not rid:
+ 210:             p.append("%s nao tem 'id'" % onde)
+ 211:         else:
+ 212:             vistos.setdefault(rid, []).append(i)
+ 213:         tipo = r.get("tipo")
+ 214:         if not tipo:
+ 215:             p.append("%s nao tem 'tipo'" % onde)
+ 216:             continue
+ 217:         if tipo not in CAMPOS_POR_TIPO:
+ 218:             p.append("%s tem tipo %r, que nao existe. Tipos: %s"
+ 219:                      % (onde, tipo, sorted(CAMPOS_POR_TIPO)))
+ 220:             continue
+ 221:         for campo, forma in CAMPOS_POR_TIPO[tipo].items():
+ 222:             if campo not in r:
+ 223:                 p.append("%s de tipo %r nao tem o campo obrigatorio %r"
+ 224:                          % (onde, tipo, campo))
+ 225:                 continue
+ 226:             v = r[campo]
+ 227:             if forma == "eixo":
+ 228:                 # ESPELHO: o verificador faz str(v).upper() in {"X","Y","Z"}. A versao
+ 229:                 # anterior daqui aceitava QUALQUER texto nao vazio, entao eixo "W" ou
+ 230:                 # "eixo x" passava a validacao e morria dentro do verificador com
+ 231:                 # KeyError, o oposto do contrato anunciado.
+ 232:                 if str(v).upper() not in EIXOS:
+ 233:                     p.append("%s: %r tem que ser X, Y ou Z, e veio %r"
+ 234:                              % (onde, campo, v))
+ 235:             elif forma == 1:
+ 236:                 ok, x, motivo = _numero_finito(v)
+ 237:                 if not ok:
+ 238:                     p.append("%s: %r %s" % (onde, campo, motivo))
+ 239:                 else:
+ 240:                     _avisa_forma_fragil(avisos, onde, campo, v)
+ 241:                     if tipo in TIPOS_DE_CONTAGEM and campo == "valor":
+ 242:                         if not float(x).is_integer():
+ 243:                             p.append("%s de tipo %r e CONTAGEM e traz valor "
+ 244:                                      "fracionario %r. O verificador converte com "
+ 245:                                      "int() e aprovaria por truncamento; contagem "
+ 246:                                      "fracionaria e especificacao invalida."
+ 247:                                      % (onde, tipo, v))
+ 248:                         elif x < 0:
+ 249:                             p.append("%s de tipo %r traz contagem negativa %r"
+ 250:                                      % (onde, tipo, v))
+ 251:             else:
+ 252:                 if not isinstance(v, (list, tuple)):
+ 253:                     p.append("%s: %r tem que ser lista de %d numeros, e veio %s"
+ 254:                              % (onde, campo, forma, type(v).__name__))
+ 255:                 elif len(v) != forma:
+ 256:                     p.append("%s: %r tem que ter exatamente %d valores, e veio %d"
+ 257:                              % (onde, campo, forma, len(v)))
+ 258:                 else:
+ 259:                     for j, x in enumerate(v):
+ 260:                         ok, _, motivo = _numero_finito(x)
+ 261:                         if not ok:
+ 262:                             p.append("%s: %r[%d] %s" % (onde, campo, j, motivo))
+ 263:                         else:
+ 264:                             _avisa_forma_fragil(avisos, onde,
+ 265:                                                 "%s[%d]" % (campo, j), x)
+ 266: 
+ 267:         # ESPELHO: VALOR de tolerancia. O verificador exige numero finito NAO
+ 268:         # NEGATIVO. A versao anterior daqui conferia o NOME da tolerancia e nunca o
+ 269:         # valor: tol_mm = -1 e tol_mm = NaN saiam como forma OK. Margem negativa
+ 270:         # reprova qualquer medida, e margem NaN torna toda comparacao falsa: nos dois
+ 271:         # casos o requisito decide, e decide pelo motivo errado.
+ 272:         for t in TOLERANCIAS:
+ 273:             if t in r:
+ 274:                 ok, x, motivo = _numero_finito(r[t])
+ 275:                 if not ok or x < 0:
+ 276:                     p.append("%s: %r tem que ser numero finito nao negativo, e veio "
+ 277:                              "%r" % (onde, t, r[t]))
+ 278:                 else:
+ 279:                     _avisa_forma_fragil(avisos, onde, t, r[t])
+ 280: 
+ 281:         # ESPELHO: caixa_min < caixa_max em todos os eixos. Sem isto, uma caixa
+ 282:         # invertida saia como forma OK aqui e era recusada la, depois de o agente ja
+ 283:         # ter confiado no OK.
+ 284:         if tipo == "regiao_intacta" and not p:
+ 285:             try:
+ 286:                 lo = [float(x) for x in r["caixa_min"]]
+ 287:                 hi = [float(x) for x in r["caixa_max"]]
+ 288:             except (TypeError, ValueError, KeyError):
+ 289:                 lo = hi = None
+ 290:             if lo and hi and any(m >= M for m, M in zip(lo, hi)):
+ 291:                 p.append("%s: caixa_min tem que ser menor que caixa_max em todos os "
+ 292:                          "eixos, e veio min=%s max=%s" % (onde, lo, hi))
+ 293: 
+ 294:         # ESPELHO: 'entre' precisa ter DOIS caminhos. A versao anterior aceitava a
+ 295:         # simples PRESENCA da chave, entao entre: [a] passava aqui e era recusado la.
+ 296:         if tipo == "interferencia":
+ 297:             ent = r.get("entre")
+ 298:             tem_entre = isinstance(ent, (list, tuple)) and len(ent) == 2
+ 299:             if not tem_entre and not r.get("com"):
+ 300:                 p.append("%s de tipo 'interferencia' exige 'entre' com DOIS caminhos, "
+ 301:                          "ou 'com' com um. Presenca da chave nao basta: veio entre=%r "
+ 302:                          "com=%r." % (onde, ent, r.get("com")))
+ 303: 
+ 304:         aceitas = TOLERANCIA_POR_TIPO.get(tipo, ())
+ 305:         presentes = [t for t in TOLERANCIAS if t in r]
+ 306:         if aceitas and not any(t in r for t in aceitas):
+ 307:             p.append("%s de tipo %r nao declara tolerancia que o verificador LEIA. "
+ 308:                      "Para este tipo ele le %s%s. Comparacao de medida sem margem "
+ 309:                      "declarada nao decide nada."
+ 310:                      % (onde, tipo, list(aceitas),
+ 311:                         (", e o requisito traz %s, que sao ignoradas para este tipo"
+ 312:                          % presentes) if presentes else ""))
+ 313:         ignoradas = [t for t in presentes if t not in aceitas]
+ 314:         if aceitas and ignoradas and any(t in r for t in aceitas):
+ 315:             p.append("%s de tipo %r traz %s, que o verificador NAO le para este tipo. "
+ 316:                      "Ele le %s. Tolerancia ignorada e numero que nao decide nada."
+ 317:                      % (onde, tipo, ignoradas, list(aceitas)))
+ 318:         if not aceitas and presentes:
+ 319:             p.append("%s de tipo %r e de CONTAGEM, comparada de forma exata, e traz "
+ 320:                      "%s. Tolerancia aqui nao e lida e sugere margem que nao existe."
+ 321:                      % (onde, tipo, presentes))
+ 322: 
+ 323:     for rid, idx in sorted(vistos.items()):
+ 324:         if len(idx) > 1:
+ 325:             p.append("identificador repetido %r nos indices %s. O verificador recusa "
+ 326:                      "ids repetidos, porque a evidencia de um sobrescreveria a do "
+ 327:                      "outro." % (rid, idx))
+ 328:     return p
+ 329: 
+ 330: 
+ 331: def precisa_de_referencia(dados):
+ 332:     """Tipos que exigem --referencia na chamada de check_intent.py."""
+ 333:     if not isinstance(dados, dict):
+ 334:         return []
+ 335:     return sorted({r.get("tipo") for r in (dados.get("requisitos") or [])
+ 336:                    if isinstance(r, dict) and r.get("tipo") in EXIGE_REFERENCIA})
+ 337: 
+ 338: 
+ 339: def valida_arquivo(caminho):
+ 340:     if not os.path.isfile(caminho):
+ 341:         return {"estado": "SEM_ARQUIVO", "problemas": ["nao existe: %s" % caminho]}
+ 342:     try:
+ 343:         dados = json.loads(io.open(caminho, encoding="utf-8").read())
+ 344:     except ValueError as e:
+ 345:         return {"estado": "JSON_INVALIDO", "problemas": ["%s: %s" % (type(e).__name__, e)]}
+ 346:     avisos = []
+ 347:     problemas = valida_estrutura(dados, avisos)
+ 348:     return {"estado": "OK" if not problemas else "FORMA_INVALIDA",
+ 349:             "avisos": avisos,
+ 350:             "arquivo": os.path.abspath(caminho),
+ 351:             "n_requisitos": len(dados.get("requisitos") or []) if isinstance(dados, dict) else 0,
+ 352:             "tipos_que_exigem_referencia": precisa_de_referencia(dados),
+ 353:             "problemas": problemas,
+ 354:             "nota": ("isto confere FORMA, nao geometria. Forma aceitavel nao diz nada "
+ 355:                      "sobre a peca: quem mede e check_intent.py.")}
+ 356: 
+ 357: 
+ 358: def main():
+ 359:     ap = argparse.ArgumentParser()
+ 360:     ap.add_argument("arquivo", nargs="?")
+  70:     """
+  71:     import secoes
+  72:     s = secoes.secao(malha, eixo, valor)
+  73:     if exigir_valida and s.get("aviso"):
+  74:         raise SecaoInvalida("secao no eixo %s em %.4f: %s" % ("XYZ"[eixo], valor, s["aviso"]))
+  75:     return s["material"], s["furos"]
+  76: 
+  77: 
+  78: def descreve_furo(p):
+  79:     import secoes
+  80:     return secoes.descreve(p)
+  81: 
+  82: 
+  83: # ---------- verificadores ----------
+  84: 
+  85: # Esquema minimo por tipo: campos obrigatorios e, quando o campo e vetor, o tamanho exato.
+  86: # CORRIGIDO 07/09/2026: sem isso, um requisito 'caixa' com UMA dimensao era comparado por
+  87: # zip, verificava so aquele eixo e podia APROVAR. Entrada malformada passa a ser erro de
+  88: # especificacao, nao aprovacao parcial.
+  89: ESQUEMA = {
+  90:     "caixa": {"valor": 3},
+  91:     "volume": {"valor": 1},
+  92:     "n_solidos": {"valor": 1},
+  93:     "furo": {"eixo": "eixo", "plano": 1, "posicao": 2, "diametro": 1},
+  94:     "n_furos_no_plano": {"eixo": "eixo", "plano": 1, "valor": 1},
+  95:     "distancia_entre_furos": {"eixo": "eixo", "plano": 1, "valor": 1},
+  96:     "regiao_intacta": {"caixa_min": 3, "caixa_max": 3},
+  97:     "interferencia": {},
+  98: }
+  99: TOLERANCIAS = ("tol_mm", "tol_mm3", "tol_pos_mm", "tol_fracao", "circularidade_min")
+ 100: 
+ 101: 
+ 102: def valida_esquema(r):
+ 103:     """Devolve lista de problemas de especificacao. Vazia significa requisito bem formado."""
+ 104:     p = []
+ 105:     tipo = r.get("tipo")
+ 106:     if not r.get("id"):
+ 107:         p.append("requisito sem 'id'")
+ 108:     esq = ESQUEMA.get(tipo)
+ 109:     if esq is None:
+ 110:         return p
+ 111:     for campo, forma in esq.items():
+ 112:         if campo not in r:
+ 113:             p.append("falta o campo obrigatorio '%s'" % campo)
+ 114:             continue
+ 115:         v = r[campo]
+ 116:         if forma == "eixo":
+ 117:             if str(v).upper() not in EIXO:
+ 118:                 p.append("'%s' tem que ser X, Y ou Z, e veio %r" % (campo, v))
+ 119:         elif forma == 1:
+ 120:             try:
+ 121:                 x = float(v)
+ 122:                 if not np.isfinite(x):
+ 123:                     p.append("'%s' nao e finito: %r" % (campo, v))
+ 124:             except (TypeError, ValueError):
+ 125:                 p.append("'%s' tem que ser numero, e veio %r" % (campo, v))
+ 126:         else:
+ 127:             if not isinstance(v, (list, tuple)):
+ 128:                 p.append("'%s' tem que ser lista de %d numeros, e veio %r" % (campo, forma, type(v).__name__))
+ 129:             elif len(v) != forma:
+ 130:                 p.append("'%s' tem que ter exatamente %d valores, e veio %d" % (campo, forma, len(v)))
+ 131:             else:
+ 132:                 for i, x in enumerate(v):
+ 133:                     try:
+ 134:                         if not np.isfinite(float(x)):
+ 135:                             p.append("'%s'[%d] nao e finito: %r" % (campo, i, x))
+ 136:                     except (TypeError, ValueError):
+ 137:                         p.append("'%s'[%d] tem que ser numero, e veio %r" % (campo, i, x))
+ 138:     for t in TOLERANCIAS:
+ 139:         if t in r:
+ 140:             try:
+ 141:                 x = float(r[t])
+ 142:                 if not np.isfinite(x) or x < 0:
+ 143:                     p.append("'%s' tem que ser numero finito nao negativo, e veio %r" % (t, r[t]))
+ 144:             except (TypeError, ValueError):
+ 145:                 p.append("'%s' tem que ser numero, e veio %r" % (t, r[t]))
+ 146:     if tipo == "regiao_intacta" and not p:
+ 147:         lo = [float(x) for x in r["caixa_min"]]
+ 148:         hi = [float(x) for x in r["caixa_max"]]
+ 149:         if any(a >= b for a, b in zip(lo, hi)):
+ 150:             p.append("caixa_min tem que ser menor que caixa_max em todos os eixos")
+ 151:     if tipo == "interferencia":
+ 152:         tem_entre = isinstance(r.get("entre"), (list, tuple)) and len(r.get("entre") or []) == 2
+ 153:         if not tem_entre and not r.get("com"):
+ 154:             p.append("interferencia exige 'entre' com dois caminhos, ou 'com' com um")
+ 155:     return p
+ 156: 
+ 157: 
+ 158: def v_caixa(m, r, ctx):
+ 159:     med = [float(x) for x in m.extents]
+ 160:     esp = [float(x) for x in r["valor"]]
+ 161:     tol = float(r.get("tol_mm", 0.05))
+ 162:     dif = [abs(a - b) for a, b in zip(med, esp)]
+ 163:     return max(dif) <= tol, {"medido_mm": [round(x, 4) for x in med],
+ 164:                              "esperado_mm": esp, "maior_desvio_mm": round(max(dif), 4),
+ 165:                              "tol_mm": tol}
+ 166: 
+ 167: 
+ 168: def v_volume(m, r, ctx):
+ 169:     if not m.is_watertight:
+ 170:         return None, {"motivo": "malha nao fechada: volume nao e confiavel"}
+ 171:     med = float(m.volume)
+ 172:     esp = float(r["valor"])
+ 173:     tol = float(r.get("tol_mm3", max(1.0, 0.01 * esp)))
+ 174:     return abs(med - esp) <= tol, {"medido_mm3": round(med, 3), "esperado_mm3": esp,
+ 175:                                    "desvio_mm3": round(abs(med - esp), 3), "tol_mm3": tol}
+ 176: 
+ 177: 
+ 178: def v_n_solidos(m, r, ctx):
+ 179:     n = len(m.split(only_watertight=False))
+ 180:     return n == int(r["valor"]), {"medido": n, "esperado": int(r["valor"])}
+ 181: 
+ 182: 
+ 183: def _mede_furo(m, eixo, plano, alvo):
+ 184:     """Acha o furo mais proximo de alvo na secao e devolve a descricao, ou None."""
+ 185:     _, furos = aneis_da_secao(m, eixo, plano)
+ 186:     if not furos:
+ 187:         return None, 0
+ 188:     achados = [descreve_furo(p) for p in furos]
+ 189:     dists = [float(np.linalg.norm(np.array(a["centro"]) - alvo)) for a in achados]
+ 190:     k = int(np.argmin(dists))
+ 191:     a = dict(achados[k])
+ 192:     a["distancia_ao_alvo_mm"] = round(dists[k], 4)
+ 193:     return a, len(achados)
+ 194: 
+ 195: 
+
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command "rg -a -n -i \"marce|OneDrive|Modelagem|06_skill_universal|AppData|Users\\\\\" produto\\**\\__pycache__\\*.pyc 2>"'$null; Get-ChildItem -Recurse -File produto -Filter *.pyc | ForEach-Object { $bytes=[IO.File]::ReadAllBytes($_.FullName); $s=[Text.Encoding]::Latin1.GetString($bytes); if($s -match '"'marce|OneDrive|06_skill_universal|Modelagem'){\""'$($_.FullName): MATCH"} }' in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+ succeeded in 136ms:
+C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\cenarios\__pycache__\ensaio_preenchimento.cpython-313.pyc: MATCH
+C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\cenarios\__pycache__\familia_exemplo.cpython-312.pyc: MATCH
+C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\cenarios\__pycache__\gera_cenario.cpython-313.pyc: MATCH
+C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\bl_ferramentas.cpython-313.pyc: MATCH
+C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\extrai_tolerancias.cpython-312.pyc: MATCH
+C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\mcp_blender.cpython-312.pyc: MATCH
+C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\roda_blender.cpython-312.pyc: MATCH
+C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\testa_paridade_validador.cpython-312.pyc: MATCH
+C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\valida_requisitos.cpython-312.pyc: MATCH
+C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\verificadores\__pycache__\check_intent.cpython-312.pyc: MATCH
+C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\verificadores\__pycache__\secoes.cpython-312.pyc: MATCH
+
+ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 6:24 AM.
+ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 6:24 AM.
+tokens used
+383.469

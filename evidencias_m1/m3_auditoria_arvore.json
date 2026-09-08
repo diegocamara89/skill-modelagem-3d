@@ -1,0 +1,38 @@
+{
+ "origem": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\produto",
+ "n_permitidos": 22,
+ "faltando_na_origem": [],
+ "na_origem_e_fora_da_lista": [],
+ "n_padroes": 5,
+ "erro_de_padroes": null,
+ "controle_da_varredura": {
+  "varredura_funciona": true,
+  "padroes_que_casaram": 1,
+  "nota": "semente de controle fica FORA do pacote"
+ },
+ "achados_de_vazamento": [],
+ "negados_declarados": [
+  "__pycache__",
+  ".pyc",
+  "padroes_de_vazamento.json",
+  "M0_RESULTADO.md",
+  "M1_RESULTADO.md",
+  "M2_RESULTADO.md",
+  "M3_RESULTADO.md",
+  "PLANO_IMPLEMENTACAO_PLUGIN.md",
+  "DESENHO_PLUGIN.md",
+  "DESENHO.md",
+  "REFERENCIA_BLENDER_EDICAO_GUIADA.md",
+  "REVISAO_M1_CONTEXTO.md",
+  "LACUNAS_PARA_M2.md",
+  "PENDENCIAS_PRODUTO.md",
+  "base_congelada",
+  "base_pos_m0",
+  "evidencias_m1",
+  "cenas_de_teste",
+  "prototipo"
+ ],
+ "autorizacao_de_publicacao": "NAO EMITIDA por esta ferramenta",
+ "limite": "a varredura prova ausencia dos padroes TESTADOS na cobertura testada. Nao prova ausencia de qualquer dado privado, e nao substitui revisao manual dos recursos novos.",
+ "pacote_limpo": true
+}

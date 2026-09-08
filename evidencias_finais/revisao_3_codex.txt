@@ -1,0 +1,65 @@
+Confirmei como efetivamente fechados: os 21 hashes do inventário correspondem aos arquivos atuais; os cinco verificadores são idênticos à base pós-M0; `--malha`, manifesto relativo, preflight das três zonas, guardas `FINISHED` das booleanas principais, contagens fracionárias, justificativa da sobreposição e medição da região não selecionada foram corrigidos. Não encontrei dado privado concreto nos 22 arquivos permitidos. O Blender não foi acessado e nenhum arquivo foi modificado.
+
+Defeitos concretos:
+
+1. **A sessão limpa válida ainda não exercitou o pacote 1.5.0.**  
+   Arquivos: [M3_RESULTADO.md:34](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M3_RESULTADO.md:34>), [M1_RESULTADO.md:63](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:63>).  
+   Evidência: C2 afirma uma terceira sessão 72×34×25 com 21 hashes, mas não há relatório dessa sessão no repositório. A evidência apontada em M1 descreve a rodada antiga de 1.1.0, com 19 hashes. Depois dela, o pacote sofreu mudanças comportamentais até 1.5.0.  
+   Correção mínima: repetir a sessão sem histórico contra os 21 hashes atuais e preservar instruções, modelo, intervenções, comandos, resultados e hash do pacote.
+
+2. **C1 e C3 foram aprovados com evidência que não prova ambiente isolado.**  
+   Arquivos: [M3_RESULTADO.md:33](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M3_RESULTADO.md:33>), [M3_RESULTADO.md:35](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M3_RESULTADO.md:35>), [venv_isolado_ensaio.json:1](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/evidencias_finais/venv_isolado_ensaio.json:1>).  
+   Evidência: o JSON contém somente o relatório geométrico do ensaio. Não registra executável Python, `cwd`, criação do venv, pacotes instalados, versões, comandos nem hashes do pacote executado. Portanto não sustenta `cadquery-ocp-novtk 7.9.3.1.1`, ausência de dependência oculta ou execução em diretório neutro. C4 e C10 também dizem apenas “execução registrada”, sem artefato preservado.  
+   Correção mínima: preservar um relatório externo com comandos, códigos de saída, `sys.executable`, `cwd`, inventário instalado, versões e os controles de dependência ausente e contaminação plantada.
+
+3. **A tabela final de M1 continua vinculada a evidência e números antigos.**  
+   Arquivo: [M1_RESULTADO.md:46](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:46>).  
+   Evidência: A6 declara 87 pontos, mas a evidência final mede 99; A13 declara `.blend` de 93.598 bytes e STL de 3.684, enquanto os artefatos existentes têm 93.613 e 3.884 bytes; A13/A16 apontam apenas para `evidencias_m1/`, e não existem `ensaio_entrega.json`, STL ou `.blend` em `evidencias_finais/`. A18 permanece em 19 hashes.  
+   Correção mínima: regenerar e preservar a entrega com 1.5.0 e atualizar cada linha para o artefato final efetivamente conferido; caso contrário, marcar esses critérios pendentes.
+
+4. **O julgador ainda pode devolver aprovação e código zero com falhas.**  
+   Arquivos: [ensaio_preenchimento.py:92](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:92>), [roda_blender.py:133](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/roda_blender.py:133>).  
+   Evidência: `fecha()` ignora estados `ERRO`/`PRECONDICAO` de passos não cobertos por predicado, inclusive `salva_cena` e `exporta_malha`. O invocador classifica qualquer JSON legível como `estado: OK` e retorna zero sem consultar `veredito_global`. Assim até um relatório explicitamente `FALHOU` produz sucesso da CLI.  
+   Correção mínima: reprovar estados inesperados, julgar passos opcionais quando solicitados e propagar `veredito_global != ATENDIDO` para código de saída não zero.
+
+5. **Os controles negativos ainda podem passar pelo motivo errado.**  
+   Arquivo: [ensaio_preenchimento.py:340](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:340>).  
+   Evidência: `tangente`, `flutuante`, `parcial` e girada exigem apenas algum `PRECONDICAO`; não conferem mensagem, zona ausente ou assinatura inalterada. O próprio produto ensina que conferir somente o estado já aprovou anteriormente a caixa vazia pelo motivo errado. Os relatórios atuais contêm as mensagens corretas, mas o critério executável não as exige.  
+   Correção mínima: predicado próprio por variante — sobreposição zero; três zonas em zero; somente limite B em zero; eixo desalinhado — mais assinatura anterior/posterior idêntica.
+
+6. **A variante `duplicado` não exige que o defeito de degeneração tenha sido plantado.**  
+   Arquivos: [M1_RESULTADO.md:50](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:50>), [ensaio_preenchimento.py:458](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:458>).  
+   Evidência: o critério exige apenas `zerou == true` e nenhuma borda aberta, condição que também passa no controle correto com 0→0. Na duplicada, a face ambígua da seção pode dar o crédito embora A5 diga que o detector correspondente é degeneração.  
+   Correção mínima: exigir `degeneradas_antes > 0`, redução efetiva e `degeneradas_depois == 0`, separadamente do aviso da seção.
+
+7. **Nome de variante inválido executa silenciosamente a geometria correta.**  
+   Arquivo: [ensaio_preenchimento.py:125](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:125>).  
+   Evidência: não há validação do vocabulário. Qualquer erro de digitação cai pelo caminho de `correta` e pode terminar `ATENDIDO` com o nome inválido preservado no relatório.  
+   Correção mínima: recusar cedo qualquer variante fora do conjunto fechado documentado.
+
+8. **`valida_requisitos.py` afirma espelhar o verificador, mas os esquemas divergem.**  
+   Arquivos: [valida_requisitos.py:34](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/valida_requisitos.py:34>), [valida_requisitos.py:127](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/valida_requisitos.py:127>), [check_intent.py:102](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/verificadores/check_intent.py:102>).  
+   Evidência: o auxiliar aceita qualquer eixo textual, números não finitos, tolerâncias negativas, caixa `min >= max` e `interferencia` com `"entre"` de forma arbitrária. O verificador recusa todos esses casos. Por exemplo, `"entre":"x"` passa no auxiliar e vira `ESPEC_INVALIDA` no verificador.  
+   Correção mínima: reproduzir todas as validações do esquema congelado e acrescentar testes de paridade para casos válidos e inválidos.
+
+9. **A correção de união por distância ainda mede contra coordenada arredondada.**  
+   Arquivo: [bl_ferramentas.py:1110](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/bl_ferramentas.py:1110>).  
+   Evidência: o primeiro ponto é armazenado arredondado a seis casas na linha 1133. Com tolerância `1e-5`, pontos `0,00000051` e `0,00001052` distam `1,001e-5` e não deveriam unir; o primeiro vira `0,000001`, e a comparação passa a medir `9,52e-6`, unindo-os. A correção fecha os quatro exemplos medidos, mas não o contrato de distância real.  
+   Correção mínima: conservar coordenadas sem arredondamento no índice; arredondar apenas a representação de saída.
+
+10. **Duas operações de escrita ainda inferem sucesso por ausência de exceção.**  
+    Arquivos: [gera_cenario.py:66](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/gera_cenario.py:66>), [bl_ferramentas.py:1248](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/bl_ferramentas.py:1248>).  
+    Evidência: o gerador ignora o retorno das booleanas que constroem a própria geometria de referência e apaga a ferramenta mesmo com `CANCELLED`. `salva_cena` ignora o retorno de `save_as_mainfile`; se já houver arquivo no destino, pode devolver tamanho e hash antigos após salvamento cancelado.  
+    Correção mínima: exigir `FINISHED`, verificar retirada do modificador no gerador e comprovar criação/alteração do `.blend` antes de devolver seu hash.
+
+11. **O exemplo executável de inspeção não funciona como documentado no ambiente declarado.**  
+    Arquivos: [inspecionar_e_selecionar.md:170](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/inspecionar_e_selecionar.md:170>), [gera_cenario.py:138](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/gera_cenario.py:138>).  
+    Evidência: usa continuação `\` e `/tmp` em PowerShell; além disso, `--resultado` configura somente o invocador, enquanto o gerador só grava quando `param.json` contém `saida_relatorio` com o mesmo caminho. Sem isso, o invocador termina `SEM_RESULTADO`. A correção PowerShell anterior cobriu apenas a varredura.  
+    Correção mínima: fornecer comando PowerShell executável e o conteúdo integral de `param.json`, usando exatamente o mesmo arquivo de resultado.
+
+12. **C18 permanece explicitamente pendente.**  
+    Arquivo: [M3_RESULTADO.md:50](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M3_RESULTADO.md:50>).  
+    Evidência: a licença do produto não foi decidida. Isso não impede uso local, mas impede concluir o aceite de distribuição definido pelo próprio relatório.  
+    Correção mínima: o autor escolher e registrar a licença compatível antes de qualquer publicação.
+
+VEREDITO: BLOQUEIA

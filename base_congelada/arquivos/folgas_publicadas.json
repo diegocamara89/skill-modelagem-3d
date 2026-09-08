@@ -1,0 +1,69 @@
+{
+ "_nota": "Faixas PUBLICADAS por terceiros, com rotulo de confianca. NAO sao a folga desta maquina. Nenhum valor aqui foi medido nesta impressora, nesta chapa, com este filamento. Servem so como ponto de partida do cupom de teste.",
+ "_rotulos": {
+  "C": "consenso: tres ou mais fontes independentes de qualidade concordam",
+  "2F": "duas fontes de qualidade",
+  "1F": "uma fonte so; nao tratar como universal",
+  "1F-medido": "uma fonte, mas com medicao propria declarada",
+  "derivado": "nao publicado; deduzido de um piso ou teto citado"
+ },
+ "_maquina_das_medicoes": "As faixas medidas vieram de impressoras de outra familia. Compensacao XY, largura de extrusao e acabamento de superficie mudam a folga efetiva, entao o numero NAO transfere.",
+ "ajustes": {
+  "press": {
+   "faixa_mm": [0.0, 0.1],
+   "por_face": true,
+   "rotulo": "derivado",
+   "descricao": "interferencia; entra sob pressao e nao sai sem esforco",
+   "nota": "piso derivado do valor de encaixe justo citado por uma fonte; abaixo disso e interferencia real"
+  },
+  "justo": {
+   "faixa_mm": [0.1, 0.2],
+   "por_face": true,
+   "rotulo": "2F",
+   "descricao": "localizacao; posiciona sem folga perceptivel, montagem exige forca leve",
+   "nota": "uma das fontes ressalva que este valor depende muito do acabamento de superficie"
+  },
+  "deslizante": {
+   "faixa_mm": [0.2, 0.25],
+   "por_face": true,
+   "rotulo": "1F-medido",
+   "descricao": "aba, guia, gaveta, tampa que corre",
+   "nota": null
+  },
+  "folgado": {
+   "faixa_mm": [0.3, 0.4],
+   "por_face": true,
+   "rotulo": "1F-medido",
+   "descricao": "tampa e componente ajustavel",
+   "nota": null
+  },
+  "print-in-place": {
+   "faixa_mm": [0.25, 0.4],
+   "piso_absoluto_mm": 0.2,
+   "por_face": true,
+   "rotulo": "C",
+   "descricao": "dobradica ou junta impressa junta, que tem que soltar na primeira vez",
+   "nota": "tres fontes independentes convergem no piso de 0,2 mm; abaixo disso a junta funde"
+  }
+ },
+ "divergencia_conhecida": "Duas fontes de qualidade discordam em uma categoria inteira: o que uma chama de folgado (cerca de 0,2 mm) a outra chama de deslizante (0,20 a 0,25 mm). Nao existe um numero padrao para citar.",
+ "sem_fonte_primaria": [
+  "compensacao numerica de furo: nenhuma das quatro fontes de projeto de qualidade publica magnitude; todas mandam medir ou furar depois",
+  "press-fit de 0,05 a 0,1 mm por face",
+  "acrescentar 0,05 mm em superficie deslizante acima de 50 mm",
+  "contracao percentual por material: faixas que circulam divergem em ate quinze vezes para o mesmo material",
+  "offset de rosca do tipo M10 modelado como 10,2 a 10,4"
+ ],
+ "cupom": {
+  "folgas_a_testar_mm": [0.0, 0.05, 0.1, 0.2, 0.3, 0.4],
+  "procedimento": "Imprima o corpo de prova de tolerancia do proprio fatiador, que testa estas seis folgas. Meca furo e pino com paquimetro. Ajuste a compensacao XY de furo e de contorno, e repita ate a precisao desejada.",
+  "atencao_raio": "Num dos fatiadores a compensacao de furo e expressa em RAIO, nao em diametro. Ignorar isso troca o efeito por dois."
+ },
+ "furos": {
+  "regra": "Furo com diametro critico: imprima subdimensionado e abra com broca depois.",
+  "rotulo": "C",
+  "mecanismo": "O bico comprime a extrusao contra a camada anterior para aderir; isso achata o cordao, aumenta a area de contato e REDUZ o diametro do furo. O segundo efeito e geometrico: o fatiador aproxima o circulo por cordas, que ficam por dentro da curva.",
+  "minimo_modelado_mm": 2.0,
+  "minimo_rotulo": "1F"
+ }
+}

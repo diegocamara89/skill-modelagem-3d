@@ -1,0 +1,26 @@
+{
+ "origem": "base_pos_m0/arquivos (copia congelada pos-M0)",
+ "regra": "copias BYTE A BYTE. Nao alterar aqui: o comportamento e a agregacao destes verificadores foram estabilizados em M0 e reescreve-los mudaria resultado sem teste.",
+ "arquivos": {
+  "check_mesh.py": {
+   "sha256": "4ddcbf1e6670d85017daa746559960005ee53be571130a42b93b5d3c9ab1da8d",
+   "bytes": 8097
+  },
+  "check_intent.py": {
+   "sha256": "4f54003797a947e7ec854fcc9b66cd81350af61c910d97739193c0a30226b1b7",
+   "bytes": 26401
+  },
+  "secoes.py": {
+   "sha256": "721d250b67f4fea47af7e86a28e87e8143ae81102228f3d6cd419c3a5813bf92",
+   "bytes": 5521
+  },
+  "matriz.py": {
+   "sha256": "d3c9e740d42de945ccc0688c3e09933de0588b838d5d7b4ca28b51c3d0a3b712",
+   "bytes": 11933
+  },
+  "sweep_params.py": {
+   "sha256": "584015bd4b3750fa5f6f1ec0f1c5303ec3e20dd2847ec2ffa936d07d3020fce7",
+   "bytes": 20814
+  }
+ }
+}

@@ -1,0 +1,1833 @@
+{
+ "variante": "correta",
+ "gabarito": {
+  "objeto": "peca_de_ensaio",
+  "topo_do_patamar_alto": {
+   "x_de": 0.0,
+   "x_ate": 12.0,
+   "z": 16.0
+  },
+  "topo_do_patamar_baixo": {
+   "x_de": 28.0,
+   "x_ate": 40.0,
+   "z": 9.0
+  },
+  "vao": {
+   "x_de": 12.0,
+   "x_ate": 28.0,
+   "z_do_piso": 4.0,
+   "largura_em_y": 22.0,
+   "queda_esperada_da_rampa": 7.0,
+   "comprimento_do_vao": 16.0
+  },
+  "volume_da_peca_antes": 8008.0,
+  "rotacao_z_graus": 0.0
+ },
+ "passos": [
+  {
+   "passo": "diagnostico",
+   "estado": "OK",
+   "resultado": {
+    "versao_blender": "5.2.1 LTS",
+    "versao_ferramentas": "1.2.0",
+    "modo": "OBJECT",
+    "em_background": true,
+    "escala_de_unidade": 1.0,
+    "sistema_de_unidade": "METRIC",
+    "objetos_na_cena": [
+     "peca_de_ensaio"
+    ],
+    "objeto": {
+     "nome": "peca_de_ensaio",
+     "tipo": "MESH",
+     "location": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "rotation_euler": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "dimensions_mundo": [
+      40.0,
+      22.0,
+      16.0
+     ],
+     "matriz_mundo_e_identidade": true,
+     "modificadores": [],
+     "vertices": 20,
+     "faces": 16,
+     "caixa_mundo_min": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "caixa_mundo_max": [
+      40.0,
+      22.0,
+      16.0
+     ]
+    },
+    "selecao_viva": {
+     "fonte": "objeto fora de Edit Mode",
+     "faces_selecionadas_em_object_mode": 0,
+     "nota": "contagem de Object Mode pode estar desatualizada. Entrar em Edit Mode e reler antes de decidir."
+    },
+    "sobreposicoes": {
+     "disponivel": false,
+     "motivo": "modo background nao tem interface; o estado nao existe"
+    }
+   },
+   "esperado": null
+  },
+  {
+   "passo": "entra_em_edicao",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "modo": "EDIT_MESH",
+    "modo_de_selecao": "face"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "seleciona_topo_do_patamar_alto",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "criterio": "centro",
+    "caixa_mundo": {
+     "min": [
+      -0.001,
+      -0.001,
+      15.999
+     ],
+     "max": [
+      12.001,
+      22.000999,
+      16.000999
+     ]
+    },
+    "faces_que_atendem": 1,
+    "faces_marcadas": 1,
+    "indices": [
+     10
+    ],
+    "confirmacao": "a contagem foi lida DEPOIS de marcar, na propria bmesh: e medida, nao intencao"
+   },
+   "esperado": "1 face, contada na propria bmesh depois de marcar"
+  },
+  {
+   "passo": "le_selecao",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "faces_selecionadas": [
+     10
+    ],
+    "n": 1,
+    "centros_em_mundo": [
+     [
+      6.0,
+      11.0,
+      16.0
+     ]
+    ],
+    "assinatura_do_estado": "90a193b62b8f40abd6dee706045037b25dffa504cfbc69a8d00fdf711cddc7da"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "controle_negativo_caixa_vazia",
+   "estado": "PRECONDICAO",
+   "mensagem": "a caixa de mundo informada nao contem nenhuma face pelo criterio 'centro'. Editar agora nao mudaria nada e o operador devolveria CANCELLED sem erro. Confira a caixa contra o diagnostico: a caixa do objeto em mundo e min=[0.0, 0.0, 0.0] max=[40.0, 22.0, 16.0].",
+   "esperado": "PRECONDICAO"
+  },
+  {
+   "passo": "limpa_selecao",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "faces_selecionadas": 0
+   },
+   "esperado": null
+  },
+  {
+   "passo": "controle_negativo_deslocar_selecao_vazia",
+   "estado": "PRECONDICAO",
+   "mensagem": "nenhum vertice selecionado. O operador de deslocamento devolveria CANCELLED sem erro e a geometria ficaria intacta, o que se parece com sucesso em qualquer registro que so olhe excecao.",
+   "esperado": "PRECONDICAO"
+  },
+  {
+   "passo": "reseleciona_topo",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "criterio": "centro",
+    "caixa_mundo": {
+     "min": [
+      -0.001,
+      -0.001,
+      15.999
+     ],
+     "max": [
+      12.001,
+      22.000999,
+      16.000999
+     ]
+    },
+    "faces_que_atendem": 1,
+    "faces_marcadas": 1,
+    "indices": [
+     10
+    ],
+    "confirmacao": "a contagem foi lida DEPOIS de marcar, na propria bmesh: e medida, nao intencao"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "controle_positivo_deslocamento",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "vetor": [
+     0,
+     0,
+     2.0
+    ],
+    "faces_selecionadas_antes": 1,
+    "vertices_selecionados_antes": 4,
+    "retorno_do_operador": [
+     "FINISHED"
+    ],
+    "assinatura_antes": "90a193b62b8f40abd6dee706045037b25dffa504cfbc69a8d00fdf711cddc7da",
+    "assinatura_depois": "0332bf17abc6bfb6d50ff90d8200c0dd0c19604311352f5561c8eb7f47bf5e04",
+    "geometria_mudou": true
+   },
+   "esperado": "geometria_mudou verdadeiro; assinatura lida da malha VIVA"
+  },
+  {
+   "passo": "confere_altura_apos_deslocamento",
+   "estado": "OK",
+   "resultado": {
+    "versao_blender": "5.2.1 LTS",
+    "versao_ferramentas": "1.2.0",
+    "modo": "EDIT_MESH",
+    "em_background": true,
+    "escala_de_unidade": 1.0,
+    "sistema_de_unidade": "METRIC",
+    "objetos_na_cena": [
+     "peca_de_ensaio"
+    ],
+    "objeto": {
+     "nome": "peca_de_ensaio",
+     "tipo": "MESH",
+     "location": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "rotation_euler": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "dimensions_mundo": [
+      40.0,
+      22.0,
+      18.0
+     ],
+     "matriz_mundo_e_identidade": true,
+     "modificadores": [],
+     "vertices": 20,
+     "faces": 16,
+     "caixa_mundo_min": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "caixa_mundo_max": [
+      40.0,
+      22.0,
+      18.0
+     ]
+    },
+    "selecao_viva": {
+     "fonte": "bmesh.from_edit_mesh, que e a selecao REAL em Edit Mode",
+     "faces_selecionadas": 1,
+     "arestas_selecionadas": 4,
+     "vertices_selecionados": 4,
+     "modo_de_selecao": [
+      "face"
+     ]
+    },
+    "sobreposicoes": {
+     "disponivel": false,
+     "motivo": "modo background nao tem interface; o estado nao existe"
+    }
+   },
+   "esperado": "dimensions_mundo z = 22 depois de subir 2"
+  },
+  {
+   "passo": "devolve_o_deslocamento",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "vetor": [
+     0,
+     0,
+     -2.0
+    ],
+    "faces_selecionadas_antes": 1,
+    "vertices_selecionados_antes": 4,
+    "retorno_do_operador": [
+     "FINISHED"
+    ],
+    "assinatura_antes": "0332bf17abc6bfb6d50ff90d8200c0dd0c19604311352f5561c8eb7f47bf5e04",
+    "assinatura_depois": "90a193b62b8f40abd6dee706045037b25dffa504cfbc69a8d00fdf711cddc7da",
+    "geometria_mudou": true
+   },
+   "esperado": null
+  },
+  {
+   "passo": "sai_de_edicao",
+   "estado": "OK",
+   "resultado": {
+    "modo_anterior": "EDIT_MESH",
+    "modo": "OBJECT"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "marca_recuperacao",
+   "estado": "OK",
+   "resultado": {
+    "marcado": "antes do preenchimento",
+    "em_background": true,
+    "nota": "em background o primeiro push tambem INICIALIZA o sistema de undo. Sem ele, ed.undo nem e chamavel."
+   },
+   "esperado": null
+  },
+  {
+   "passo": "superficie_protegida_antes",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "tolerancia": 0.01,
+    "n_pontos": 18,
+    "n_medidos": 18,
+    "n_sem_material": 0,
+    "desvio_maximo_absoluto": 0.0,
+    "todos_dentro_da_tolerancia": true,
+    "amostras": [
+     {
+      "x": 1.0,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 2.84,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 4.68,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 6.52,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 8.36,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 10.2,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 1.0,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 2.84,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 4.68,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 6.52,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 8.36,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 10.2,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 1.0,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 2.84,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 4.68,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 6.52,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 8.36,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 10.2,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     }
+    ],
+    "limite": "a conclusao vale para os 18 pontos amostrados, nas posicoes listadas. Amostragem nao prova toda a superficie."
+   },
+   "esperado": "todos em z=16.0"
+  },
+  {
+   "passo": "preenche_entre_limites",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "interseccao_por_zona": {
+     "extremo_do_limite_a": {
+      "caixa": {
+       "min": [
+        11.2,
+        0.0,
+        3.2
+       ],
+       "max": [
+        12.0,
+        22.0,
+        16.0
+       ]
+      },
+      "volume_de_material": 225.280053,
+      "intercepta": true
+     },
+     "extremo_do_limite_b": {
+      "caixa": {
+       "min": [
+        28.0,
+        0.0,
+        3.2
+       ],
+       "max": [
+        28.8,
+        22.0,
+        9.0
+       ]
+      },
+      "volume_de_material": 102.079902,
+      "intercepta": true
+     },
+     "abaixo_do_piso": {
+      "caixa": {
+       "min": [
+        11.2,
+        0.0,
+        3.2
+       ],
+       "max": [
+        28.8,
+        22.0,
+        4.0
+       ]
+      },
+      "volume_de_material": 309.759971,
+      "intercepta": true
+     }
+    },
+    "interseccao_com_o_material": {
+     "volume_da_peca_antes": 8008.0,
+     "volume_do_volume_de_preenchimento": 3600.959938,
+     "soma_se_nao_houvesse_interseccao": 11608.959938,
+     "volume_da_uniao": 11000.0,
+     "interseccao_medida": 608.959938,
+     "houve_interseccao": true,
+     "nota": "uniao de solidos que se interceptam tem volume MENOR que a soma. Este escalar prova que houve ALGUMA interseccao; quem prova as TRES prometidas e interseccao_por_zona, medida em copia antes da uniao."
+    },
+    "perfil_do_volume_em_xz": [
+     [
+      11.2,
+      16.0
+     ],
+     [
+      12.0,
+      16.0
+     ],
+     [
+      28.0,
+      9.0
+     ],
+     [
+      28.8,
+      9.0
+     ],
+     [
+      28.8,
+      3.2
+     ],
+     [
+      11.2,
+      3.2
+     ]
+    ],
+    "faixa_em_y": [
+     0.0,
+     22.0
+    ],
+    "sobreposicao": 0.8,
+    "origem_da_sobreposicao": "um vigesimo do comprimento do vao (16.0 unidades), para interceptar material nas duas junções sem alcancar a regiao declarada como protegida, que comeca a 0.8 de distancia do limite",
+    "inclinacao_entre_os_limites": -0.4375,
+    "topo_nas_zonas_de_sobreposicao": "horizontal na altura do limite, para nao ultrapassar a superficie existente",
+    "volume_da_ferramenta": 3600.959938,
+    "volume_antes": 8008.0,
+    "volume_depois": 11000.0,
+    "solver": "EXACT",
+    "assinatura_antes": "90a193b62b8f40abd6dee706045037b25dffa504cfbc69a8d00fdf711cddc7da",
+    "assinatura_depois": "c80719a1cd6c09f6718f42a5827187e5e12bffde354719e303192a13569f5298",
+    "malha_antes": {
+     "objeto": "peca_de_ensaio",
+     "n_componentes_conexos": 1,
+     "arestas_abertas": 0,
+     "arestas_nao_manifold": 0,
+     "arestas_soltas": 0,
+     "faces_degeneradas": 0,
+     "limite_de_area_usado": 1e-09,
+     "faces": 16,
+     "vertices": 20,
+     "indices_degeneradas": [],
+     "indices_nao_manifold": [],
+     "limite": "estas sao medidas TOPOLOGICAS. Nenhuma delas detecta ranhura, desnivel ou forma errada: malha fechada pode ter a forma errada."
+    },
+    "malha_depois": {
+     "objeto": "peca_de_ensaio",
+     "n_componentes_conexos": 1,
+     "arestas_abertas": 0,
+     "arestas_nao_manifold": 0,
+     "arestas_soltas": 0,
+     "faces_degeneradas": 0,
+     "limite_de_area_usado": 1e-09,
+     "faces": 27,
+     "vertices": 40,
+     "indices_degeneradas": [],
+     "indices_nao_manifold": [],
+     "limite": "estas sao medidas TOPOLOGICAS. Nenhuma delas detecta ranhura, desnivel ou forma errada: malha fechada pode ter a forma errada."
+    },
+    "historico": {
+     "marcado_aqui": false,
+     "contexto": {
+      "em_background": true,
+      "janelas": 1,
+      "modo": "OBJECT",
+      "undo_pollavel": false,
+      "redo_pollavel": false,
+      "objeto_ativo": "peca_de_ensaio"
+     }
+    },
+    "limite": "uniao concluida NAO prova junção correta. Ranhura e desnivel exigem secao ou comparacao de superficie; degeneracao exige contagem propria. Sao medidas separadas."
+   },
+   "esperado": "PRECONDICAO na tangente; na flutuante a uniao conclui e houve_interseccao tem que ser falso; uniao normal nas outras"
+  },
+  {
+   "passo": "mede_malha_apos_uniao",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "n_componentes_conexos": 1,
+    "arestas_abertas": 0,
+    "arestas_nao_manifold": 0,
+    "arestas_soltas": 0,
+    "faces_degeneradas": 0,
+    "limite_de_area_usado": 1e-09,
+    "faces": 27,
+    "vertices": 40,
+    "indices_degeneradas": [],
+    "indices_nao_manifold": [],
+    "limite": "estas sao medidas TOPOLOGICAS. Nenhuma delas detecta ranhura, desnivel ou forma errada: malha fechada pode ter a forma errada."
+   },
+   "esperado": null
+  },
+  {
+   "passo": "limpa_degeneracoes_na_junção",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "caixa_mundo": {
+     "min": [
+      10.4,
+      -0.001,
+      2.4
+     ],
+     "max": [
+      29.6,
+      22.001,
+      17.6
+     ]
+    },
+    "tolerancia": 1e-05,
+    "justificativa_da_tolerancia": "1e-5 unidades: quatro ordens de grandeza abaixo do menor detalhe geometrico deste cenario, que e a sobreposicao de 0.8, e acima da precisao de coincidencia do solver EXACT",
+    "vertices_na_regiao_antes": 28,
+    "vertices_no_objeto": {
+     "antes": 40,
+     "depois": 40
+    },
+    "degeneradas_antes": 0,
+    "degeneradas_depois": 0,
+    "reduziu": false,
+    "zerou": true,
+    "abriu_borda": false,
+    "malha_antes": {
+     "objeto": "peca_de_ensaio",
+     "n_componentes_conexos": 1,
+     "arestas_abertas": 0,
+     "arestas_nao_manifold": 0,
+     "arestas_soltas": 0,
+     "faces_degeneradas": 0,
+     "limite_de_area_usado": 1e-09,
+     "faces": 27,
+     "vertices": 40,
+     "indices_degeneradas": [],
+     "indices_nao_manifold": [],
+     "limite": "estas sao medidas TOPOLOGICAS. Nenhuma delas detecta ranhura, desnivel ou forma errada: malha fechada pode ter a forma errada."
+    },
+    "malha_depois": {
+     "objeto": "peca_de_ensaio",
+     "n_componentes_conexos": 1,
+     "arestas_abertas": 0,
+     "arestas_nao_manifold": 0,
+     "arestas_soltas": 0,
+     "faces_degeneradas": 0,
+     "limite_de_area_usado": 1e-09,
+     "faces": 27,
+     "vertices": 40,
+     "indices_degeneradas": [],
+     "indices_nao_manifold": [],
+     "limite": "estas sao medidas TOPOLOGICAS. Nenhuma delas detecta ranhura, desnivel ou forma errada: malha fechada pode ter a forma errada."
+    },
+    "historico": {
+     "marcado_aqui": false,
+     "nota": "escrever por bm.to_mesh e MUTACAO DIRETA DE DADOS e NAO entra no historico sozinha. Se esta limpeza fizer parte de uma operacao logica maior, marcar UMA vez no fim dela; se for isolada, marcar aqui com marcar_no_historico=True. Sem nenhum push, ela e irrecuperavel por historico."
+    },
+    "limite": "limpeza restrita a caixa declarada. Reducao de degeneracao NAO prova que a forma esta certa, e a comparacao da regiao protegida tem que ser refeita DEPOIS desta limpeza."
+   },
+   "esperado": "degeneracoes zeradas sem abrir borda"
+  },
+  {
+   "passo": "mede_malha_apos_limpeza",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "n_componentes_conexos": 1,
+    "arestas_abertas": 0,
+    "arestas_nao_manifold": 0,
+    "arestas_soltas": 0,
+    "faces_degeneradas": 0,
+    "limite_de_area_usado": 1e-09,
+    "faces": 27,
+    "vertices": 40,
+    "indices_degeneradas": [],
+    "indices_nao_manifold": [],
+    "limite": "estas sao medidas TOPOLOGICAS. Nenhuma delas detecta ranhura, desnivel ou forma errada: malha fechada pode ter a forma errada."
+   },
+   "esperado": null
+  },
+  {
+   "passo": "marca_fim_da_operacao_logica",
+   "estado": "OK",
+   "resultado": {
+    "marcado": "preenchimento do vao concluido, com limpeza",
+    "em_background": true,
+    "nota": "em background o primeiro push tambem INICIALIZA o sistema de undo. Sem ele, ed.undo nem e chamavel."
+   },
+   "esperado": null
+  },
+  {
+   "passo": "mede_perfil_da_junção",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "tolerancia": 0.01,
+    "n_pontos": 87,
+    "n_medidos": 87,
+    "n_sem_material": 0,
+    "desvio_maximo_absoluto": 0.0,
+    "todos_dentro_da_tolerancia": true,
+    "amostras": [
+     {
+      "x": 9.6,
+      "y": 2.2,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.0857,
+      "y": 2.2,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.2,
+      "y": 2.2,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.4,
+      "y": 2.2,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.6,
+      "y": 2.2,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.8,
+      "y": 2.2,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.0,
+      "y": 2.2,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.2,
+      "y": 2.2,
+      "z_esperado": 15.9125,
+      "z_medido": 15.9125,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.4,
+      "y": 2.2,
+      "z_esperado": 15.825,
+      "z_medido": 15.825,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.5714,
+      "y": 2.2,
+      "z_esperado": 15.75001,
+      "z_medido": 15.75001,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 14.0571,
+      "y": 2.2,
+      "z_esperado": 15.10002,
+      "z_medido": 15.10002,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 15.5429,
+      "y": 2.2,
+      "z_esperado": 14.44998,
+      "z_medido": 14.44998,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 17.0286,
+      "y": 2.2,
+      "z_esperado": 13.79999,
+      "z_medido": 13.79999,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 18.5143,
+      "y": 2.2,
+      "z_esperado": 13.14999,
+      "z_medido": 13.14999,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 20.0,
+      "y": 2.2,
+      "z_esperado": 12.5,
+      "z_medido": 12.5,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 21.4857,
+      "y": 2.2,
+      "z_esperado": 11.85001,
+      "z_medido": 11.85001,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 22.9714,
+      "y": 2.2,
+      "z_esperado": 11.20001,
+      "z_medido": 11.20001,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 24.4571,
+      "y": 2.2,
+      "z_esperado": 10.55002,
+      "z_medido": 10.55002,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 25.9429,
+      "y": 2.2,
+      "z_esperado": 9.89998,
+      "z_medido": 9.89998,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 27.4286,
+      "y": 2.2,
+      "z_esperado": 9.24999,
+      "z_medido": 9.24999,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 27.6,
+      "y": 2.2,
+      "z_esperado": 9.175,
+      "z_medido": 9.175,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 27.8,
+      "y": 2.2,
+      "z_esperado": 9.0875,
+      "z_medido": 9.0875,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.0,
+      "y": 2.2,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.2,
+      "y": 2.2,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.4,
+      "y": 2.2,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.6,
+      "y": 2.2,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.8,
+      "y": 2.2,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.9143,
+      "y": 2.2,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 30.4,
+      "y": 2.2,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 9.6,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.0857,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.2,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.4,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.6,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.8,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.0,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.2,
+      "y": 11.0,
+      "z_esperado": 15.9125,
+      "z_medido": 15.9125,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.4,
+      "y": 11.0,
+      "z_esperado": 15.825,
+      "z_medido": 15.825,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.5714,
+      "y": 11.0,
+      "z_esperado": 15.75001,
+      "z_medido": 15.75001,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 14.0571,
+      "y": 11.0,
+      "z_esperado": 15.10002,
+      "z_medido": 15.10002,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 15.5429,
+      "y": 11.0,
+      "z_esperado": 14.44998,
+      "z_medido": 14.44998,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 17.0286,
+      "y": 11.0,
+      "z_esperado": 13.79999,
+      "z_medido": 13.79999,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 18.5143,
+      "y": 11.0,
+      "z_esperado": 13.14999,
+      "z_medido": 13.14999,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 20.0,
+      "y": 11.0,
+      "z_esperado": 12.5,
+      "z_medido": 12.5,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 21.4857,
+      "y": 11.0,
+      "z_esperado": 11.85001,
+      "z_medido": 11.85001,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 22.9714,
+      "y": 11.0,
+      "z_esperado": 11.20001,
+      "z_medido": 11.20001,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 24.4571,
+      "y": 11.0,
+      "z_esperado": 10.55002,
+      "z_medido": 10.55002,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 25.9429,
+      "y": 11.0,
+      "z_esperado": 9.89998,
+      "z_medido": 9.89998,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 27.4286,
+      "y": 11.0,
+      "z_esperado": 9.24999,
+      "z_medido": 9.24999,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 27.6,
+      "y": 11.0,
+      "z_esperado": 9.175,
+      "z_medido": 9.175,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 27.8,
+      "y": 11.0,
+      "z_esperado": 9.0875,
+      "z_medido": 9.0875,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.0,
+      "y": 11.0,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.2,
+      "y": 11.0,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.4,
+      "y": 11.0,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.6,
+      "y": 11.0,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.8,
+      "y": 11.0,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.9143,
+      "y": 11.0,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 30.4,
+      "y": 11.0,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 9.6,
+      "y": 19.8,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.0857,
+      "y": 19.8,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.2,
+      "y": 19.8,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.4,
+      "y": 19.8,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.6,
+      "y": 19.8,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 11.8,
+      "y": 19.8,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.0,
+      "y": 19.8,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.2,
+      "y": 19.8,
+      "z_esperado": 15.9125,
+      "z_medido": 15.9125,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.4,
+      "y": 19.8,
+      "z_esperado": 15.825,
+      "z_medido": 15.825,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 12.5714,
+      "y": 19.8,
+      "z_esperado": 15.75001,
+      "z_medido": 15.75001,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 14.0571,
+      "y": 19.8,
+      "z_esperado": 15.10002,
+      "z_medido": 15.10002,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 15.5429,
+      "y": 19.8,
+      "z_esperado": 14.44998,
+      "z_medido": 14.44998,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 17.0286,
+      "y": 19.8,
+      "z_esperado": 13.79999,
+      "z_medido": 13.79999,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 18.5143,
+      "y": 19.8,
+      "z_esperado": 13.14999,
+      "z_medido": 13.14999,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 20.0,
+      "y": 19.8,
+      "z_esperado": 12.5,
+      "z_medido": 12.5,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 21.4857,
+      "y": 19.8,
+      "z_esperado": 11.85001,
+      "z_medido": 11.85001,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 22.9714,
+      "y": 19.8,
+      "z_esperado": 11.20001,
+      "z_medido": 11.20001,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 24.4571,
+      "y": 19.8,
+      "z_esperado": 10.55002,
+      "z_medido": 10.55002,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 25.9429,
+      "y": 19.8,
+      "z_esperado": 9.89998,
+      "z_medido": 9.89998,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 27.4286,
+      "y": 19.8,
+      "z_esperado": 9.24999,
+      "z_medido": 9.24999,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 27.6,
+      "y": 19.8,
+      "z_esperado": 9.175,
+      "z_medido": 9.175,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 27.8,
+      "y": 19.8,
+      "z_esperado": 9.0875,
+      "z_medido": 9.0875,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.0,
+      "y": 19.8,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.2,
+      "y": 19.8,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.4,
+      "y": 19.8,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.6,
+      "y": 19.8,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.8,
+      "y": 19.8,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 28.9143,
+      "y": 19.8,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 30.4,
+      "y": 19.8,
+      "z_esperado": 9.0,
+      "z_medido": 9.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     }
+    ],
+    "limite": "a conclusao vale para os 87 pontos amostrados, nas posicoes listadas. Amostragem nao prova toda a superficie."
+   },
+   "esperado": "correta: todos dentro de 0.01. ranhura: desvio proximo de 0,5 no trecho da rampa"
+  },
+  {
+   "passo": "superficie_protegida_depois",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "tolerancia": 0.01,
+    "n_pontos": 18,
+    "n_medidos": 18,
+    "n_sem_material": 0,
+    "desvio_maximo_absoluto": 0.0,
+    "todos_dentro_da_tolerancia": true,
+    "amostras": [
+     {
+      "x": 1.0,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 2.84,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 4.68,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 6.52,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 8.36,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 10.2,
+      "y": 4.4,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 1.0,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 2.84,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 4.68,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 6.52,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 8.36,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 10.2,
+      "y": 11.0,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 1.0,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 2.84,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 4.68,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 6.52,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 8.36,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     },
+     {
+      "x": 10.2,
+      "y": 17.6,
+      "z_esperado": 16.0,
+      "z_medido": 16.0,
+      "desvio": 0.0,
+      "dentro_da_tolerancia": true
+     }
+    ],
+    "limite": "a conclusao vale para os 18 pontos amostrados, nas posicoes listadas. Amostragem nao prova toda a superficie."
+   },
+   "esperado": "identica a de antes, dentro da tolerancia"
+  },
+  {
+   "passo": "secao_no_meio",
+   "estado": "OK",
+   "resultado": {
+    "objeto": "peca_de_ensaio",
+    "plano": {
+     "ponto": [
+      0.0,
+      11.0,
+      0.0
+     ],
+     "normal": [
+      0.0,
+      1.0,
+      0.0
+     ]
+    },
+    "n_pontos": 10,
+    "n_segmentos": 10,
+    "faces_coplanares_ignoradas": 0,
+    "faces_com_mais_de_dois_cruzamentos": 0,
+    "pontos": [
+     [
+      0.0,
+      11.0,
+      4.0
+     ],
+     [
+      0.0,
+      11.0,
+      0.0
+     ],
+     [
+      40.0,
+      11.0,
+      4.0
+     ],
+     [
+      40.0,
+      11.0,
+      0.0
+     ],
+     [
+      0.0,
+      11.0,
+      16.0
+     ],
+     [
+      11.2,
+      11.0,
+      16.0
+     ],
+     [
+      12.0,
+      11.0,
+      16.0
+     ],
+     [
+      40.0,
+      11.0,
+      9.0
+     ],
+     [
+      28.799999,
+      11.0,
+      9.0
+     ],
+     [
+      28.0,
+      11.0,
+      9.0
+     ]
+    ],
+    "segmentos": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      4,
+      0
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      5
+     ],
+     [
+      7,
+      2
+     ],
+     [
+      7,
+      8
+     ],
+     [
+      9,
+      8
+     ],
+     [
+      9,
+      6
+     ]
+    ],
+    "limite": "a secao descreve o corte NESTE plano. Uma secao nao prova a junção inteira: declarar as posicoes amostradas. Face nao convexa cortada em mais de dois pontos e CONTADA em faces_com_mais_de_dois_cruzamentos e o segmento dela nao e confiavel; se essa contagem nao for zero, a poligonal devolvida esta incompleta."
+   },
+   "esperado": null
+  },
+  {
+   "passo": "contexto_de_historico",
+   "estado": "OK",
+   "resultado": {
+    "em_background": true,
+    "janelas": 1,
+    "modo": "OBJECT",
+    "undo_pollavel": true,
+    "redo_pollavel": false,
+    "objeto_ativo": "peca_de_ensaio"
+   },
+   "esperado": null
+  },
+  {
+   "passo": "desfaz_e_confere",
+   "estado": "OK",
+   "resultado": {
+    "contexto": {
+     "em_background": true,
+     "janelas": 1,
+     "modo": "OBJECT",
+     "undo_pollavel": true,
+     "redo_pollavel": false,
+     "objeto_ativo": "peca_de_ensaio"
+    },
+    "assinatura_apos_undo": "90a193b62b8f40abd6dee706045037b25dffa504cfbc69a8d00fdf711cddc7da",
+    "assinatura_esperada": "90a193b62b8f40abd6dee706045037b25dffa504cfbc69a8d00fdf711cddc7da",
+    "recuperou": true,
+    "nota": "objeto relido por NOME depois do undo, nao por referencia antiga"
+   },
+   "esperado": "recuperou verdadeiro"
+  },
+  {
+   "passo": "refaz_e_confere",
+   "estado": "OK",
+   "resultado": {
+    "contexto": {
+     "em_background": true,
+     "janelas": 1,
+     "modo": "OBJECT",
+     "undo_pollavel": false,
+     "redo_pollavel": true,
+     "objeto_ativo": "peca_de_ensaio"
+    },
+    "assinatura_apos_redo": "c80719a1cd6c09f6718f42a5827187e5e12bffde354719e303192a13569f5298",
+    "assinatura_esperada": "c80719a1cd6c09f6718f42a5827187e5e12bffde354719e303192a13569f5298",
+    "recuperou": true
+   },
+   "esperado": "recuperou verdadeiro"
+  }
+ ],
+ "versao_blender": "5.2.1 LTS",
+ "versao_ferramentas": "1.2.0",
+ "parametros_derivados": {
+  "sobreposicao": 0.8,
+  "origem": "um vigesimo do comprimento do vao (16.0 unidades), para interceptar material nas duas junções sem alcancar a regiao declarada como protegida, que comeca a 0.8 de distancia do limite",
+  "tolerancia_de_perfil": 0.01
+ },
+ "assinatura_antes_da_uniao": "90a193b62b8f40abd6dee706045037b25dffa504cfbc69a8d00fdf711cddc7da",
+ "interseccao": {
+  "volume_da_peca_antes": 8008.0,
+  "volume_do_volume_de_preenchimento": 3600.959938,
+  "soma_se_nao_houvesse_interseccao": 11608.959938,
+  "volume_da_uniao": 11000.0,
+  "interseccao_medida": 608.959938,
+  "houve_interseccao": true,
+  "nota": "uniao de solidos que se interceptam tem volume MENOR que a soma. Este escalar prova que houve ALGUMA interseccao; quem prova as TRES prometidas e interseccao_por_zona, medida em copia antes da uniao."
+ },
+ "assinatura_depois_da_uniao": "c80719a1cd6c09f6718f42a5827187e5e12bffde354719e303192a13569f5298",
+ "resumo": {
+  "diagnostico": "OK",
+  "entra_em_edicao": "OK",
+  "seleciona_topo_do_patamar_alto": "OK",
+  "le_selecao": "OK",
+  "controle_negativo_caixa_vazia": "PRECONDICAO",
+  "limpa_selecao": "OK",
+  "controle_negativo_deslocar_selecao_vazia": "PRECONDICAO",
+  "reseleciona_topo": "OK",
+  "controle_positivo_deslocamento": "OK",
+  "confere_altura_apos_deslocamento": "OK",
+  "devolve_o_deslocamento": "OK",
+  "sai_de_edicao": "OK",
+  "marca_recuperacao": "OK",
+  "superficie_protegida_antes": "OK",
+  "preenche_entre_limites": "OK",
+  "mede_malha_apos_uniao": "OK",
+  "limpa_degeneracoes_na_junção": "OK",
+  "mede_malha_apos_limpeza": "OK",
+  "marca_fim_da_operacao_logica": "OK",
+  "mede_perfil_da_junção": "OK",
+  "superficie_protegida_depois": "OK",
+  "secao_no_meio": "OK",
+  "contexto_de_historico": "OK",
+  "desfaz_e_confere": "OK",
+  "refaz_e_confere": "OK"
+ }
+}

@@ -1,0 +1,250 @@
+{
+ "planos": [
+  {
+   "y": 1,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 2,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 3,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 4,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 5,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 6,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 7,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 8,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 9,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 10,
+   "n_pontos": 20,
+   "n_segmentos": 10,
+   "ys_distintos": [
+    9.999999,
+    10.000002
+   ]
+  },
+  {
+   "y": 11,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 12,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 13,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 14,
+   "n_pontos": 20,
+   "n_segmentos": 10,
+   "ys_distintos": [
+    13.999999,
+    14.000001
+   ]
+  },
+  {
+   "y": 15,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 16,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 17,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 18,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 19,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 20,
+   "n_pontos": 20,
+   "n_segmentos": 10,
+   "ys_distintos": [
+    19.999998,
+    20.0
+   ]
+  },
+  {
+   "y": 21,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 22,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 23,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 24,
+   "n_pontos": 20,
+   "n_segmentos": 10,
+   "ys_distintos": [
+    23.999998,
+    24.0
+   ]
+  },
+  {
+   "y": 25,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 26,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 27,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 28,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 29,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 30,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 31,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 32,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  },
+  {
+   "y": 33,
+   "n_pontos": 10,
+   "n_segmentos": 10,
+   "ys_distintos": null
+  }
+ ],
+ "planos_com_duplicata": [
+  {
+   "y": 10,
+   "n_pontos": 20,
+   "ys": [
+    9.999999,
+    10.000002
+   ]
+  },
+  {
+   "y": 14,
+   "n_pontos": 20,
+   "ys": [
+    13.999999,
+    14.000001
+   ]
+  },
+  {
+   "y": 20,
+   "n_pontos": 20,
+   "ys": [
+    19.999998,
+    20.0
+   ]
+  },
+  {
+   "y": 24,
+   "n_pontos": 20,
+   "ys": [
+    23.999998,
+    24.0
+   ]
+  }
+ ],
+ "n_planos": 33,
+ "n_com_duplicata": 4
+}

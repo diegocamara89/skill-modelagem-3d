@@ -1,0 +1,158 @@
+{
+ "origem": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\produto",
+ "n_permitidos": 22,
+ "faltando_na_origem": [],
+ "na_origem_e_fora_da_lista": [],
+ "n_padroes": 5,
+ "erro_de_padroes": null,
+ "controle_da_varredura": {
+  "varredura_funciona": true,
+  "padroes_que_casaram": 1,
+  "nota": "semente de controle fica FORA do pacote"
+ },
+ "achados_de_vazamento": [],
+ "negados_declarados": [
+  "__pycache__",
+  ".pyc",
+  "padroes_de_vazamento.json",
+  "M0_RESULTADO.md",
+  "M1_RESULTADO.md",
+  "M2_RESULTADO.md",
+  "M3_RESULTADO.md",
+  "PLANO_IMPLEMENTACAO_PLUGIN.md",
+  "DESENHO_PLUGIN.md",
+  "DESENHO.md",
+  "REFERENCIA_BLENDER_EDICAO_GUIADA.md",
+  "REVISAO_M1_CONTEXTO.md",
+  "LACUNAS_PARA_M2.md",
+  "PENDENCIAS_PRODUTO.md",
+  "base_congelada",
+  "base_pos_m0",
+  "evidencias_m1",
+  "cenas_de_teste",
+  "prototipo"
+ ],
+ "autorizacao_de_publicacao": "NAO EMITIDA por esta ferramenta",
+ "limite": "a varredura prova ausencia dos padroes TESTADOS na cobertura testada. Nao prova ausencia de qualquer dado privado, e nao substitui revisao manual dos recursos novos.",
+ "pacote_limpo": true,
+ "auditoria_do_destino": {
+  "arquivos_no_destino": [
+   "INVENTARIO.json",
+   "SKILL.md",
+   "cenarios/ensaio_preenchimento.py",
+   "cenarios/familia_exemplo.py",
+   "cenarios/gera_cenario.py",
+   "referencias/criar_e_parametrizar.md",
+   "referencias/editar_localizado.md",
+   "referencias/inspecionar_e_selecionar.md",
+   "referencias/mapa_de_ferramentas.md",
+   "referencias/recuperar_salvar_exportar.md",
+   "referencias/registro_de_trabalho.md",
+   "referencias/verificar.md",
+   "scripts/bl_ferramentas.py",
+   "scripts/mcp_blender.py",
+   "scripts/roda_blender.py",
+   "scripts/valida_requisitos.py",
+   "verificadores/PROVENIENCIA.json",
+   "verificadores/check_intent.py",
+   "verificadores/check_mesh.py",
+   "verificadores/matriz.py",
+   "verificadores/secoes.py",
+   "verificadores/sweep_params.py"
+  ],
+  "sobrando": [],
+  "nao_chegou": [],
+  "hashes_iguais_a_origem": true,
+  "hashes": {
+   "SKILL.md": {
+    "sha256": "af4694544bddeec12d712c3ef9d1f022c15d35932cad2a63a085476976604c79",
+    "bytes": 4906
+   },
+   "INVENTARIO.json": {
+    "sha256": "3c1adc54de25d55c70a65d240ccb281f64fe85f7214209548db7d9d6a33091e2",
+    "bytes": 2601
+   },
+   "referencias/criar_e_parametrizar.md": {
+    "sha256": "5f3c75aeee71bb7af7d0d0b99d478d4f0850e1ee2b97ca102b603257b89675c1",
+    "bytes": 8138
+   },
+   "referencias/editar_localizado.md": {
+    "sha256": "18dfa1927bc37cf857491d1a14b179928368aadd08a8a0a27663306d500c6b49",
+    "bytes": 19644
+   },
+   "referencias/inspecionar_e_selecionar.md": {
+    "sha256": "0589ef2493c1f8e115431bc4b864b05d4c2af57f73b54a93213df03464f2f675",
+    "bytes": 9476
+   },
+   "referencias/mapa_de_ferramentas.md": {
+    "sha256": "88d486ee0eafa9247bddfdbf62fb8941fd0bd2e680697d3505091fb96a531252",
+    "bytes": 11108
+   },
+   "referencias/recuperar_salvar_exportar.md": {
+    "sha256": "ecdfc089194d97fb35341990529bfd89aec4df889d38fe1f7bbe1419b9c5e3ce",
+    "bytes": 5577
+   },
+   "referencias/registro_de_trabalho.md": {
+    "sha256": "bb0007c0aff8f6138073135d92fd5f77ce16c54283375f6a3e6d14e0bbdc2e77",
+    "bytes": 5060
+   },
+   "referencias/verificar.md": {
+    "sha256": "d6064a779e072157c202dc4e899ea0f13eada29b6e160bd1ae20d0f099a51877",
+    "bytes": 13241
+   },
+   "scripts/bl_ferramentas.py": {
+    "sha256": "322b1362ae5e43da94e4bb8258fcdb5f96ec489778bd6c195e1c126f408aa987",
+    "bytes": 66488
+   },
+   "scripts/mcp_blender.py": {
+    "sha256": "6c5549990fa78237c03150017b575aa5cf15ee60c8573cd20327abba307ca0e4",
+    "bytes": 7905
+   },
+   "scripts/roda_blender.py": {
+    "sha256": "7969cb6c2c14d5dbb1323a0f680bf5227f46be19336ef12881c84f98518991ef",
+    "bytes": 6794
+   },
+   "scripts/valida_requisitos.py": {
+    "sha256": "2037b14ff7deebe86b8b1eefc0af2bc89d73538e05b1632a1bba472047c2531a",
+    "bytes": 10547
+   },
+   "cenarios/ensaio_preenchimento.py": {
+    "sha256": "0095d4c3fb0b1e9b920b0f2786863b12dfe72a0a61908da4735465217aed93de",
+    "bytes": 15410
+   },
+   "cenarios/familia_exemplo.py": {
+    "sha256": "5b68f77452e7ce256168dbb9c0d5b3815fcfb45af81c8bc4a087406e417cae90",
+    "bytes": 1773
+   },
+   "cenarios/gera_cenario.py": {
+    "sha256": "45eb32de3d8406600156c9abcb3de873a3cc3d274e968972ef9c6de6b3f5a909",
+    "bytes": 5768
+   },
+   "verificadores/PROVENIENCIA.json": {
+    "sha256": "05597535abc70a5abbd1339fb2fc425c9448a937d0ad9698bfc53e323f35fad1",
+    "bytes": 897
+   },
+   "verificadores/check_intent.py": {
+    "sha256": "4f54003797a947e7ec854fcc9b66cd81350af61c910d97739193c0a30226b1b7",
+    "bytes": 26401
+   },
+   "verificadores/check_mesh.py": {
+    "sha256": "4ddcbf1e6670d85017daa746559960005ee53be571130a42b93b5d3c9ab1da8d",
+    "bytes": 8097
+   },
+   "verificadores/matriz.py": {
+    "sha256": "d3c9e740d42de945ccc0688c3e09933de0588b838d5d7b4ca28b51c3d0a3b712",
+    "bytes": 11933
+   },
+   "verificadores/secoes.py": {
+    "sha256": "721d250b67f4fea47af7e86a28e87e8143ae81102228f3d6cd419c3a5813bf92",
+    "bytes": 5521
+   },
+   "verificadores/sweep_params.py": {
+    "sha256": "584015bd4b3750fa5f6f1ec0f1c5303ec3e20dd2847ec2ffa936d07d3020fce7",
+    "bytes": 20814
+   }
+  }
+ },
+ "copiados_para": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\pkg_teste"
+}

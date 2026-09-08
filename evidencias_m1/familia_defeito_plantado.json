@@ -1,0 +1,102 @@
+{
+ "modulo": "familia_exemplo",
+ "funcao": "familia_placa",
+ "grade": "L=80;d=5,40",
+ "tolerancia": {
+  "linear_mm": 0.01,
+  "angular_rad": 0.1
+ },
+ "n_variantes": 2,
+ "n_aprovadas": 1,
+ "n_reprovadas": 1,
+ "n_reprovadas_por_geometria": 1,
+ "n_com_erro_operacional": 0,
+ "houve_erro_operacional": false,
+ "erros_operacionais": [],
+ "nota_de_estado": "erro operacional NAO e reprovacao geometrica: a variante nao foi avaliada. Quem consome este resultado tem que separar os dois, senao falha de ambiente vira evidencia de geometria.",
+ "variantes": [
+  {
+   "portao_1_solido": {
+    "n_solidos": 1,
+    "n_solidos_esperado": 1,
+    "volume_mm3": 23764.381,
+    "contrato": "solido: contagem declarada",
+    "passou": true
+   },
+   "portao_2_malha": {
+    "triangulos": 1028,
+    "arestas_abertas": 0,
+    "arestas_com_mais_de_2_faces": 0,
+    "facetas_degeneradas": 0,
+    "fechada_watertight": true,
+    "orientacao_consistente": true,
+    "passou": true
+   },
+   "portao_3_3mf": {
+    "passou": true,
+    "erro": null,
+    "caminho": "C:/Users/marce/AppData/Local/Temp/claude/C--Users-marce-OneDrive-Documentos-Modelagem-3D/d73e8625-bea9-400a-a9a4-9516c7c5c909/scratchpad/fam_b\\v_L80_d5.3mf",
+    "bytes": 13672
+   },
+   "representacao": "solido",
+   "etapas_concluidas": [
+    "portao_1_solido",
+    "exportacao_malha",
+    "escrita_3mf"
+   ],
+   "passou_tudo": true,
+   "erro_de_construcao": null,
+   "estado": "AVALIADA",
+   "codigo": null,
+   "etapa": null,
+   "parametros": {
+    "L": 80,
+    "d": 5
+   }
+  },
+  {
+   "portao_1_solido": {
+    "n_solidos": 2,
+    "n_solidos_esperado": 1,
+    "volume_mm3": 8920.355,
+    "contrato": "solido: contagem declarada",
+    "passou": false
+   },
+   "portao_2_malha": {
+    "triangulos": 1024,
+    "arestas_abertas": 0,
+    "arestas_com_mais_de_2_faces": 3,
+    "facetas_degeneradas": 0,
+    "fechada_watertight": false,
+    "orientacao_consistente": true,
+    "passou": false
+   },
+   "portao_3_3mf": {
+    "passou": true,
+    "erro": null,
+    "caminho": "C:/Users/marce/AppData/Local/Temp/claude/C--Users-marce-OneDrive-Documentos-Modelagem-3D/d73e8625-bea9-400a-a9a4-9516c7c5c909/scratchpad/fam_b\\v_L80_d40.3mf",
+    "bytes": 13156
+   },
+   "representacao": "solido",
+   "etapas_concluidas": [
+    "portao_1_solido",
+    "exportacao_malha",
+    "escrita_3mf"
+   ],
+   "passou_tudo": false,
+   "erro_de_construcao": null,
+   "estado": "AVALIADA",
+   "codigo": null,
+   "etapa": null,
+   "parametros": {
+    "L": 80,
+    "d": 40
+   }
+  }
+ ],
+ "o_que_os_tres_portoes_dizem": "solido existe com volume positivo, malha bem formada, e o escritor de 3MF aceita. Isso e evidencia GEOMETRICA. NAO diz imprimivel: nao passou por fatiador, envelope, perfil de maquina nem avaliacao fisica.",
+ "veredito": "1 de 2 amostras REPROVARAM. A familia nao pode ser entregue como parametrica sem restringir a faixa dos parametros ou corrigir a geometria.",
+ "alcance_do_teste": "pontos da grade informada, no dominio dado; nada e afirmado sobre valores entre os pontos ou fora deles",
+ "aviso_cache": "Cada variante e construida do zero de proposito. MEDIDO: reexportar a MESMA forma com outra tolerancia devolve a malha em cache, com a contagem de triangulos igual, sem aviso nenhum.",
+ "aviso": "Passar nos tres portoes e evidencia geometrica: solido nao vazio, malha bem formada e aceita pelo escritor de 3MF. NAO significa imprimivel, porque nao houve fatiador nem envelope, e nao significa correta de cota."
+}

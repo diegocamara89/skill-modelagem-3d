@@ -1,0 +1,24 @@
+{
+ "por_que": "Controle pedido pela quinta revisao: com DOIS argumentos do chamador, o script tem\nque gravar no destino pedido e NAO tocar no segundo argumento.\n\nAntes, o cenario lia `argv[1]`: gravava sobre o segundo argumento do chamador, e o\nchamador esperava outro arquivo. A evidencia toda usava um argumento so, portanto nao\ndiscriminava o erro.",
+ "dois_argumentos": {
+  "comando": "roda(gera_cenario.py, alvo, args=[param, segundo], passa_resultado=True)",
+  "segundo_argumento": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\controle_dois_args\\segundo_argumento.json",
+  "sha256_antes": "d1c4b9565246d4979f90d4977e4023fdc5645d9c49e148715da5b7f3c9b09b7d",
+  "sha256_depois": "d1c4b9565246d4979f90d4977e4023fdc5645d9c49e148715da5b7f3c9b09b7d",
+  "intacto": true,
+  "gravou_no_destino_pedido": true,
+  "estado_do_invocador": "OK",
+  "estado": "ATENDIDO"
+ },
+ "contrato_de_erro_do_gerador": {
+  "falha_injetada": "saida_blend apontando para caminho ocupado por um diretorio, para o salvamento nao poder concluir",
+  "nota_da_primeira_tentativa": "parametros geometricos impossiveis NAO provocaram erro: o gerador concluiu. Defeito nao exercitado nao vale como controle",
+  "veredito_gravado": "ERRO",
+  "erro": {
+   "tipo": "RuntimeError",
+   "mensagem": "Error: Cannot save blend file, path \"C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\controle_dois_args\\ocupado_por_diretorio.blend\" is a directory\n"
+  },
+  "estado_do_invocador": "VEREDITO_NEGATIVO",
+  "estado": "ATENDIDO"
+ }
+}

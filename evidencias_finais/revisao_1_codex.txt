@@ -1,0 +1,55 @@
+BLOQUEIA. Os hashes atuais conferem e os cinco verificadores são cópias byte a byte da base pós-M0, mas os seguintes defeitos impedem fechar M1:
+
+1. **A16 foi aprovado usando a geometria defeituosa anterior.**  
+   Arquivos: [M1_RESULTADO.md:55](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:55>), [M1_RESULTADO.md:113](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:113>), [editar_localizado.md:204](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/editar_localizado.md:204>).  
+   Evidência: A16 aceita volume `40.806`, enquanto o produto corrigido declara união `40.800`. Os 6 mm³ excedentes coincidem exatamente com a saliência antiga: `0,5 × 1,0 × 0,3 × 40 = 6`. O próprio relatório reconhece que essa geometria ultrapassava a região protegida.  
+   Correção mínima: repetir exportação e `check_mesh.py` sobre a implementação atual, esperando `40.800`, e substituir hashes, volumes e artefatos de A16.
+
+2. **A17/A18 não exercitaram o pacote atualmente inventariado.**  
+   Arquivos: [M1_RESULTADO.md:57](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:57>), [M1_RESULTADO.md:172](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:172>), [INVENTARIO.json:2](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/INVENTARIO.json:2>), [PLANO_IMPLEMENTACAO_PLUGIN.md:48](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/PLANO_IMPLEMENTACAO_PLUGIN.md:48>).  
+   Evidência: a sessão válida usou versão 1.1.0 e conferiu 19 arquivos; o produto atual é 1.2.0 e contém 20 arquivos, incluindo o novo validador e referências alteradas depois da sessão. O plano exige repetir a sessão limpa depois de corrigir uma lacuna. O relatório também não identifica o modelo/versão efetivo, como exigido na linha 48.  
+   Correção mínima: congelar o pacote corrigido e executar nova sessão limpa, registrando modelo/versão, instruções, ferramentas, intervenções e resultados por requisito.
+
+3. **As evidências citadas não estão disponíveis para auditoria.**  
+   Arquivo: [M1_RESULTADO.md:40](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:40>).  
+   Evidência: os caminhos `scratchpad/`, `ensaios/` e `ensaios/entrega/`, citados em A1–A16 e A19–A21, não existem. Há apenas dois gabaritos de entrada em `cenas_de_teste/`; eles não contêm os resultados observados.  
+   Correção mínima: preservar os JSONs e artefatos efetivamente usados, com hashes, ou mudar cada linha da tabela para um caminho existente e verificável.
+
+4. **A receita de criação ainda contém o defeito P1 e verifica a propriedade errada.**  
+   Arquivos: [criar_e_parametrizar.md:108](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/criar_e_parametrizar.md:108>), [criar_e_parametrizar.md:117](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/criar_e_parametrizar.md:117>), [check_intent.py:178](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/verificadores/check_intent.py:178>), [M1_RESULTADO.md:216](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:216>).  
+   Evidência: o comando ainda omite o `--malha` obrigatório, embora o relatório diga que foi corrigido. Além disso, o requisito chamado `dois_furos` usa `tipo: n_solidos, valor: 1`; o código de `n_solidos` conta corpos desconexos, não furos. Uma placa maciça pode receber essa aprovação.  
+   Correção mínima: acrescentar `--malha`; manter `um_corpo` como `n_solidos=1` e criar requisito separado `n_furos_no_plano`, por exemplo no plano Z intermediário, com valor 2.
+
+5. **A tolerância documentada para `regiao_intacta` é ignorada, e o novo validador duplicou o esquema de forma divergente.**  
+   Arquivos: [verificar.md:110](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/verificar.md:110>), [check_intent.py:354](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/verificadores/check_intent.py:354>), [valida_requisitos.py:37](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/valida_requisitos.py:37>), [valida_requisitos.py:118](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/valida_requisitos.py:118>).  
+   Evidência: o exemplo fornece `tol_mm3`, mas a implementação lê somente `tol_fracao`; portanto o número documentado não participa da decisão. O validador aceita qualquer nome de tolerância para qualquer tipo e não exige `entre`/`com` para `interferencia`, embora o verificador real exija. Assim ele pode devolver `OK` para especificação que o verificador rejeita ou interpreta com tolerância padrão.  
+   Correção mínima: definir tolerâncias permitidas por tipo, validar `interferencia` igual ao verificador e trocar o exemplo para `tol_fracao` — ou implementar explicitamente `tol_mm3` e testá-lo.
+
+6. **A vinculação entre a assinatura e o STL entregue não é garantida.**  
+   Arquivos: [bl_ferramentas.py:1093](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/bl_ferramentas.py:1093>), [bl_ferramentas.py:1106](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/bl_ferramentas.py:1106>), [bl_ferramentas.py:152](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/bl_ferramentas.py:152>).  
+   Evidência: `exporta_malha` ignora o conjunto retornado pelo operador e marca a tentativa como `ok` apenas porque não houve exceção. Também não recusa nem invalida arquivo preexistente; numa exportação cancelada, pode devolver o hash do STL antigo junto com a assinatura da geometria atual. A assinatura cobre apenas `obj.data` e a matriz, não o estado dos modificadores relatados pelo diagnóstico.  
+   Correção mínima: exigir retorno `FINISHED`, exportar para destino comprovadamente novo ou temporário, validar o STL gerado e rejeitar modificadores relevantes — ou assinar a geometria avaliada que efetivamente será exportada.
+
+7. **A medida de sobreposição prova apenas alguma interseção, não as três interseções prometidas.**  
+   Arquivos: [editar_localizado.md:117](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/editar_localizado.md:117>), [bl_ferramentas.py:536](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/bl_ferramentas.py:536>), [mapa_de_ferramentas.md:82](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/mapa_de_ferramentas.md:82>), [bl_ferramentas.py:952](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/bl_ferramentas.py:952>).  
+   Evidência: a receita exige interseção nos dois extremos e abaixo do piso, mas `houve_interseccao` testa somente se o volume total é maior que zero. Interseção apenas com a base ou com um extremo passa. O mapa afirma que `mede_malha` conta componentes, mas seu retorno não contém essa medida. A variante `flutuante` remove todas as interseções de uma vez e não discrimina o caso parcial.  
+   Correção mínima: medir separadamente os dois extremos e a base, acrescentar a contagem de componentes, e plantar controle com apenas um extremo ou apenas a base interceptando.
+
+8. **Uma falha de interseção deixa a geometria já modificada, sem recuperação prescrita.**  
+   Arquivos: [bl_ferramentas.py:509](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/bl_ferramentas.py:509>), [ensaio_preenchimento.py:207](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:207>), [editar_localizado.md:326](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/editar_localizado.md:326>).  
+   Evidência: a booleana é aplicada antes de calcular `houve_interseccao`. Quando o resultado é falso, o cenário apenas encerra e a receita manda rever coordenadas; não desfaz o corpo flutuante. Uma correção seguida de nova tentativa acumula geometria defeituosa.  
+   Correção mínima: restaurar e conferir a assinatura anterior antes de permitir nova tentativa, ou fazer a verificação de interseção como preflight sem aplicar a união definitiva.
+
+9. **A rota da sessão viva ainda exige improvisar o cliente de socket.**  
+   Arquivos: [LACUNAS_PARA_M2.md:9](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/LACUNAS_PARA_M2.md:9>), [mapa_de_ferramentas.md:57](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/mapa_de_ferramentas.md:57>), [PLANO_IMPLEMENTACAO_PLUGIN.md:43](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/PLANO_IMPLEMENTACAO_PLUGIN.md:43>).  
+   Evidência: a própria lacuna reconhece que o agente precisa escrever leitura incremental de JSON e tratamento de socket. O plano de M1 proíbe deixar trecho mecânico crítico para o operador improvisar. Isso não pede servidor ou proxy novo.  
+   Correção mínima: incluir o pequeno cliente read-only por padrão já especificado em L1, com os estados de falha nomeados e controles conectado/desconectado.
+
+10. **A23 usa uma auditoria desatualizada e formula uma conclusão maior que sua evidência.**  
+    Arquivos: [M1_RESULTADO.md:62](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:62>), [INVENTARIO.json:6](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/INVENTARIO.json:6>), [DESENHO.md:290](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/DESENHO.md:290>).  
+    Evidência: A23 registra 15 arquivos, mas o inventário atual contém 20. Minha varredura somente leitura dos 20 arquivos contra os cinco padrões locais não encontrou correspondências, portanto não identifiquei vazamento concreto; ainda assim, isso não valida a aprovação registrada nem prova ausência de dado privado.  
+    Correção mínima: repetir e preservar a auditoria sobre os 20 hashes atuais, com controles plantados, e limitar o texto a “nenhum padrão conhecido encontrado”.
+
+Nenhum arquivo foi modificado e a sessão do Blender não foi acessada.
+
+VEREDITO: BLOQUEIA

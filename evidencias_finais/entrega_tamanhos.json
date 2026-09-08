@@ -1,0 +1,17 @@
+{
+ "medido_em": "2026-09-08",
+ "versao_do_pacote": "1.6.0",
+ "arquivos": {
+  "blend": {
+   "caminho": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\entrega\\entrega_peca.blend",
+   "bytes": 95057,
+   "sha256": "2849d5ee4e5d25819a21a14ddce90523e9a989ee36b5182b3875ed1d285202a9"
+  },
+  "stl": {
+   "caminho": "C:\\Users\\marce\\AppData\\Local\\Temp\\claude\\C--Users-marce-OneDrive-Documentos-Modelagem-3D\\d73e8625-bea9-400a-a9a4-9516c7c5c909\\scratchpad\\entrega\\entrega_peca.stl",
+   "bytes": 3884,
+   "sha256": "57b9582b534399bf72f35a8609a23368c639cf9ca90425afd6c4320b4dd25eea"
+  }
+ },
+ "nota": "bytes e sha256 do .blend e do .stl gerados pelo codigo ATUAL. A tabela de M1 citava 93.598 e 3.684, que sao de uma construcao anterior."
+}

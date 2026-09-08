@@ -1,0 +1,178 @@
+{
+ "gerado_em": "2026-09-08",
+ "versao_do_pacote": "2.2.0",
+ "versao_de_bl_ferramentas": "1.5.0",
+ "licenca": "MIT",
+ "hash_do_pacote": "723a6a32194a16b10bfcae1fe9e8c1b7d745371b8974205d81456ce1eb2e15e8",
+ "nota": "evidencia sobre os bytes do pacote 2.2.0, que difere de 2.1.0 apenas por LICENSE, SKILL.md e INVENTARIO.json. Nao regerado, com motivo declarado: as suites de M0, os relatorios de sessao limpa, as revisoes e a medicao de A1.",
+ "arquivos": {
+  "AMBIENTE_ISOLADO.json": {
+   "bytes": 29001,
+   "sha256": "27e4f1b82b5213bf4fe462721f94dc0cbfcaaffba30a2d8c986096e4b250fe83"
+  },
+  "CODIGO_DE_SAIDA_DO_LANCADOR.json": {
+   "bytes": 3043,
+   "sha256": "367af22c02923491cefe5ca08eb4e388ec1a88dc7c1ecea1d662d14382af9890"
+  },
+  "CONTRATO_DO_RESULTADO.json": {
+   "bytes": 1723,
+   "sha256": "9f8192541ca3b3506714d7d8346dc593fc701a5cbba864f95ed696eb6eea9522"
+  },
+  "IDENTIDADE_DAS_FUNCOES_DE_A1.json": {
+   "bytes": 6747,
+   "sha256": "6f28b19de1dc86043efb4487603903d551e56663b32a77b9bdc1720845060adb"
+  },
+  "SEM_BLENDER.json": {
+   "bytes": 9142,
+   "sha256": "5983f84974a1731a54d3f9a311bde92fe9ae2427dd1d678570bb3b27d54d4de8"
+  },
+  "SESSAO_LIMPA_D.md": {
+   "bytes": 30160,
+   "sha256": "765060e61bda2ffb3080e0efccd4eafb64e5b7fdd50f94a8ad0fb7dcfabab0b8"
+  },
+  "SESSAO_LIMPA_E.md": {
+   "bytes": 34103,
+   "sha256": "cd34436c545de23f348bdf9aa4464e3afff94a951c6ea64082eaeee594ad7254"
+  },
+  "SESSAO_LIMPA_F.md": {
+   "bytes": 47835,
+   "sha256": "25107e28604047b1cd55e8ce6707512212c42b0e93deaf9d49f29e015f4a352e"
+  },
+  "captura_envelhecida.json": {
+   "bytes": 913,
+   "sha256": "b42f08d0168a64916ee3cfd4090bbd7fff949b4a288b3e0066702547657401db"
+  },
+  "check_mesh_do_stl.json": {
+   "bytes": 1425,
+   "sha256": "88a7de41e396df24e37ae235d8b8af11aabc462acbc48bd1d0bc208ee97ec66c"
+  },
+  "controle_injeta_precondicao.json": {
+   "bytes": 24929,
+   "sha256": "f59c7df897c096f61b4d0530cc6de39fa59603f8f581f694cd497eb6102a7908"
+  },
+  "custo_do_perfil.json": {
+   "bytes": 672,
+   "sha256": "a1fdaa3026212751d0926f9084544e4d7ab1152842ad5d4f578399f72586e23e"
+  },
+  "empacotamento.json": {
+   "bytes": 6402,
+   "sha256": "13a198a2f0fdfec76db7a0ccc9e81fb8f63161813d2ddc7c62189f1eae1d3578"
+  },
+  "ensaio_correta.json": {
+   "bytes": 58060,
+   "sha256": "dc5d7fe6053a7d509f9c4e1772c250b2171c3995fd8db3a2635f714e355ea5dd"
+  },
+  "ensaio_duplicado.json": {
+   "bytes": 62710,
+   "sha256": "9e6256ab40ebde68e882c109bcae5cceffed84a3ca42effc4756484a77e41f37"
+  },
+  "ensaio_entrega.json": {
+   "bytes": 8890,
+   "sha256": "300941bf7661e89b9d97bd19494c0c0541b24474d4470c04f044e35ba6ad8a55"
+  },
+  "ensaio_flutuante.json": {
+   "bytes": 25102,
+   "sha256": "558cd6fed35417d350ef6ee823a5053e42afc5e6487bf760a37625380c50aae2"
+  },
+  "ensaio_nome_invalido.json": {
+   "bytes": 459,
+   "sha256": "e3dca95040c1e7feab179b4f03669fc8e90868355922ad42eb66bfac8111a2dc"
+  },
+  "ensaio_parcial.json": {
+   "bytes": 25056,
+   "sha256": "0d4339891d5755feeb5fcfa517ebd4e2388f7c54d9960828f234d67b2a347d57"
+  },
+  "ensaio_ranhura.json": {
+   "bytes": 58558,
+   "sha256": "c5d238ffd5d915967070dd43b1199b5ffacf3dac2a1cee513ccc73a9fb397af5"
+  },
+  "ensaio_tangente.json": {
+   "bytes": 24847,
+   "sha256": "4f19e17e1edf940a85c5f05a1fa1b3b29a7498d97dc9289925e371aa8d74ba25"
+  },
+  "ensaio_variante_girada.json": {
+   "bytes": 22338,
+   "sha256": "b7c48c7d0fb26ca43493b1f308dd39512a464c5cf88a9b08c745af8af9a5d2d6"
+  },
+  "ensaio_variante_outra_medida.json": {
+   "bytes": 57922,
+   "sha256": "957723b0bd65fc5c7ae93a7ed294becd9c4c9f4754de53ada363faa6d698ca48"
+  },
+  "entrega_peca.blend": {
+   "bytes": 95057,
+   "sha256": "2849d5ee4e5d25819a21a14ddce90523e9a989ee36b5182b3875ed1d285202a9"
+  },
+  "entrega_peca.stl": {
+   "bytes": 3884,
+   "sha256": "57b9582b534399bf72f35a8609a23368c639cf9ca90425afd6c4320b4dd25eea"
+  },
+  "entrega_tamanhos.json": {
+   "bytes": 855,
+   "sha256": "bd36022853f29bd0c5224a7459aafe1cd00ff72e89eea7ceb50f7849694302fe"
+  },
+  "hash_do_pacote.txt": {
+   "bytes": 1748,
+   "sha256": "b699520722cb196737ae258d595142c63afd42c03dfb9cafad2a652eb7afd9bd"
+  },
+  "paridade_do_validador.json": {
+   "bytes": 147582,
+   "sha256": "284e901f42b69abb18165fa8e79f3c1a209468cad0159006bf770695280b16a7"
+  },
+  "revisao_1_codex.txt": {
+   "bytes": 10551,
+   "sha256": "ffa52bc50de127114064a114e20b7ee81915822177519062ffe5763653f332c3"
+  },
+  "revisao_2_codex.txt": {
+   "bytes": 9134,
+   "sha256": "a0d26fcc1d9920bcd87c251127fe5807c4ff57795069dd31e6842cec48b53efa"
+  },
+  "revisao_3_codex.txt": {
+   "bytes": 9943,
+   "sha256": "912c6b8b35f0905e4bbfd2c100c182c64182b3bb7556adc1479a25ae342d0f7d"
+  },
+  "revisao_4_codex.txt": {
+   "bytes": 6670,
+   "sha256": "b963b7dec745b7aea3c8fd45a9efc259f658986e065a121174858f5e2f49361b"
+  },
+  "revisao_5_codex.txt": {
+   "bytes": 4693,
+   "sha256": "18c2805cddd37afc20dfb0a5acd501a93c4a8d99a89936b99d2a056e63dcdbb6"
+  },
+  "revisao_6_codex_interrompida.txt": {
+   "bytes": 60000,
+   "sha256": "0ba476c1c759644035099aeaad64e03a7c8d0107bf4d5cf6e4a0e6d874ad876c"
+  },
+  "rota_criar_varredura.json": {
+   "bytes": 5236,
+   "sha256": "43768a8ed0579df3ac408bf2577948699a49b86c9bef0a3ba708e1bae41aa54a"
+  },
+  "secao_dedup_antes.json": {
+   "bytes": 3608,
+   "sha256": "22c9beb54e228fa19145fbb6b4417921c98c89e83c9576d003123369b592b2e4"
+  },
+  "secao_dedup_depois.json": {
+   "bytes": 3245,
+   "sha256": "abc575934b30eb797ab3d3a825521f12500f433d0f8b8db06aae2e9c90b2dd4f"
+  },
+  "sobreposicoes_com_interface.json": {
+   "bytes": 1029,
+   "sha256": "63611364b83438025e869648f4f12473e15c2668ba296f2bdebaca6a9ae29623"
+  },
+  "suite_m0_casos.json": {
+   "bytes": 47236,
+   "sha256": "481a0b4cdcd1db6a42e1864d69d5e780a16965f8504a926ef15dc65866550cbe"
+  },
+  "suite_m0_mutacoes.json": {
+   "bytes": 15959,
+   "sha256": "37a0cf2cd6674e629cefae5cc5ba87f0892f8ee904e664e67bc4e376f283a7ff"
+  },
+  "tolerancia_extraida.json": {
+   "bytes": 3291,
+   "sha256": "79822ff4d788986957c35574c2e43a3aad74b1c4e7c40dc94c6b84c1d44d4a90"
+  },
+  "venv_isolado_ensaio.json": {
+   "bytes": 58295,
+   "sha256": "cb303890bed75bb367e70f0e06b6424a474c5580ffda8429294d183e14915b82"
+  }
+ }
+}

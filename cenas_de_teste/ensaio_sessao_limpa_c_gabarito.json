@@ -1,0 +1,48 @@
+{
+ "parametros": {
+  "nome": "guia_de_ensaio_c",
+  "comprimento": 72.0,
+  "largura": 34.0,
+  "altura_da_base": 7.0,
+  "vao_de": 24.0,
+  "vao_ate": 48.0,
+  "altura_alta": 25.0,
+  "altura_baixa": 15.0,
+  "rotacao_z_graus": 0.0,
+  "saida_blend": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\cenas_de_teste\\ensaio_sessao_limpa_c.blend",
+  "saida_relatorio": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\cenas_de_teste\\ensaio_sessao_limpa_c_gabarito.json"
+ },
+ "gabarito": {
+  "objeto": "guia_de_ensaio_c",
+  "topo_do_patamar_alto": {
+   "x_de": 0.0,
+   "x_ate": 24.0,
+   "z": 25.0
+  },
+  "topo_do_patamar_baixo": {
+   "x_de": 48.0,
+   "x_ate": 72.0,
+   "z": 15.0
+  },
+  "vao": {
+   "x_de": 24.0,
+   "x_ate": 48.0,
+   "z_do_piso": 7.0,
+   "largura_em_y": 34.0,
+   "queda_esperada_da_rampa": 10.0,
+   "comprimento_do_vao": 24.0
+  },
+  "volume_da_peca_antes": 38352.0,
+  "rotacao_z_graus": 0.0
+ },
+ "medidas": {
+  "vertices": 20,
+  "faces": 16,
+  "arestas_abertas": 0,
+  "arestas_nao_manifold": 0,
+  "faces_degeneradas": 0,
+  "volume": 38352.0
+ },
+ "aviso": "dimensoes escolhidas para este exemplo sintetico; nenhuma provem de projeto real",
+ "blend": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\cenas_de_teste\\ensaio_sessao_limpa_c.blend"
+}

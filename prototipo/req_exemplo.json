@@ -1,0 +1,83 @@
+{
+ "_nota": "Requisitos declarados do exemplo sintetico. O requisito 'furo_deslocado_DE_PROPOSITO' esta ERRADO de proposito: ele declara o furo 4,25 mm fora do lugar real, para provar que o verificador reprova em vez de aprovar por silencio.",
+ "peca": "exemplo_suporte.stl",
+ "classificacao": {"modalidade": "criar", "representacao": "solido", "finalidade": "impressao_fdm"},
+ "requisitos": [
+  {
+   "id": "envelope_externo",
+   "tipo": "caixa",
+   "descricao": "a peca tem que caber no espaco disponivel",
+   "valor": [60.0, 45.0, 50.0],
+   "tol_mm": 0.05
+  },
+  {
+   "id": "corpo_unico",
+   "tipo": "n_solidos",
+   "descricao": "uma peca so, nao duas soltas",
+   "valor": 1
+  },
+  {
+   "id": "dois_furos_de_fixacao_na_base",
+   "tipo": "n_furos_no_plano",
+   "descricao": "a base tem exatamente dois furos de fixacao",
+   "eixo": "Z",
+   "plano": 2.0,
+   "valor": 2
+  },
+  {
+   "id": "furo_base_dianteiro",
+   "tipo": "furo",
+   "descricao": "furo de fixacao mais proximo da parede",
+   "eixo": "Z",
+   "plano": 2.0,
+   "posicao": [0.0, 15.75],
+   "diametro": 5.0,
+   "tol_pos_mm": 0.2,
+   "tol_mm": 0.2
+  },
+  {
+   "id": "furo_base_traseiro",
+   "tipo": "furo",
+   "descricao": "furo de fixacao mais distante da parede",
+   "eixo": "Z",
+   "plano": 2.0,
+   "posicao": [0.0, 33.75],
+   "diametro": 5.0,
+   "tol_pos_mm": 0.2,
+   "tol_mm": 0.2
+  },
+  {
+   "id": "vao_entre_furos_de_fixacao",
+   "tipo": "distancia_entre_furos",
+   "descricao": "distancia entre centros, que casa com o padrao de parafusos",
+   "eixo": "Z",
+   "plano": 2.0,
+   "valor": 18.0,
+   "tol_mm": 0.2
+  },
+  {
+   "id": "furo_deslocado_DE_PROPOSITO",
+   "tipo": "furo",
+   "descricao": "requisito ERRADO de proposito: declara o furo em 20,0 quando ele esta em 15,75",
+   "eixo": "Z",
+   "plano": 2.0,
+   "posicao": [0.0, 20.0],
+   "diametro": 5.0,
+   "tol_pos_mm": 0.2,
+   "tol_mm": 0.2
+  },
+  {
+   "id": "parede_da_nervura",
+   "tipo": "parede_minima",
+   "descricao": "nervura nao pode ficar mais fina que duas extrusoes",
+   "valor": 0.86,
+   "regiao": "nervuras"
+  },
+  {
+   "id": "aparencia_lateral",
+   "tipo": "silhueta",
+   "descricao": "perfil lateral tem que bater com o esboco aprovado",
+   "ref": "esboco_lateral.png"
+  }
+ ]
+}

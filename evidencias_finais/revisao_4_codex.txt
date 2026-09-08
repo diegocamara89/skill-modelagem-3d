@@ -1,0 +1,64 @@
+A fase ainda bloqueia. A integridade do pacote fecha, mas há aceitações sem oráculo suficiente e evidências de versões anteriores apresentadas como finais.
+
+Confirmações positivas:
+
+- Os 23 hashes do `INVENTARIO.json` coincidem com os arquivos atuais.
+- Reproduzi o hash composto dos 24 arquivos: `7858d3417c330f3f62374ade68a5cd1f9ba17bc3971948d570884ab17e166818`.
+- Os cinco verificadores são idênticos à `base_pos_m0`.
+- Os 32 hashes de `evidencias_finais/HASHES.json` conferem.
+- `prototipo/` permanece sem diff desde `c9cf867`.
+- Não encontrei dado privado concreto, dependência oculta ou infraestrutura duplicada no pacote.
+
+Defeitos bloqueantes:
+
+1. O julgador ainda aprova uma `PRECONDICAO` inesperada na variante correta.
+
+Em [ensaio_preenchimento.py](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:396>), qualquer `feito is None` entra no caminho considerado bem-sucedido. Para `correta`, `ranhura` ou `duplicado`, `motivo` fica `None`, mas o código aprova “preenchimento barrado”, confirma que nada mudou e inclui `preenche_entre_limites` entre as precondições permitidas ao fechar o relatório, nas linhas 408–431.
+
+Consequência concreta: se a booleana da variante `correta` devolver `CANCELLED`, a guarda corretamente transforma isso em `ErroDePrecondicao`, mas o ensaio pode terminar `ATENDIDO`. É exatamente o estado inesperado que a correção anterior pretendia eliminar.
+
+Correção mínima: permitir o ramo de barreira apenas para `tangente`, `flutuante`, `parcial` ou cenário girado. Em `correta`, `ranhura` e `duplicado`, `feito is None` deve produzir `FALHOU`. Acrescentar controle mutante que injete `PRECONDICAO` na variante correta.
+
+2. A sessão limpa final continua sendo de outra versão.
+
+A sessão preservada declara explicitamente pacote 1.6.0 em [SESSAO_LIMPA_D.md](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/evidencias_finais/SESSAO_LIMPA_D.md:4>). Mesmo assim, A18 e C2 estão `ATENDIDO` para o produto agora 1.7.0 em [M1_RESULTADO.md](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:63>) e [M3_RESULTADO.md](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M3_RESULTADO.md:34>).
+
+A sessão encontrou nove defeitos; o produto foi alterado para corrigi-los, mas não houve nova sessão limpa depois dessas alterações. Isso contraria a regra do próprio plano: atualizar a receita e repetir em sessão limpa.
+
+Correção mínima: executar nova sessão sem histórico contra um pacote 1.7.0 recém-montado, conferir o hash antes e depois e preservar comandos, intervenções, resultados e artefatos.
+
+3. C5 usa evidência anterior à biblioteca atual.
+
+[M3_RESULTADO.md:37](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M3_RESULTADO.md:37>) aprova a rota Blender no venv isolado citando `venv_isolado_ensaio.json`. Esse arquivo registra `versao_ferramentas: 1.4.0` em [venv_isolado_ensaio.json:32](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/evidencias_finais/venv_isolado_ensaio.json:32>), enquanto o pacote final usa 1.5.0. Essa versão alterou justamente booleanas, salvamento e oráculos.
+
+Além disso, [HASHES.json:5](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/evidencias_finais/HASHES.json:5>) afirma que toda a evidência foi gerada sobre 1.7.0, o que esse arquivo contradiz.
+
+Correção mínima: repetir o ensaio Blender no venv isolado usando o pacote montado 1.7.0 e registrar também o hash do pacote executado.
+
+4. A variante `ranhura` não prova executavelmente que “só o perfil” reprova.
+
+A topologia anterior à limpeza é medida em [ensaio_preenchimento.py:451](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:451>), mas nenhum predicado usa esse resultado. Os critérios das linhas 531–557 verificam somente a malha depois da limpeza. Assim, uma ranhura que também produza degenerações pode ser limpa e receber crédito como “forma errada com topologia limpa”.
+
+A evidência atual casualmente mede zero defeitos antes da limpeza, mas o oráculo não exige isso.
+
+Correção mínima: para `ranhura`, exigir zero bordas abertas, zero não-manifold e zero degeneradas em `mede_malha_apos_uniao`, antes da limpeza.
+
+5. Os controles de seleção continuam aceitando o motivo errado.
+
+A própria referência determina que é obrigatório conferir a mensagem `"nao contem nenhuma face"` e explica por que apenas `PRECONDICAO` é insuficiente em [inspecionar_e_selecionar.md:204](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/referencias/inspecionar_e_selecionar.md:204>). Porém o ensaio confere somente o estado em [ensaio_preenchimento.py:332](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/cenarios/ensaio_preenchimento.py:332>).
+
+A execução preservada traz hoje as mensagens certas, mas o critério aceitaria novamente uma barreira por Object Mode ou outro motivo.
+
+Correção mínima: exigir os trechos específicos das duas mensagens e a assinatura geométrica inalterada.
+
+6. O padrão das tolerâncias ainda é uma tabela manual sem comparação executável.
+
+O extrator recolhe também os valores padrão, mas `como_tupla()` os descarta em [extrai_tolerancias.py:131](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/extrai_tolerancias.py:131>). O teste de paridade compara apenas os nomes das tolerâncias em [testa_paridade_validador.py:165](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/testa_paridade_validador.py:165>). Portanto, a tabela `PADRAO_DA_TOLERANCIA` de [valida_requisitos.py:84](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/produto/scripts/valida_requisitos.py:84>) pode divergir e o teste continuar `ATENDIDO`.
+
+Os valores atuais coincidem por inspeção, mas o contrato permanece aberto exatamente no padrão recorrente indicado pelo autor.
+
+Correção mínima: normalizar e comparar também os valores padrão extraídos, com um controle mutante que altere um deles e obrigatoriamente faça o teste falhar.
+
+Os cabeçalhos de [M1_RESULTADO.md:9](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M1_RESULTADO.md:9>) e [M3_RESULTADO.md:3](</C:/Users/marce/OneDrive/Documentos/Modelagem 3D/06_skill_universal/M3_RESULTADO.md:3>) também permanecem em 1.5.0/1.4.0, e C18 continua explicitamente pendente quanto à licença. Isso deve ser corrigido no fechamento, sem ampliar a arquitetura.
+
+BLOQUEIA

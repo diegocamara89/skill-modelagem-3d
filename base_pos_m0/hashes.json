@@ -1,0 +1,115 @@
+{
+  "origem": "prototipo",
+  "nota": "copia POS-M0. base_congelada/arquivos e PRE-M0 e nao foi tocada. Comandos que escrevem rodam em area derivada, nunca sobre esta copia.",
+  "congelado_em": "07/09/2026",
+  "arquivos": {
+    "LEIA-ME.md": {
+      "sha256": "ad4ea75b3646f1dbe28e519c1b123003e099935a4846a75b07266cc69f40c8d0",
+      "bytes": 29116
+    },
+    "align_rigid.py": {
+      "sha256": "b23d8abdb5c8af5d18e8c009805bd4bf731cc0db919a39556c3e628e99a61137",
+      "bytes": 9127
+    },
+    "ambiente.json": {
+      "sha256": "063bad2c963022120a4df18c13353f7b818c6cf7bc5b89903b8a4510aff4a11d",
+      "bytes": 2464
+    },
+    "caso2_abrigo.stl": {
+      "sha256": "a76ce55c0b81e0fd7db17231126f1b931e17e88ad0b5b09257008d5f2d80c48c",
+      "bytes": 9884
+    },
+    "caso3_cubo_ok.stl": {
+      "sha256": "86faa933b956bbcb40398cf9bdb69c3280f20cf99da76b152b545ede13d35828",
+      "bytes": 684
+    },
+    "casos.py": {
+      "sha256": "a2d95166d5e1e962f611c51daa44a47df38c9ab7c1919f2a97e426b6da854843",
+      "bytes": 39938
+    },
+    "check_intent.py": {
+      "sha256": "4f54003797a947e7ec854fcc9b66cd81350af61c910d97739193c0a30226b1b7",
+      "bytes": 26401
+    },
+    "check_mesh.py": {
+      "sha256": "4ddcbf1e6670d85017daa746559960005ee53be571130a42b93b5d3c9ab1da8d",
+      "bytes": 8097
+    },
+    "empacota.py": {
+      "sha256": "b97bda4c59888c9c34cf8615c221e4c816cdec75d11e7bea33128a5702ee24d2",
+      "bytes": 16151
+    },
+    "exemplo_b123d.py": {
+      "sha256": "750d4be2e789cf9743db31ee0ac596e2a89e3f4fa93f107b3248de0518b2e71d",
+      "bytes": 7453
+    },
+    "exemplo_suporte.step": {
+      "sha256": "202512be457ef7ab9f6647bbc98335168b7d08311d7b3a743d5d4974974944f8",
+      "bytes": 157630
+    },
+    "exemplo_suporte.stl": {
+      "sha256": "e46e788f95b7e3f6cd768fa6a98489687746a809e27b03d253e03a0e72dba337",
+      "bytes": 124884
+    },
+    "find_datums.py": {
+      "sha256": "c5b551dad06dbcf0b15a26077f322a495aabfcddfdb5bfa7eabdc4debf7ff4a5",
+      "bytes": 11717
+    },
+    "folgas_publicadas.json": {
+      "sha256": "2fae268675e103a24ac6aa68257b4b5f81319079e0ef3e676495d1701297ecd8",
+      "bytes": 3480
+    },
+    "gera_caso2.py": {
+      "sha256": "b480148b31cad4750cc5c5c9c0f40f4e6e8b9dc8f1d3d3ded386a02eead5d3a1",
+      "bytes": 2074
+    },
+    "matriz.py": {
+      "sha256": "d3c9e740d42de945ccc0688c3e09933de0588b838d5d7b4ca28b51c3d0a3b712",
+      "bytes": 11933
+    },
+    "mutacoes.py": {
+      "sha256": "b6b2797ae194c6c901b48dff694454e6a98cd707e0f728b7f71c3bb87d5be642",
+      "bytes": 69116
+    },
+    "padroes_de_vazamento.json": {
+      "sha256": "a413b6680b7cb66e0bdfedd8f5561f5d8281ffe6e82f82bf2a755ea64d71ac8c",
+      "bytes": 710
+    },
+    "req_exemplo.json": {
+      "sha256": "de2b4b371722725bcb3b9fe3aa24f333b29fd455056d2fcc0914b88e2f2a76fb",
+      "bytes": 2213
+    },
+    "roda_casos.py": {
+      "sha256": "1c8fcd1484176ca7f2cd0dedbfc629e24fbc574a3fca7e14945b61f7f31a711f",
+      "bytes": 36835
+    },
+    "secoes.py": {
+      "sha256": "721d250b67f4fea47af7e86a28e87e8143ae81102228f3d6cd419c3a5813bf92",
+      "bytes": 5521
+    },
+    "slice_check.py": {
+      "sha256": "b694b59d2e4b8392e97fe2e7e5321abc63bdfe3984ca25c64ba2a584ca22492f",
+      "bytes": 24774
+    },
+    "split_for_volume.py": {
+      "sha256": "a727a8592366d5bdfea45917def24b389ab2c045aac63f33e76bad1fecf05695",
+      "bytes": 14794
+    },
+    "sweep_params.py": {
+      "sha256": "584015bd4b3750fa5f6f1ec0f1c5303ec3e20dd2847ec2ffa936d07d3020fce7",
+      "bytes": 20814
+    },
+    "tolerance_lookup.py": {
+      "sha256": "e9e0a6a29eb8061d16dab05f06dc07d1936eabeadcb4851609b8a4a306aaeb9d",
+      "bytes": 16365
+    },
+    "pos_m0_casos.json": {
+      "sha256": "81259559e0a2b3221fd766702ba1f0d7cfd1463e2fd59c939f55a0b7cf99bac5",
+      "bytes": 47234
+    },
+    "pos_m0_mutacoes.json": {
+      "sha256": "9039d60a87c17aef3350cd030b5e833abfc98d7fcffff96202a9cfdbcdb8eaae",
+      "bytes": 15959
+    }
+  }
+}

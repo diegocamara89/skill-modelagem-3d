@@ -1,0 +1,180 @@
+{
+ "modulo": "casos",
+ "funcao": "familia_placa",
+ "grade": "L=70,80;d=4,5",
+ "tolerancia": {
+  "linear_mm": 0.01,
+  "angular_rad": 0.1
+ },
+ "n_variantes": 4,
+ "n_aprovadas": 4,
+ "n_reprovadas": 0,
+ "n_reprovadas_por_geometria": 0,
+ "n_com_erro_operacional": 0,
+ "houve_erro_operacional": false,
+ "erros_operacionais": [],
+ "nota_de_estado": "erro operacional NAO e reprovacao geometrica: a variante nao foi avaliada. Quem consome este resultado tem que separar os dois, senao falha de ambiente vira evidencia de geometria.",
+ "variantes": [
+  {
+   "portao_1_solido": {
+    "n_solidos": 1,
+    "n_solidos_esperado": 1,
+    "volume_mm3": 20849.204,
+    "contrato": "solido: contagem declarada",
+    "passou": true
+   },
+   "portao_2_malha": {
+    "triangulos": 1028,
+    "arestas_abertas": 0,
+    "arestas_com_mais_de_2_faces": 0,
+    "facetas_degeneradas": 0,
+    "fechada_watertight": true,
+    "orientacao_consistente": true,
+    "passou": true
+   },
+   "portao_3_3mf": {
+    "passou": true,
+    "erro": null,
+    "caminho": "C:/Users/marce/AppData/Local/Temp/claude/C--Users-marce-OneDrive-Documentos-Modelagem-3D/d73e8625-bea9-400a-a9a4-9516c7c5c909/scratchpad/rota_criar\\v_L70_d4.3mf",
+    "bytes": 13468
+   },
+   "representacao": "solido",
+   "etapas_concluidas": [
+    "portao_1_solido",
+    "exportacao_malha",
+    "escrita_3mf"
+   ],
+   "passou_tudo": true,
+   "erro_de_construcao": null,
+   "estado": "AVALIADA",
+   "codigo": null,
+   "etapa": null,
+   "parametros": {
+    "L": 70,
+    "d": 4
+   }
+  },
+  {
+   "portao_1_solido": {
+    "n_solidos": 1,
+    "n_solidos_esperado": 1,
+    "volume_mm3": 20764.381,
+    "contrato": "solido: contagem declarada",
+    "passou": true
+   },
+   "portao_2_malha": {
+    "triangulos": 1028,
+    "arestas_abertas": 0,
+    "arestas_com_mais_de_2_faces": 0,
+    "facetas_degeneradas": 0,
+    "fechada_watertight": true,
+    "orientacao_consistente": true,
+    "passou": true
+   },
+   "portao_3_3mf": {
+    "passou": true,
+    "erro": null,
+    "caminho": "C:/Users/marce/AppData/Local/Temp/claude/C--Users-marce-OneDrive-Documentos-Modelagem-3D/d73e8625-bea9-400a-a9a4-9516c7c5c909/scratchpad/rota_criar\\v_L70_d5.3mf",
+    "bytes": 13468
+   },
+   "representacao": "solido",
+   "etapas_concluidas": [
+    "portao_1_solido",
+    "exportacao_malha",
+    "escrita_3mf"
+   ],
+   "passou_tudo": true,
+   "erro_de_construcao": null,
+   "estado": "AVALIADA",
+   "codigo": null,
+   "etapa": null,
+   "parametros": {
+    "L": 70,
+    "d": 5
+   }
+  },
+  {
+   "portao_1_solido": {
+    "n_solidos": 1,
+    "n_solidos_esperado": 1,
+    "volume_mm3": 23849.204,
+    "contrato": "solido: contagem declarada",
+    "passou": true
+   },
+   "portao_2_malha": {
+    "triangulos": 1028,
+    "arestas_abertas": 0,
+    "arestas_com_mais_de_2_faces": 0,
+    "facetas_degeneradas": 0,
+    "fechada_watertight": true,
+    "orientacao_consistente": true,
+    "passou": true
+   },
+   "portao_3_3mf": {
+    "passou": true,
+    "erro": null,
+    "caminho": "C:/Users/marce/AppData/Local/Temp/claude/C--Users-marce-OneDrive-Documentos-Modelagem-3D/d73e8625-bea9-400a-a9a4-9516c7c5c909/scratchpad/rota_criar\\v_L80_d4.3mf",
+    "bytes": 13647
+   },
+   "representacao": "solido",
+   "etapas_concluidas": [
+    "portao_1_solido",
+    "exportacao_malha",
+    "escrita_3mf"
+   ],
+   "passou_tudo": true,
+   "erro_de_construcao": null,
+   "estado": "AVALIADA",
+   "codigo": null,
+   "etapa": null,
+   "parametros": {
+    "L": 80,
+    "d": 4
+   }
+  },
+  {
+   "portao_1_solido": {
+    "n_solidos": 1,
+    "n_solidos_esperado": 1,
+    "volume_mm3": 23764.381,
+    "contrato": "solido: contagem declarada",
+    "passou": true
+   },
+   "portao_2_malha": {
+    "triangulos": 1028,
+    "arestas_abertas": 0,
+    "arestas_com_mais_de_2_faces": 0,
+    "facetas_degeneradas": 0,
+    "fechada_watertight": true,
+    "orientacao_consistente": true,
+    "passou": true
+   },
+   "portao_3_3mf": {
+    "passou": true,
+    "erro": null,
+    "caminho": "C:/Users/marce/AppData/Local/Temp/claude/C--Users-marce-OneDrive-Documentos-Modelagem-3D/d73e8625-bea9-400a-a9a4-9516c7c5c909/scratchpad/rota_criar\\v_L80_d5.3mf",
+    "bytes": 13670
+   },
+   "representacao": "solido",
+   "etapas_concluidas": [
+    "portao_1_solido",
+    "exportacao_malha",
+    "escrita_3mf"
+   ],
+   "passou_tudo": true,
+   "erro_de_construcao": null,
+   "estado": "AVALIADA",
+   "codigo": null,
+   "etapa": null,
+   "parametros": {
+    "L": 80,
+    "d": 5
+   }
+  }
+ ],
+ "o_que_os_tres_portoes_dizem": "solido existe com volume positivo, malha bem formada, e o escritor de 3MF aceita. Isso e evidencia GEOMETRICA. NAO diz imprimivel: nao passou por fatiador, envelope, perfil de maquina nem avaliacao fisica.",
+ "veredito": "As 4 amostras da grade informada passaram nos tres portoes geometricos. Isso NAO demonstra validade dos valores intermediarios nem fora da grade, e nao afirma imprimibilidade.",
+ "alcance_do_teste": "pontos da grade informada, no dominio dado; nada e afirmado sobre valores entre os pontos ou fora deles",
+ "aviso_cache": "Cada variante e construida do zero de proposito. MEDIDO: reexportar a MESMA forma com outra tolerancia devolve a malha em cache, com a contagem de triangulos igual, sem aviso nenhum.",
+ "aviso": "Passar nos tres portoes e evidencia geometrica: solido nao vazio, malha bem formada e aceita pelo escritor de 3MF. NAO significa imprimivel, porque nao houve fatiador nem envelope, e nao significa correta de cota."
+}

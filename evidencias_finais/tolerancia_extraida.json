@@ -1,0 +1,159 @@
+{
+ "verificador": "C:\\Users\\marce\\OneDrive\\Documentos\\Modelagem 3D\\06_skill_universal\\produto\\verificadores\\check_intent.py",
+ "tolerancia_por_tipo": {
+  "caixa": [
+   "tol_mm"
+  ],
+  "distancia_entre_furos": [
+   "tol_mm"
+  ],
+  "furo": [
+   "circularidade_min",
+   "tol_mm",
+   "tol_pos_mm"
+  ],
+  "interferencia": [
+   "tol_mm3"
+  ],
+  "n_furos_no_plano": [],
+  "n_solidos": [],
+  "regiao_intacta": [
+   "tol_fracao"
+  ],
+  "volume": [
+   "tol_mm3"
+  ]
+ },
+ "detalhe": {
+  "caixa": {
+   "funcao": "v_caixa",
+   "funcoes_percorridas": [
+    "v_caixa"
+   ],
+   "leituras": [
+    {
+     "tolerancia": "tol_mm",
+     "padrao_quando_nao_declarada": 0.05,
+     "linha": 161,
+     "funcao": "v_caixa"
+    }
+   ]
+  },
+  "distancia_entre_furos": {
+   "funcao": "v_distancia_entre_furos",
+   "funcoes_percorridas": [
+    "aneis_da_secao",
+    "descreve_furo",
+    "v_distancia_entre_furos"
+   ],
+   "leituras": [
+    {
+     "tolerancia": "tol_mm",
+     "padrao_quando_nao_declarada": 0.2,
+     "linha": 289,
+     "funcao": "v_distancia_entre_furos"
+    }
+   ]
+  },
+  "furo": {
+   "funcao": "v_furo",
+   "funcoes_percorridas": [
+    "_mede_furo",
+    "aneis_da_secao",
+    "descreve_furo",
+    "v_furo"
+   ],
+   "leituras": [
+    {
+     "tolerancia": "tol_pos_mm",
+     "padrao_quando_nao_declarada": 0.2,
+     "linha": 217,
+     "funcao": "v_furo"
+    },
+    {
+     "tolerancia": "tol_mm",
+     "padrao_quando_nao_declarada": 0.2,
+     "linha": 218,
+     "funcao": "v_furo"
+    },
+    {
+     "tolerancia": "circularidade_min",
+     "padrao_quando_nao_declarada": 0.9,
+     "linha": 219,
+     "funcao": "v_furo"
+    }
+   ]
+  },
+  "interferencia": {
+   "funcao": "v_interferencia",
+   "funcoes_percorridas": [
+    "_confere_status",
+    "_manifold",
+    "carrega",
+    "v_interferencia"
+   ],
+   "leituras": [
+    {
+     "tolerancia": "tol_mm3",
+     "padrao_quando_nao_declarada": 0.0,
+     "linha": 395,
+     "funcao": "v_interferencia"
+    }
+   ]
+  },
+  "n_furos_no_plano": {
+   "funcao": "v_n_furos_no_plano",
+   "funcoes_percorridas": [
+    "aneis_da_secao",
+    "descreve_furo",
+    "v_n_furos_no_plano"
+   ],
+   "leituras": []
+  },
+  "n_solidos": {
+   "funcao": "v_n_solidos",
+   "funcoes_percorridas": [
+    "v_n_solidos"
+   ],
+   "leituras": []
+  },
+  "regiao_intacta": {
+   "funcao": "v_regiao_intacta",
+   "funcoes_percorridas": [
+    "_confere_status",
+    "_manifold",
+    "v_regiao_intacta"
+   ],
+   "leituras": [
+    {
+     "tolerancia": "tol_fracao",
+     "padrao_quando_nao_declarada": 1e-09,
+     "linha": 354,
+     "funcao": "v_regiao_intacta"
+    }
+   ]
+  },
+  "volume": {
+   "funcao": "v_volume",
+   "funcoes_percorridas": [
+    "v_volume"
+   ],
+   "leituras": [
+    {
+     "tolerancia": "tol_mm3",
+     "padrao_quando_nao_declarada": "max(1.0, 0.01 * esp)",
+     "linha": 173,
+     "funcao": "v_volume"
+    }
+   ]
+  }
+ },
+ "vocabulario": [
+  "tol_mm",
+  "tol_mm3",
+  "tol_pos_mm",
+  "tol_fracao",
+  "circularidade_min"
+ ],
+ "limite": "isto le o FONTE. Prova o que o verificador consulta, nao que a consulta esteja certa, e nao cobre nome de tolerancia montado em tempo de execucao — hoje nao existe nenhum."
+}

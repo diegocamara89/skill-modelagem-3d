@@ -1,0 +1,25 @@
+{
+ "captura": {
+  "faces": [
+   10
+  ],
+  "assinatura": "66d7b210c0758c18"
+ },
+ "A_sem_mudanca": {
+  "estado": "OK",
+  "resultado": {
+   "objeto": "peca_de_ensaio",
+   "assinatura_guardada": "66d7b210c0758c18a445ba4eb57d42cda56da7601d4a2d208799b2fbb035d081",
+   "assinatura_atual": "66d7b210c0758c18a445ba4eb57d42cda56da7601d4a2d208799b2fbb035d081",
+   "geometria_inalterada": true,
+   "n_faces_na_captura": 1,
+   "n_faces_no_objeto_agora": 16,
+   "indices_fora_do_intervalo": []
+  }
+ },
+ "faces_depois_da_uniao": 27,
+ "B_depois_de_mudar": {
+  "estado": "PRECONDICAO",
+  "mensagem": "a geometria mudou depois da captura da seleção: assinatura guardada 66d7b210c075, atual ed373565a41a. Os indices de face da captura nao valem mais e editar por eles atingiria outras faces sem acusar erro. Releia a seleção antes de editar. Os indices ainda existem, o que torna o erro silencioso."
+ }
+}
