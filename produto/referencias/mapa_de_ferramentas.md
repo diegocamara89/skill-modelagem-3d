@@ -93,6 +93,12 @@ o que impede herdar preferências e complementos do usuário.
 
 ### O contrato do script que roda DENTRO do Blender
 
+**Caminho preferido a partir de 2.5:** `scripts/trabalho_blender.py --script ...
+--resultado ...`, com `executar(config)` no script. Reutiliza o lançador existente e
+`executa_com_relatorio.py`, que captura traceback inclusive em sintaxe/configuração.
+Veja a seção 5 de `sessao_e_edicao_guiada.md` e o exemplo executável. O trecho abaixo
+é explicação histórica do protocolo, não precisa ser reescrito a cada trabalho.
+
 Esta parte não estava escrita em nenhuma referência, e uma sessão limpa precisou
 extraí-la lendo o código dos cenários. É o contrato central da rota headless, e o
 motivo dele está no começo desta página: **o lançador desanexa, devolve código 0 e

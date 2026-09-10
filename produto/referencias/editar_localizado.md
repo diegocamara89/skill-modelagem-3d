@@ -10,6 +10,12 @@ de seleção saem no sistema de coordenadas errado.
 
 # Parte 1 — Deslocar uma região delimitada
 
+**Se o pedido é alterar a forma de uma borda/patamar e conservar seus encontros,
+comece em `sessao_e_edicao_guiada.md`.** A translação abaixo é uma operação rígida
+de um conjunto já definido, não uma estratégia para escolher esse conjunto. Meça
+também as faces incidentes que absorvem o deslocamento; elas podem esticar, dobrar
+ou inverter enquanto a altura do alvo e a topologia global continuam corretas.
+
 ## Pré-condições
 
 - objeto em Edit Mode;
@@ -68,8 +74,9 @@ No cenário sintético, subir 2 unidades o topo do patamar alto leva a altura de
 - **negativo**: com a seleção limpa (`F.limpa_selecao`), `desloca_selecao` tem que
   levantar `ErroDePrecondicao`. Sem esse controle, um "nada aconteceu" silencioso
   passaria por sucesso.
-- **positivo**: com seleção válida, `geometria_mudou` verdadeiro e a dimensão externa
-  muda pelo valor pedido.
+- **positivo**: com seleção válida, `geometria_mudou` verdadeiro e o alvo muda pelo
+  vetor pedido. Dimensão externa só é oráculo quando a região define esse extremo.
+  Na edição de forma, complete com a transição e a região protegida, como na rota guiada.
 
 ---
 

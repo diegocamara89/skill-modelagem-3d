@@ -2,8 +2,7 @@
 
 Escrito para você abrir primeiro. Nada aqui exige ler os relatórios de fase.
 
-**O que existe:** `produto/` é a **árvore de trabalho** do pacote, versão **2.4.0**, 25 arquivos, hash
-`6fc1727d6e90bdfa65ec3ca80f15c19e1a9e33da9203ff98f33269a36116135b`. Licença **MIT**. É um conjunto de
+**O que existe:** `produto/` é a **árvore de trabalho** do pacote, versão **2.5.0**, 31 arquivos. Identidade por arquivo em `produto/INVENTARIO.json`. Licença **MIT**. É um conjunto de
 receitas para um agente **sem histórico** interpretar um pedido de modelagem 3D,
 executar com as ferramentas que já existem, e **conferir** o resultado com número
 medido.
@@ -30,7 +29,7 @@ python empacota_produto.py --verificar
 > de `--verificar` traz `bytecode_na_arvore_de_origem`, que **nomeia** o que existe na
 > árvore, justamente para a distinção não ficar implícita.
 
-Espere `"pacote_limpo": true`, 25 permitidos, `na_origem_e_fora_da_lista: []`,
+Espere `"pacote_limpo": true`, 31 permitidos, `na_origem_e_fora_da_lista: []`,
 `"varredura_funciona": true` e `manifesto_na_origem.resolve: true` — este último
 confere os **hashes** e exige que todo arquivo que deve ser identificado esteja no
 manifesto. Esse último é um **controle positivo**: um dado privado
@@ -133,3 +132,31 @@ validador recusando uma tolerância que o verificador **usa para decidir**.
 
 O que medir na resposta dele não é se a peça saiu: é se ele precisou **adivinhar**
 alguma coisa.
+
+## Edição guiada — testes acrescentados em 2.5
+
+No Python do sistema, com Blender instalado, em destino de resultados **novo**:
+
+```powershell
+python -B tests/roda_guiada.py --saida "<pasta temporaria nova>"
+```
+
+São 9 testes do hospedeiro, 14 testes dentro de Blender headless, duas alturas do
+exemplo documentado, erro com traceback e resultado geométrico reprovado mantido
+como reprovado. O teste **não** conecta à porta da sessão aberta. Para testar um
+pacote montado/instalado, acrescente `--pacote "<raiz do pacote>"`.
+
+Os cenários incluem flags em objeto oculto, contexto sem objeto ativo, alvo certo
+com dobra errada na transição, região protegida alterada, captura obsoleta,
+retesselação e medidas ausentes/inválidas. A área do caso plano é comparada com
+expressão analítica independente. Não é teste de habilidade de outro agente nem
+certificação de edição arbitrária. A inferência da feição continua a cargo do agente.
+
+Para diagnosticar a sessão do usuário, a rota instalada começa em
+`referencias/sessao_e_edicao_guiada.md`. A execução dessa consulta ao socket real não
+faz parte da suíte headless. O transporte é exercitado com respostas controladas.
+
+`.gitattributes` conserva os bytes de `produto/`: a configuração global de finais
+de linha não deve invalidar os hashes ao clonar. Distribua o destino do empacotador,
+não a árvore de trabalho com caches. Relatórios M1/M3 anteriores são históricos;
+não constituem execução da versão 2.5.

@@ -1,5 +1,9 @@
 # Inspecionar e orientar seleção
 
+Para sessão aberta, use primeiro `scripts/sessao_blender.py --diagnosticar`:
+`referencias/sessao_e_edicao_guiada.md` documenta o retorno e o próximo passo.
+Flags persistidas de objetos ocultos não são a seleção viva do operador.
+
 Rota para: abrir um modelo, entender o que está selecionado, orientar o usuário a
 selecionar, e transformar "essa região aí" num alvo com coordenadas.
 
