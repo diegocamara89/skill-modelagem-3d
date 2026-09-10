@@ -82,6 +82,73 @@ resultado correto. Não propague por cadeia de vizinhos, número de passos ou di
 geodésica sem delimitação espacial e geométrica: pode alcançar quase a peça inteira.
 O pacote não escolhe nem calibra automaticamente esses limites.
 
+### Escolher método e evidência sem adaptar o pedido à ferramenta
+
+Antes de construir, registre brevemente: efeito pedido; referências preservadas;
+região que pode mudar; método; medidas capazes de revelar uma construção errada.
+Não é um formulário para toda ação simples: é a decisão necessária quando a forma
+ou a correspondência entre antes/depois pode mudar.
+
+- **Cota explícita versus forma existente:** se não coincidem, informe ambos e a
+  definição da medida. Para ângulo, nomeie planos/eixos, orientação e se é ângulo
+  interno, entre normais ou relativo a um eixo. Para distância, nomeie os extremos
+  e o sistema de coordenadas. Resíduo de ajuste pequeno não resolve qual referência
+  o usuário queria. Não troque o valor pedido pelo existente sem resolver a ambiguidade.
+- **Escolha geométrica:** quando a feição exige nova aresta, novo encontro ou remoção
+  de fileiras, considere reconstrução da região. Não traduza a posteriori cada
+  deslocamento em pesos só para passar em `verifica_deslocamento`. Conformidade aos
+  pesos prova execução desse plano, não que o plano produz a feição solicitada.
+- **Escolha do medidor:** correspondência por índice serve quando ela é preservada.
+  Retriangulação requer comparação de superfície/perfis em referências estáveis.
+  Ausência de um auxiliar pronto não torna a geometria impossível: use uma medição
+  adequada e registre seu alcance; se ela não puder ser implementada, declare esse
+  impedimento específico, sem substituir silenciosamente a operação.
+
+| Operação | Evidência apropriada | Evidência insuficiente |
+|---|---|---|
+| deslocamento com conectividade preservada | deslocamento do alvo, protegido, encontros e perfil independente dos pesos | reproduzir os pesos que a própria tentativa escolheu |
+| reconstrução/retriangulação local | limites da região, superfícies de referência, seções comuns antes/depois, encontro e topologia resultante | comparação de índices ou contagem igual de faces |
+| criação paramétrica | cotas/geometria do artefato exportado e domínio de parâmetros ensaiado | dizer “exato por construção” sem medir o resultado |
+| correção estética | comparação em condições iguais e defeito localizado correspondente | malha fechada ou imagem com outra luz/câmera |
+
+### Manter a região de medição comparável
+
+Determine a região a partir da referência **antes** da tentativa. Caixa fixa pode
+perder uma superfície deslocada; faixa de inclinação pode selecionar outras faces
+depois da edição. Nesses casos, mudança de área/ângulo pode ser mudança da amostra.
+Registre membros ou regra de correspondência e cobertura, incluindo as faces que
+entram/saem. Se a região se move, transporte a referência explicitamente ou compare
+em uma região comum que contenha o efeito inteiro. Se não há correspondência,
+não apresente diferenças como degradação ou melhora da mesma superfície.
+
+Fatias por proximidade de vértices não são seções geométricas: um plano pode
+atravessar faces sem passar perto de qualquer vértice. Use interseção com faces;
+se a seção falhar, não conclua que a superfície está ausente. Inferência de colisão
+ou inversão exige evidência correspondente, não apenas caixas/alturas sobrepostas.
+
+Se o verificador expande a faixa para vizinhos, derive os limites para **essa mesma
+zona medida**, antes da execução. Um limite de área de outra seleção não é válido.
+Defeito preexistente pede diagnóstico separado: tolerância não precisa aceitar toda
+imperfeição original, mas também não pode ignorar o domínio medido.
+
+### Diante de reprovação
+
+1. Verifique se falhou a geometria, a cobertura da medida ou a especificação do teste.
+2. Se o teste estiver errado, corrija-o a partir da referência e reaplique **também
+   ao estado anterior e a um controle defeituoso**. Preserve o registro da correção.
+   Não afrouxe limites apenas porque a tentativa falhou.
+3. Se o método produzir o defeito, mude o método; não repita a mesma deformação com
+   limiares sucessivos sem nova hipótese verificável.
+4. Escolhas rotineiras de implementação dentro do pedido já autorizado não exigem
+   nova permissão só porque alteram a topologia. Pergunte se muda a forma pretendida,
+   a região protegida, o escopo ou se há ambiguidade material.
+
+Trocar Blender por CAD paramétrico (ou o inverso) exige um benefício concreto:
+que feição será criada melhor, como preservar/integrar o restante, que conversão
+pode perder informação e como validar a exportação. Não atribua precisão ou ausência
+de defeitos ao nome do software. Se a ferramenta atual suporta o reparo local, não
+migre apenas porque a primeira estratégia falhou.
+
 ## 3. Executar uma prévia com recuperação
 
 Capture a marcação antes de sair de Edit Mode; sincronize ao sair. Salvar a marcação

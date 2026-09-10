@@ -1,7 +1,27 @@
 # Mapa de ferramentas: o que existe, o que exige, o que não existe
 
-Tudo aqui foi verificado em 07/09/2026 na instalação de ensaio. Onde diz MEDIDO, há
-número atrás. Onde diz NÃO EXISTE, não invente substituto.
+Os registros antigos abaixo descrevem o ambiente de ensaio de 07/09/2026. A rota
+guiada foi adicionada em 2.5; seus testes e limites estão em `VALIDACAO_2_5.md` na
+oficina. Não interprete a ausência de auxiliar como impossibilidade geométrica.
+
+## Edição guiada: ferramentas disponíveis e limites
+
+| Ferramenta | Onde roda | Para que usar / limite |
+|---|---|---|
+| `scripts/sessao_blender.py --diagnosticar` | hospedeiro, consulta MCP | entrada da sessão; não altera seleção nem geometria |
+| `edicao_guiada.diagnostica()` | Blender | seleção viva, objeto ativo, unidades e flags persistidas |
+| `edicao_guiada.entra_em_edicao(nome)` | Blender | contexto explícito; recusa trocar o modo de outro objeto |
+| `edicao_guiada.captura(nome)` | Blender | coordenadas, conectividade e unidade; não avalia modificadores |
+| `edicao_guiada.copia_para_previa(nome, novo_nome)` | Blender | objeto e malha independentes, materiais compartilhados preservados |
+| `edicao_guiada.desloca_com_pesos(nome, plano)` | Blender | executa pesos explícitos; não escolhe a feição nem reconstrói topologia |
+| `edicao_guiada.mede_regiao(snapshot, indices_faces)` | Blender | área, qualidade e ângulos; não emite aprovação estética |
+| `edicao_guiada.verifica_deslocamento(...)` | Blender | alvo, transição e protegido com correspondência por índice; não serve após retriangulação |
+| `scripts/trabalho_blender.py --script ... --resultado ...` | hospedeiro | headless separado com captura de erros; execução não é aprovação geométrica |
+| `scripts/executa_com_relatorio.py` | Blender/headless | invólucro usado pelo lançador, não reescrever em cada tarefa |
+
+Assinaturas, parâmetros, exemplo completo e escolha de verificação estão em
+`sessao_e_edicao_guiada.md`. Reconstrução com topologia nova exige referências de
+superfície/seção: não a force para dentro de `verifica_deslocamento`.
 
 ## Ambiente medido
 

@@ -5,13 +5,13 @@ description: Use quando o pedido envolver criar, inspecionar, editar ou verifica
 
 # Modelagem 3D — receitas para executar e conferir
 
-**Pacote 2.5.0**, com `scripts/bl_ferramentas.py` na **versão 1.5.0** e
+**Pacote 2.5.1**, com `scripts/bl_ferramentas.py` na **versão 1.5.1** e
 `scripts/edicao_guiada.py` na **versão 1.0.0**. Os
 números são independentes: o do pacote muda a cada correção em qualquer arquivo, o da
 biblioteca só quando ela muda. Ambos estão em `INVENTARIO.json`, junto do hash de cada
 arquivo, e é ali que se confere qual versão está em mãos.
 
-**Onde conferir a versão, e onde não dá.** `bl_ferramentas.confere_versao("1.5.0")` só
+**Onde conferir a versão, e onde não dá.** `bl_ferramentas.confere_versao("1.5.1")` só
 roda **dentro do Blender**: o módulo importa `bpy` e `bmesh`, e no Python do hospedeiro
 ele morre com `ModuleNotFoundError: No module named 'bmesh'`. Uma sessão limpa bateu
 nisso no primeiro passo executável deste documento e teve que decidir sozinha que a
@@ -19,7 +19,7 @@ verificação não se aplicava. Então:
 
 | Onde você está | Como conferir |
 |---|---|
-| dentro do Blender | `bl_ferramentas.confere_versao("1.5.0")`, que recusa em vez de deixar descobrir pelo resultado |
+| dentro do Blender | `bl_ferramentas.confere_versao("1.5.1")`, que recusa em vez de deixar descobrir pelo resultado |
 | no Python do hospedeiro (rota de **criar**, verificadores, validação) | leia `versao_de_bl_ferramentas` em `INVENTARIO.json`. A rota de criar não carrega `bl_ferramentas.py`, e um descasamento de versão dela não afeta essa rota |
 
 Este pacote não é doutrina: são receitas com chamadas testadas. Use a referência da
@@ -63,6 +63,14 @@ ou casca **fechada** sem sólido (borda proibida). Não deduza uma da outra.
 outro cliente de socket nem escolha o objeto pela maior quantidade de flags.
 Antes de mover qualquer vértice, identifique alvo, transição e região protegida.
 Seleção é indicação da feição. Acertar a altura do alvo não aprova a parede adjacente.
+
+**Escolha a construção pelo resultado pedido, depois a verificação compatível.**
+Não force uma reconstrução a ser deslocamento só para caber no verificador pronto.
+Fixe referências, região comparada e critérios antes da tentativa. Se a medição
+contradiz uma cota explícita, esclareça a referência sem substituir a instrução.
+Para mudança de topologia ou de ferramenta, leia a seção 2 de
+`referencias/sessao_e_edicao_guiada.md`: os critérios mudam com a representação,
+mas o pedido permanece.
 
 | Pedido | Referência a carregar |
 |---|---|

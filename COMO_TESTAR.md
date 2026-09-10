@@ -2,7 +2,7 @@
 
 Escrito para você abrir primeiro. Nada aqui exige ler os relatórios de fase.
 
-**O que existe:** `produto/` é a **árvore de trabalho** do pacote, versão **2.5.0**, 31 arquivos. Identidade por arquivo em `produto/INVENTARIO.json`. Licença **MIT**. É um conjunto de
+**O que existe:** `produto/` é a **árvore de trabalho** do pacote, versão **2.5.1**, 31 arquivos. Identidade por arquivo em `produto/INVENTARIO.json`. Licença **MIT**. É um conjunto de
 receitas para um agente **sem histórico** interpretar um pedido de modelagem 3D,
 executar com as ferramentas que já existem, e **conferir** o resultado com número
 medido.
@@ -160,3 +160,16 @@ faz parte da suíte headless. O transporte é exercitado com respostas controlad
 de linha não deve invalidar os hashes ao clonar. Distribua o destino do empacotador,
 não a árvore de trabalho com caches. Relatórios M1/M3 anteriores são históricos;
 não constituem execução da versão 2.5.
+
+## Revisão de instruções 2.5.1
+
+Escolher construção antes do verificador; preservar a referência de medida e a
+correspondência da região; não substituir cotas explícitas; decidir migração de
+ferramenta por benefício verificável. Regras condicionais e matriz por operação em
+`sessao_e_edicao_guiada.md`; funções guiadas agora indexadas no mapa.
+
+`bl_ferramentas` passa a 1.5.1 para corrigir a identidade: mudanças anteriores
+haviam permanecido sob 1.5.0. Nesta revisão não houve mudança em seus algoritmos.
+O hash do manifesto identifica os bytes; versão sozinha não substitui integridade.
+Os testes mecânicos não demonstram a capacidade de outro agente de escolher a
+estratégia; isso continua exigindo um ensaio de uso independente.
