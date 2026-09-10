@@ -36,7 +36,9 @@ from mathutils import Vector
 # comportamento de preenche_entre_limites mudou de perfil de 4 pontos para 6, e a
 # VERSAO ficou parada em 1.0.0. O agente leu uma referencia e executou outro codigo,
 # e perdeu uma execucao inteira sem ter como detectar a troca.
-VERSAO = "1.5.0"
+# Correcao de identidade: revisoes anteriores alteraram comportamento sem mudar
+# 1.5.0. Os hashes do INVENTARIO continuam sendo a identidade exata dos bytes.
+VERSAO = "1.5.1"
 CASAS = 6                 # arredondamento da assinatura, em unidades de cena
 
 
