@@ -1,5 +1,11 @@
 # Verificar: o que cada medida prova, e o que ela não prova
 
+**Após deslocamento localizado**, confira também quem absorveu o movimento:
+`sessao_e_edicao_guiada.md`, seção 4, traz `verifica_deslocamento` e seus limites.
+Área e ângulos da transição são indicadores condicionais; malha fechada e altura
+correta do alvo não bastam. Não reprove uma quina intencional por ângulo alto nem
+aprove uma parede colapsada porque seus triângulos não têm área zero.
+
 A regra que organiza tudo aqui: **validade geométrica e atendimento ao pedido são
 coisas diferentes**, e nenhuma delas se conclui pela aparência.
 

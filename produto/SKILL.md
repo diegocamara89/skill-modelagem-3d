@@ -5,7 +5,8 @@ description: Use quando o pedido envolver criar, inspecionar, editar ou verifica
 
 # Modelagem 3D — receitas para executar e conferir
 
-**Pacote 2.4.0**, com `scripts/bl_ferramentas.py` na **versão 1.5.0**. Os dois
+**Pacote 2.5.0**, com `scripts/bl_ferramentas.py` na **versão 1.5.0** e
+`scripts/edicao_guiada.py` na **versão 1.0.0**. Os
 números são independentes: o do pacote muda a cada correção em qualquer arquivo, o da
 biblioteca só quando ela muda. Ambos estão em `INVENTARIO.json`, junto do hash de cada
 arquivo, e é ali que se confere qual versão está em mãos.
@@ -57,8 +58,15 @@ ou casca **fechada** sem sólido (borda proibida). Não deduza uma da outra.
 
 ## Rotas e onde está cada receita
 
+**Blender aberto + ajuste indicado pelo usuário:** comece em
+`referencias/sessao_e_edicao_guiada.md`. Execute o diagnóstico pronto; não escreva
+outro cliente de socket nem escolha o objeto pela maior quantidade de flags.
+Antes de mover qualquer vértice, identifique alvo, transição e região protegida.
+Seleção é indicação da feição. Acertar a altura do alvo não aprova a parede adjacente.
+
 | Pedido | Referência a carregar |
 |---|---|
+| sessão viva, seleção parcial, subir borda/patamar, preservar encontros | `referencias/sessao_e_edicao_guiada.md` |
 | criar ou parametrizar peça por código, com verificação | `referencias/criar_e_parametrizar.md` |
 | abrir, inspecionar, orientar seleção, ler o que está selecionado | `referencias/inspecionar_e_selecionar.md` |
 | deslocar região delimitada; preencher vão entre dois limites | `referencias/editar_localizado.md` |
@@ -66,14 +74,14 @@ ou casca **fechada** sem sólido (borda proibida). Não deduza uma da outra.
 | desfazer, refazer, salvar, exportar, deixar retomável | `referencias/recuperar_salvar_exportar.md` |
 | que ferramenta existe, o que ela exige, o que **não** existe | `referencias/mapa_de_ferramentas.md` |
 | como registrar o trabalho para outro agente continuar | `referencias/registro_de_trabalho.md` |
-| **escrever o meu próprio script que roda dentro do Blender** | `referencias/mapa_de_ferramentas.md`, seção «O contrato do script que roda DENTRO do Blender» |
+| **escrever o meu próprio script que roda dentro do Blender** | `referencias/sessao_e_edicao_guiada.md`, seção 5: invólucro executável com traceback |
 
 Carregue **uma** referência por vez, a da rota em uso. Elas repetem de propósito o
 que é crítico, para não obrigar a carregar tudo.
 
 ## Antes de editar qualquer coisa de outra pessoa
 
-- Pergunte onde salvar. **Não sobrescreva o arquivo de origem** para gravar uma
+- Use o destino já combinado; pergunte apenas se ele faltar. **Não sobrescreva o arquivo de origem** para gravar uma
   prévia.
 - Se houver uma sessão do Blender aberta com trabalho do usuário, não carregue outro
   arquivo nela e não a encerre. Cena com alterações não salvas perde trabalho.
