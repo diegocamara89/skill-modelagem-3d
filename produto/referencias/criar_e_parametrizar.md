@@ -271,7 +271,7 @@ python verificadores/sweep_params.py --modulo familia_exemplo --funcao familia_p
 injeção atingiu a etapa pretendida, e não uma anterior.
 
 Limite conhecido, e ele fica aqui em vez de ser corrigido no verificador porque o
-verificador é cópia congelada com comportamento estabilizado por teste: **falha na
+verificador tem comportamento controlado por testes e divergências registradas: **falha na
 criação do diretório de saída sobe como traceback**, não como erro operacional
 classificado. Se o seu `--saida` não puder ser criado, você recebe um traceback de
 `os.makedirs` e nenhum JSON. Confira o caminho antes de varrer.

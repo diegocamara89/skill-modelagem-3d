@@ -1,5 +1,8 @@
 # Blender aberto: diagnosticar, interpretar e editar a forma
 
+Para apenas mover rigidamente uma seleção já definida, use a rota curta
+`mover_selecao.md`. Reutilize a ferramenta pronta, sem gerar outra implementação.
+
 Use para “suba esta borda”, “corrija este desnivel”, “este lado deve acompanhar
 aquele”. Leia esta rota **antes** de escolher vertices ou chamar translação.
 `scripts/edicao_guiada.py` é uma biblioteca adicional, versão 1.0.0; não substitui
@@ -246,3 +249,7 @@ nesses casos, ausência de relatório é impedimento, nunca sucesso.
 
 Os testes reproduzíveis da oficina estão em `tests/test_edicao_guiada_blender.py`
 e `tests/test_contratos_guiados.py`, fora do pacote instalado. Todo cenário é sintético.
+
+Antes de executar codigo especifico ou entregar uma edicao, consulte o contrato de
+`fluxo_interativo.md`: captura anterior real, limites de aceite, identidade da selecao,
+recuperacao e verificacao do arquivo exportado.

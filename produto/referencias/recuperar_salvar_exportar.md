@@ -125,3 +125,7 @@ Restaure as sobreposições que você alterou e informe em que modo deixou a cen
 o usuário continuar selecionando. Não encerre a sessão do Blender do usuário para
 cumprir prazo. Tempo esgotado do MCP **não prova** que o código parou lá dentro: em
 estado incerto, inspecione antes de repetir.
+
+Antes de executar codigo especifico ou entregar uma edicao, consulte o contrato de
+`fluxo_interativo.md`: captura anterior real, limites de aceite, identidade da selecao,
+recuperacao e verificacao do arquivo exportado.

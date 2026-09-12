@@ -1,5 +1,8 @@
 # Editar região delimitada: deslocar e preencher entre limites
 
+Para apenas mover rigidamente uma seleção já definida, use a rota curta
+`mover_selecao.md`. Reutilize a ferramenta pronta, sem gerar outra implementação.
+
 Duas operações, com o mesmo cuidado: **a operação retornar não prova que ela fez
 efeito**, e efeito não prova que o efeito é o pedido.
 
@@ -477,3 +480,7 @@ outro caso, e é por isso que as medidas são separadas.
 
 Nas variantes barradas, o relatório registra: *"o preenchimento não foi executado;
 nada depois dele foi medido. Um resultado de etapa não prova outra."*
+
+Antes de executar codigo especifico ou entregar uma edicao, consulte o contrato de
+`fluxo_interativo.md`: captura anterior real, limites de aceite, identidade da selecao,
+recuperacao e verificacao do arquivo exportado.

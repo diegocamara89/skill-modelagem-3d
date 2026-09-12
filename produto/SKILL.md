@@ -5,7 +5,7 @@ description: Use quando o pedido envolver criar, inspecionar, editar ou verifica
 
 # Modelagem 3D — receitas para executar e conferir
 
-**Pacote 2.5.1**, com `scripts/bl_ferramentas.py` na **versão 1.5.1** e
+**Pacote 2.7.1**, com `scripts/bl_ferramentas.py` na **versão 1.5.1** e
 `scripts/edicao_guiada.py` na **versão 1.0.0**. Os
 números são independentes: o do pacote muda a cada correção em qualquer arquivo, o da
 biblioteca só quando ela muda. Ambos estão em `INVENTARIO.json`, junto do hash de cada
@@ -56,7 +56,33 @@ Se o pedido usar "borda", "casca" ou "fechado", trate topologia como declaraçã
 separada da representação: superfície pode ser casca **aberta** (borda obrigatória)
 ou casca **fechada** sem sólido (borda proibida). Não deduza uma da outra.
 
+## Ajustes simples no Blender: chamada pronta primeiro
+
+Selecao do usuario + pedido claro: use uma operacao pronta, confirme a alteracao
+na sessao conectada e devolva uma frase com o efeito medido e eventual limite.
+Nao escreva outro script para mudar um numero. Nao refaca inventario completo a
+cada clique. Se o dominio nao servir, explique a diferenca e siga a rota especializada.
+
+| Operacao delimitada | Receita |
+|---|---|
+| mover faces existentes em X/Y/Z global | `referencias/mover_selecao.md` |
+| expandir uma face por conectividade ou plano | `referencias/expandir_selecao.md` |
+| criar extrusao de patch planar conectado | `referencias/extrudar_selecao.md` |
+| projetar faces em plano global declarado | `referencias/alinhar_selecao.md` |
+| fechar contorno convexo ou ligar duas arestas | `referencias/preencher_selecao.md` |
+| arredondar uma quina convexa de 90 graus | `referencias/arredondar_selecao.md` |
+
+Para orientar selecao e evitar repeticao de operacao em timeout, leia
+`referencias/fluxo_interativo.md`. As chamadas exigem nome real do objeto e porta
+confirmada da sessao; nomes dos exemplos nao identificam o objeto do usuario.
+
 ## Rotas e onde está cada receita
+
+**Deslocamento rígido de faces já selecionadas:** use primeiro
+`referencias/mover_selecao.md` e a chamada pronta. Não gere um script para cada
+valor de distância. Para pedidos que exigem conservar ou reconstruir encontros,
+continue na rota de edição guiada abaixo.
+
 
 **Blender aberto + ajuste indicado pelo usuário:** comece em
 `referencias/sessao_e_edicao_guiada.md`. Execute o diagnóstico pronto; não escreva
@@ -86,6 +112,8 @@ mas o pedido permanece.
 
 Carregue **uma** referência por vez, a da rota em uso. Elas repetem de propósito o
 que é crítico, para não obrigar a carregar tudo.
+
+Para edicao ao vivo, aplique o contrato curto de `referencias/fluxo_interativo.md`: identidade da captura, limites decisivos, recuperacao e confirmacao da entrega. Essas instrucoes nao significam que todos os auxiliares as automatizam.
 
 ## Antes de editar qualquer coisa de outra pessoa
 

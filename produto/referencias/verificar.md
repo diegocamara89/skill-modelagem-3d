@@ -205,7 +205,7 @@ produz erro não tratado, e não `ESPEC_INVALIDA`:
 
 **Confira a forma antes de medir.** Passar uma lista nua — a leitura mais natural do
 formato — produz um **traceback não tratado** dentro do verificador, e não
-`ESPEC_INVALIDA`. O verificador é cópia congelada e não foi alterado; a guarda mora
+`ESPEC_INVALIDA`. O verificador é derivado da base, com alterações registradas em PROVENIENCIA.json; a guarda mora
 fora dele:
 
 ```bash
