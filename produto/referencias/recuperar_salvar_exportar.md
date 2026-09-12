@@ -129,3 +129,8 @@ estado incerto, inspecione antes de repetir.
 Antes de executar codigo especifico ou entregar uma edicao, consulte o contrato de
 `fluxo_interativo.md`: captura anterior real, limites de aceite, identidade da selecao,
 recuperacao e verificacao do arquivo exportado.
+
+STL: exporta_malha grava em temporario, valida estrutura binaria e numeros finitos,
+e so entao publica. Destino existente e recusado por padrao; sobrescrever=True exige
+autorizacao do usuario. Falha preserva o arquivo anterior. Modo e selecao sao restaurados.
+Essa validacao nao decide fechamento, colisao ou imprimibilidade: confira o STL reaberto.

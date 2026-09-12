@@ -10,7 +10,7 @@ Nao deduza o plano pela imagem quando cotas ou referencias estiverem ausentes.
 
 Na raiz do pacote, no Python do hospedeiro:
 ```
-python scripts/alinhar_selecao.py --porta PORTA --objeto NOME --ponto-mm X Y Z --normal NX NY NZ --maximo-mm LIMITE
+python scripts/alinhar_selecao.py --porta PORTA --objeto NOME --ponto-mm X Y Z --normal NX NY NZ --maximo-mm LIMITE --captura TOKEN
 ```
 Substitua todos os valores. A normal deve ser nao nula; o limite deve ser positivo.
 O comando recusa antes de alterar se algum vertice excederia esse limite.
@@ -18,3 +18,9 @@ ALINHAMENTO_MEDIDO mede residuo ao plano e vertices nao selecionados preservados
 Colisao, forma das faces adjacentes e fabricacao continuam nao verificadas.
 Ctrl+Z imediatamente desfaz, Ctrl+Shift+Z refaz. Nao automatize Undo global apos
 trabalho externo. Timeout/INDETERMINADO exige inspecao antes de repetir.
+
+Antes da primeira escrita, execute `python scripts/capturar_selecao.py --porta PORTA --objeto NOME`.
+Use o campo `captura` como TOKEN. A proxima operacao pode usar `captura_depois` da
+anterior; nao recapture automaticamente para contornar selecao que mudou.
+A ferramenta recusa captura desatualizada antes da escrita. Falha com recuperacao
+confirmada retorna FALHA_RESTAURADA; INDETERMINADO/FALHA_COM_ALTERACAO exigem inspecao.

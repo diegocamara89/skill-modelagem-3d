@@ -38,7 +38,7 @@ from mathutils import Vector
 # e perdeu uma execucao inteira sem ter como detectar a troca.
 # Correcao de identidade: revisoes anteriores alteraram comportamento sem mudar
 # 1.5.0. Os hashes do INVENTARIO continuam sendo a identidade exata dos bytes.
-VERSAO = "1.5.1"
+VERSAO = "1.5.2"
 CASAS = 6                 # arredondamento da assinatura, em unidades de cena
 
 
@@ -1386,90 +1386,50 @@ def salva_cena(caminho, permitir_sobrescrever_a_origem=False):
                        "iluminacao. Para geometria, usar a assinatura.")}
 
 
-def exporta_malha(nome_do_objeto, caminho, formato="stl"):
-    """Exporta so o objeto informado. MEDIDO no Blender 5.2.1: o operador de STL e
-    `wm.stl_export` com `export_selected_objects`; o nome antigo `export_mesh.stl`
-    nao existe mais nesta versao. A tentativa e registrada para que a receita nao
-    dependa de adivinhar o nome."""
-    obj = _malha(nome_do_objeto)
-    if bpy.context.mode == "EDIT_MESH":
-        bpy.ops.object.mode_set(mode="OBJECT")
+def exporta_malha(nome_do_objeto, caminho, formato="stl", sobrescrever=False):
+    """Exporta para temporario e publica somente STL binario estruturalmente valido.
+
+    Sobrescrita exige autorizacao explicita. Preserva modo e selecao da sessao.
+    """
+    from exportacao_segura import publicar_stl
+    import math
     alvo = os.path.abspath(caminho)
-    pasta = os.path.dirname(alvo)
-    if pasta:
-        os.makedirs(pasta, exist_ok=True)
-    bpy.ops.object.select_all(action="DESELECT")
-    obj.select_set(True)
-    bpy.context.view_layer.objects.active = obj
-
-    tentativas = []
-    if formato != "stl":
-        raise ErroDePrecondicao("formato %r nao coberto por esta receita" % formato)
-    # CORRIGIDO depois da revisao independente. A versao anterior marcava a
-    # tentativa como ok apenas porque nao houve excecao, e o operador de exportacao
-    # devolve {'CANCELLED'} sem levantar nada — o MESMO defeito que esta receita
-    # documenta para transform.translate, deixado dentro da propria exportacao.
-    # Pior: se ja existisse um STL antigo no destino, o retorno traria o hash DELE
-    # junto com a assinatura da geometria atual, amarrando evidencia a artefato
-    # errado. Agora: o destino e removido antes, e o retorno do operador e exigido.
-    if os.path.isfile(alvo):
-        try:
-            os.remove(alvo)
-            removeu_anterior = True
-        except OSError as e:
-            raise ErroDePrecondicao(
-                "existe um arquivo em %s e ele nao pode ser removido (%s). Exportar "
-                "por cima arriscaria devolver o hash do arquivo ANTIGO como se fosse "
-                "o da geometria atual." % (alvo, e))
-    else:
-        removeu_anterior = False
-
-    for nome, chamada in (
-        ("wm.stl_export",
-         lambda: bpy.ops.wm.stl_export(filepath=alvo, export_selected_objects=True)),
-        ("export_mesh.stl",
-         lambda: bpy.ops.export_mesh.stl(filepath=alvo, use_selection=True)),
-    ):
-        try:
-            r = chamada()
-            estados = sorted(r) if hasattr(r, "__iter__") else [str(r)]
-            if "FINISHED" not in estados:
-                tentativas.append({"operador": nome, "ok": False,
-                                   "retorno_do_operador": estados,
-                                   "motivo": ("o operador nao devolveu FINISHED. "
-                                              "CANCELLED nao levanta excecao e nao "
-                                              "escreve arquivo.")})
-                continue
-            tentativas.append({"operador": nome, "ok": True,
-                               "retorno_do_operador": estados})
-            break
-        except Exception as e:
-            tentativas.append({"operador": nome, "ok": False,
-                               "erro": "%s: %s" % (type(e).__name__, e)})
-    if not any(t.get("ok") for t in tentativas):
-        raise ErroDePrecondicao(
-            "nenhum operador de exportacao concluiu. Tentativas: %s" % tentativas)
-    existe = os.path.isfile(alvo)
-    if not existe or os.path.getsize(alvo) == 0:
-        raise ErroDePrecondicao(
-            "o operador devolveu FINISHED e o arquivo %s nao existe ou esta vazio. "
-            "Nao ha artefato a vincular a medida." % alvo)
-    modificadores = [{"nome": mo.name, "tipo": mo.type, "visivel": mo.show_viewport}
-                     for mo in obj.modifiers]
-    return {"objeto": obj.name, "arquivo": alvo, "tentativas": tentativas,
-            "removeu_arquivo_anterior": removeu_anterior,
-            "existe": existe, "bytes": os.path.getsize(alvo) if existe else 0,
-            "sha256": _hash_do_arquivo(alvo) if existe else None,
-            "assinatura_da_geometria": assinatura(obj.name)["sha256"],
-            "modificadores_ativos": modificadores,
-            "aviso_de_modificador": (
-                None if not modificadores else
-                "o objeto tem modificador ativo. A assinatura cobre obj.data e a "
-                "matriz de mundo, e NAO o resultado do modificador. O STL exportado "
-                "pode nao corresponder a assinatura: aplique o modificador antes, ou "
-                "trate a assinatura como parcial."),
-            "limite": ("exportacao bem-sucedida NAO prova validade geometrica. "
-                       "Conferir o artefato entregue com os verificadores.")}
+    if formato != 'stl':raise ErroDePrecondicao('Somente STL binario e suportado.')
+    if os.path.exists(alvo) and not sobrescrever:
+        raise ErroDePrecondicao('Destino existe; escolha outro nome ou autorize sobrescrever.')
+    if bpy.data.filepath and os.path.normcase(os.path.realpath(alvo)) == os.path.normcase(os.path.realpath(bpy.data.filepath)):
+        raise ErroDePrecondicao('Destino nao pode ser o arquivo de trabalho.')
+    obj = _malha(nome_do_objeto)
+    units = bpy.context.scene.unit_settings
+    factor = units.scale_length*1000
+    if units.system != 'METRIC' or not math.isfinite(factor) or factor <= 0:
+        raise ErroDePrecondicao('STL em mm exige unidades metricas e escala positiva.')
+    if bpy.context.mode not in ('OBJECT','EDIT_MESH'):
+        raise ErroDePrecondicao('Exporte em Object Mode ou Edit Mesh.')
+    if bpy.context.mode=='EDIT_MESH' and len(bpy.context.objects_in_mode)!=1:
+        raise ErroDePrecondicao('Saia da edicao de multiplos objetos antes de exportar.')
+    active=bpy.context.view_layer.objects.active
+    selected=list(bpy.context.selected_objects)
+    editing=bpy.context.mode=='EDIT_MESH'
+    try:
+        if editing:bpy.ops.object.mode_set(mode='OBJECT')
+        bpy.ops.object.select_all(action='DESELECT');obj.select_set(True)
+        bpy.context.view_layer.objects.active=obj
+        signature=assinatura(obj.name)['sha256']
+        def writer(path):
+            result=bpy.ops.wm.stl_export(filepath=path,export_selected_objects=True,
+                ascii_format=False,apply_modifiers=True,global_scale=factor,use_scene_unit=False)
+            if 'FINISHED' not in result:raise ErroDePrecondicao('Exportador nao concluiu: %s' % result)
+        result=publicar_stl(alvo,writer,sobrescrever=sobrescrever)
+        result.update(objeto=obj.name,existe=True,unidade='mm',assinatura_da_geometria=signature,
+            modificadores_ativos=[m.name for m in obj.modifiers],
+            limite='Validacao estrutural de STL; conferir malha, dimensoes e finalidade no arquivo reaberto. Assinatura cobre malha base, nao modificadores.')
+        return result
+    finally:
+        bpy.ops.object.select_all(action='DESELECT')
+        for item in selected:item.select_set(True)
+        bpy.context.view_layer.objects.active=active
+        if editing:bpy.ops.object.mode_set(mode='EDIT')
 
 
 def _hash_do_arquivo(caminho):
