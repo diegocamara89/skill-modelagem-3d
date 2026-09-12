@@ -173,3 +173,23 @@ haviam permanecido sob 1.5.0. Nesta revisão não houve mudança em seus algorit
 O hash do manifesto identifica os bytes; versão sozinha não substitui integridade.
 Os testes mecânicos não demonstram a capacidade de outro agente de escolher a
 estratégia; isso continua exigindo um ensaio de uso independente.
+
+
+## Regressao 2.7.2: falhas, captura e exportacao
+
+Os novos testes ficam em tests/, fora do pacote comercial. Use Python do hospedeiro:
+
+```powershell
+python -B tests/roda_regressao_272.py --blender "CAMINHO_DO_EXECUTAVEL_BLENDER" --saida "PASTA_DE_EVIDENCIAS" --gui
+```
+
+O launcher cria configuracao temporaria e uma sessao factory-startup propria. Nao
+conecta a socket nem usa cena aberta do usuario. --gui acrescenta Undo/Redo reais;
+sem essa opcao esses testes nao sao declarados executados. O relatorio comandos.json
+registra argv, diretorio e codigo de saida. Os testes headless exigem JSON novo e
+quantidade de casos esperada, nao apenas exit code do launcher.
+
+Cobertura: exportacao atomica e preservacao do destino; respostas incompletas e
+contraditorias; token antigo por mudanca de geometria/selecao/conectividade;
+falha antes/depois da escrita, recuperacao confirmada e impossivel; quatro operacoes,
+movimento/historico, selecao e exportacao com escala/modo conferidos. Fixtures sinteticas.

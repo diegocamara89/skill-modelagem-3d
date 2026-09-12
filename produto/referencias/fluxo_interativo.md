@@ -34,12 +34,12 @@ Use a chamada pronta quando ela cobre a construcao solicitada. Se nao cobre, dig
 qual condicao falta e reutilize transporte e auxiliares existentes no codigo especifico.
 Nao force uma operacao simples a preservar encontros que ela nao preserva.
 
-Antes da escrita, vincule alvo a sessao (porta explicita e PID), objeto, modo e
-identidade da geometria capturada, incluindo coordenadas e conectividade. Indices
-so valem nessa captura: mesma contagem de vertices nao demonstra identidade.
-Se o estado mudou desde o planejamento, recapture e revalide o alvo antes de escrever.
-Nao troque o eixo indicado nem acrescente componente de movimento sem resolver a
-referencia com o usuario quando houver ambiguidade que altere o resultado.
+As CLIs prontas exigem --captura para escrever. Obtenha o token em
+capturar_selecao.py (ou no preview/inspecao da ferramenta). Ele vincula processo,
+objeto, coordenadas, conectividade e selecao; a conferencia ocorre na mesma chamada
+antes da escrita. captura_depois pode alimentar a proxima chamada. Token desatualizado
+exige nova inspecao do alvo, nao retry cego. Nao precisa escrever um verificador de
+identidade para essas CLIs. Codigo especifico fora delas deve aplicar a mesma guarda.
 
 Fixe limites numericos para as medidas decisivas antes de executar. Concluida exige
 todos esses limites satisfeitos e nenhuma falha pendente. Medidas informativas nao
@@ -49,12 +49,16 @@ Verifique os vertices do alvo e a regiao protegida relevante. Area igual sozinha
 prova movimento rigido. Defeito preexistente precisa de comparacao antes/depois:
 ter existido antes nao prova que nao piorou. Limites de piora devem ser declarados.
 
-Prepare recuperacao antes de escrever. Se a verificacao reprovar depois da escrita,
-restaure o estado capturado e confira o conteudo restaurado. So restaure quando puder
-excluir trabalho concorrente posterior; nao use Undo global cegamente. Se nao houver
-recuperacao segura, informe FALHA_COM_ALTERACAO ou RESULTADO_INDETERMINADO, o que mudou
-e onde esta o backup. Nao retorne apenas FALHA ocultando que a cena foi alterada.
-Essas sao obrigacoes da receita; nao existe transacao automatica universal no pacote.
+Extrusao, alinhamento, preenchimento e arredondamento guardam uma copia temporaria
+da malha e conferem a recuperacao geometrica apos falha. Os estados distinguem:
+- RECUSADO: operacao nao iniciada por precondicao.
+- FALHA_SEM_ALTERACAO_LIQUIDA: estado final confere com o anterior; pode ter havido escrita intermediaria.
+- FALHA_RESTAURADA: recuperacao executada e conferida.
+- FALHA_COM_ALTERACAO ou INDETERMINADO: inspecionar; nao declarar recuperado nem repetir.
+A garantia cobre geometria e selecao da malha, nao materiais/animacao nem operacoes
+arbitrarias. Movimento conserva seu historico proprio de coordenadas. Para scripts
+especificos, prepare recuperacao e limites antes de escrever; nao use Undo global
+para desfazer trabalho concorrente. Na sessao headless nao se promete Undo nativo.
 
 ## BMesh, datablock e visibilidade sao verificacoes distintas
 

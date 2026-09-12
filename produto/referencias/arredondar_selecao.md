@@ -6,7 +6,7 @@ Edit Mode, selecao de ARESTAS. Nao use para varios cantos ou angulos diferentes.
 
 Na raiz do pacote, no Python do hospedeiro:
 ```
-python scripts/arredondar_selecao.py --porta PORTA --objeto NOME --raio-mm RAIO --segmentos NUMERO
+python scripts/arredondar_selecao.py --porta PORTA --objeto NOME --raio-mm RAIO --segmentos NUMERO --captura TOKEN
 ```
 Substitua valores reais. Raio positivo, segmentos inteiros de 2 a 64.
 Raio deve ficar abaixo da metade da menor aresta incidente, margem numerica 0.00001 mm.
@@ -17,3 +17,9 @@ reduzem a faceta. Colisao, auto-intersecao e fabricacao nao foram verificadas.
 Distancia OFFSET so equivale a raio neste dominio de quina de 90 graus.
 Ctrl+Z imediatamente desfaz, Ctrl+Shift+Z refaz. Nao automatize Undo global depois
 de trabalho externo. Em timeout/INDETERMINADO inspecione antes de repetir.
+
+Antes da primeira escrita, execute `python scripts/capturar_selecao.py --porta PORTA --objeto NOME`.
+Use o campo `captura` como TOKEN. A proxima operacao pode usar `captura_depois` da
+anterior; nao recapture automaticamente para contornar selecao que mudou.
+A ferramenta recusa captura desatualizada antes da escrita. Falha com recuperacao
+confirmada retorna FALHA_RESTAURADA; INDETERMINADO/FALHA_COM_ALTERACAO exigem inspecao.

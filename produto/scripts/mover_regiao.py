@@ -10,7 +10,7 @@ import bpy
 import bmesh
 from mathutils import Vector
 
-VERSAO = "1.0.0"
+VERSAO = "1.0.1"
 _HISTORICO = []
 _CURSOR = 0
 
@@ -23,7 +23,8 @@ def _snapshot():
         if obj.type == 'MESH':
             if obj.mode == 'EDIT': obj.update_from_editmode()
             record.extend([[list(v.co) for v in obj.data.vertices],
-                           [list(p.vertices) for p in obj.data.polygons]])
+                           [list(p.vertices) for p in obj.data.polygons],
+                           [list(e.vertices) for e in obj.data.edges]])
         records.append(record)
     units = bpy.context.scene.unit_settings
     raw = json.dumps([bpy.data.filepath, units.system, units.scale_length, records], allow_nan=False)
@@ -115,6 +116,7 @@ def executar(acao, objeto, distancia_mm=None, eixo='Z'):
     """
     global _CURSOR
     result = {'versao': VERSAO, 'acao': acao, 'objeto': objeto}
+    current = None
     try:
         _objeto(objeto)
         override = _contexto()
@@ -164,8 +166,11 @@ def executar(acao, objeto, distancia_mm=None, eixo='Z'):
             cls = MODELAGEM_OT_mover_regiao_temporario
             bpy.utils.register_class(cls)
             try:
-                with bpy.context.temp_override(**override):
-                    bpy.ops.mesh.modelagem_mover_regiao_temporario('EXEC_DEFAULT', True)
+                if bpy.app.background:
+                    cls.execute(None,bpy.context)
+                else:
+                    with bpy.context.temp_override(**override):
+                        bpy.ops.mesh.modelagem_mover_regiao_temporario('EXEC_DEFAULT', True)
             finally:
                 bpy.utils.unregister_class(cls)
             if result.get('estado') in ('DESLOCAMENTO_VERIFICADO', 'HISTORICO_EXECUTADO'):
@@ -191,4 +196,10 @@ def executar(acao, objeto, distancia_mm=None, eixo='Z'):
                 area.tag_redraw()
     except Exception as exc:
         result.update(estado='RECUSADO', motivo=str(exc))
+    if result.get('estado')=='RECUSADO' and current is not None:
+        try:
+            exact=_snapshot()==current
+            result.update(estado='FALHA_SEM_ALTERACAO_LIQUIDA' if exact else 'FALHA_COM_ALTERACAO',restauracao_exata=exact,alcance='Geometria; nao outros dados da cena')
+        except Exception:
+            result.update(estado='INDETERMINADO',restauracao_exata=False)
     return result

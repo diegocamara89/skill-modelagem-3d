@@ -59,8 +59,12 @@ def planejar(objeto, modo='conectada', angulo_graus=None, distancia_mm=None):
             'nao_verificado':['intencao do usuario','superficie avaliada por modificadores']}
 
 
-def executar(objeto, modo='conectada', angulo_graus=None, distancia_mm=None, aplicar=False):
+def executar(objeto, modo='conectada', angulo_graus=None, distancia_mm=None, aplicar=False, captura=None):
+    from captura_estado import capturar,conferir
+    before=capturar(objeto)['captura']
+    if aplicar:conferir(objeto,captura)
     plan = planejar(objeto,modo,angulo_graus,distancia_mm)
+    plan['captura']=before
     if aplicar:
         bm=bmesh.from_edit_mesh(bpy.context.active_object.data)
         targets=set(plan['faces'])
@@ -68,4 +72,5 @@ def executar(objeto, modo='conectada', angulo_graus=None, distancia_mm=None, apl
         bm.select_flush_mode()
         bmesh.update_edit_mesh(bpy.context.active_object.data,destructive=False)
         plan['estado']='SELECAO_APLICADA'
+        plan['captura_depois']=capturar(objeto)['captura']
     return plan
