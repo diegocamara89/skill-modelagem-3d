@@ -2,7 +2,7 @@
 
 Escrito para você abrir primeiro. Nada aqui exige ler os relatórios de fase.
 
-**O que existe:** `produto/` é a **árvore de trabalho** do pacote, versão **2.5.1**, 31 arquivos. Identidade por arquivo em `produto/INVENTARIO.json`. Licença **MIT**. É um conjunto de
+**O que existe:** `produto/` é a **árvore de trabalho** do pacote, versão **2.6.0**, 34 arquivos. Identidade por arquivo em `produto/INVENTARIO.json`. Licença **MIT**. É um conjunto de
 receitas para um agente **sem histórico** interpretar um pedido de modelagem 3D,
 executar com as ferramentas que já existem, e **conferir** o resultado com número
 medido.
@@ -29,7 +29,7 @@ python empacota_produto.py --verificar
 > de `--verificar` traz `bytecode_na_arvore_de_origem`, que **nomeia** o que existe na
 > árvore, justamente para a distinção não ficar implícita.
 
-Espere `"pacote_limpo": true`, 31 permitidos, `na_origem_e_fora_da_lista: []`,
+Espere `"pacote_limpo": true`, 34 permitidos, `na_origem_e_fora_da_lista: []`,
 `"varredura_funciona": true` e `manifesto_na_origem.resolve: true` — este último
 confere os **hashes** e exige que todo arquivo que deve ser identificado esteja no
 manifesto. Esse último é um **controle positivo**: um dado privado
@@ -161,7 +161,7 @@ de linha não deve invalidar os hashes ao clonar. Distribua o destino do empacot
 não a árvore de trabalho com caches. Relatórios M1/M3 anteriores são históricos;
 não constituem execução da versão 2.5.
 
-## Revisão de instruções 2.5.1
+## Revisão de instruções 2.6.0
 
 Escolher construção antes do verificador; preservar a referência de medida e a
 correspondência da região; não substituir cotas explícitas; decidir migração de

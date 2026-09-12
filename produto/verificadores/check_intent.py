@@ -108,6 +108,16 @@ def valida_esquema(r):
     esq = ESQUEMA.get(tipo)
     if esq is None:
         return p
+    opcionais = {
+        "caixa": {"tol_mm"}, "volume": {"tol_mm3"}, "n_solidos": set(),
+        "furo": {"tol_mm", "tol_pos_mm", "circularidade_min", "segunda_secao_mm"},
+        "n_furos_no_plano": set(), "distancia_entre_furos": {"tol_mm", "entre"},
+        "regiao_intacta": {"tol_fracao"}, "interferencia": {"tol_mm3", "entre", "com"},
+    }
+    permitidos = set(esq) | {"id", "tipo", "descricao"} | opcionais[tipo]
+    desconhecidos = set(r) - permitidos
+    if desconhecidos:
+        p.append("campos nao suportados para %s: %s; nenhuma verificacao foi feita desses campos" % (tipo, ", ".join(sorted(desconhecidos))))
     for campo, forma in esq.items():
         if campo not in r:
             p.append("falta o campo obrigatorio '%s'" % campo)

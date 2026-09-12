@@ -8,6 +8,7 @@ oficina. Não interprete a ausência de auxiliar como impossibilidade geométric
 
 | Ferramenta | Onde roda | Para que usar / limite |
 |---|---|---|
+| `scripts/mover_selecao.py` | hospedeiro, MCP | translação em mm no eixo global, seleção existente; não reconstrói junções. Ver `mover_selecao.md` |
 | `scripts/sessao_blender.py --diagnosticar` | hospedeiro, consulta MCP | entrada da sessão; não altera seleção nem geometria |
 | `edicao_guiada.diagnostica()` | Blender | seleção viva, objeto ativo, unidades e flags persistidas |
 | `edicao_guiada.entra_em_edicao(nome)` | Blender | contexto explícito; recusa trocar o modo de outro objeto |
@@ -263,7 +264,7 @@ python scripts/mcp_blender.py get_object_info --params '{"name": "Cubo"}'
 `scripts/valida_requisitos.py` roda **fora** do Blender e confere a **forma** do
 arquivo de requisitos antes de chamar `check_intent.py`. Existe porque a forma natural
 do JSON — uma lista nua — produz traceback não tratado dentro do verificador, que é
-cópia congelada e não pode ser editado. `--tipos` lista os tipos, campos obrigatórios
+derivado da base; alterações são registradas em PROVENIENCIA.json. `--tipos` lista os tipos, campos obrigatórios
 e tolerâncias aceitas.
 
 Ele **espelha** o esquema do verificador: eixo restrito a X/Y/Z, número finito,
@@ -281,7 +282,7 @@ tipo fora do vocabulário. Esses extras estão declarados um por um em
 python scripts/testa_paridade_validador.py            # 339 casos, ATENDIDO
 ```
 
-`scripts/testa_paridade_validador.py` importa o verificador congelado e compara as
+`scripts/testa_paridade_validador.py` importa o verificador desta versão e compara as
 **duas** respostas na mesma entrada, caso por caso: oito requisitos bem formados, uma
 bateria cega de 14 valores ruins em cada campo de cada tipo, e 23 casos especiais
 vindos de achados concretos. Ele separa `FALHA_PERMISSIVO` (o verificador recusa e o
@@ -292,7 +293,7 @@ fonte tipo por tipo" não é prova de paridade.
 ## Verificadores reaproveitados, fora do Blender
 
 Estes são os verificadores estabilizados em M0 e **acompanham o pacote**, em
-`verificadores/`, como cópias **byte a byte** da base congelada — `PROVENIENCIA.json`
+`verificadores/`, como derivados da base estabilizada — `PROVENIENCIA.json`
 traz os hashes. **Não reescreva os resultados nem a agregação deles**, e não os edite
 ali: o comportamento foi estabilizado com teste, e mudar aqui alteraria resultado sem
 prova.

@@ -2,7 +2,7 @@
 """testa_paridade_validador.py - prova que o validador ESPELHA o verificador.
 
 RODA FORA DO BLENDER, no Python do hospedeiro. Precisa de numpy, porque importa o
-proprio `check_intent.py` congelado.
+proprio `check_intent.py` desta versão.
 
 POR QUE ESTE ARQUIVO EXISTE. `valida_requisitos.py` anuncia, no seu proprio
 cabecalho, que espelha o esquema de `check_intent.py`. Uma revisao independente

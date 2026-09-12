@@ -11,9 +11,8 @@ nao tratado:
 
 Isso contradiz o contrato que o proprio pacote anuncia — declaracao nao executavel
 sai como ESPEC_INVALIDA, e a ferramenta recusa em vez de deixar descobrir pelo
-resultado. O verificador `check_intent.py` e copia BYTE A BYTE da base estabilizada e
-nao pode ser editado aqui, porque o comportamento dele foi congelado com teste. Entao
-a guarda mora fora dele, antes da chamada.
+resultado. As divergencias de `check_intent.py` em relacao a base estao registradas em
+PROVENIENCIA.json. Esta guarda valida o envelope antes da chamada.
 
 Este auxiliar NAO verifica geometria e NAO substitui `check_intent.py`. Ele responde
 uma pergunta so: o arquivo esta na forma que o verificador espera?
@@ -218,6 +217,15 @@ def valida_estrutura(dados, avisos=None):
             p.append("%s tem tipo %r, que nao existe. Tipos: %s"
                      % (onde, tipo, sorted(CAMPOS_POR_TIPO)))
             continue
+        opcionais = {
+            "caixa": {"tol_mm"}, "volume": {"tol_mm3"}, "n_solidos": set(),
+            "furo": {"tol_mm", "tol_pos_mm", "circularidade_min", "segunda_secao_mm"},
+            "n_furos_no_plano": set(), "distancia_entre_furos": {"tol_mm", "entre"},
+            "regiao_intacta": {"tol_fracao"}, "interferencia": {"tol_mm3", "entre", "com"},
+        }
+        extras = set(r) - (set(CAMPOS_POR_TIPO[tipo]) | {"id", "tipo", "descricao"} | opcionais[tipo])
+        if extras:
+            p.append("%s campos nao suportados para %s: %s" % (onde, tipo, ", ".join(sorted(extras))))
         for campo, forma in CAMPOS_POR_TIPO[tipo].items():
             if campo not in r:
                 p.append("%s de tipo %r nao tem o campo obrigatorio %r"
