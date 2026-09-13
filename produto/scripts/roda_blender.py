@@ -75,6 +75,18 @@ def acha_blender(dica=None):
         if os.path.isfile(dica_ambiente):
             return dica_ambiente, "variavel de ambiente BLENDER_EXE"
         return None, "BLENDER_EXE aponta para caminho inexistente: %s" % dica_ambiente
+    config = os.path.join(os.environ.get("LOCALAPPDATA") or os.path.expanduser("~/.config"),
+                          "modelagem-3d", "ambiente.json")
+    if os.path.isfile(config):
+        try:
+            with open(config, encoding="utf-8") as f:
+                local = json.load(f)
+            caminho = local.get("blender_exe")
+            if not isinstance(caminho, str) or not os.path.isfile(caminho):
+                return None, "Corrija blender_exe na configuracao local: %s" % config
+            return caminho, "configuracao local: %s" % config
+        except (OSError, ValueError, AttributeError) as e:
+            return None, "Configuracao local invalida em %s: %s" % (config, e)
     for c in CANDIDATOS:
         if c and os.path.isfile(c):
             return c, "alias de execucao do Windows"

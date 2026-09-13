@@ -5,7 +5,7 @@ description: Use quando o pedido envolver criar, inspecionar, editar ou verifica
 
 # Modelagem 3D — receitas para executar e conferir
 
-**Pacote 2.7.2**, com `scripts/bl_ferramentas.py` na **versão 1.5.2** e
+**Pacote 2.7.3**, com `scripts/bl_ferramentas.py` na **versão 1.5.2** e
 `scripts/edicao_guiada.py` na **versão 1.0.0**. Os
 números são independentes: o do pacote muda a cada correção em qualquer arquivo, o da
 biblioteca só quando ela muda. Ambos estão em `INVENTARIO.json`, junto do hash de cada
@@ -25,6 +25,24 @@ verificação não se aplicava. Então:
 Este pacote não é doutrina: são receitas com chamadas testadas. Use a referência da
 rota, execute o que está escrito e **meça** o resultado. Nenhuma etapa aqui é
 concluída por aparência.
+
+## Executar Blender: use o caminho ja resolvido
+
+Para executar scripts em processo separado, use `scripts/roda_blender.py` diretamente.
+Ele usa `--blender`, `BLENDER_EXE` ou a configuracao local, nessa ordem, antes de
+procurar aliases e PATH. Nao refaca a busca nem teste `--version` a cada projeto.
+Para a sessao aberta, siga a rota MCP abaixo; o launcher nao conecta a essa sessao.
+
+Configuracao unica da maquina, fora do pacote: `%LOCALAPPDATA%/modelagem-3d/ambiente.json`
+(no ambiente sem LOCALAPPDATA, `~/.config/modelagem-3d/ambiente.json`), com
+`{"blender_exe": "CAMINHO_ABSOLUTO_DO_EXECUTAVEL_OU_LAUNCHER"}`.
+Se a execucao falhar, use `python scripts/roda_blender.py --achar` para conferir a
+resolucao. Esse comando localiza; nao testa a execucao. No Windows Store, use o alias
+`blender-launcher.exe`, nao o binario protegido dentro de Program Files/WindowsApps.
+Terminal vazio nao demonstra falha: o auxiliar confere o arquivo de resultado.
+Nao declare Blender ausente nem substitua o renderizador apenas por silencio no terminal.
+Uma prova isolada e necessaria na configuracao inicial ou investigacao de falha, nao
+antes de cada operacao. build123d continua disponivel pela rota parametrica.
 
 ## Três regras que valem em todas as rotas
 
