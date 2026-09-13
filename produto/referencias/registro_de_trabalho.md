@@ -109,6 +109,14 @@ Nada de projeto de cliente: nomes, medidas, arquivos, capturas, logs ou caminhos
 Exemplos e cenários de teste usam **apenas geometria sintética**, com dimensões
 escolhidas para o exemplo.
 
+## Entrega atual
+
+Antes de repetir um achado ou pedir uma impressão, confira a revisão atual.
+As instruções devem apontar o arquivo efetivamente conferido (identidade, orientação
+e perfil quando aplicável). Identifique entregas substituídas como históricas, sem
+apagá-las automaticamente. Uma prévia aprovada precisa corresponder ao artefato final;
+resultado do fatiador não é confirmação física. Não reabra decisões já aprovadas.
+
 ## Registro mínimo aceitável
 
 Se o trabalho for pequeno, o registro pode ser curto — mas estes cinco campos não

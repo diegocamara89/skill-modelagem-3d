@@ -9,6 +9,30 @@ aprove uma parede colapsada porque seus triângulos não têm área zero.
 A regra que organiza tudo aqui: **validade geométrica e atendimento ao pedido são
 coisas diferentes**, e nenhuma delas se conclui pela aparência.
 
+## Antes de criar outro teste
+
+Reutilize os verificadores e confira seus contratos, unidades e eixos. Em encaixes,
+inspecione os dois componentes na montagem: não conclua ausência de uma feição por
+não encontrá-la onde esperava, nem exclua uma interface porque “encaixa por projeto”.
+Meça o artefato exportado; parâmetros corretos não demonstram execução correta.
+
+Um teste novo precisa aceitar um caso correto e detectar um defeito conhecido do
+requisito. Amostras e seções cobrem apenas suas posições. Envelopes conservadores
+só provam separação se contiverem todo o volume relevante durante o movimento;
+interseção entre envelopes pode ser falso positivo. Superfícies sem cruzamento
+não excluem contenção entre sólidos. Declare tolerância numérica separadamente da
+folga funcional e preserve margem de uso; evidência decisiva ausente não é aprovação.
+
+Antes de operações caras, ensaie uma entrada pequena e limite tempo, tamanho e,
+quando disponível, memória. Considere a expansão intermediária, não só as faces de
+entrada. Registre o processo da tarefa; confirme seu término antes de repetir uma
+chamada silenciosa ou demorada. Encerre apenas processos identificados da tarefa.
+
+Para impressão, separe geometria, fatiamento e uso físico. Um cupom deve responder
+uma dúvida restante e reproduzir a condição crítica da peça final. Reaproveite
+experiência física anterior com alcance declarado; não transfira aprovação para
+condições diferentes. Se o desenho eliminou o risco, retire o teste correspondente.
+
 ## As três famílias, que não se substituem
 
 | Família | Pergunta | Ferramenta | O que NÃO prova |
