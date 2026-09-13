@@ -12,6 +12,35 @@ Duas ferramentas possíveis, e a escolha não é de gosto:
 
 Esta referência trata do primeiro caso.
 
+## Reaproveitar mecanismos antes de inventar
+
+Para encaixes ou mecanismos, procure primeiro referências existentes e evidência de
+uso compatível antes de criar outra solução ou propor um cupom. Prefira arquivos já
+fornecidos e peças que o usuário usa; amplie a busca se faltar referência adequada.
+Popularidade, download ou malha fechada não equivalem a validação funcional.
+
+| Função necessária | Construção a considerar | Limite |
+|---|---|---|
+| orientar deslizamento | guia e ranhura correspondentes | não garantem retenção contra retirada |
+| limitar fechamento e esconder folga | frente alargada ou ombro | não impedem saída no sentido oposto |
+| impedir separação numa direção | colar, ressalto ou trava | conferir montagem, curso permitido e resistência separadamente |
+| eliminar teto difícil de imprimir | separar corpo e tampa/bandeja | acrescenta interface de montagem a conferir |
+
+Estas são opções de construção, não produtos certificados. Inspecione os dois lados
+da interface no referencial de montagem. Preserve as condições relevantes ao adaptar:
+perfil, folga, engate, espessura, orientação de impressão, material/processo e carga.
+Não escale automaticamente uma folga nem transfira aprovação para a parte modificada.
+
+No registro do trabalho, use uma ficha curta: **função → construção → origem/licença
+→ evidência → condições preservadas/alteradas → limite e próxima verificação**.
+Diferencie geometria nominal, uso relatado e medição física; registre o que cada um
+sustenta. Reutilize arquivos conforme a licença; refazer a geometria não dispensa
+conferir os termos aplicáveis. Referências privadas permanecem fora do pacote.
+
+Experiência anterior pode reduzir ou dispensar cupons quando cobre a incerteza atual.
+Se mudou uma condição crítica, teste apenas essa diferença, com alcance declarado;
+não revalide automaticamente tudo nem chame a adaptação inteira de validada.
+
 ## Passo 1 — escrever a peça como função de parâmetros
 
 Uma função que devolve o sólido, com **todos** os parâmetros nomeados e com padrão.
