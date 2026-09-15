@@ -7,9 +7,9 @@ inclusive os que me contradizem. -->
 
 # Relatório — placa 80 × 50 × 8 com dois furos passantes D=10
 
-**Pasta da habilidade (só leitura):** `C:\Users\marce\AppData\Local\Temp\ensaio_isolado_16\pacote_1.6.0`
-**Interpretador usado (todos os comandos):** `C:\Users\marce\AppData\Local\Temp\ensaio_isolado_16\venv\Scripts\python.exe`
-**Pasta de trabalho:** `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D`
+**Pasta da habilidade (só leitura):** `C:\Users\<usuario>\AppData\Local\Temp\ensaio_isolado_16\pacote_1.6.0`
+**Interpretador usado (todos os comandos):** `C:\Users\<usuario>\AppData\Local\Temp\ensaio_isolado_16\venv\Scripts\python.exe`
+**Pasta de trabalho:** `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D`
 **Shell:** Git Bash (POSIX). **Data:** 08/09/2026.
 
 **Blender:** nenhum Blender foi executado, nem headless. O `SKILL.md` roteia
@@ -79,23 +79,23 @@ Todos dentro da pasta de trabalho, exceto o incidente registrado em §4.6.
 
 | Caminho completo | O que é |
 |---|---|
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\peca_placa.py` | a peça como função de parâmetros (`placa_dois_furos`) |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\exporta.py` | exportação STL + STEP, construindo do zero |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\req.json` | requisitos declarados (7) |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\req_controle_negativo.json` | controle negativo (6 errados + 1 certo) |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\req_lista_nua.json` | sonda da armadilha documentada (lista nua) |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\req_probe_tolmm.json` | sonda de `tol_mm` no tipo `furo` |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\saida\peca.stl` | **artefato entregue** (51.484 bytes, 1.028 triângulos) |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\saida\peca.step` | sólido analítico (22.565 bytes) |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\saida\v_T8_d10.stl` / `.3mf` | variante da varredura (portão 3) |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\varredura.json` | relatório da varredura da peça pedida |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\varredura_familia.json` | varredura de família `d=8,10,12,40` |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\saida\intent_cn.json` | saída do controle negativo |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\saida\forma_cn.json` | validação de forma do controle negativo |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\saida\familia\v_T8_d{8,10,12,40}.stl/.3mf` | 8 arquivos da varredura de família |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\saida\doc_a{,.json}`, `doc_b{,.json}`, `doc_c{,.json}` | reprodução dos exemplos da própria referência (14 arquivos + 3 JSON) |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\__pycache__\peca_placa.cpython-312.pyc` | gerado pelo Python |
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_D\RELATORIO.md` | este relatório |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\peca_placa.py` | a peça como função de parâmetros (`placa_dois_furos`) |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\exporta.py` | exportação STL + STEP, construindo do zero |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\req.json` | requisitos declarados (7) |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\req_controle_negativo.json` | controle negativo (6 errados + 1 certo) |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\req_lista_nua.json` | sonda da armadilha documentada (lista nua) |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\req_probe_tolmm.json` | sonda de `tol_mm` no tipo `furo` |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\saida\peca.stl` | **artefato entregue** (51.484 bytes, 1.028 triângulos) |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\saida\peca.step` | sólido analítico (22.565 bytes) |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\saida\v_T8_d10.stl` / `.3mf` | variante da varredura (portão 3) |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\varredura.json` | relatório da varredura da peça pedida |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\varredura_familia.json` | varredura de família `d=8,10,12,40` |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\saida\intent_cn.json` | saída do controle negativo |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\saida\forma_cn.json` | validação de forma do controle negativo |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\saida\familia\v_T8_d{8,10,12,40}.stl/.3mf` | 8 arquivos da varredura de família |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\saida\doc_a{,.json}`, `doc_b{,.json}`, `doc_c{,.json}` | reprodução dos exemplos da própria referência (14 arquivos + 3 JSON) |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\__pycache__\peca_placa.cpython-312.pyc` | gerado pelo Python |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_D\RELATORIO.md` | este relatório |
 
 ### A peça
 
@@ -394,7 +394,7 @@ referência ao pé da letra cria `pacote_1.6.0/saida/` dentro da pasta só-leitu
 Nenhuma linha das referências avisa disso nem sugere caminho absoluto.
 
 Eu bati nisso: o comando 34, sondando o `--saida` opcional do `--help`, criou
-`C:\Users\marce\AppData\Local\Temp\ensaio_isolado_16\pacote_1.6.0\varredura\` com
+`C:\Users\<usuario>\AppData\Local\Temp\ensaio_isolado_16\pacote_1.6.0\varredura\` com
 `v_T8_d10.stl` e `v_T8_d10.3mf`. **Isso violou a regra de não escrever na pasta da
 habilidade e a falha é minha, não da pasta** — mas o padrão relativo é o que fez
 uma sonda inofensiva virar escrita indevida. Removi o diretório (comando 37) e

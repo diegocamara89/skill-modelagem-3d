@@ -28,7 +28,7 @@ Fase **M1**. Sob revisão, com caminho completo:
 
 | O que | Caminho |
 |---|---|
-| plano vigente | `C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\PLANO_IMPLEMENTACAO_PLUGIN.md` |
+| plano vigente | `C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\PLANO_IMPLEMENTACAO_PLUGIN.md` |
 | desenho vigente | `...\06_skill_universal\DESENHO_PLUGIN.md` |
 | referência de origem | `...\06_skill_universal\REFERENCIA_BLENDER_EDICAO_GUIADA.md` |
 | método, como contexto | `...\06_skill_universal\DESENHO.md` |

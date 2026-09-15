@@ -7,10 +7,10 @@ afirmacao fundadora do produto e que eu remedi do zero. -->
 
 # Relatório — escrever o meu próprio script de dentro do Blender
 
-**Pasta da habilidade (só leitura):** `C:\Users\marce\AppData\Local\Temp\pacote_intocado_20`
+**Pasta da habilidade (só leitura):** `C:\Users\<usuario>\AppData\Local\Temp\pacote_intocado_20`
 (pacote 2.0.0, `bl_ferramentas` 1.5.0, conforme `INVENTARIO.json`)
-**Pasta de trabalho:** `C:\Users\marce\AppData\Local\Temp\sessao_limpa_F`
-**Interpretador do hospedeiro:** `C:\Users\marce\AppData\Local\Temp\ensaio_isolado_20\venv\Scripts\python.exe`
+**Pasta de trabalho:** `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_F`
+**Interpretador do hospedeiro:** `C:\Users\<usuario>\AppData\Local\Temp\ensaio_isolado_20\venv\Scripts\python.exe`
 **Blender:** 5.2.1 LTS, sempre headless, via `blender-launcher.exe` achado pelo alias de
 execução do Windows. **Nada foi enviado ao socket 127.0.0.1:9876; `scripts/mcp_blender.py`
 não foi executado nem importado.** A sessão aberta do usuário não foi tocada.
@@ -23,9 +23,9 @@ Todas as execuções usaram `--factory-startup` (padrão de `roda_blender.py`, l
 ## 1. Comandos, na íntegra, com diretório e código de saída
 
 Abreviações usadas só nesta seção, para as linhas caberem:
-`PY = C:\Users\marce\AppData\Local\Temp\ensaio_isolado_20\venv\Scripts\python.exe`
-`PKG = C:\Users\marce\AppData\Local\Temp\pacote_intocado_20`
-`W = C:\Users\marce\AppData\Local\Temp\sessao_limpa_F`
+`PY = C:\Users\<usuario>\AppData\Local\Temp\ensaio_isolado_20\venv\Scripts\python.exe`
+`PKG = C:\Users\<usuario>\AppData\Local\Temp\pacote_intocado_20`
+`W = C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_F`
 Nenhum caminho relativo foi usado como argumento; os `cd` abaixo são reais.
 
 ### C1 — localizar o Blender
@@ -34,7 +34,7 @@ diretório: PKG
 PYTHONDONTWRITEBYTECODE=1 "PY" scripts/roda_blender.py --achar
 ```
 **Código de saída: 0.** Devolveu
-`C:\Users\marce\AppData\Local\Microsoft\WindowsApps\blender-launcher.exe`,
+`C:\Users\<usuario>\AppData\Local\Microsoft\WindowsApps\blender-launcher.exe`,
 `"como": "alias de execucao do Windows"`.
 
 ### C2 — hash dos meus dois argumentos, ANTES de rodar
@@ -161,7 +161,7 @@ nenhum `__pycache__` e nenhum `.pyc`.
 
 ## 2. Arquivos criados
 
-Todos em `C:\Users\marce\AppData\Local\Temp\sessao_limpa_F\`, todos com caminho absoluto.
+Todos em `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_F\`, todos com caminho absoluto.
 
 | Arquivo | O que é |
 |---|---|
@@ -241,7 +241,7 @@ ROTULO_DO_RESULTADO = "--resultado-em"
 # carregar caminho absoluto de outra maquina cravado no codigo.
 PACOTE = os.environ.get(
     "PACOTE_MODELAGEM_3D",
-    r"C:\Users\marce\AppData\Local\Temp\pacote_intocado_20")
+    r"C:\Users\<usuario>\AppData\Local\Temp\pacote_intocado_20")
 sys.path.insert(0, os.path.join(PACOTE, "scripts"))
 
 import bl_ferramentas as F                                        # noqa: E402
@@ -896,7 +896,7 @@ bem-sucedida, ao verificar se as minhas queixas eram justas — e metade delas n
 
 ## 8. Declaração sobre escrita dentro da pasta da habilidade
 
-**Não escrevi nada dentro de `C:\Users\marce\AppData\Local\Temp\pacote_intocado_20`,
+**Não escrevi nada dentro de `C:\Users\<usuario>\AppData\Local\Temp\pacote_intocado_20`,
 nem por acidente.** Provado, não afirmado (C13, saída em `integridade_do_pacote.txt`):
 
 - os **23** arquivos do `INVENTARIO.json` conferem no sha256, **zero divergências**;
