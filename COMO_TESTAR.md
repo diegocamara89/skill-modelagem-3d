@@ -125,7 +125,7 @@ obrigatória.
 ## Se você quiser o teste que mais informa
 
 Peça a um agente **sem histórico deste projeto** para usar
-`C:\Users\marce\AppData\Local\Temp\pacote_intocado_24` e fazer uma peça sua de verdade,
+`C:\Users\<usuario>\AppData\Local\Temp\pacote_intocado_24` e fazer uma peça sua de verdade,
 com a instrução de registrar **onde a pasta o deixou na mão**. Foi assim que apareceram
 os 34 defeitos que as revisões não tinham visto — inclusive o pior de todos, que era o
 validador recusando uma tolerância que o verificador **usa para decidir**.

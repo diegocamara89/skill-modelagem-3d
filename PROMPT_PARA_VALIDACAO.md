@@ -19,10 +19,10 @@ vem acompanhada de relatórios que declaram critérios de aceite com evidência 
 ONDE ESTÁ
 
 Repositório local (é onde está tudo, inclusive os relatórios):
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal
 
 O pacote entregável é a subpasta `produto/`. Há também uma cópia montada e nunca
-executada em C:\Users\marce\AppData\Local\Temp\pacote_intocado_22 (se ela não existir
+executada em C:\Users\<usuario>\AppData\Local\Temp\pacote_intocado_22 (se ela não existir
 mais, monte uma com `python empacota_produto.py --destino <pasta nova>`).
 
 Use o `python` do sistema: ele já tem as dependências. Se algum import falhar, a lista

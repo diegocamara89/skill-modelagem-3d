@@ -4,7 +4,7 @@ Executado em 07–08/09/2026, sobre o plano enxuto versão 3. Ambiente medido: B
 **5.2.1 LTS** (Microsoft Store), Python **3.13.13**, Windows 11.
 
 Caminhos completos neste documento são relativos a
-`C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\`.
+`C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\`.
 
 > **Estado final:** pacote **2.4.0**, `bl_ferramentas` **1.5.0**, hash
 > `6fc1727d…`, medido em pacote recém-montado e nunca executado. Os ensaios foram

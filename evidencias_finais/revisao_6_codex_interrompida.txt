@@ -99,7 +99,7 @@
   50:    "cenarios/ensaio_preenchimento.py",
 
 exec
-"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\produto\\referencias\\mapa_de_ferramentas.md';"'$l=Get-Content $p;for($i=260;$i -le 320;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; $p='"'.\\DEPENDENCIAS_E_LICENCAS.md';"'$l=Get-Content $p;for($i=1;$i -le 120;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}' in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\produto\\referencias\\mapa_de_ferramentas.md';"'$l=Get-Content $p;for($i=260;$i -le 320;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; $p='"'.\\DEPENDENCIAS_E_LICENCAS.md';"'$l=Get-Content $p;for($i=1;$i -le 120;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}' in C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal
  succeeded in 110ms:
  260: bateria cega de 14 valores ruins em cada campo de cada tipo, e 23 casos especiais
  261: vindos de achados concretos. Ele separa `FALHA_PERMISSIVO` (o verificador recusa e o
@@ -284,7 +284,7 @@ exec
  120: 
 
 exec
-"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\produto\\referencias\\mapa_de_ferramentas.md';"'$l=Get-Content $p;for($i=1;$i -le 22;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; rg -n "5'"\\.0\\.0|2\\.2\\.6|3\\.5\\.2|2\\.1\\.2|0\\.11\\.1|2\\.5\\.0|1\\.16\\.3|pip install|scipy|cadquery\" produto" in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\produto\\referencias\\mapa_de_ferramentas.md';"'$l=Get-Content $p;for($i=1;$i -le 22;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; rg -n "5'"\\.0\\.0|2\\.2\\.6|3\\.5\\.2|2\\.1\\.2|0\\.11\\.1|2\\.5\\.0|1\\.16\\.3|pip install|scipy|cadquery\" produto" in C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal
  exited 1 in 95ms:
    1: # Mapa de ferramentas: o que existe, o que exige, o que não existe
    2: 
@@ -310,7 +310,7 @@ exec
   22: 1. `C:\Program Files\WindowsApps\...\blender.exe` **não é executável direto**: dá
 
 exec
-"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\M3_RESULTADO.md';"'$l=Get-Content $p;for($i=42;$i -le 58;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; rg -n "depend.n|vers.o|suport|compat|instal" produto'"\\SKILL.md produto\\referencias\\*.md produto\\INVENTARIO.json" in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\M3_RESULTADO.md';"'$l=Get-Content $p;for($i=42;$i -le 58;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; rg -n "depend.n|vers.o|suport|compat|instal" produto'"\\SKILL.md produto\\referencias\\*.md produto\\INVENTARIO.json" in C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal
  exited 1 in 103ms:
   42: | C6 | carregar a skill não instala nem baixa componentes | leitura | `produto/SKILL.md` e as referências | nenhum comando de instalação em nenhum arquivo do pacote; as dependências são declaradas em `mapa_de_ferramentas.md` como pré-requisito | **ATENDIDO** |
   43: | C7 | inventário do pacote extraído coincide com o permitido, e o **manifesto resolve** | auditoria do destino, que **consome o manifesto** | `evidencias_finais/empacotamento.json` e `AMBIENTE_ISOLADO.json`, campo `conferencia_do_manifesto` | **24** arquivos, nada sobrando, nada faltando; o manifesto resolve na **raiz do pacote extraído**: **23** declarados, 0 não resolvem, 0 divergem, e nada no pacote fora do manifesto. Conferido duas vezes: pelo próprio empacotador e, de fora, sobre a pasta montada | **ATENDIDO** |
@@ -342,7 +342,7 @@ produto\SKILL.md:22:| no Python do hospedeiro (rota de **criar**, verificadores,
 produto\SKILL.md:42:Três perguntas, independentes entre si:
 
 exec
-"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command "rg -n \"lib3mf|import scipy|import build123d|import trimesh|import manifold3d|from shapely\" produto\\verificadores produto\\cenarios; "'$p='"'.\\produto\\verificadores\\sweep_params.py';"'$l=Get-Content $p;for($i=180;$i -le 280;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}' in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command "rg -n \"lib3mf|import scipy|import build123d|import trimesh|import manifold3d|from shapely\" produto\\verificadores produto\\cenarios; "'$p='"'.\\produto\\verificadores\\sweep_params.py';"'$l=Get-Content $p;for($i=180;$i -le 280;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}' in C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal
  succeeded in 138ms:
 produto\verificadores\check_intent.py:51:    import trimesh
 produto\verificadores\check_intent.py:307:    import manifold3d as m3
@@ -457,7 +457,7 @@ produto\verificadores\sweep_params.py:116:    import trimesh
  280: 
 
 exec
-"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\produto\\scripts\\valida_requisitos.py';"'$l=Get-Content $p;for($i=100;$i -le 360;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; $p='"'.\\produto\\verificadores\\check_intent.py';"'$l=Get-Content $p;for($i=70;$i -le 195;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}' in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command '$p='"'.\\produto\\scripts\\valida_requisitos.py';"'$l=Get-Content $p;for($i=100;$i -le 360;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}; $p='"'.\\produto\\verificadores\\check_intent.py';"'$l=Get-Content $p;for($i=70;$i -le 195;$i++){'"'{0,4}: {1}' -f "'$i,$l[$i-1]}' in C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal
  succeeded in 96ms:
  100: # leu o relatorio: em `furo`, `tol_mm` entra e sai como `tol_diam_mm`.
  101: NOME_NA_SAIDA = {("furo", "tol_mm"): "tol_diam_mm"}
@@ -848,19 +848,19 @@ exec
  195: 
 
 exec
-"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command "rg -a -n -i \"marce|OneDrive|Modelagem|06_skill_universal|AppData|Users\\\\\" produto\\**\\__pycache__\\*.pyc 2>"'$null; Get-ChildItem -Recurse -File produto -Filter *.pyc | ForEach-Object { $bytes=[IO.File]::ReadAllBytes($_.FullName); $s=[Text.Encoding]::Latin1.GetString($bytes); if($s -match '"'marce|OneDrive|06_skill_universal|Modelagem'){\""'$($_.FullName): MATCH"} }' in C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command "rg -a -n -i \"marce|OneDrive|Modelagem|06_skill_universal|AppData|Users\\\\\" produto\\**\\__pycache__\\*.pyc 2>"'$null; Get-ChildItem -Recurse -File produto -Filter *.pyc | ForEach-Object { $bytes=[IO.File]::ReadAllBytes($_.FullName); $s=[Text.Encoding]::Latin1.GetString($bytes); if($s -match '"'marce|OneDrive|06_skill_universal|Modelagem'){\""'$($_.FullName): MATCH"} }' in C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal
  succeeded in 136ms:
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\cenarios\__pycache__\ensaio_preenchimento.cpython-313.pyc: MATCH
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\cenarios\__pycache__\familia_exemplo.cpython-312.pyc: MATCH
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\cenarios\__pycache__\gera_cenario.cpython-313.pyc: MATCH
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\bl_ferramentas.cpython-313.pyc: MATCH
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\extrai_tolerancias.cpython-312.pyc: MATCH
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\mcp_blender.cpython-312.pyc: MATCH
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\roda_blender.cpython-312.pyc: MATCH
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\testa_paridade_validador.cpython-312.pyc: MATCH
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\valida_requisitos.cpython-312.pyc: MATCH
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\verificadores\__pycache__\check_intent.cpython-312.pyc: MATCH
-C:\Users\marce\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\verificadores\__pycache__\secoes.cpython-312.pyc: MATCH
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\cenarios\__pycache__\ensaio_preenchimento.cpython-313.pyc: MATCH
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\cenarios\__pycache__\familia_exemplo.cpython-312.pyc: MATCH
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\cenarios\__pycache__\gera_cenario.cpython-313.pyc: MATCH
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\bl_ferramentas.cpython-313.pyc: MATCH
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\extrai_tolerancias.cpython-312.pyc: MATCH
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\mcp_blender.cpython-312.pyc: MATCH
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\roda_blender.cpython-312.pyc: MATCH
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\testa_paridade_validador.cpython-312.pyc: MATCH
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\scripts\__pycache__\valida_requisitos.cpython-312.pyc: MATCH
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\verificadores\__pycache__\check_intent.cpython-312.pyc: MATCH
+C:\Users\<usuario>\OneDrive\Documentos\Modelagem 3D\06_skill_universal\produto\verificadores\__pycache__\secoes.cpython-312.pyc: MATCH
 
 ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 6:24 AM.
 ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 6:24 AM.

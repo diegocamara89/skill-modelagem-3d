@@ -11,10 +11,10 @@ Sessão limpa, sem histórico do pacote. Blender **headless** apenas
 `scripts/mcp_blender.py` nem qualquer contato com `127.0.0.1:9876`: a sessão viva do
 usuário não foi tocada.
 
-- Pasta da habilidade (só leitura): `C:\Users\marce\AppData\Local\Temp\pacote_intocado_18`
-- Python do hospedeiro: `C:\Users\marce\AppData\Local\Temp\ensaio_isolado_18\venv\Scripts\python.exe`
-- Pasta de trabalho (tudo que escrevi): `C:\Users\marce\AppData\Local\Temp\sessao_limpa_E`
-- Blender localizado: `C:\Users\marce\AppData\Local\Microsoft\WindowsApps\blender-launcher.exe`
+- Pasta da habilidade (só leitura): `C:\Users\<usuario>\AppData\Local\Temp\pacote_intocado_18`
+- Python do hospedeiro: `C:\Users\<usuario>\AppData\Local\Temp\ensaio_isolado_18\venv\Scripts\python.exe`
+- Pasta de trabalho (tudo que escrevi): `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_E`
+- Blender localizado: `C:\Users\<usuario>\AppData\Local\Microsoft\WindowsApps\blender-launcher.exe`
   (5.2.1 LTS), achado pelo alias de execução do Windows.
 - `bl_ferramentas` conferida **dentro** do Blender: `confere_versao("1.5.0")` →
   `{"versao": "1.5.0", "confere": true}`. `INVENTARIO.json` declara a mesma versão.
@@ -42,12 +42,12 @@ Medido pelo gerador: **41 850,0**.
 ## 1. Comandos, na íntegra, com diretório e código de saída
 
 Diretório corrente de **todos** os comandos executáveis:
-`C:\Users\marce\AppData\Local\Temp\sessao_limpa_E`.
+`C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_E`.
 Abreviaturas usadas abaixo apenas para caber na linha — nos comandos reais tudo é
 caminho absoluto:
-`PY = C:\Users\marce\AppData\Local\Temp\ensaio_isolado_18\venv\Scripts\python.exe`,
-`PK = C:\Users\marce\AppData\Local\Temp\pacote_intocado_18`,
-`WK = C:\Users\marce\AppData\Local\Temp\sessao_limpa_E`.
+`PY = C:\Users\<usuario>\AppData\Local\Temp\ensaio_isolado_18\venv\Scripts\python.exe`,
+`PK = C:\Users\<usuario>\AppData\Local\Temp\pacote_intocado_18`,
+`WK = C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_E`.
 
 Antes de qualquer execução houve **8 comandos de leitura** (`cat`/`sed`/`grep`/`find`)
 sobre `SKILL.md`, `INVENTARIO.json`, as 6 referências e 4 fontes
@@ -161,7 +161,7 @@ PYTHONDONTWRITEBYTECODE=1 "PY" -c "<sha256 de cada entrada de INVENTARIO.json>"
 
 | Caminho completo | O que é |
 |---|---|
-| `C:\Users\marce\AppData\Local\Temp\sessao_limpa_E\RELATORIO.md` | este relatório |
+| `C:\Users\<usuario>\AppData\Local\Temp\sessao_limpa_E\RELATORIO.md` | este relatório |
 | `...\sessao_limpa_E\param_bloco.json` | minhas dimensões, entrada de `gera_cenario.py` |
 | `...\sessao_limpa_E\passo_preenche.py` | meu script de dentro do Blender: segue `editar_localizado.md` parte 2 |
 | `...\sessao_limpa_E\cfg_correta.json` | variante correta |
@@ -541,7 +541,7 @@ consumidos por essa correção.
 
 ## 6. Declaração sobre a pasta da habilidade
 
-**Não escrevi nada dentro de `C:\Users\marce\AppData\Local\Temp\pacote_intocado_18`**,
+**Não escrevi nada dentro de `C:\Users\<usuario>\AppData\Local\Temp\pacote_intocado_18`**,
 nem por acidente, nem `__pycache__`. Provas, no comando C17:
 
 1. `find` por `__pycache__` e `*.pyc` na pasta → **nada**.
