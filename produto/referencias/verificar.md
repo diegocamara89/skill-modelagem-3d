@@ -326,6 +326,24 @@ Confira sempre o artefato entregue, e não a peça que você acha que exportou:
 python verificadores/check_mesh.py --malha entregue.stl
 ```
 
+## O portão visual: nenhuma entrega sem quatro vistas conferidas
+
+As famílias acima provam topologia, forma e preservação. Nenhuma delas prova que a peça
+**parece o que foi pedido** — é a regra 2 da SKILL.md, e ela vale nos dois sentidos.
+Por isso toda geometria criada ou visivelmente alterada passa por
+`referencias/render_de_conferencia.md` antes de ser declarada pronta.
+
+**Verificador ter passado não dispensa o render.** Só se pula em caso nomeado lá, e o
+motivo entra no relatório junto das verificações determinísticas que rodaram.
+
+Medido em 17/09/2026: peça com bolso raso e furo cego **só na face de baixo** saiu como
+bloco liso na vista isométrica e mostrou os dois na vista oposta. Uma imagem só teria
+aprovado.
+
+E o inverso também vale: **a imagem não decide nada**. Suspeita levantada no render vira
+medida — `check_mesh.py`, seção, distância — antes de virar afirmação. As duas direções
+do erro estão na tabela de `render_de_conferencia.md`.
+
 ## Declarar o alcance, sempre
 
 Toda saída destas ferramentas traz um campo `limite`. Repasse-o. Amostragem prova os

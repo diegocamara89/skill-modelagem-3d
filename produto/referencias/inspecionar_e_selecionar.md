@@ -1,6 +1,8 @@
 # Inspecionar e orientar seleção
 
-Para sessão aberta, use primeiro `scripts/sessao_blender.py --diagnosticar`:
+Para sessão aberta, descubra e teste primeiro o MCP específico do Blender
+conforme `../SKILL.md`, seção "Conectar ao Blender aberto". Como alternativa
+local, use `scripts/sessao_blender.py --diagnosticar`:
 `referencias/sessao_e_edicao_guiada.md` documenta o retorno e o próximo passo.
 Flags persistidas de objetos ocultos não são a seleção viva do operador.
 
