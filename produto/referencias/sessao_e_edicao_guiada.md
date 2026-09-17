@@ -8,9 +8,15 @@ aquele”. Leia esta rota **antes** de escolher vertices ou chamar translação.
 `scripts/edicao_guiada.py` é uma biblioteca adicional, versão 1.0.0; não substitui
 os verificadores existentes. O agente ainda precisa identificar a feição.
 
-## 1. Entrada única na sessão
+## 1. Entrada na sessão
 
-No Python do hospedeiro, usando o caminho real da instalação:
+Primeiro descubra e teste o MCP específico do Blender, conforme a seção
+"Conectar ao Blender aberto" de `../SKILL.md`. Uma falha do controle de desktop
+não prova falha dessa conexão. Com MCP funcional, execute `G.diagnostica()`
+dentro do Blender pelo `execute_blender_code`, como no exemplo abaixo.
+
+Como alternativa local, ou para diagnóstico detalhado pelo cliente do pacote,
+no Python do hospedeiro, usando o caminho real da instalação:
 
 ```powershell
 python "<raiz do pacote>/scripts/sessao_blender.py" --diagnosticar

@@ -5,7 +5,7 @@ description: Use quando o pedido envolver criar, inspecionar, editar ou verifica
 
 # Modelagem 3D — receitas para executar e conferir
 
-**Pacote 2.7.5**, com `scripts/bl_ferramentas.py` na **versão 1.5.2** e
+**Pacote 2.7.6**, com `scripts/bl_ferramentas.py` na **versão 1.5.2** e
 `scripts/edicao_guiada.py` na **versão 1.0.0**. Os
 números são independentes: o do pacote muda a cada correção em qualquer arquivo, o da
 biblioteca só quando ela muda. Ambos estão em `INVENTARIO.json`, junto do hash de cada
@@ -25,6 +25,38 @@ verificação não se aplicava. Então:
 Este pacote não é doutrina: são receitas com chamadas testadas. Use a referência da
 rota, execute o que está escrito e **meça** o resultado. Nenhuma etapa aqui é
 concluída por aparência.
+
+## Conectar ao Blender aberto: MCP específico primeiro
+
+Descubra as ferramentas do Blender antes de tentar controlar o desktop. No Codex
+com ferramentas diferidas, procure em `ALL_TOOLS` por nome/descrição contendo
+`blender`; se houver `tool_search`, use a descoberta fornecida pelo ambiente.
+Não conclua que o MCP está ausente apenas porque não aparece na lista inicial.
+
+1. Use a ferramenta descoberta `get_scene_info` (nesta integração,
+   `mcp__blender_community__get_scene_info`) com `user_prompt` igual ao pedido real
+   do usuário, sem substituir por um plano inventado. Confira a cena retornada.
+2. Para verificar o contexto antes de carregar/editar, use
+   `execute_blender_code` para consultar `bpy.data.filepath`, `bpy.data.is_dirty`,
+   objeto ativo e modo. Preserve trabalho não salvo. Para acompanhar marcações,
+   use `get_viewport_screenshot` e inspecione a imagem retornada.
+3. Continue pelo MCP específico quando responder. Os nomes e argumentos reais
+   vêm da descrição das ferramentas, não de suposição. No Codex, uma chamada
+   descoberta pode ser executada por `functions.exec` usando `tools.<nome>`.
+4. Se a ferramenta específica não estiver disponível ou falhar, use o diagnóstico
+   local já fornecido em `scripts/sessao_blender.py --diagnosticar`, conforme
+   `referencias/sessao_e_edicao_guiada.md`. Não escreva outro cliente de socket.
+
+`cua.getState()` com `apps: []`, métodos nativos ausentes ou
+`Codex auth token is unavailable` descrevem o conector de computador/navegador;
+não demonstram falha do MCP do Blender. Não repetir resets nem orientar logout,
+reinício ou reinstalação do Blender com base apenas nesses erros. Relate qual
+conexão foi efetivamente testada; usar o MCP direto não restaura o token do `cua`.
+Se ambos os caminhos falharem, investigue complemento/servidor a partir do erro
+concreto, preservando a cena e sem prometer reparo de autenticação não verificado.
+
+Conexão confirmada não significa modelo carregado. Após a operação solicitada,
+confira os objetos/arquivo e a visualização antes de dizer que está pronto.
 
 ## Executar Blender: use o caminho ja resolvido
 
@@ -52,6 +84,9 @@ antes de cada operacao. build123d continua disponivel pela rota parametrica.
    faces de área nula; a exportação de 3MF aceita malha com defeito de forma.
 2. **Validade geométrica não é atendimento ao pedido.** Malha fechada pode ter a
    forma errada. São verificações separadas, e as duas têm que aparecer no registro.
+   A forma se confere por `referencias/render_de_conferencia.md`: quatro vistas
+   ortográficas, obrigatórias para toda geometria criada ou visivelmente alterada.
+   Verificador ter passado não dispensa o render, e o render não aprova nada sozinho.
 3. **Diga o alcance.** Amostragem prova os pontos amostrados. Uma seção prova aquele
    plano. Declare a cobertura junto com o resultado; conclusão sem alcance declarado
    não vale.
@@ -123,6 +158,7 @@ mas o pedido permanece.
 | abrir, inspecionar, orientar seleção, ler o que está selecionado | `referencias/inspecionar_e_selecionar.md` |
 | deslocar região delimitada; preencher vão entre dois limites | `referencias/editar_localizado.md` |
 | conferir malha, junção, região preservada, dimensões | `referencias/verificar.md` |
+| **conferir a FORMA antes de entregar: quatro vistas ortográficas** | `referencias/render_de_conferencia.md` |
 | desfazer, refazer, salvar, exportar, deixar retomável | `referencias/recuperar_salvar_exportar.md` |
 | que ferramenta existe, o que ela exige, o que **não** existe | `referencias/mapa_de_ferramentas.md` |
 | como registrar o trabalho para outro agente continuar | `referencias/registro_de_trabalho.md` |
