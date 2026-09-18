@@ -1,9 +1,12 @@
 # Edição por letras: o operador aponta, o agente repete, o operador diz "aplica"
 
-Rota para o Blender **aberto**, com o operador na tela. Nasceu de duas sessões reais em
-18/09/2026, uma peça gerada por código e uma montagem importada de STL, e cada regra abaixo
-custou uma rodada quando não existia. Custo por leitura: 600–900 tokens; uma captura de
-tela custa ~1 100 e quase nunca é necessária, porque as letras já dão a posição.
+Rota para o Blender **aberto**, com o operador na tela. Nasceu de sessões reais em
+18/09/2026 — peça gerada por código, montagem importada de STL, e uma terceira sessão que
+declarou "nada marcado" com marcação visível na tela — e cada regra abaixo custou uma
+rodada quando não existia. Custo por leitura: 600–900 tokens; uma captura de tela custa
+~1 100. **A captura é último recurso, não rotina**: quando a leitura estruturada vem
+vazia, o primeiro diagnóstico é `estado` (objeto e modo), não uma imagem — ver "Leitura
+vazia não é ausência de marca" abaixo.
 
 ## O protocolo, em quatro passos
 
@@ -11,7 +14,9 @@ tela custa ~1 100 e quase nunca é necessária, porque as letras já dão a posi
    no viewport. Traço com a ferramenta Anotar (`D` + arrastar) para "esta região" (laço) ou
    "daqui até ali" (linha).
 2. **Agente lê e repete em uma frase**, com peça, posição e o que entendeu do pedido.
-   `python scripts/ponte_letras.py letras` e `... tracos`. Sem captura de tela.
+   `python scripts/ponte_letras.py letras` e `... tracos`. Sem captura de tela — inclusive
+   quando a leitura vier vazia: primeiro `estado` (objeto, modo), a captura fica reservada
+   para quando isso não explicar o vazio — ver "Leitura vazia não é ausência de marca".
 3. **Operador diz "aplica"** (ou corrige). Nada é alterado antes disso.
 4. **Agente aplica e devolve o resultado medido em uma linha.** Verbos prontos:
    `python scripts/verbos_letras.py mover|extrudar|preencher|arredondar|desfazer` e
@@ -39,6 +44,37 @@ tela custa ~1 100 e quase nunca é necessária, porque as letras já dão a posi
 - **Trocar de modo apaga as letras.** Para somar sem perder: `Shift+3`.
 - Peças diferentes recebem a letra e o nome da peça embaixo; seleção por caixa entra no total
   sem letra.
+
+## Leitura vazia não é ausência de marca (falha real, 18/09/2026)
+
+`letras`/`tracos` vieram vazios numa peça com contorno laranja visível na tela. O agente
+concluiu "nada marcado" e pediu ao operador para escrever as letras à mão com a ferramenta
+Anotar — **fora do protocolo**, e sem solução, porque texto desenhado não é legível por
+máquina. Corrigido depois de o operador mandar print, mas a correção também errou para o outro
+lado: o agente passou a **atribuir identidade às letras só de olhar a imagem**, sem reconferir
+nada — a mesma regra que proíbe aprovar forma só pelo render (`render_de_conferencia.md`) vale
+aqui. A captura de tela **não é a ferramenta de diagnóstico de primeira mão** para nenhum dos
+dois lados desse erro; é último recurso, não rotina.
+
+**Antes de dizer "nada marcado" ao operador, diagnosticar por leitura estruturada, sem print:**
+
+1. Rodar `estado` (objeto ativo, modo). Contorno laranja do objeto INTEIRO na tela do operador
+   é seleção de **Modo de Objeto**; `letras`/`tracos` só existem com Edit Mode e elemento
+   (vértice/aresta/face) selecionado. Se `estado` mostra `OBJECT`, é isso — dizer ao operador
+   em uma frase ("você está em Modo de Objeto; Tab para entrar em edição e clicar na
+   superfície"), não propor outro protocolo.
+2. Se o operador insiste que marcou e a leitura continua vazia em Edit Mode, aí sim uma
+   captura é o próximo passo — não o primeiro. Se ela mostrar caracteres desenhados à mão
+   (A, B, C…) com a ferramenta Anotar: isso é traço geométrico sem significado de texto para
+   o agente, não tentar ler a letra por OCR visual. Explicar o protocolo real: clique em ordem
+   (a letra aparece sozinha) ou traço de laço/linha apontando a região, sem escrever caracteres.
+3. Se a captura mostra seleção de face real e a leitura ainda vem vazia, é objeto errado ou
+   bug — não adivinhar: conferir `estado` de novo antes de repetir a leitura.
+
+**Depois que a marcação aparecer:** se uma captura foi usada para diagnosticar, ela serve para
+**confirmar** a leitura estruturada (peça, posição, contagem) que vem em seguida, nunca para
+**substituí-la**. Nunca declarar "A é a superfície tal" só porque pareceu isso numa imagem —
+reler com `letras`/`tracos`/`identificar` e só então repetir o entendimento ao operador.
 
 ## Regras de interpretação (todas medidas em sessão)
 
