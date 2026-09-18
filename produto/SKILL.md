@@ -5,7 +5,7 @@ description: Use quando o pedido envolver criar, inspecionar, editar ou verifica
 
 # Modelagem 3D — receitas para executar e conferir
 
-**Pacote 2.7.6**, com `scripts/bl_ferramentas.py` na **versão 1.5.2** e
+**Pacote 2.9.0**, com `scripts/bl_ferramentas.py` na **versão 1.5.2** e
 `scripts/edicao_guiada.py` na **versão 1.0.0**. Os
 números são independentes: o do pacote muda a cada correção em qualquer arquivo, o da
 biblioteca só quando ela muda. Ambos estão em `INVENTARIO.json`, junto do hash de cada
@@ -109,10 +109,25 @@ Se o pedido usar "borda", "casca" ou "fechado", trate topologia como declaraçã
 separada da representação: superfície pode ser casca **aberta** (borda obrigatória)
 ou casca **fechada** sem sólido (borda proibida). Não deduza uma da outra.
 
+## Blender aberto com o operador na tela: edição por letras
+
+Rota padrão quando o operador está apontando na tela: `referencias/edicao_por_letras.md`.
+Instale as letras (`python scripts/ponte_letras.py instalar_letras`), ligue os Overlays
+se estiverem desligados, e siga o protocolo de quatro passos: **operador marca → agente
+repete em uma frase → operador diz "aplica" → agente aplica e devolve a medida em uma
+linha**. Os verbos (`scripts/verbos_letras.py`: mover, extrudar, preencher, arredondar,
+desfazer; `ponte_letras.py apagar`) operam em todas as malhas em edição, guardam a malha
+anterior e restauram sozinhos se a malha piorar. Regras que custaram rodada estão nessa
+referência; três valem em qualquer rota: pedido com "igual a" exige perguntar qual lado
+é o modelo; a correção tem o tamanho do defeito (resíduo se apaga no lugar, nunca se
+reconstrói a peça); remover uma feição é remover todas as ocorrências dela.
+
 ## Ajustes simples no Blender: chamada pronta primeiro
 
 Selecao do usuario + pedido claro: use uma operacao pronta, confirme a alteracao
 na sessao conectada e devolva uma frase com o efeito medido e eventual limite.
+As chamadas prontas abaixo exigem um só objeto em edição, malha não compartilhada e
+cena em mm; quando o operador tem várias peças em edição, use os verbos da rota por letras.
 Nao escreva outro script para mudar um numero. Nao refaca inventario completo a
 cada clique. Se o dominio nao servir, explique a diferenca e siga a rota especializada.
 
@@ -153,6 +168,8 @@ mas o pedido permanece.
 
 | Pedido | Referência a carregar |
 |---|---|
+| **operador apontando na tela: letras por clique, traços, apagar, verbos, prévia e "aplica"** | `referencias/edicao_por_letras.md` |
+| peça gerada por código com feições nomeadas: identificar, acender, trocar a malha na cena | `referencias/edicao_por_letras.md`, seção de identidade |
 | sessão viva, seleção parcial, subir borda/patamar, preservar encontros | `referencias/sessao_e_edicao_guiada.md` |
 | criar ou parametrizar peça por código, com verificação | `referencias/criar_e_parametrizar.md` |
 | abrir, inspecionar, orientar seleção, ler o que está selecionado | `referencias/inspecionar_e_selecionar.md` |

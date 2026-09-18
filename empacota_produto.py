@@ -82,6 +82,14 @@ PERMITIDOS = [
     "verificadores/check_mesh.py",
     "verificadores/matriz.py",
     "verificadores/secoes.py",
+    "referencias/render_de_conferencia.md",
+    "scripts/render_conferencia.py",
+    "referencias/edicao_por_letras.md",
+    "scripts/feicoes.py",
+    "scripts/letras_viewport.py",
+    "scripts/ponte_letras_blender.py",
+    "scripts/ponte_letras.py",
+    "scripts/verbos_letras.py",
     "verificadores/sweep_params.py",
 ]
 
