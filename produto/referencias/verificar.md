@@ -350,3 +350,18 @@ Toda saída destas ferramentas traz um campo `limite`. Repasse-o. Amostragem pro
 pontos amostrados; uma seção prova aquele plano; uma caixa prova aquela caixa.
 Conclusão sem alcance declarado não vale, e "passou em tudo" sem dizer em quê é a
 forma mais comum de aprovar sem evidência.
+
+## Impressão: mapa de balanço antes de fatiar
+
+`scripts/mapa_balanco.py arquivo.3mf [--limiar 30]` mostra, por corpo, a área voltada
+para baixo e no ar por faixa de inclinação (medida da horizontal: 0 = teto) e a área plana
+de contato com a mesa. O fatiador apoia o que fica **abaixo** do limiar.
+
+- Contato 0,0 mm² = a peça flutua e imprime inteira sobre suporte. Pode ser intencional
+  (flor deitada), mas tem de ser decisão, não surpresa: cupons de colar com 0 mm² de
+  contato tinham 2 mm de parede na 1ª camada.
+- Comparar balanço entre alternativas decide orientação e se vale separar uma feição:
+  medir a mesma feição solta e presa à peça antes de decidir.
+
+Conferência depois de fatiar: skill `bambu-a1`, `scripts/extrusao_por_objeto.py`.
+Identidade de cada corpo antes de medir: `inspecionar_e_selecionar.md`.

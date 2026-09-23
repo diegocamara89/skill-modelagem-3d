@@ -134,3 +134,11 @@ STL: exporta_malha grava em temporario, valida estrutura binaria e numeros finit
 e so entao publica. Destino existente e recusado por padrao; sobrescrever=True exige
 autorizacao do usuario. Falha preserva o arquivo anterior. Modo e selecao sao restaurados.
 Essa validacao nao decide fechamento, colisao ou imprimibilidade: confira o STL reaberto.
+
+## Entre etapas de malha: `.npy`, não STL
+
+O STL não guarda a identidade dos vértices: ao reimportar, o importador funde vértices e
+retriangula n-gons. Um resultado de booleana saiu com euler −138 e voltou do STL com −79
+e arestas não-manifold. Para passar malha de um passo para outro, gravar
+`np.save(V)` + `np.save(F)`; exportar STL/3MF uma vez só, no fim, a partir da malha em
+memória.

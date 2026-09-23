@@ -484,3 +484,24 @@ nada depois dele foi medido. Um resultado de etapa não prova outra."*
 Antes de executar codigo especifico ou entregar uma edicao, consulte o contrato de
 `fluxo_interativo.md`: captura anterior real, limites de aceite, identidade da selecao,
 recuperacao e verificacao do arquivo exportado.
+
+## Engrossar feição fina até um mínimo imprimível (piso de espessura)
+
+Script: `scripts/piso_espessura.py V.npy F.npy --alvo 0.9 --saida X`. Etapas, aprendidas
+errando numa escultura (19–20/09/2026):
+
+1. medir a espessura em **todos** os vértices (raio para dentro ao longo de −normal);
+2. separar feição fina de **vinco de relevo**: vinco também dá raio curto, mas o material em
+   volta é grosso. Só conta como fino se a **mediana** da espessura dos vizinhos num raio
+   (padrão 1,5 mm) também estiver abaixo do alvo;
+3. deslocar pela **magnitude escalar** suavizada ao longo da normal. **Nunca suavizar o
+   vetor**: numa lâmina as duas faces têm normais opostas e a média se anula;
+4. Taubin (λ 0,5 / μ −0,53) só onde mexeu, +2 anéis; forte em caixas indicadas.
+
+Medido: aro de óculos 0,63 → 1,09 mm (fechou na impressão); elos de colar 0,30 → 0,9 mm
+(fio contínuo), sem serrilhar o rosto.
+
+**Limite do filtro:** o raio tem de ser **menor** que a feição. Em pétala pequena a
+vizinhança pega o miolo grosso e descarta a feição como vinco — reduzir `--raio-relevo`
+e conferir no render quais vértices mexeram. O filtro foi **reimplementado** em 23/09 a
+partir da descrição registrada; o código original não foi salvo.

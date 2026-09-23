@@ -223,3 +223,21 @@ próprio controle caiu nele.
 
 Chame `F.entra_em_edicao(...)` antes, e exija que a mensagem contenha *"nao contem
 nenhuma face"*. Só assim o controle prova o que diz provar.
+
+## Identificar corpo pela geometria, nunca por nome ou contagem de faces
+
+Dois corpos podem ter **a mesma contagem de faces** (variantes da mesma malha: os dois
+cupons de colar tinham 16.496). E num 3MF "dividido em objetos" pelo Bambu Studio, os nomes
+dos nós que o trimesh devolve **não** batem com os nomes mostrados no Studio. Foi assim que
+duas peças foram trocadas e um arquivo com as peças erradas foi entregue (22/09/2026).
+
+`scripts/componentes.py arquivo.3mf` lista cada corpo com faces, dimensões, canto e
+centro, e o nome do Studio com o centro gravado no `transform` do `<item>` — case pelo
+centro. Corpos com menos de 4 faces (lasca degenerada) são ignorados e contados.
+
+A tabela aponta; **o render isolado de cada corpo, com o rótulo escrito na imagem,
+confirma** (`render_de_conferencia.md`). Toda medição feita sobre uma peça com rótulo
+trocado sai confiante e errada.
+
+Para ligar um cupom à malha inteira de onde saiu: `transplante_de_deslocamento.md`,
+seção "Antes".
