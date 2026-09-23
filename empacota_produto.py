@@ -94,6 +94,7 @@ PERMITIDOS = [
     "referencias/transplante_de_deslocamento.md",
     "scripts/transplante_deslocamento.py",
     "scripts/origem_do_recorte.py",
+    "scripts/recorta_cupom.py",
     "scripts/componentes.py",
     "scripts/mapa_balanco.py",
     "scripts/piso_espessura.py",

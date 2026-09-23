@@ -353,6 +353,7 @@ preenche com valor favorável, zero ou estimativa.
 |---|---|
 | `scripts/transplante_deslocamento.py` | combinar regiões de versões da **mesma** malha e levar para uma derivada, sem booleana. Ver `transplante_de_deslocamento.md` |
 | `scripts/origem_do_recorte.py` | de qual malha inteira um cupom saiu, por coincidência exata de vértices (~1 s) |
+| `scripts/recorta_cupom.py` | recorta cupom por caixa (coordenadas da malha ou da mesa), mantém orientação, rótulo em baixo-relevo no topo; STL na entrada pode fundir vértices — prefira PLY |
 | `scripts/componentes.py` | lista corpos de 3MF/STL com assinatura (faces, dimensões, centro) e nomes do Studio. Aponta; o render confirma |
 | `scripts/mapa_balanco.py` | área que pedirá suporte e área de contato com a mesa, por corpo, antes de fatiar |
 | `scripts/piso_espessura.py` | mede espessura por raio e engrossa feição fina; minutos em 200 mil vértices |
