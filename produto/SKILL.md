@@ -5,7 +5,7 @@ description: Use quando o pedido envolver criar, inspecionar, editar ou verifica
 
 # Modelagem 3D — receitas para executar e conferir
 
-**Pacote 2.9.1**, com `scripts/bl_ferramentas.py` na **versão 1.5.2** e
+**Pacote 2.10.0**, com `scripts/bl_ferramentas.py` na **versão 1.5.2** e
 `scripts/edicao_guiada.py` na **versão 1.0.0**. Os
 números são independentes: o do pacote muda a cada correção em qualquer arquivo, o da
 biblioteca só quando ela muda. Ambos estão em `INVENTARIO.json`, junto do hash de cada
@@ -173,7 +173,8 @@ mas o pedido permanece.
 | sessão viva, seleção parcial, subir borda/patamar, preservar encontros | `referencias/sessao_e_edicao_guiada.md` |
 | criar ou parametrizar peça por código, com verificação | `referencias/criar_e_parametrizar.md` |
 | abrir, inspecionar, orientar seleção, ler o que está selecionado | `referencias/inspecionar_e_selecionar.md` |
-| deslocar região delimitada; preencher vão entre dois limites | `referencias/editar_localizado.md` |
+| deslocar região delimitada; preencher vão entre dois limites; engrossar feição fina | `referencias/editar_localizado.md` |
+| combinar versões da mesma malha sem booleana; achar de qual malha um cupom saiu | `referencias/transplante_de_deslocamento.md` |
 | conferir malha, junção, região preservada, dimensões | `referencias/verificar.md` |
 | **conferir a FORMA antes de entregar: quatro vistas ortográficas** | `referencias/render_de_conferencia.md` |
 | desfazer, refazer, salvar, exportar, deixar retomável | `referencias/recuperar_salvar_exportar.md` |

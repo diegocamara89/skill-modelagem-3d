@@ -91,6 +91,12 @@ PERMITIDOS = [
     "scripts/ponte_letras.py",
     "scripts/verbos_letras.py",
     "verificadores/sweep_params.py",
+    "referencias/transplante_de_deslocamento.md",
+    "scripts/transplante_deslocamento.py",
+    "scripts/origem_do_recorte.py",
+    "scripts/componentes.py",
+    "scripts/mapa_balanco.py",
+    "scripts/piso_espessura.py",
 ]
 
 # Nunca vao, e a lista existe para a promessa ser conferivel, nao decorativa.

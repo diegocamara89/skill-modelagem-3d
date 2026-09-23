@@ -346,3 +346,28 @@ improvisar substituto.
 Requisito declarado sem medidor sai como `NAO_IMPLEMENTADA`, que **barra** quando o
 papel é decisivo e **não barra** quando é informativo. Em nenhum dos dois casos se
 preenche com valor favorável, zero ou estimativa.
+
+## Malha fora do Blender (hospedeiro, trimesh/numpy) — scripts de 23/09/2026
+
+| Ferramenta | Para que usar / limite |
+|---|---|
+| `scripts/transplante_deslocamento.py` | combinar regiões de versões da **mesma** malha e levar para uma derivada, sem booleana. Ver `transplante_de_deslocamento.md` |
+| `scripts/origem_do_recorte.py` | de qual malha inteira um cupom saiu, por coincidência exata de vértices (~1 s) |
+| `scripts/componentes.py` | lista corpos de 3MF/STL com assinatura (faces, dimensões, centro) e nomes do Studio. Aponta; o render confirma |
+| `scripts/mapa_balanco.py` | área que pedirá suporte e área de contato com a mesa, por corpo, antes de fatiar |
+| `scripts/piso_espessura.py` | mede espessura por raio e engrossa feição fina; minutos em 200 mil vértices |
+
+## Booleana: três armadilhas medidas (19–21/09/2026)
+
+- **`manifold3d` não resolve auto-interseção.** `trimesh.boolean.union([m])` com uma malha
+  só devolve a mesma malha. Prova em uma linha: mover vértices para dentro do próprio sólido
+  e comparar o volume — não muda (175,485 cm³ antes e depois). O que ele faz bem é unir
+  **sólidos separados**; quando fragmenta, o maior componente costuma ser o correto.
+- **Resultado de booleana não sobrevive ao round-trip de STL** (euler −138 → −79, arestas
+  não-manifold). Encadear em memória; entre etapas, `.npy` de vértices e faces.
+- **Recortar antes de engrossar.** Depois de engrossado, `slice_plane(cap=True)` deixa
+  borda aberta (35 a 332 arestas). Recortando a malha limpa e engrossando dentro do cupom,
+  saiu fechado de primeira.
+
+Se a peça final precisa de uma booleana já feita numa versão antiga, prefira
+`transplante_de_deslocamento.md` a refazê-la na versão engrossada.

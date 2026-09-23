@@ -245,8 +245,8 @@ python verificadores/check_mesh.py --malha peca.stl
 | malha com arestas não-manifold e você não mudou nada | **pode ser** corte com altura igual à parede, e há outras causas | atravesse com folga; a folga é parâmetro, não constante. **A igualdade de altura não implica degeneração:** uma validação independente construiu placa 30 × 20 × 4 com corte cilíndrico de altura 4, ambos `Align.MIN` em Z, e mediu **zero** não-manifold e zero degeneradas. O que produz o defeito é a coincidência de **faces** — que depende do alinhamento, e não só do número. Com os dois começando em z=0 e a mesma altura, as faces de topo e de base coincidem em par e o kernel resolve; foi com outro alinhamento que as 6 arestas foram medidas. Diagnostique pela medida, não por esta linha |
 | a varredura devolve erro operacional | ambiente, não geometria | corrija o ambiente; **não** conte como reprovação |
 | tolerância de malha "não faz efeito" | triangulação em cache | construa do zero em vez de reexportar |
-| pedem folga de encaixe | não há valor calibrado | diga que é `A_CALIBRAR` e o que seria preciso medir |
-| pedem parede mínima ou silhueta | sem medidor | `NAO_IMPLEMENTADA`, não estime |
+| pedem folga de encaixe | **um valor calibrado**: pino em furo, **0,3 mm no diâmetro** (furo ⌀3,2 × 5,0, pino ⌀2,9 × 4,7), PETG, bico 0,4, camada 0,08, pino impresso deitado a 30° e furo em pé — "encaixe perfeito" (23/09/2026). Fora dessas condições | continua `A_CALIBRAR`: diga o que seria preciso medir |
+| pedem parede mínima ou silhueta | para **malha**: `scripts/piso_espessura.py` mede a espessura por raio; valores que imprimiram estão em "Espessura mínima que imprimiu". Silhueta: sem medidor | silhueta segue `NAO_IMPLEMENTADA`; parede fora das condições medidas, não estime |
 
 ## Exemplo sintético completo
 
@@ -304,3 +304,25 @@ verificador tem comportamento controlado por testes e divergências registradas:
 criação do diretório de saída sobe como traceback**, não como erro operacional
 classificado. Se o seu `--saida` não puder ser criado, você recebe um traceback de
 `os.makedirs` e nenhum JSON. Confira o caminho antes de varrer.
+
+## Espessura mínima que imprimiu (PETG, bico 0,4, camada 0,08, arachne)
+
+| feição | falhou | imprimiu |
+|---|---|---|
+| aro de óculos (parede quase vertical) | 0,63 mm — não fechou | 1,09 mm |
+| elo de colar | 0,30 mm | 0,9 mm contínuo; 1,7 escolhido pela estética |
+| haste de óculos | 0,91 mm — quebrou ao tirar o suporte | 2,09 mm, presa à cabeça |
+
+Vale só nessas condições. `wall_generator = arachne` é parte da condição: o *classic*
+só faz filete inteiro e some com feição de 2,6 filetes sem avisar.
+
+## Feição delicada: presa à peça é melhor que avulsa
+
+O óculos preso ao rosto é parede quase vertical e se sustentou sozinho. Avulso, precisou de
+placa de base e 27 pilares para ter contato com a mesa, e saiu inutilizável. Antes de
+separar uma feição para imprimir à parte, medir o balanço dela **no lugar**
+(`scripts/mapa_balanco.py`).
+
+Quando a peça é mesmo avulsa, escolher a orientação que **não gera interface de suporte**:
+das três flores, a que soldou foi a única com interface; a inclinada a 30° não teve
+nenhuma e saiu no alicate. Critério de suporte: skill `bambu-a1`, `references/suportes.md`.

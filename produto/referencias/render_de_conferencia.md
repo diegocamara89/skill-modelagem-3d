@@ -148,3 +148,9 @@ nenhum deles.
 
 No registro do trabalho entram os quatro PNGs — ou o motivo declarado do skip — e quais
 verificações determinísticas sustentam cada achado visual.
+
+## Malha grande: recortar antes de renderizar
+
+O rasterizador numpy com laço por face leva minutos em 400 mil faces. Para conferir uma
+região (óculos, colar), renderizar só as faces dentro da caixa de interesse — o laço cai na
+mesma proporção — e manter a mesma escala em px/mm entre as imagens comparadas.
