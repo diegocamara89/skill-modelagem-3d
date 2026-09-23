@@ -33,6 +33,16 @@ uma dúvida restante e reproduzir a condição crítica da peça final. Reaprove
 experiência física anterior com alcance declarado; não transfira aprovação para
 condições diferentes. Se o desenho eliminou o risco, retire o teste correspondente.
 
+**Cupom recortado da peça: primeiro reproduzir, depois corrigir.** Se o cupom sai limpo e a
+peça inteira sai com defeito, ele não reproduziu a condição crítica — só descartou o que foi
+mantido igual. Um recorte muda sem avisar: o tempo de cada camada (e com ele a ventoinha
+automática do fatiador), a altura dos suportes até a região, o que é impresso ao lado e o tempo
+decorrido até aquela camada. Medido num caso real: mesma cobertura de suporte na região, e
+ventoinha a 72% na peça contra 89% no cupom (camada de 22 s contra 13 s); a peça falhou e o
+cupom não. Antes de imprimir o cupom, comparar essas condições na camada crítica entre os dois
+G-codes (a skill da impressora tem o medidor). `scripts/recorta_cupom.py` faz o recorte por
+caixa em coordenadas da mesa, mantém a orientação e grava rótulo no topo plano.
+
 ## As três famílias, que não se substituem
 
 | Família | Pergunta | Ferramenta | O que NÃO prova |
