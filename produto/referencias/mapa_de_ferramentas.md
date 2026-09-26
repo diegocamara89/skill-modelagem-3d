@@ -332,8 +332,8 @@ improvisar substituto.
 
 | Capacidade | Estado |
 |---|---|
-| folga de encaixe calibrada | **A_CALIBRAR**: não há valor medido. `tolerance_lookup.py` devolve pendência de propósito |
-| parede mínima | sem medidor |
+| folga de encaixe calibrada | um valor medido (pino em furo, 0,3 mm no diâmetro, nas condições de `criar_e_parametrizar.md`); fora delas, **A_CALIBRAR**. `tolerance_lookup.py` devolve pendência de propósito |
+| parede mínima | em malha, `scripts/piso_espessura.py` mede por raio (tabela abaixo); não há requisito de parede no `check_intent.py` |
 | folga entre peças | sem medidor |
 | silhueta contra imagem | sem medidor |
 | reconstrução de CAD a partir de malha | fora do escopo |

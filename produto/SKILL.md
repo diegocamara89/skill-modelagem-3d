@@ -205,9 +205,11 @@ Para edicao ao vivo, aplique o contrato curto de `referencias/fluxo_interativo.m
 ## O que este pacote não faz
 
 Não reconstrói CAD a partir de malha, não seleciona por imagem, não decide folga de
-encaixe (não há valor calibrado: isso continua pendente), não mede parede mínima nem
-silhueta, e não aprova peça para fabricação. Quando o pedido cair fora, diga qual é o
-limite e o que seria necessário — não improvise o trecho difícil.
+encaixe fora da única condição calibrada (pino em furo; ver
+`referencias/criar_e_parametrizar.md`, "Decisão por sintoma"), não mede silhueta, e não
+aprova peça para fabricação. Espessura de parede em malha se mede com
+`scripts/piso_espessura.py`, valendo só nas condições registradas. Quando o pedido cair
+fora, diga qual é o limite e o que seria necessário — não improvise o trecho difícil.
 
 **E não verifica que um furo é passante.** Isto merece linha própria porque é o
 requisito mais comum da rota de criar. Nenhum dos oito tipos de requisito decide

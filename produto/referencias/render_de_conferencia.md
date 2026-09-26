@@ -53,8 +53,8 @@ face de baixo** saiu como um bloco perfeitamente liso na `iso`, sem nenhum vest�
 dos dois defeitos, e mostrou os dois com clareza na `iso_oposto`. Uma vista isométrica
 sozinha teria aprovado a peça.
 
-Quando uma imagem basta e quando não: uma `iso` resolve peça simples e estática. Use
-as quatro quando o erro semântico é plausível — montagem ou mais de um corpo, furos em
+As quatro vistas são o padrão, fora dos casos da tabela de pulo acima. Olhe cada uma com
+mais atenção quando o erro semântico é plausível — montagem ou mais de um corpo, furos em
 faces ou eixos diferentes, casca, cavidade, furo cego ou recinto fechado, nervura,
 ressalto, aba ou padrão repetido, reparo depois de falha booleana, e sempre que
 "parecer o objeto pedido" faz parte da tarefa.

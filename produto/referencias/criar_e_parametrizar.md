@@ -209,7 +209,7 @@ corpo e passaria. Uma revisao independente pegou isso. Quem conta furos e
 espessura de 6.
 
 ```bash
-python verificadores/check_intent.py --malha peca.stl --requisitos req.json
+python verificadores/check_intent.py --malha peca_para_medir.stl --requisitos req.json
 ```
 
 Requisitos com o mesmo identificador são recusados; um requisito sem medidor sai como
