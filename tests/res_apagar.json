@@ -1,0 +1,26 @@
+{
+ "selecionadas": 10,
+ "apagar": {
+  "estado": "OK",
+  "cena": "TRABALHO_AGENTE",
+  "objetos": {
+   "cubo_lasca": {
+    "estado": "APAGADO_E_FECHADO",
+    "faces_apagadas": 10,
+    "arestas_do_furo": 4,
+    "faces_de_fechamento": 2,
+    "nao_manifold_restante": 0,
+    "backup": "cubo_lasca.ANTES_APAGAR",
+    "faces_agora": 20
+   }
+  },
+  "redesenho_pedido": 4
+ },
+ "depois": {
+  "faces": 20,
+  "arestas_borda": 0,
+  "arestas_nao_manifold": 0,
+  "volume": 8000.0
+ },
+ "estado": "OK"
+}
