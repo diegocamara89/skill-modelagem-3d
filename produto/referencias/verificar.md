@@ -375,3 +375,22 @@ de contato com a mesa. O fatiador apoia o que fica **abaixo** do limiar.
 
 Conferência depois de fatiar: skill `bambu-a1`, `scripts/extrusao_por_objeto.py`.
 Identidade de cada corpo antes de medir: `inspecionar_e_selecionar.md`.
+
+## Contato proposital, controle positivo e centro real
+
+Três armadilhas medidas em 26/09/2026, conferindo montagem e G-code:
+
+- **Contato proposital deixa resíduo de malha.** Duas peças que encostam de propósito
+  (tampa num cone de apoio, com folga zero) dão interseção de 0,01 a 0,2 mm³ entre as
+  malhas tesseladas. Isso é arredondamento, não interferência. Para decidir se uma feição
+  nova toca a vizinha, **isole a região** (interseção com uma laje só onde a feição está)
+  e exija 0,0000 lá. O resíduo do contato fica fora da conta.
+- **Todo verificador precisa de controle positivo.** Ao conferir que um furo ou uma
+  gravação não saiu preenchido no G-code, meça também o que **tem** de ter plástico: a
+  parede junto ao furo, ou a camada logo abaixo da gravação. Zero sem controle pode ser um
+  leitor que não lê nada.
+- **Em peça assimétrica, o centro do furo não é o centro da caixa.** Um disco em "D"
+  centrado pela caixa envolvente pôs o furo 5 mm fora de onde o verificador procurava, e
+  acusou "extrusão dentro do furo" em todas as placas. Calcule a posição da feição pela
+  geometria que a define. O leitor de G-code também precisa interpolar arcos `G2`/`G3`.
+

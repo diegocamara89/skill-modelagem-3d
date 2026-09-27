@@ -59,6 +59,7 @@ PERMITIDOS = [
     "referencias/recuperar_salvar_exportar.md",
     "referencias/registro_de_trabalho.md",
     "referencias/verificar.md",
+    "referencias/projetar_para_imprimir.md",
     "referencias/sessao_e_edicao_guiada.md",
     "scripts/bl_ferramentas.py",
     "scripts/mcp_blender.py",
