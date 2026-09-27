@@ -176,6 +176,7 @@ mas o pedido permanece.
 | deslocar região delimitada; preencher vão entre dois limites; engrossar feição fina | `referencias/editar_localizado.md` |
 | combinar versões da mesma malha sem booleana; achar de qual malha um cupom saiu | `referencias/transplante_de_deslocamento.md` |
 | conferir malha, junção, região preservada, dimensões | `referencias/verificar.md` |
+| **projetar para imprimir: folga calibrada, rosca e porca, garra, espessura mínima, rebaixo para dedo, gravação de marca, família de tamanhos, licença de peça de terceiros** | `referencias/projetar_para_imprimir.md` |
 | **conferir a FORMA antes de entregar: quatro vistas ortográficas** | `referencias/render_de_conferencia.md` |
 | entregar visualizador 3D interativo (.html) ou GIF/MP4 de montagem/vista explodida | `referencias/entregas_em_movimento.md` |
 | desfazer, refazer, salvar, exportar, deixar retomável | `referencias/recuperar_salvar_exportar.md` |
@@ -206,8 +207,8 @@ Para edicao ao vivo, aplique o contrato curto de `referencias/fluxo_interativo.m
 ## O que este pacote não faz
 
 Não reconstrói CAD a partir de malha, não seleciona por imagem, não decide folga de
-encaixe fora da única condição calibrada (pino em furo; ver
-`referencias/criar_e_parametrizar.md`, "Decisão por sintoma"), não mede silhueta, e não
+encaixe fora das condições calibradas (pino em furo, disco parado em tubo, lingueta em
+entalhe, rosca; ver `referencias/projetar_para_imprimir.md`, seção 1), não mede silhueta, e não
 aprova peça para fabricação. Espessura de parede em malha se mede com
 `scripts/piso_espessura.py`, valendo só nas condições registradas. Quando o pedido cair
 fora, diga qual é o limite e o que seria necessário — não improvise o trecho difícil.

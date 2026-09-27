@@ -35,7 +35,7 @@ No registro do trabalho, use uma ficha curta: **função → construção → or
 → evidência → condições preservadas/alteradas → limite e próxima verificação**.
 Diferencie geometria nominal, uso relatado e medição física; registre o que cada um
 sustenta. Reutilize arquivos conforme a licença; refazer a geometria não dispensa
-conferir os termos aplicáveis. Referências privadas permanecem fora do pacote.
+conferir os termos aplicáveis (caso medido: `projetar_para_imprimir.md`, seção 10). Referências privadas permanecem fora do pacote.
 
 Experiência anterior pode reduzir ou dispensar cupons quando cobre a incerteza atual.
 Se mudou uma condição crítica, teste apenas essa diferença, com alcance declarado;
@@ -245,26 +245,18 @@ python verificadores/check_mesh.py --malha peca.stl
 | malha com arestas não-manifold e você não mudou nada | **pode ser** corte com altura igual à parede, e há outras causas | atravesse com folga; a folga é parâmetro, não constante. **A igualdade de altura não implica degeneração:** uma validação independente construiu placa 30 × 20 × 4 com corte cilíndrico de altura 4, ambos `Align.MIN` em Z, e mediu **zero** não-manifold e zero degeneradas. O que produz o defeito é a coincidência de **faces** — que depende do alinhamento, e não só do número. Com os dois começando em z=0 e a mesma altura, as faces de topo e de base coincidem em par e o kernel resolve; foi com outro alinhamento que as 6 arestas foram medidas. Diagnostique pela medida, não por esta linha |
 | a varredura devolve erro operacional | ambiente, não geometria | corrija o ambiente; **não** conte como reprovação |
 | tolerância de malha "não faz efeito" | triangulação em cache | construa do zero em vez de reexportar |
-| pedem folga de encaixe | **dois valores calibrados.** (1) Pino em furo, **0,3 mm no diâmetro** (furo ⌀3,2 × 5,0, pino ⌀2,9 × 4,7), PETG, bico 0,4, camada 0,08, pino impresso deitado a 30° e furo em pé — "encaixe perfeito" (23/09/2026). (2) **Rosca trapezoidal** passo 3, flancos a 45°, profundidade 1,0, **folga radial 0,3** (0,6 no diâmetro) entre filete macho e fêmea, ⌀ nominal 40, PETG, bico 0,4, camada 0,2, macho e porca impressos em pé — "entra com folga", rosqueia à mão (26/09/2026). Fora dessas condições | continua `A_CALIBRAR`: diga o que seria preciso medir. Ver "Rosca helicoidal" abaixo para gerar o filete |
-| pedem parede mínima ou silhueta | para **malha**: `scripts/piso_espessura.py` mede a espessura por raio; valores que imprimiram estão em "Espessura mínima que imprimiu". Silhueta: sem medidor | silhueta segue `NAO_IMPLEMENTADA`; parede fora das condições medidas, não estime |
+| pedem folga de encaixe | há **quatro valores calibrados** (pino em furo, disco parado em tubo, lingueta em entalhe, rosca), cada um com as suas condições | use a tabela de `projetar_para_imprimir.md`, seção 1; fora das condições, `A_CALIBRAR`: diga o que seria preciso medir |
+| pedem parede mínima ou silhueta | para **malha**: `scripts/piso_espessura.py` mede a espessura por raio; valores que imprimiram estão em `projetar_para_imprimir.md`, seção 4. Silhueta: sem medidor | silhueta segue `NAO_IMPLEMENTADA`; parede fora das condições medidas, não estime |
 
-## Rosca helicoidal: gere o filete como malha, não por varredura do kernel
+## Armadilhas do build123d (medidas em 26/09/2026, versão 0.11.1)
 
-Medido em 26/09/2026, build123d 0.11.1:
-
-| Tentativa | O que aconteceu |
-|---|---|
-| `sweep(perfil, Helix(...), is_frenet=True)` unido ao tubo | `is_valid` verdadeiro, e o STL exportado saiu com **250 a 500 arestas abertas** |
-| recortar a hélice longa (passar da ponta e aparar) | o kernel caiu (*access violation*), sem exceção Python |
-| recortar a rosca fêmea de um anel com o "macho" | sólido inválido, 2 a 7 corpos |
-
-O que funcionou: o filete gerado **como malha fechada** em numpy (o perfil trapezoidal repetido a cada passo angular, com tampas nas pontas) e unido ao corpo por **manifold3d** (`Mesh64`). O corpo sai do build123d pela `tessellate` com a mesma tolerância da exportação. Porca: some o filete interno a um anel (não recorte), meio passo defasado na **mesma hélice** do parafuso, e limite-o à altura da porca por interseção com um cilindro.
-
-Conferência mínima: `check_mesh.py` em cada peça roscada (0 abertas, 0 não-manifold, 1 componente). Interferência porca × parafuso por interseção manifold em **várias alturas** (a fase muda com a altura). Fatiar e confirmar que os flancos a 45° não pedem suporte. Peça roscada gerada assim sai só em STL; não há STEP.
-
-Duas armadilhas vizinhas, da mesma sessão:
-- **Revolve parcial com a face de normal −Y sai invertido** (volume negativo). Oriente o perfil pelo sentido do giro.
-- **Setores revolvidos em separado e fundidos** geram cilindros coincidentes, e a fusão sai inválida. Revolva 360° e recorte os setores.
+| Sintoma | Causa | O que fazer |
+|---|---|---|
+| rosca por `sweep` + `Helix`: `is_valid` verdadeiro e o STL com centenas de arestas abertas; recorte da hélice derruba o kernel | varredura helicoidal no OCC | filete em malha + manifold3d: `projetar_para_imprimir.md`, seção 3 |
+| revolve de um setor (menos de 360°) sai com volume negativo e não funde | a face do perfil tem normal oposta ao giro (−Y para giro positivo em Z) | oriente o perfil pelo sentido do giro e confira `face.normal_at()` |
+| setores revolvidos em separado e fundidos saem inválidos | cilindros coincidentes entre os setores | revolva 360° uma vez e **recorte** os setores; cortadores com raios que passam das faces da peça |
+| extrusão "para cima" de um `Polygon` vai para baixo | a normal do polígono segue a ordem dos pontos (o `convex_hull` do shapely a inverte) | passe `dir=(0, 0, ±1)` explícito em todo `extrude` de polígono vindo de outra biblioteca, e confira por corte em várias alturas |
+| `extrude(..., taper=…)` sai alargando em vez de afunilar | o sinal do `taper` é relativo à direção da extrusão | extruda a partir da face aberta, na direção do fundo, com `taper` positivo; meça a área em 3 cortes |
 
 ## Exemplo sintético completo
 
@@ -323,24 +315,6 @@ criação do diretório de saída sobe como traceback**, não como erro operacio
 classificado. Se o seu `--saida` não puder ser criado, você recebe um traceback de
 `os.makedirs` e nenhum JSON. Confira o caminho antes de varrer.
 
-## Espessura mínima que imprimiu (PETG, bico 0,4, camada 0,08, arachne)
+## Regras de impressão (folga, espessura mínima, feição delicada, rosca, negativos, gravação)
 
-| feição | falhou | imprimiu |
-|---|---|---|
-| aro de óculos (parede quase vertical) | 0,63 mm — não fechou | 1,09 mm |
-| elo de colar | 0,30 mm | 0,9 mm contínuo; 1,7 escolhido pela estética |
-| haste de óculos | 0,91 mm — quebrou ao tirar o suporte | 2,09 mm, presa à cabeça |
-
-Vale só nessas condições. `wall_generator = arachne` é parte da condição: o *classic*
-só faz filete inteiro e some com feição de 2,6 filetes sem avisar.
-
-## Feição delicada: presa à peça é melhor que avulsa
-
-O óculos preso ao rosto é parede quase vertical e se sustentou sozinho. Avulso, precisou de
-placa de base e 27 pilares para ter contato com a mesa, e saiu inutilizável. Antes de
-separar uma feição para imprimir à parte, medir o balanço dela **no lugar**
-(`scripts/mapa_balanco.py`).
-
-Quando a peça é mesmo avulsa, escolher a orientação que **não gera interface de suporte**:
-das três flores, a que soldou foi a única com interface; a inclinada a 30° não teve
-nenhuma e saiu no alicate. Critério de suporte: skill `bambu-a1`, `references/suportes.md`.
+Estão reunidas em `projetar_para_imprimir.md`, a referência de projetar para imprimir.
