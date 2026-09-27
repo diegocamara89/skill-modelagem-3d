@@ -177,6 +177,7 @@ mas o pedido permanece.
 | combinar versões da mesma malha sem booleana; achar de qual malha um cupom saiu | `referencias/transplante_de_deslocamento.md` |
 | conferir malha, junção, região preservada, dimensões | `referencias/verificar.md` |
 | **conferir a FORMA antes de entregar: quatro vistas ortográficas** | `referencias/render_de_conferencia.md` |
+| entregar visualizador 3D interativo (.html) ou GIF/MP4 de montagem/vista explodida | `referencias/entregas_em_movimento.md` |
 | desfazer, refazer, salvar, exportar, deixar retomável | `referencias/recuperar_salvar_exportar.md` |
 | que ferramenta existe, o que ela exige, o que **não** existe | `referencias/mapa_de_ferramentas.md` |
 | como registrar o trabalho para outro agente continuar | `referencias/registro_de_trabalho.md` |
