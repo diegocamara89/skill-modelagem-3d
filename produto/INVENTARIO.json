@@ -1,5 +1,5 @@
 {
-  "versao_do_pacote": "2.12.0",
+  "versao_do_pacote": "2.12.1",
   "versao_de_bl_ferramentas": "1.5.2",
   "congelado_em": "2026-09-26",
   "nota": "caminhos RELATIVOS A RAIZ DO PACOTE, que e a pasta onde este arquivo vive. A versao anterior gravava 'produto/...', que nao resolve no pacote extraido, e a conferencia passava por remover o prefixo — ou seja, validava uma lista paralela, nao a resolucao do manifesto.",
@@ -13,7 +13,7 @@
     "cenarios/gera_cenario.py": "85caca62279e5635906af704ea6d25e740f264597b6901a2762c56dc2c93be45",
     "referencias/alinhar_selecao.md": "fc8cbf7f8b21d16655e5a51763e0fc98e965481b54fd8e4360fa6e58891a4151",
     "referencias/arredondar_selecao.md": "59f271174db5240be0df7fdad96ca933d4e7de8e260fb3b6b756cd5459591198",
-    "referencias/criar_e_parametrizar.md": "1ff48f579892fee27cdcd038cbf81bba18f70421f2c23f3b9551121394f67ed8",
+    "referencias/criar_e_parametrizar.md": "de557bd183efed2db4239073988fcaea5b9a378b6f01a2eaccc0c854b0c43004",
     "referencias/edicao_por_letras.md": "262f2701ebc7c7a6fe606dff155670bb8c7f6ab6d27a1fda74c86faa883ab20d",
     "referencias/editar_localizado.md": "ecb2273a9c867ce54b2c2338e02ac3ffe73738d835811fa3514f98493003ec7a",
     "referencias/entregas_em_movimento.md": "3e55f0bdbe1bb3a19fdb60d53c4a5ad28817610d43af852930839bf5bd68cd15",
