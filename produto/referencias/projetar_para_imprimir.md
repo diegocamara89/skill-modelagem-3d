@@ -156,3 +156,20 @@ Digital File License do MakerWorld proíbe distribuir derivados, inclusive remix
 foi projetar do zero a partir dos requisitos: mecanismo, folgas e medidas próprias, crédito
 como "inspirado em". Isso não é parecer jurídico; diga ao dono o que a licença diz e deixe
 a decisão com ele.
+
+## 11. Grade de nervuras: rigidez, furos e o arquivo que vai para o fatiador
+
+- **Em nervura, a altura conta ao cubo e a largura, linear.** Para economizar material,
+  afine a largura e nunca a altura. Medido em simulação de placa validada contra a solução
+  clássica (erro de 0,1%): linha única de 0,45×4 mm, com o mesmo peso de uma placa com
+  colares, deu 1,9× a rigidez; grade reta venceu a diagonal com a mesma massa. Ao simular
+  nervura fina numa malha regular, rasterize por **fração de cobertura**: o modo binário errou
+  40% e deu o mesmo resultado para larguras diferentes.
+- **Nervura só é contínua se a corda existe.** Anéis isolados não formam viga; meça corredores
+  retos sem nervura antes de aplicar conta de seção T.
+- **Toda feição nova confere contra TODOS os furos da peça.** Duas grades atravessaram os
+  quatro furos de parafuso dos cantos; só apareceu na interseção com os furos.
+- **O arquivo para o fatiador leva vértices soldados.** Malha gravada como triângulos soltos
+  (`process=False` no trimesh) fez o fatiador fechar furos de parafuso — até num bloco simples
+  com furo. Solde (`merge_vertices`) antes de gravar e confira cada furo e fenda no G-code,
+  em todas as camadas, antes de entregar (receita na skill `bambu-a1`).
