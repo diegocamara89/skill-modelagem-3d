@@ -1,0 +1,178 @@
+{
+ "inicio": {
+  "altura": 20.0,
+  "largura_x": 20.0,
+  "volume": 8000.0,
+  "faces": 6
+ },
+ "mover": {
+  "estado": "OK",
+  "verbo": "mover",
+  "cena": "TRABALHO_AGENTE",
+  "objetos": {
+   "cubo": {
+    "estado": "APLICADO",
+    "faces_selecionadas": 1,
+    "unidade": "cena em mm",
+    "eixo_global": "Z",
+    "distancia_mm": 2.0,
+    "vertices_movidos": 4,
+    "saude_antes": {
+     "arestas_borda": 0,
+     "arestas_nao_manifold": 0,
+     "faces": 6,
+     "vertices": 8
+    },
+    "saude_depois": {
+     "arestas_borda": 0,
+     "arestas_nao_manifold": 0,
+     "faces": 6,
+     "vertices": 8
+    },
+    "backup": "cubo.ANTES_VERBO",
+    "nota": "hash do protegido comparado só quando o conjunto de vértices não muda",
+    "protegido_igual": true
+   }
+  },
+  "redesenho_pedido": 4
+ },
+ "apos_mover": {
+  "altura": 22.0,
+  "largura_x": 20.0,
+  "volume": 8800.0,
+  "faces": 6
+ },
+ "desfazer": {
+  "estado": "OK",
+  "objetos": {
+   "cubo": {
+    "estado": "RESTAURADO_DE",
+    "backup": "cubo.ANTES_VERBO"
+   }
+  },
+  "redesenho_pedido": 4
+ },
+ "apos_desfazer": {
+  "altura": 20.0,
+  "largura_x": 20.0,
+  "volume": 8000.0,
+  "faces": 6
+ },
+ "extrudar": {
+  "estado": "OK",
+  "verbo": "extrudar",
+  "cena": "TRABALHO_AGENTE",
+  "objetos": {
+   "cubo": {
+    "estado": "APLICADO",
+    "faces_selecionadas": 1,
+    "unidade": "cena em mm",
+    "distancia_mm": 2.0,
+    "normal_local": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "vertices_novos": 4,
+    "saude_antes": {
+     "arestas_borda": 0,
+     "arestas_nao_manifold": 0,
+     "faces": 6,
+     "vertices": 8
+    },
+    "saude_depois": {
+     "arestas_borda": 0,
+     "arestas_nao_manifold": 0,
+     "faces": 10,
+     "vertices": 12
+    },
+    "backup": "cubo.ANTES_VERBO.001",
+    "nota": "hash do protegido comparado só quando o conjunto de vértices não muda"
+   }
+  },
+  "redesenho_pedido": 4
+ },
+ "apos_extrudar": {
+  "altura": 20.0,
+  "largura_x": 22.0,
+  "volume": 8800.0,
+  "faces": 10
+ },
+ "furo_aberto": 4,
+ "preencher": {
+  "estado": "OK",
+  "verbo": "preencher",
+  "cena": "TRABALHO_AGENTE",
+  "objetos": {
+   "cubo": {
+    "estado": "APLICADO",
+    "faces_selecionadas": 4,
+    "unidade": "cena em mm",
+    "modo": "contorno",
+    "arestas_de_borda_usadas": 4,
+    "faces_criadas": 2,
+    "saude_antes": {
+     "arestas_borda": 4,
+     "arestas_nao_manifold": 0,
+     "faces": 9,
+     "vertices": 12
+    },
+    "saude_depois": {
+     "arestas_borda": 0,
+     "arestas_nao_manifold": 0,
+     "faces": 11,
+     "vertices": 12
+    },
+    "backup": "cubo.ANTES_VERBO.002",
+    "nota": "hash do protegido comparado só quando o conjunto de vértices não muda",
+    "protegido_igual": true
+   }
+  },
+  "redesenho_pedido": 4
+ },
+ "apos_preencher": {
+  "altura": 20.0,
+  "largura_x": 22.0,
+  "volume": 8800.0,
+  "faces": 11
+ },
+ "bordas_apos_preencher": 0,
+ "arredondar": {
+  "estado": "OK",
+  "verbo": "arredondar",
+  "cena": "TRABALHO_AGENTE",
+  "objetos": {
+   "cubo": {
+    "estado": "APLICADO",
+    "faces_selecionadas": 2,
+    "unidade": "cena em mm",
+    "raio_mm": 1.0,
+    "segmentos": 4,
+    "arestas": 7,
+    "faces_criadas": 52,
+    "saude_antes": {
+     "arestas_borda": 0,
+     "arestas_nao_manifold": 0,
+     "faces": 11,
+     "vertices": 12
+    },
+    "saude_depois": {
+     "arestas_borda": 0,
+     "arestas_nao_manifold": 0,
+     "faces": 63,
+     "vertices": 64
+    },
+    "backup": "cubo.ANTES_VERBO.003",
+    "nota": "hash do protegido comparado só quando o conjunto de vértices não muda"
+   }
+  },
+  "redesenho_pedido": 4
+ },
+ "apos_arredondar": {
+  "altura": 20.0,
+  "largura_x": 22.0,
+  "volume": 8780.74,
+  "faces": 63
+ },
+ "estado": "OK"
+}
