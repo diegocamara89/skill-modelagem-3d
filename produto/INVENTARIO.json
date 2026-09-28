@@ -1,5 +1,5 @@
 {
-  "versao_do_pacote": "2.13.1",
+  "versao_do_pacote": "2.13.2",
   "versao_de_bl_ferramentas": "1.5.2",
   "congelado_em": "2026-09-27",
   "nota": "caminhos RELATIVOS A RAIZ DO PACOTE, que e a pasta onde este arquivo vive. A versao anterior gravava 'produto/...', que nao resolve no pacote extraido, e a conferencia passava por remover o prefixo — ou seja, validava uma lista paralela, nao a resolucao do manifesto.",
