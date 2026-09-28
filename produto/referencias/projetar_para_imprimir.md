@@ -127,6 +127,11 @@ o suporte ligado só para localizar balanço, e confirme que o único aviso é e
   plástico na camada de controle logo abaixo. Uma medida sem controle não diz se o leitor
   funciona.
 
+- **Fatie um arquivo por vez.** Cada fatiamento leva minutos e o dono fica esperando: confira
+  primeiro só o arquivo que ele vai imprimir. As outras variantes (família de tamanhos,
+  publicação) vêm depois, uma por comando, e só quando o pedido exigir. Regra completa na skill
+  `bambu-a1` (quarta regra).
+
 ## 8. Família de tamanhos
 
 - Tudo que encaixa fica em **valor absoluto**: folgas, rosca, pino, nervuras, espessuras.

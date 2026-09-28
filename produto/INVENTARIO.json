@@ -1,5 +1,5 @@
 {
-  "versao_do_pacote": "2.13.0",
+  "versao_do_pacote": "2.13.1",
   "versao_de_bl_ferramentas": "1.5.2",
   "congelado_em": "2026-09-27",
   "nota": "caminhos RELATIVOS A RAIZ DO PACOTE, que e a pasta onde este arquivo vive. A versao anterior gravava 'produto/...', que nao resolve no pacote extraido, e a conferencia passava por remover o prefixo — ou seja, validava uma lista paralela, nao a resolucao do manifesto.",
@@ -24,7 +24,7 @@
     "referencias/mapa_de_ferramentas.md": "e6a38e53d227f5dea09bd06497c221607eb5c5380ba0dbbb4459f9c1661595da",
     "referencias/mover_selecao.md": "1b40f5946ea2e9fe85547e08a44ac213d0cdd174875f11edb162c86ee3fe3195",
     "referencias/preencher_selecao.md": "b408d15baee6db14e41cbc49e48871388fa95e3f7c62840ac6d897ee29632dd5",
-    "referencias/projetar_para_imprimir.md": "57a816e9929be73930b701d1c6c2e5cd185baa45eac11279da4c1a5e5f049c60",
+    "referencias/projetar_para_imprimir.md": "5e0a58ee84574c76f0c640e2a42ba65e1dffe3744c4adcfe0f5e5996dcd71dc2",
     "referencias/recuperar_salvar_exportar.md": "e7b3f1728e07e36d8771b922269f3ffdb94844146fe28ea064d78ac708c3c858",
     "referencias/registro_de_trabalho.md": "fe6062f8d0980a1f30ba79f3ffed82b9dc050fd8c4347eeab502a259d57343ed",
     "referencias/render_de_conferencia.md": "91bd472cdc0ac139cb6d2bc6362dabd67682ed06d92790916ed2fa303ed62053",
