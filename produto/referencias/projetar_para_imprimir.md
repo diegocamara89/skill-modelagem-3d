@@ -15,6 +15,7 @@ Condição comum a todas as linhas medidas, salvo indicação: Bambu Lab A1, bic
 | Disco parado dentro de tubo (círculo em círculo, eixo vertical) | **0,10 por lado** | ⌀35 a 60; camada 0,2; os dois em pé | 0,25 folgado → 0,15 ainda folgado → **0,10 perfeito** (27/09/2026) |
 | Lingueta em entalhe (anti-giro) | **0,10 por lado** | lingueta 2,0 de largura, 1,3 de entrada; camada 0,2 | 0,40 → 0,20 → **0,10 perfeito** (27/09/2026) |
 | Rosca trapezoidal | **0,3 radial** (0,6 no diâmetro) | passo 3, flancos a 45°, profundidade 1,0, ⌀ nominal 40; camada 0,2; macho e porca em pé | "entra com folga", rosqueia à mão (26/09/2026) |
+| Gaveta deslizante com guia | **0,4 por lado e 0,4 em cima**; guia: nervura 9,0 × 1,5 no piso do vão, canal 9,8 × 2,0 no fundo da gaveta (0,4 por lado, 0,5 sobre a nervura) | nervura e canal param 5,2 antes da frente: o canal fechado ali é o batente ao empurrar; corpo impresso de costas, gaveta em pé; camada 0,2, fatiado em PLA | validada pelo dono (informado em 28/09/2026). Fonte: `Suporte desk DRCC/Codex/07_GAVETA_CORPO_UNICO`, medidas tiradas dos STLs |
 
 **Encaixe parado aceita folga menor que encaixe que gira.** O disco da segunda linha não
 se move depois de montado: folga pequena demais só pede um empurrão para entrar, não
