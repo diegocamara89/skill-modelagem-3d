@@ -24,7 +24,7 @@ Acrescente; **não reescreva o histórico**. Modelo:
 
 ```markdown
 ## 003 — preencher o vão entre os dois patamares
-data: 2026-09-07 23:40
+data: AAAA-MM-DD hh:mm
 operacao_id: 003
 
 ### Pedido
@@ -39,7 +39,7 @@ seleção capturada: faces [10]  centros em mundo: [[10.0, 20.0, 20.0]]
   (índices valem SÓ para esta geometria capturada)
 
 ### Operação e parâmetros
-receita: editar_localizado.md, parte 2
+receita: editar_localizado.md, preencher vão entre dois limites
 limites: a={x:20, z:20}  b={x:40, z:14}   faixa y: 0 a 40   base z: 10
 sobreposição: 1.0 — origem: um vigésimo do vão medido de 20. Em planta alcança a
   região protegida e a retessela, o que é esperado; em altura o topo é horizontal na
@@ -95,10 +95,8 @@ inaplicável, e tem que ser **medido de novo**, se:
 - os requisitos ou as referências mudaram;
 - a medição foi feita sobre outra geometria, outro objeto ou outro artefato.
 
-**Não há cache de medições nesta entrega.** Execute as verificações pertinentes ao
-resultado que será entregue. Não atribua a uma peça atual a aprovação de outra
-geometria — foi assim que evidência velha recebeu nome de aprovação em rodadas
-anteriores deste projeto.
+**Não há cache de medições.** Execute as verificações pertinentes ao resultado que será
+entregue. Não atribua a uma peça atual a aprovação de outra geometria.
 
 Câmera, iluminação e enquadramento **não** são alteração geométrica. Não trate uma
 imagem diferente como peça diferente, nem o contrário.
@@ -109,13 +107,13 @@ Nada de projeto de cliente: nomes, medidas, arquivos, capturas, logs ou caminhos
 Exemplos e cenários de teste usam **apenas geometria sintética**, com dimensões
 escolhidas para o exemplo.
 
-## Entrega atual
+## Revisão vigente da entrega
 
-Antes de repetir um achado ou pedir uma impressão, confira a revisão atual.
-As instruções devem apontar o arquivo efetivamente conferido (identidade, orientação
-e perfil quando aplicável). Identifique entregas substituídas como históricas, sem
-apagá-las automaticamente. Uma prévia aprovada precisa corresponder ao artefato final;
-resultado do fatiador não é confirmação física. Não reabra decisões já aprovadas.
+Antes de repetir um achado ou pedir uma impressão, confira a revisão vigente. As instruções
+devem apontar o arquivo efetivamente conferido (identidade, orientação e perfil quando
+aplicável). Identifique entregas substituídas como históricas, sem apagá-las
+automaticamente. Uma prévia aprovada precisa corresponder ao artefato final; resultado do
+fatiador não é confirmação física. Não reabra decisões já aprovadas.
 
 ## Registro mínimo aceitável
 

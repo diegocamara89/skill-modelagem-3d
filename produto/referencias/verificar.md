@@ -1,58 +1,57 @@
 # Verificar: o que cada medida prova, e o que ela não prova
 
-**Após deslocamento localizado**, confira também quem absorveu o movimento:
-`sessao_e_edicao_guiada.md`, seção 4, traz `verifica_deslocamento` e seus limites.
-Área e ângulos da transição são indicadores condicionais; malha fechada e altura
-correta do alvo não bastam. Não reprove uma quina intencional por ângulo alto nem
-aprove uma parede colapsada porque seus triângulos não têm área zero.
+**Validade geométrica e atendimento ao pedido são coisas diferentes**, e nenhuma delas
+se conclui pela aparência. As famílias de medida abaixo não se substituem, e cada uma
+tem de declarar o alcance do que mediu (seção "Declarar o alcance, sempre").
 
-A regra que organiza tudo aqui: **validade geométrica e atendimento ao pedido são
-coisas diferentes**, e nenhuma delas se conclui pela aparência.
+| Família | Pergunta | Ferramenta | O que NÃO prova |
+|---|---|---|---|
+| **topológica** (validade) | a malha é bem formada? | `mede_malha`, `check_mesh.py` | nada sobre a forma. Malha fechada pode ter a forma errada |
+| **de forma** | a superfície está onde foi combinado? | `mede_topo_em_pontos`, `secao_por_plano` | nada sobre validade de malha |
+| **de intenção** (atendimento) | atende ao requisito declarado? | `check_intent.py` | nada sobre imprimibilidade ou encaixe |
+
+Uma peça pode passar nas três e ainda assim não servir: nenhuma delas é aprovação
+para fabricação. **Preservação** do que não devia mudar é uma quarta pergunta, com
+ferramenta própria (seção "Preservação").
 
 ## Antes de criar outro teste
 
-Reutilize os verificadores e confira seus contratos, unidades e eixos. Em encaixes,
+**Reutilize** os verificadores e confira seus contratos, unidades e eixos. Meça o
+artefato exportado; parâmetros corretos não demonstram execução correta. Em encaixes,
 inspecione os dois componentes na montagem: não conclua ausência de uma feição por
-não encontrá-la onde esperava, nem exclua uma interface porque “encaixa por projeto”.
-Meça o artefato exportado; parâmetros corretos não demonstram execução correta.
+não encontrá-la onde esperava, nem exclua uma interface porque "encaixa por projeto".
 
-Um teste novo precisa aceitar um caso correto e detectar um defeito conhecido do
-requisito. Amostras e seções cobrem apenas suas posições. Envelopes conservadores
-só provam separação se contiverem todo o volume relevante durante o movimento;
-interseção entre envelopes pode ser falso positivo. Superfícies sem cruzamento
-não excluem contenção entre sólidos. Declare tolerância numérica separadamente da
-folga funcional e preserve margem de uso; evidência decisiva ausente não é aprovação.
+**Um teste novo** precisa aceitar um caso correto e detectar um defeito conhecido do
+requisito. Todo verificador precisa de controle positivo: ao conferir que algo **não**
+existe (furo não preenchido, gravação livre), meça também o que **tem** de existir
+(a parede junto ao furo, a camada abaixo da gravação). Zero sem controle pode ser um
+leitor que não lê nada.
 
-Antes de operações caras, ensaie uma entrada pequena e limite tempo, tamanho e,
+**Alcance da amostra.** Amostras e seções cobrem apenas suas posições. Envelopes
+conservadores só provam separação se contiverem todo o volume relevante durante o
+movimento; interseção entre envelopes pode ser falso positivo. Superfícies sem
+cruzamento não excluem contenção entre sólidos.
+
+**Tolerância e margem.** Declare a tolerância numérica separadamente da folga
+funcional e preserve margem de uso. Evidência decisiva ausente não é aprovação.
+
+**Operações caras.** Antes, ensaie uma entrada pequena e limite tempo, tamanho e,
 quando disponível, memória. Considere a expansão intermediária, não só as faces de
 entrada. Registre o processo da tarefa; confirme seu término antes de repetir uma
 chamada silenciosa ou demorada. Encerre apenas processos identificados da tarefa.
 
-Para impressão, separe geometria, fatiamento e uso físico. Um cupom deve responder
-uma dúvida restante e reproduzir a condição crítica da peça final. Reaproveite
-experiência física anterior com alcance declarado; não transfira aprovação para
-condições diferentes. Se o desenho eliminou o risco, retire o teste correspondente.
+**Impressão.** Separe geometria, fatiamento e uso físico. Um cupom deve responder uma
+dúvida restante e reproduzir a condição crítica da peça final: se ele sai limpo e a
+peça inteira sai com defeito, não reproduziu essa condição. Reaproveite experiência
+física anterior com alcance declarado; não transfira aprovação para condições
+diferentes. Se o desenho eliminou o risco, retire o teste correspondente. Recorte de
+cupom, mapa de balanço e conferência de G-code: skill `bambu-a1`, e os scripts
+`scripts/recorta_cupom.py` e `scripts/mapa_balanco.py`.
 
-**Cupom recortado da peça: primeiro reproduzir, depois corrigir.** Se o cupom sai limpo e a
-peça inteira sai com defeito, ele não reproduziu a condição crítica — só descartou o que foi
-mantido igual. Um recorte muda sem avisar: o tempo de cada camada (e com ele a ventoinha
-automática do fatiador), a altura dos suportes até a região, o que é impresso ao lado e o tempo
-decorrido até aquela camada. Medido num caso real: mesma cobertura de suporte na região, e
-ventoinha a 72% na peça contra 89% no cupom (camada de 22 s contra 13 s); a peça falhou e o
-cupom não. Antes de imprimir o cupom, comparar essas condições na camada crítica entre os dois
-G-codes (a skill da impressora tem o medidor). `scripts/recorta_cupom.py` faz o recorte por
-caixa em coordenadas da mesa, mantém a orientação e grava rótulo no topo plano.
-
-## As três famílias, que não se substituem
-
-| Família | Pergunta | Ferramenta | O que NÃO prova |
-|---|---|---|---|
-| **topológica** | a malha é bem formada? | `mede_malha`, `check_mesh.py` | nada sobre a forma. Malha fechada pode ter a forma errada |
-| **de forma** | a superfície está onde foi combinado? | `mede_topo_em_pontos`, `secao_por_plano` | nada sobre validade de malha |
-| **de intenção** | atende ao requisito declarado? | `check_intent.py` | nada sobre imprimibilidade ou encaixe |
-
-Uma peça pode passar nas três e ainda assim não servir: nenhuma delas é aprovação
-para fabricação.
+**Contato proposital deixa resíduo de malha.** Duas peças que encostam de propósito,
+com folga zero, dão interseção de 0,01 a 0,2 mm³ entre as malhas tesseladas. Isso é
+arredondamento, não interferência. Para decidir se uma feição nova toca a vizinha,
+**isole a região** (interseção com uma laje só onde a feição está) e exija 0,0000 lá.
 
 ## Verificação topológica
 
@@ -73,14 +72,28 @@ As contagens vêm **separadas de propósito**:
 | `faces_degeneradas` | **área nula**. MEDIDO: a união booleana produz 4 delas sem abrir nenhuma borda. "Sem borda aberta" não é "sem degeneração". **Atenção ao limiar, que difere entre as duas ferramentas:** `bl_ferramentas.mede_malha` usa `1e-9` e devolve o valor usado em `limite_de_area_usado`; `check_mesh.py` usa `1e-12`, fixo no fonte e não reportado. São **três ordens de magnitude** de diferença: uma peça com faces muito pequenas pode ser classificada de forma diferente pelas duas, e a concordância entre elas **não** é confirmação mútua. Numa peça normal as duas medem 0 e a diferença não decide nada — o aviso existe para o caso em que decide |
 | `n_componentes_conexos` | quantos corpos há de fato |
 
-Armadilha medida em M0, que vale para qualquer leitor de STL: **STL não compartilha
-vértices**. Sem soldar (`merge_vertices`), a adjacência de faces sai vazia e cada
-faceta vira uma região isolada. Numa peça de referência a contagem caiu de 32.550
-para 5.309 vértices depois de soldar. `check_mesh.py` já solda.
+Armadilha que vale para qualquer leitor de STL: **STL não compartilha vértices**. Sem
+soldar (`merge_vertices`), a adjacência de faces sai vazia e cada faceta vira uma
+região isolada. Numa peça de referência a contagem caiu de 32.550 para 5.309 vértices
+depois de soldar. `check_mesh.py` já solda.
 
-Outra, também de M0: **o status do kernel de malha não é oráculo de validade**. O
-construtor solda em silêncio e devolveu `Error.NoError` para uma malha com 99 arestas
-não-manifold. Confie nas contagens topológicas, não no status.
+Outra: **o status do kernel de malha não é oráculo de validade**. O construtor solda em
+silêncio e devolveu `Error.NoError` para uma malha com 99 arestas não-manifold. Confie
+nas contagens topológicas, não no status.
+
+## Furo passante: nenhuma medida decide
+
+Nenhum dos oito tipos de requisito decide passagem: o tipo `furo` mede **duas seções**,
+o que é amostragem, e ele mesmo diz isso no campo `o_que_isto_nao_diz` da própria
+saída — só que depois de medir, dentro do JSON, num requisito que sai `APROVADA`. Ler
+`furo_A: APROVADA` e concluir "o furo atravessa" é o erro a evitar.
+
+Se a passagem importa, diga que ela **não foi verificada** e ofereça o que dá para
+medir: `euler` e o número de componentes conexos em `check_mesh.py` (malha fechada,
+orientação consistente, 1 componente e `euler = −2` implicam dois túneis atravessando o
+sólido), e o `volume` comparado ao valor calculado assumindo passagem, que limita o
+material residual à tolerância declarada. Isso é dedução a partir de medida, não
+veredito de verificador, e tem que ser apresentado como tal.
 
 ## Verificação de forma: é ela que pega ranhura
 
@@ -115,33 +128,33 @@ exatamente **0,5**. Um defeito, um detector.
 Erro de método a evitar, também medido: **não** compare dois pontos vizinhos de cada
 lado do limite para achar "degrau". Numa superfície inclinada isso mede a inclinação
 — numa rampa de inclinação 0,3, amostras a ±0,01 davam "degrau" de 0,006, puro
-artefato.
+artefato. Compare sempre com o **esperado**.
 
-Inspeção independente, por seção:
-
-```python
-F.secao_por_plano("Peca", ponto=[0, 20, 0], normal=[0, 1, 0])
-```
-
-Trata aresta coplanar, vértice sobre o plano e ponto duplicado, e declara quantas
-faces coplanares ignorou. Prova **aquele plano**.
-
-Armadilha medida em M0, se você seccionar fora do Blender com `shapely`: é preciso
-**arredondar as coordenadas dos segmentos para 9 casas**, senão `polygonize` devolve
-zero polígonos sem erro nenhum — 646 segmentos, 0 polígonos. E `polygonize` já
-subtrai os furos da região de material: classificar furo por aninhamento 2D ingênuo
-erra. `secoes.py` resolve os dois casos.
+**Inspeção independente, por seção:** `F.secao_por_plano` prova **aquele plano**.
+Uso e campos de retorno que funcionam como oráculo: `editar_localizado.md`, seção 3.
+Se você seccionar fora do Blender com `shapely`, é preciso **arredondar as coordenadas
+dos segmentos para 9 casas**, senão `polygonize` devolve zero polígonos sem erro
+nenhum — 646 segmentos, 0 polígonos. E `polygonize` já subtrai os furos da região de
+material: classificar furo por aninhamento 2D ingênuo erra. `secoes.py` resolve os
+dois casos.
 
 ## Preservação: escolher a ferramenta certa
+
+**Após deslocamento localizado**, confira também quem absorveu o movimento:
+`sessao_e_edicao_guiada.md`, seção 4, traz `verifica_deslocamento` e seus limites.
+Área e ângulos da transição são indicadores condicionais; malha fechada e altura
+correta do alvo não bastam. Não reprove uma quina intencional por ângulo alto nem
+aprove uma parede colapsada porque seus triângulos não têm área zero.
 
 | Situação | Ferramenta | Motivo |
 |---|---|---|
 | há uma **referência** do estado anterior, em arquivo | **`check_intent.py`, tipo `regiao_intacta`** | é a única **exata**: recorta as duas peças pela caixa e mede o volume da **diferença simétrica**. Zero é zero, não amostra |
 | a operação retessela e não há referência em arquivo | `mede_topo_em_pontos` sobre a região | amostragem; o conjunto de vértices muda por retesselação sem a superfície mudar |
-| a operação não retessela (deslocamento puro) | `captura_regiao_protegida` + `compara_regiao_protegida` | compara posições **e área**, não índices. Área é o que separa retesselação de face removida |
+| a operação não retessela (deslocamento puro) | `captura_regiao_protegida` + `compara_regiao_protegida` | compara posições **e área**, não índices. Área é o que separa retesselação de face removida. Devolve `veredito`: `PRESERVADA` só com as duas medidas iguais; `ALTERADA` se a área mudar, ainda que o conjunto de posições seja idêntico; `INDETERMINADO` se a captura vier de versão que não media área |
 
-**Prefira `regiao_intacta` quando puder.** Basta exportar a peça original antes de
-editar e passá-la em `--referencia`:
+**Prefira `regiao_intacta` quando puder.** Exporte a peça original **antes** de editar
+(custa um comando e transforma "0,0 em 45 pontos" em "0,0 mm³ na caixa inteira") e
+passe-a em `--referencia`:
 
 ```bash
 python verificadores/check_intent.py --malha depois.stl --referencia antes.stl --requisitos req.json
@@ -153,67 +166,27 @@ python verificadores/check_intent.py --malha depois.stl --referencia antes.stl -
                  "tol_fracao": 1e-9}]}
 ```
 
-**A tolerância deste tipo é `tol_fracao`, e só ela.** O exemplo anterior usava
-`tol_mm3`, que o verificador **não lê** para `regiao_intacta`: o número estava ali sem
-participar da decisão. Uma revisão independente apontou. `tol_fracao` é a fração do
-volume da caixa que se admite divergir, e o padrão interno é `1e-9`.
+**A tolerância deste tipo é `tol_fracao`, e só ela**: a fração do volume da caixa que
+se admite divergir, com padrão interno `1e-9`. `tol_mm3` **não é lido** para
+`regiao_intacta`; declará-lo deixa um número que não participa da decisão.
 
-Cada tipo tem a sua, e passar a errada é passar um número que não decide nada:
-
-| `tipo` | Tolerância que o verificador lê | Valor que decide se você **não** declarar |
-|---|---|---|
-| `caixa` | `tol_mm` | 0,05 |
-| `distancia_entre_furos` | `tol_mm` | 0,2 |
-| `volume` | `tol_mm3` | `max(1,0; 1% do volume esperado)` |
-| `interferencia` | `tol_mm3` | 0,0 |
-| `furo` | `tol_pos_mm`, **`tol_mm`** (diâmetro), `circularidade_min` | 0,2 · **0,2** · 0,90 |
-| `regiao_intacta` | `tol_fracao` | 1e−9 |
-| `n_solidos`, `n_furos_no_plano` | **nenhuma**: contagem é exata | — |
-
-**Não declarar não é "sem margem": é aceitar a da terceira coluna.** Uma sessão limpa
-teve dois requisitos de furo aprovados por uma tolerância de diâmetro de 0,2 que ela
-não escolheu e que não estava escrita em lugar nenhum. Se o número importa, declare-o.
-
-**Atenção ao nome:** em `furo`, a tolerância de diâmetro **entra** como `tol_mm` e
-**sai** no relatório como `tol_diam_mm`. São o mesmo número com dois nomes.
-
-`scripts/valida_requisitos.py` confere isso e recusa tolerância que **este tipo** não
-lê; `--tipos` lista a tabela, os padrões e os nomes que mudam na saída.
-
-Esta tabela **não é transcrita**: `scripts/extrai_tolerancias.py` a extrai do fonte do
-verificador, e `scripts/testa_paridade_validador.py` reprova se a tabela do validador
-divergir da extraída. O motivo é concreto: a versão anterior era transcrita à mão, com
-o comentário "conferido no fonte tipo por tipo", e estava **errada** em `furo` — o
-validador recusava `tol_mm`, dizendo que o verificador não a lê, quando ele lê e
-**decide** com ela. O erro sobreviveu a uma rodada inteira de revisão porque estava
-protegido por uma afirmação, não por uma medida.
-
-**Códigos de saída**, para quem automatiza: `check_intent.py` sai **1** quando há
-requisito reprovado e **0** quando todos passam; `sweep_params.py` sai **1** com
-variante reprovada; `valida_requisitos.py` sai **1** em `FORMA_INVALIDA`. E
-`scripts/roda_blender.py` sai **1** em qualquer estado diferente de `OK` — mas
-**cuidado**: sem `--exigir CAMPO=VALOR`, ele considera `OK` qualquer relatório
-legível, inclusive um que diga `veredito_global: FALHOU`.
-
-Medido num ensaio independente: divergência **0,0 mm³** na região preservada, e
+Medido em ensaio independente: divergência **0,0 mm³** na região preservada, e
 **5.616,0 mm³** quando a mesma caixa foi apontada para o vão que **deveria** mudar —
-o que prova que o zero anterior era medida, não silêncio.
+o segundo número é o que prova que o zero é medida, não silêncio.
 
-Aviso sobre o próprio verificador: o cabeçalho do módulo, na linha 21, descreve
-`regiao_intacta` como "por amostragem". **Está desatualizado.** A implementação, na
-linha 325, diz e faz o contrário, e é ela que vale: *"Não usa amostragem de pontos nem
-ponto-dentro-do-sólido. […] recorta as duas peças pela caixa e mede o volume da
-diferença simétrica. Zero é zero, não amostra."* O arquivo não foi editado aqui de
-propósito: ele é cópia byte a byte da base estabilizada.
+Aviso sobre o próprio verificador: o cabeçalho de `check_intent.py`, na linha 21,
+descreve `regiao_intacta` como "por amostragem". **Está errado.** A implementação, na
+linha 361, diz e faz o contrário, e é ela que vale: não usa amostragem de pontos nem
+ponto-dentro-do-sólido; recorta as duas peças pela caixa e mede o volume da diferença
+simétrica. O arquivo é derivado da base, com alterações registradas em
+`verificadores/PROVENIENCIA.json`.
 
-Duas coisas que **não** provam preservação, e a segunda foi medida durante a
-construção desta receita:
+Coisas que **não** provam preservação:
 
 1. contar faces cujos vértices caem numa caixa — triângulo pode atravessar a caixa;
-2. comparar um conjunto **vazio** — a captura devolvia zero posições em silêncio e a
-   comparação ainda emitia veredito. Hoje as duas funções recusam conjunto vazio.
-
-Contagem de faces igual, ou dimensão externa igual, também não provam preservação.
+2. comparar um conjunto **vazio** — captura e comparação por posições recusam conjunto
+   vazio, porque zero posições com veredito é silêncio travestido de medida;
+3. contagem de faces igual, ou dimensão externa igual.
 
 ## Verificação de intenção
 
@@ -228,7 +201,7 @@ quem manda é `--malha`.
 ### O formato do arquivo de requisitos
 
 O arquivo é um **objeto** com a chave `requisitos`, nunca uma lista nua. Lista nua
-produz erro não tratado, e não `ESPEC_INVALIDA`:
+produz um **traceback não tratado** dentro do verificador, e não `ESPEC_INVALIDA`:
 
 ```json
 {"requisitos": [
@@ -237,21 +210,18 @@ produz erro não tratado, e não `ESPEC_INVALIDA`:
 ]}
 ```
 
-**Confira a forma antes de medir.** Passar uma lista nua — a leitura mais natural do
-formato — produz um **traceback não tratado** dentro do verificador, e não
-`ESPEC_INVALIDA`. O verificador é derivado da base, com alterações registradas em PROVENIENCIA.json; a guarda mora
-fora dele:
+**Confira a forma antes de medir.** A guarda mora fora do verificador:
 
 ```bash
 python scripts/valida_requisitos.py req.json
 python scripts/valida_requisitos.py --tipos     # lista tipos, campos e tolerâncias
 ```
 
-Ele responde **uma** pergunta: o arquivo está na forma que o verificador espera. Forma
+Ela responde **uma** pergunta: o arquivo está na forma que o verificador espera. Forma
 aceitável não diz nada sobre a peça. Medido, com controle positivo: arquivo bem
 formado sai `OK`; lista nua, tipo inexistente, campo faltando, identificador repetido,
-lista vazia e medida sem tolerância saem `FORMA_INVALIDA` com o motivo. Ele também diz
-quais tipos exigem `--referencia`.
+lista vazia e medida sem tolerância saem `FORMA_INVALIDA` com o motivo. Ela também diz
+quais tipos exigem `--referencia`, e recusa tolerância que **o tipo** não lê.
 
 Todo requisito precisa de `id` e `tipo`. **Identificadores repetidos são recusados.**
 Os tipos disponíveis, com os campos que cada um exige:
@@ -264,20 +234,49 @@ Os tipos disponíveis, com os campos que cada um exige:
 | `furo` | `eixo`, `plano`, `posicao` com 2, `diametro` | um furo em posição e diâmetro |
 | `n_furos_no_plano` | `eixo`, `plano`, `valor` | quantos furos naquele plano |
 | `distancia_entre_furos` | `eixo`, `plano`, `valor` | distância entre dois furos |
-| `regiao_intacta` | `caixa_min` com 3, `caixa_max` com 3, `tol_fracao`, e `--referencia` na chamada | ver abaixo: é a medida **exata** de preservação |
+| `regiao_intacta` | `caixa_min` com 3, `caixa_max` com 3, `tol_fracao`, e `--referencia` na chamada | medida **exata** de preservação (seção "Preservação") |
 | `interferencia` | `entre` com dois caminhos, **ou** `com` com um | dois corpos ocupando o mesmo espaço. `entre` compara duas partes; `com` compara a malha principal com outra |
 
+Nome do requisito e tipo têm de bater: `n_solidos` conta **corpos desconexos**, não
+furos. Uma placa maciça, sem furo nenhum, tem um corpo e passaria num requisito
+chamado `dois_furos` do tipo `n_solidos`. Quem conta furos é `n_furos_no_plano`, e ele
+precisa do plano onde medir.
+
+### Tolerâncias
+
 Tolerâncias aceitas, conforme o tipo: `tol_mm`, `tol_mm3`, `tol_pos_mm`,
-`tol_fracao`, `circularidade_min`.
+`tol_fracao`, `circularidade_min`. Cada tipo tem a sua, e passar a errada é passar um
+número que não decide nada:
 
-**Tipo de contagem não precisa de tolerância**, e exigir uma seria erro: `n_solidos` e
-`n_furos_no_plano` comparam inteiros, e contar três corpos é exato. Medir 30 mm não é.
-É a mesma regra do método — igualdade é legítima em contagem inteira e proibida em
-medida — e o validador deste pacote a violou na primeira versão, recusando um
-requisito que o verificador aceita.
+| `tipo` | Tolerância que o verificador lê | Valor que decide se você **não** declarar |
+|---|---|---|
+| `caixa` | `tol_mm` | 0,05 |
+| `distancia_entre_furos` | `tol_mm` | 0,2 |
+| `volume` | `tol_mm3` | `max(1,0; 1% do volume esperado)` |
+| `interferencia` | `tol_mm3` | 0,0 |
+| `furo` | `tol_pos_mm`, **`tol_mm`** (diâmetro), `circularidade_min` | 0,2 · **0,2** · 0,90 |
+| `regiao_intacta` | `tol_fracao` | 1e−9 |
+| `n_solidos`, `n_furos_no_plano` | **nenhuma**: contagem é exata | — |
 
-Estados possíveis por requisito, e eles não colapsam. **Esta lista é a do
-verificador**, conferida no fonte:
+**Não declarar não é "sem margem": é aceitar a da terceira coluna** (por exemplo, um
+requisito de furo passa com diâmetro fora por até 0,2 mm sem que ninguém tenha escolhido
+esse número). Se o número importa, declare-o.
+
+Em `furo`, a tolerância de diâmetro **entra** como `tol_mm` e **sai** no relatório como
+`tol_diam_mm`: o mesmo número com dois nomes.
+
+**Tipo de contagem não precisa de tolerância**, e exigir uma seria erro:
+`n_solidos` e `n_furos_no_plano` comparam inteiros. Igualdade é legítima em contagem
+inteira e proibida em medida.
+
+**Paridade.** Esta tabela **não é transcrita**: `scripts/extrai_tolerancias.py` a
+extrai do fonte do verificador, e `scripts/testa_paridade_validador.py` reprova se a
+tabela do validador divergir da extraída. Não a transcreva à mão: uma tabela conferida
+por afirmação, e não por medida, erra sem ser notada.
+
+### Estados e códigos de saída
+
+Estados possíveis por requisito, e eles não colapsam. Esta lista é a do verificador:
 
 | Estado | Significa |
 |---|---|
@@ -296,6 +295,13 @@ informativo. Em nenhum dos casos se preenche com valor favorável, zero ou estim
 Falha operacional — permissão, disco, dependência ausente — **nunca** vira reprovação
 geométrica. Ela tem código e etapa próprios, e a variante não entra na contagem de
 reprovadas por geometria.
+
+**Códigos de saída**, para quem automatiza: `check_intent.py` sai **1** quando há
+requisito reprovado e **0** quando todos passam; `sweep_params.py` sai **1** com
+variante reprovada; `valida_requisitos.py` sai **1** em `FORMA_INVALIDA`. E
+`scripts/roda_blender.py` sai **1** em qualquer estado diferente de `OK` — mas
+**cuidado**: sem `--exigir CAMPO=VALOR`, ele considera `OK` qualquer relatório
+legível, inclusive um que diga `veredito_global: FALHOU`.
 
 ## Quais verificações são exigidas
 
@@ -325,10 +331,10 @@ Verificação dispensada **não é** verificação aprovada.
 
 ## Exportação não é verificação
 
-Exportar com sucesso, inclusive em 3MF, não prova validade geométrica. MEDIDO em M0:
-na variante com tangência, o escritor de 3MF **aceitou** a malha, e quem reprovou foi
-o portão de malha. A ideia de que o formato fechado recusa o que o STL aceita **não
-se sustenta** nesta versão da biblioteca.
+Exportar com sucesso, inclusive em 3MF, não prova validade geométrica. MEDIDO: na
+variante com tangência, o escritor de 3MF **aceitou** a malha, e quem reprovou foi o
+portão de malha. A ideia de que o formato fechado recusa o que o STL aceita **não se
+sustenta** nesta biblioteca.
 
 Confira sempre o artefato entregue, e não a peça que você acha que exportou:
 
@@ -346,9 +352,8 @@ Por isso toda geometria criada ou visivelmente alterada passa por
 **Verificador ter passado não dispensa o render.** Só se pula em caso nomeado lá, e o
 motivo entra no relatório junto das verificações determinísticas que rodaram.
 
-Medido em 17/09/2026: peça com bolso raso e furo cego **só na face de baixo** saiu como
-bloco liso na vista isométrica e mostrou os dois na vista oposta. Uma imagem só teria
-aprovado.
+Medido: peça com bolso raso e furo cego **só na face de baixo** saiu como bloco liso na
+vista isométrica e mostrou os dois na vista oposta. Uma imagem só teria aprovado.
 
 E o inverso também vale: **a imagem não decide nada**. Suspeita levantada no render vira
 medida — `check_mesh.py`, seção, distância — antes de virar afirmação. As duas direções
@@ -361,36 +366,9 @@ pontos amostrados; uma seção prova aquele plano; uma caixa prova aquela caixa.
 Conclusão sem alcance declarado não vale, e "passou em tudo" sem dizer em quê é a
 forma mais comum de aprovar sem evidência.
 
-## Impressão: mapa de balanço antes de fatiar
+## Impressão e G-code
 
-`scripts/mapa_balanco.py arquivo.3mf [--limiar 30]` mostra, por corpo, a área voltada
-para baixo e no ar por faixa de inclinação (medida da horizontal: 0 = teto) e a área plana
-de contato com a mesa. O fatiador apoia o que fica **abaixo** do limiar.
-
-- Contato 0,0 mm² = a peça flutua e imprime inteira sobre suporte. Pode ser intencional
-  (flor deitada), mas tem de ser decisão, não surpresa: cupons de colar com 0 mm² de
-  contato tinham 2 mm de parede na 1ª camada.
-- Comparar balanço entre alternativas decide orientação e se vale separar uma feição:
-  medir a mesma feição solta e presa à peça antes de decidir.
-
-Conferência depois de fatiar: skill `bambu-a1`, `scripts/extrusao_por_objeto.py`.
-Identidade de cada corpo antes de medir: `inspecionar_e_selecionar.md`.
-
-## Contato proposital, controle positivo e centro real
-
-Três armadilhas medidas em 26/09/2026, conferindo montagem e G-code:
-
-- **Contato proposital deixa resíduo de malha.** Duas peças que encostam de propósito
-  (tampa num cone de apoio, com folga zero) dão interseção de 0,01 a 0,2 mm³ entre as
-  malhas tesseladas. Isso é arredondamento, não interferência. Para decidir se uma feição
-  nova toca a vizinha, **isole a região** (interseção com uma laje só onde a feição está)
-  e exija 0,0000 lá. O resíduo do contato fica fora da conta.
-- **Todo verificador precisa de controle positivo.** Ao conferir que um furo ou uma
-  gravação não saiu preenchido no G-code, meça também o que **tem** de ter plástico: a
-  parede junto ao furo, ou a camada logo abaixo da gravação. Zero sem controle pode ser um
-  leitor que não lê nada.
-- **Em peça assimétrica, o centro do furo não é o centro da caixa.** Um disco em "D"
-  centrado pela caixa envolvente pôs o furo 5 mm fora de onde o verificador procurava, e
-  acusou "extrusão dentro do furo" em todas as placas. Calcule a posição da feição pela
-  geometria que a define. O leitor de G-code também precisa interpolar arcos `G2`/`G3`.
-
+Mapa de balanço antes de fatiar (`scripts/mapa_balanco.py`), conferência depois de
+fatiar e recorte de cupom: skill `bambu-a1`. Identidade de cada corpo antes de medir:
+`inspecionar_e_selecionar.md`. Em peça assimétrica, calcule a posição de uma feição
+pela geometria que a define, não pelo centro da caixa envolvente.

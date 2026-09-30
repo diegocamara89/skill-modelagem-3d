@@ -5,17 +5,20 @@ Rota para: "que folga eu uso?", "como prendo isso num tampo?", "vai imprimir sem
 conferida pelo operador. **Todo valor vale nas condições declaradas**; fora delas é
 `A_CALIBRAR`, e o que se diz é o que seria preciso medir.
 
-Condição comum a todas as linhas medidas, salvo indicação: Bambu Lab A1, bico 0,4, PETG.
+Condição comum a todas as linhas medidas, salvo indicação: Bambu Lab A1, bico 0,4, PETG Masterprint 240 °C.
 
 ## 1. Folgas calibradas
 
 | Encaixe | Folga | Condições | Resultado |
 |---|---|---|---|
-| Pino em furo | **0,3 no diâmetro** (0,15 por lado) | furo ⌀3,2 × 5,0, pino ⌀2,9 × 4,7; camada 0,08; pino deitado a 30°, furo em pé | "encaixe perfeito" (23/09/2026) |
-| Disco parado dentro de tubo (círculo em círculo, eixo vertical) | **0,10 por lado** | ⌀35 a 60; camada 0,2; os dois em pé | 0,25 folgado → 0,15 ainda folgado → **0,10 perfeito** (27/09/2026) |
-| Lingueta em entalhe (anti-giro) | **0,10 por lado** | lingueta 2,0 de largura, 1,3 de entrada; camada 0,2 | 0,40 → 0,20 → **0,10 perfeito** (27/09/2026) |
-| Rosca trapezoidal | **0,3 radial** (0,6 no diâmetro) | passo 3, flancos a 45°, profundidade 1,0, ⌀ nominal 40; camada 0,2; macho e porca em pé | "entra com folga", rosqueia à mão (26/09/2026) |
-| Gaveta deslizante com guia | **0,4 por lado e 0,4 em cima**; guia: nervura 9,0 × 1,5 no piso do vão, canal 9,8 × 2,0 no fundo da gaveta (0,4 por lado, 0,5 sobre a nervura) | nervura e canal param 5,2 antes da frente: o canal fechado ali é o batente ao empurrar; corpo impresso de costas, gaveta em pé; camada 0,2, fatiado em PLA | validada pelo dono (informado em 28/09/2026). Fonte: `Suporte desk DRCC/Codex/07_GAVETA_CORPO_UNICO`, medidas tiradas dos STLs |
+| Pino em furo | **0,3 no diâmetro** (0,15 por lado) | furo ⌀3,2 × 5,0, pino ⌀2,9 × 4,7; camada 0,08; pino deitado a 30°, furo em pé | encaixe perfeito |
+| Disco parado dentro de tubo (círculo em círculo, eixo vertical) | **0,10 por lado** | ⌀35 a 60; camada 0,2; os dois em pé | perfeito (0,15 ainda folgado) |
+| Lingueta em entalhe (anti-giro) | **0,10 por lado** | lingueta 2,0 de largura, 1,3 de entrada; camada 0,2 | perfeito (0,20 folgado) |
+| Rosca trapezoidal | **0,3 radial** (0,6 no diâmetro) | passo 3, flancos a 45°, profundidade 1,0, ⌀ nominal 40; camada 0,2; macho e porca em pé | entra com folga, rosqueia à mão |
+| Gaveta deslizante com guia | **0,4 por lado e 0,4 em cima**; guia: nervura 9,0 × 1,5 no piso do vão, canal 9,8 × 2,0 no fundo da gaveta (0,4 por lado, 0,5 sobre a nervura) | nervura e canal param 5,2 antes da frente: o canal fechado ali é o batente ao empurrar; corpo impresso de costas, gaveta em pé; camada 0,2; validada em PLA e repetida em PETG (organizador Skadis, 30/09/2026) | validada |
+| Tampa deslizante em trilhos | **0,15 por lado** na lateral, **0,2 em cima** | tampa deitada, caixa de pé; camada 0,2 (a folga vertical é múltiplo da camada) | corre sem jogo |
+| Trilho rabo de andorinha a 45° (base 5, ponta 10, altura 2,5) | **0,15** no trilho de baixo, **0,2** nos laterais | módulo corre da frente para trás; peças de costas na mesa; camada 0,2 | encaixa firme, sem jogo |
+| Trava de lingueta (estalo) | lingueta 1,2 de espessura, ressalto 1,0 com rampa de 45° atrás, fenda 0,8 dos lados | lingueta na parede de cima do módulo; camada 0,2 | estala e segura |
 
 **Encaixe parado aceita folga menor que encaixe que gira.** O disco da segunda linha não
 se move depois de montado: folga pequena demais só pede um empurrão para entrar, não
@@ -24,6 +27,18 @@ de apertar, diga qual das duas é, e por que a outra não muda.
 
 Abaixo de 0,10 por lado a primeira camada, mais larga, tende a prender, mesmo com
 `elefant_foot_compensation` no perfil.
+
+**Medir encaixe no conjunto montado.** Use a transformação real dos objetos na
+configuração montada, não a posição aberta.
+
+- `trimesh.proximity.signed_distance`: **positivo = dentro**. Interferência é `d > 0`; folga
+  é `|d|` com `d < 0`. Lido ao contrário, "vê-se" interferência onde não há.
+- **Encaixe conformado:** meça a folga padrão da peça (mediana das distâncias onde as partes
+  se aproximam no conjunto montado) e desenhe a calha como a feição do outro lado dilatada
+  por essa folga, ajustando até a folga mínima medida bater. Ajuste de círculo por mínimos
+  quadrados errou o centro numa saliência em U.
+- Folga de peça articulada impressa já montada (0,3 a 0,4 mm) vira "suporte" no fatiador:
+  resolva no fatiador (bloqueador, suporte só na mesa), não na geometria.
 
 ## 2. Prender peça num tampo ou chapa: rosca e porca, não garra
 
@@ -81,23 +96,40 @@ Peça roscada gerada assim sai só em STL; não há STEP.
 
 | feição | falhou | imprimiu |
 |---|---|---|
-| aro de óculos (parede quase vertical) | 0,63 mm — não fechou | 1,09 mm |
-| elo de colar | 0,30 mm | 0,9 mm contínuo; 1,7 escolhido pela estética |
-| haste de óculos | 0,91 mm — quebrou ao tirar o suporte | 2,09 mm, presa à cabeça |
+| parede fina quase vertical (aro) | 0,63 mm — não fechou | 1,09 mm |
+| feição fina contínua (elo) | 0,30 mm | 0,9 mm |
+| haste fina presa por um lado | 0,91 mm — quebrou ao tirar o suporte | 2,09 mm, presa à peça |
 
 Vale só nessas condições. `wall_generator = arachne` faz parte da condição: o *classic* só
 faz filete inteiro e some com feição de 2,6 filetes sem avisar.
 
+**Engrossar feição fina de uma malha até o mínimo:** `scripts/piso_espessura.py V.npy F.npy
+--alvo 0.9 --saida X`. Os valores da tabela acima saíram assim.
+
+1. Mede a espessura em **todos** os vértices (raio para dentro ao longo de −normal).
+2. Separa feição fina de **vinco de relevo**: vinco também dá raio curto, mas o material em
+   volta é grosso. Só conta como fino se a **mediana** da espessura dos vizinhos num raio
+   (padrão 1,5 mm) também estiver abaixo do alvo.
+3. Desloca pela **magnitude escalar** suavizada ao longo da normal. **Nunca suavize o
+   vetor**: numa lâmina as duas faces têm normais opostas e a média se anula.
+4. Taubin (λ 0,5 / μ −0,53) só onde mexeu, +2 anéis.
+
+**Limite do filtro:** o raio tem de ser **menor** que a feição. Em feição pequena a
+vizinhança pega o miolo grosso e descarta a feição como vinco: reduza `--raio-relevo` e
+confira no render quais vértices mexeram.
+
 ## 5. Feição delicada: presa à peça é melhor que avulsa
 
-O óculos preso ao rosto é parede quase vertical e se sustentou sozinho. Avulso, precisou de
-placa de base e 27 pilares para ter contato com a mesa, e saiu inutilizável. Antes de
-separar uma feição para imprimir à parte, meça o balanço dela **no lugar**
-(`scripts/mapa_balanco.py`).
+Feição quase vertical presa à peça se sustenta sozinha; separada, pede base e pilares e pode
+sair inutilizável. Antes de separar uma feição para imprimir à parte, meça o balanço dela
+**no lugar** (`scripts/mapa_balanco.py arquivo.3mf [--limiar 30]`: por corpo, área voltada
+para baixo por faixa de inclinação, medida da horizontal, e área de contato com a mesa).
+Contato de 0,0 mm² quer dizer que a peça flutua e imprime inteira sobre suporte: pode ser
+intencional, mas tem de ser decisão.
 
-Quando a peça é mesmo avulsa, escolha a orientação que **não gera interface de suporte**:
-das três flores, a que soldou foi a única com interface; a inclinada a 30° não teve
-nenhuma e saiu no alicate. Critério de suporte: skill `bambu-a1`, `references/suportes.md`.
+Quando a peça é mesmo avulsa, escolha a orientação que **não gera interface de suporte**: o
+que solda é a interface, não a quantidade de suporte. Critério de suporte: skill `bambu-a1`,
+`references/suportes.md`.
 
 ## 6. Rebaixo para o dedo e outros negativos sem suporte
 
@@ -108,7 +140,13 @@ nenhuma e saiu no alicate. Critério de suporte: skill `bambu-a1`, `references/s
 | **gota**: rebaixo de **1,4** de fundo, ~7 de largura na boca, paredes a 45°, fundo em ponte de ≤ 4,4 | **aprovado** |
 
 Com a face rebaixada virada para a mesa, parede a 45° fecha 0,2 por camada e não pede
-suporte. Fundo plano vira ponte: curta (≤ ~5 mm) sai bem; longa, não. Com `enable_support`
+suporte. Fundo plano vira ponte: curta (≤ ~5 mm) sai bem; longa, não. Ponte longa em PETG tem receita
+própria (skill `bambu-a1`, `references/ponte-e-teto.md`).
+
+**Ranhura estreita (< 2 mm) sempre em pé, nunca como teto.** Ranhura de 1,9 mm impressa
+deitada saiu com material preso dentro e travou o encaixe. Oriente a peça para as paredes da
+ranhura ficarem verticais; se o resto da peça criar balanço nessa orientação, faça esse
+balanço a 45°. Com `enable_support`
 ligado, o fatiador põe interface de suporte dentro de um rebaixo de fundo plano. Fatie com
 o suporte ligado só para localizar balanço, e confirme que o único aviso é essa ponte.
 
@@ -127,11 +165,6 @@ o suporte ligado só para localizar balanço, e confirme que o único aviso é e
 - **Confira no G-code:** pontos dentro da gravação sem plástico na última camada, e com
   plástico na camada de controle logo abaixo. Uma medida sem controle não diz se o leitor
   funciona.
-
-- **Fatie um arquivo por vez.** Cada fatiamento leva minutos e o dono fica esperando: confira
-  primeiro só o arquivo que ele vai imprimir. As outras variantes (família de tamanhos,
-  publicação) vêm depois, uma por comando, e só quando o pedido exigir. Regra completa na skill
-  `bambu-a1` (quarta regra).
 
 ## 8. Família de tamanhos
 
@@ -155,13 +188,20 @@ o suporte ligado só para localizar balanço, e confirme que o único aviso é e
 - Guarde cada versão (`saida/vN/`, e a malha anterior no Blender como `.ANTES_vN`); nunca
   sobrescreva.
 
-## 10. Peça de terceiros: licença antes de planejar publicação
+## 10. Peça de terceiros: licença lida na fonte original
 
-Antes de propor "adaptar e publicar", leia a licença do modelo de origem. A Standard
-Digital File License do MakerWorld proíbe distribuir derivados, inclusive remix. O caminho
-foi projetar do zero a partir dos requisitos: mecanismo, folgas e medidas próprias, crédito
-como "inspirado em". Isso não é parecer jurídico; diga ao dono o que a licença diz e deixe
-a decisão com ele.
+Antes de excluir, adaptar ou publicar uma peça de outro autor, abra a página do **autor
+original** e leia a licença lá. Não herde a licença do arquivo por onde a peça chegou.
+
+- Muitas peças funcionais são abertas: o Skadis T-Clip System (Line Arc Line, Printables
+  256896) é **CC BY 4.0**, com remix e uso comercial permitidos e crédito obrigatório. Pode ir
+  dentro do arquivo publicado, com o crédito no texto.
+- A Standard Digital File License (SDFL) do MakerWorld proíbe distribuir o arquivo e derivados,
+  inclusive remix. Aí o caminho é projetar do zero a partir dos requisitos (mecanismo, folgas e
+  medidas próprias) e dar crédito como "inspirado em".
+
+Isso não é parecer jurídico: diga ao dono o que a licença diz, com o link, e deixe a decisão
+com ele.
 
 ## 11. Grade de nervuras: rigidez, furos e o arquivo que vai para o fatiador
 
@@ -179,3 +219,33 @@ a decisão com ele.
   (`process=False` no trimesh) fez o fatiador fechar furos de parafuso — até num bloco simples
   com furo. Solde (`merge_vertices`) antes de gravar e confira cada furo e fenda no G-code,
   em todas as camadas, antes de entregar (receita na skill `bambu-a1`).
+
+## 12. Reaproveitar mecanismos antes de inventar
+
+Para encaixes ou mecanismos, procure primeiro referências existentes e evidência de
+uso compatível antes de criar outra solução ou propor um cupom. Prefira arquivos já
+fornecidos e peças que o usuário usa; amplie a busca se faltar referência adequada.
+Popularidade, download ou malha fechada não equivalem a validação funcional.
+
+| Função necessária | Construção a considerar | Limite |
+|---|---|---|
+| orientar deslizamento | guia e ranhura correspondentes | não garantem retenção contra retirada |
+| limitar fechamento e esconder folga | frente alargada ou ombro | não impedem saída no sentido oposto |
+| impedir separação numa direção | colar, ressalto ou trava | conferir montagem, curso permitido e resistência separadamente |
+| eliminar teto difícil de imprimir | separar corpo e tampa/bandeja | acrescenta interface de montagem a conferir |
+
+Estas são opções de construção, não produtos certificados. Inspecione os dois lados
+da interface no referencial de montagem. Preserve as condições relevantes ao adaptar:
+perfil, folga, engate, espessura, orientação de impressão, material/processo e carga.
+Não escale automaticamente uma folga nem transfira aprovação para a parte modificada.
+
+No registro do trabalho, use uma ficha curta: **função → construção → origem/licença
+→ evidência → condições preservadas/alteradas → limite e próxima verificação**.
+Diferencie geometria nominal, uso relatado e medição física; registre o que cada um
+sustenta. Reutilize arquivos conforme a licença; refazer a geometria não dispensa
+conferir os termos aplicáveis (caso medido: seção 10 deste arquivo). Referências
+privadas permanecem fora do pacote.
+
+Experiência anterior pode reduzir ou dispensar cupons quando cobre a incerteza atual.
+Se mudou uma condição crítica, teste apenas essa diferença, com alcance declarado;
+não revalide automaticamente tudo nem chame a adaptação inteira de validada.

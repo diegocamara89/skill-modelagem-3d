@@ -1,99 +1,72 @@
 ---
 name: modelagem-3d
-description: Use quando o pedido envolver criar, inspecionar, editar ou verificar geometria 3D — criar peça paramétrica por código, abrir e inspecionar malha, orientar seleção no Blender, deslocar região delimitada, preencher vão entre limites, conferir malha e junção, desfazer, salvar ou exportar. TRIGGERS (PT) modelar, criar peça, geometria, malha, STL, 3MF, Blender, selecionar face, rampa, preencher vão, região protegida, não-manifold, exportar STL, desfazer no Blender, conferir malha. TRIGGERS (EN) model this part, mesh, select face, fill gap, ramp, non-manifold, export STL, undo in Blender.
+description: Use quando o pedido envolver criar, inspecionar, editar ou verificar geometria 3D — criar peça paramétrica por código, abrir e inspecionar malha, orientar seleção no Blender, editar pelas letras apontadas na tela, deslocar região delimitada, preencher vão entre limites, conferir malha e junção, projetar folga e encaixe para imprimir, desfazer, salvar ou exportar. TRIGGERS (PT) modelar, criar peça, geometria, malha, STL, 3MF, Blender, letras na tela, selecionar face, rampa, preencher vão, região protegida, não-manifold, folga, encaixe, exportar STL, desfazer no Blender, conferir malha. TRIGGERS (EN) model this part, mesh, select face, fill gap, ramp, non-manifold, clearance, export STL, undo in Blender.
 ---
 
 # Modelagem 3D — receitas para executar e conferir
 
-**Pacote 2.10.0**, com `scripts/bl_ferramentas.py` na **versão 1.5.2** e
-`scripts/edicao_guiada.py` na **versão 1.0.0**. Os
-números são independentes: o do pacote muda a cada correção em qualquer arquivo, o da
-biblioteca só quando ela muda. Ambos estão em `INVENTARIO.json`, junto do hash de cada
-arquivo, e é ali que se confere qual versão está em mãos.
+Receitas com chamadas testadas, não doutrina. Use a referência da rota, execute o que está
+escrito e **meça** o resultado. Nenhuma etapa aqui é concluída por aparência.
 
-**Onde conferir a versão, e onde não dá.** `bl_ferramentas.confere_versao("1.5.2")` só
-roda **dentro do Blender**: o módulo importa `bpy` e `bmesh`, e no Python do hospedeiro
-ele morre com `ModuleNotFoundError: No module named 'bmesh'`. Uma sessão limpa bateu
-nisso no primeiro passo executável deste documento e teve que decidir sozinha que a
-verificação não se aplicava. Então:
+Versões do pacote e das bibliotecas: só em `INVENTARIO.json`, com o hash de cada arquivo.
+Dentro do Blender, `bl_ferramentas.confere_versao("<versão do inventário>")` recusa versão
+errada; no Python do hospedeiro o módulo não importa (`No module named 'bmesh'`): leia o
+inventário.
 
-| Onde você está | Como conferir |
-|---|---|
-| dentro do Blender | `bl_ferramentas.confere_versao("1.5.2")`, que recusa em vez de deixar descobrir pelo resultado |
-| no Python do hospedeiro (rota de **criar**, verificadores, validação) | leia `versao_de_bl_ferramentas` em `INVENTARIO.json`. A rota de criar não carrega `bl_ferramentas.py`, e um descasamento de versão dela não afeta essa rota |
+## Conectar ao Blender, por agente
 
-Este pacote não é doutrina: são receitas com chamadas testadas. Use a referência da
-rota, execute o que está escrito e **meça** o resultado. Nenhuma etapa aqui é
-concluída por aparência.
+A sessão aberta do Blender atende no socket **127.0.0.1:9876** (complemento MCP do Blender).
+Os scripts desta skill falam com ele por `scripts/mcp_blender.py` e servem a qualquer agente
+com terminal: `python scripts/sessao_blender.py --diagnosticar` confere a conexão. Não escreva
+outro cliente de socket.
 
-## Conectar ao Blender aberto: MCP específico primeiro
+**Claude Code.** As ferramentas `mcp__Blender__*` podem vir diferidas: carregue pelo
+`ToolSearch` (`execute_blender_code`, `get_objects_summary`, `get_screenshot_of_area_as_image`,
+`render_viewport_to_path`). Antes de editar, consulte `bpy.data.filepath`, `bpy.data.is_dirty`,
+objeto ativo e modo. A rota por letras usa o socket pelos scripts.
 
-Descubra as ferramentas do Blender antes de tentar controlar o desktop. No Codex
-com ferramentas diferidas, procure em `ALL_TOOLS` por nome/descrição contendo
-`blender`; se houver `tool_search`, use a descoberta fornecida pelo ambiente.
-Não conclua que o MCP está ausente apenas porque não aparece na lista inicial.
+**Codex.** Com ferramentas diferidas, procure em `ALL_TOOLS` por nome ou descrição contendo
+`blender`; se houver `tool_search`, use a descoberta do ambiente. Não conclua que o MCP está
+ausente só porque não aparece na lista inicial.
 
-1. Use a ferramenta descoberta `get_scene_info` (nesta integração,
-   `mcp__blender_community__get_scene_info`) com `user_prompt` igual ao pedido real
-   do usuário, sem substituir por um plano inventado. Confira a cena retornada.
-2. Para verificar o contexto antes de carregar/editar, use
-   `execute_blender_code` para consultar `bpy.data.filepath`, `bpy.data.is_dirty`,
-   objeto ativo e modo. Preserve trabalho não salvo. Para acompanhar marcações,
-   use `get_viewport_screenshot` e inspecione a imagem retornada.
-3. Continue pelo MCP específico quando responder. Os nomes e argumentos reais
-   vêm da descrição das ferramentas, não de suposição. No Codex, uma chamada
-   descoberta pode ser executada por `functions.exec` usando `tools.<nome>`.
-4. Se a ferramenta específica não estiver disponível ou falhar, use o diagnóstico
-   local já fornecido em `scripts/sessao_blender.py --diagnosticar`, conforme
-   `referencias/sessao_e_edicao_guiada.md`. Não escreva outro cliente de socket.
+1. Use `get_scene_info` (nesta integração, `mcp__blender_community__get_scene_info`) com
+   `user_prompt` igual ao pedido real do usuário. Confira a cena retornada.
+2. Para o contexto antes de carregar ou editar, `execute_blender_code` com `bpy.data.filepath`,
+   `bpy.data.is_dirty`, objeto ativo e modo; para acompanhar marcações,
+   `get_viewport_screenshot`. Uma chamada descoberta pode ser executada por `functions.exec`
+   usando `tools.<nome>`.
+3. `cua.getState()` com `apps: []`, métodos nativos ausentes ou `Codex auth token is
+   unavailable` são do conector de computador/navegador, não do MCP do Blender. Não oriente
+   logout, reinício ou reinstalação do Blender por causa deles; relate qual conexão foi testada.
 
-`cua.getState()` com `apps: []`, métodos nativos ausentes ou
-`Codex auth token is unavailable` descrevem o conector de computador/navegador;
-não demonstram falha do MCP do Blender. Não repetir resets nem orientar logout,
-reinício ou reinstalação do Blender com base apenas nesses erros. Relate qual
-conexão foi efetivamente testada; usar o MCP direto não restaura o token do `cua`.
-Se ambos os caminhos falharem, investigue complemento/servidor a partir do erro
-concreto, preservando a cena e sem prometer reparo de autenticação não verificado.
+**Antigravity.** Não tem MCP do Blender configurado: use o socket pelos scripts
+(`sessao_blender.py --diagnosticar`, `ponte_letras.py`, `verbos_letras.py`) e renderize por
+`scripts/render_conferencia.py`.
 
-Conexão confirmada não significa modelo carregado. Após a operação solicitada,
-confira os objetos/arquivo e a visualização antes de dizer que está pronto.
+Em qualquer agente: se as duas vias falharem, investigue complemento e servidor a partir do
+erro concreto, preservando a cena. Conexão confirmada não é modelo carregado: depois da
+operação, confira objetos, arquivo e vista antes de dizer que está pronto.
 
-## Executar Blender: use o caminho ja resolvido
-
-Para executar scripts em processo separado, use `scripts/roda_blender.py` diretamente.
-Ele usa `--blender`, `BLENDER_EXE` ou a configuracao local, nessa ordem, antes de
-procurar aliases e PATH. Nao refaca a busca nem teste `--version` a cada projeto.
-Para a sessao aberta, siga a rota MCP abaixo; o launcher nao conecta a essa sessao.
-
-Configuracao unica da maquina, fora do pacote: `%LOCALAPPDATA%/modelagem-3d/ambiente.json`
-(no ambiente sem LOCALAPPDATA, `~/.config/modelagem-3d/ambiente.json`), com
-`{"blender_exe": "CAMINHO_ABSOLUTO_DO_EXECUTAVEL_OU_LAUNCHER"}`.
-Se a execucao falhar, use `python scripts/roda_blender.py --achar` para conferir a
-resolucao. Esse comando localiza; nao testa a execucao. No Windows Store, use o alias
-`blender-launcher.exe`, nao o binario protegido dentro de Program Files/WindowsApps.
-Terminal vazio nao demonstra falha: o auxiliar confere o arquivo de resultado.
-Nao declare Blender ausente nem substitua o renderizador apenas por silencio no terminal.
-Uma prova isolada e necessaria na configuracao inicial ou investigacao de falha, nao
-antes de cada operacao. build123d continua disponivel pela rota parametrica.
+**Blender em processo separado** (sem a sessão aberta): `scripts/trabalho_blender.py`, que usa
+`roda_blender.py`. O executável vem de `--blender`, `BLENDER_EXE` ou
+`%LOCALAPPDATA%/modelagem-3d/ambiente.json` (`{"blender_exe": "..."}`); `roda_blender.py
+--achar` mostra a resolução. Terminal vazio não é falha: o auxiliar confere o arquivo de
+resultado. Detalhes em `referencias/mapa_de_ferramentas.md`.
 
 ## Três regras que valem em todas as rotas
 
-1. **Meça, não presuma.** Ferramenta que devolve "concluído" não prova efeito. Foi
-   medido neste ambiente: `transform.translate` com seleção vazia devolve
-   `{'CANCELLED'}` sem erro e nada muda; a união booleana devolve sucesso e deixa
-   faces de área nula; a exportação de 3MF aceita malha com defeito de forma.
-2. **Validade geométrica não é atendimento ao pedido.** Malha fechada pode ter a
-   forma errada. São verificações separadas, e as duas têm que aparecer no registro.
-   A forma se confere por `referencias/render_de_conferencia.md`: quatro vistas
-   ortográficas, obrigatórias para toda geometria criada ou visivelmente alterada.
-   Verificador ter passado não dispensa o render, e o render não aprova nada sozinho.
-3. **Diga o alcance.** Amostragem prova os pontos amostrados. Uma seção prova aquele
-   plano. Declare a cobertura junto com o resultado; conclusão sem alcance declarado
-   não vale.
+1. **Meça, não presuma.** Ferramenta que devolve "concluído" não prova efeito:
+   `transform.translate` com seleção vazia devolve `{'CANCELLED'}` sem erro e nada muda; a
+   união booleana devolve sucesso e deixa faces de área nula; a exportação de 3MF aceita
+   malha com defeito de forma.
+2. **Validade geométrica não é atendimento ao pedido.** Malha fechada pode ter a forma
+   errada. São verificações separadas, e as duas aparecem no registro. A forma se confere
+   pelas quatro vistas de `referencias/render_de_conferencia.md`, obrigatórias para toda
+   geometria criada ou visivelmente alterada.
+3. **Diga o alcance.** Amostragem prova os pontos amostrados; uma seção prova aquele plano.
+   Conclusão sem alcance declarado não vale.
 
 ## Classificar o pedido antes de agir
-
-Três perguntas, independentes entre si:
 
 | Pergunta | Respostas | Consequência |
 |---|---|---|
@@ -101,127 +74,73 @@ Três perguntas, independentes entre si:
 | **Em que** | sólido, superfície, malha, montagem | escolhe o contrato de geometria |
 | **Para quê** | visualização, intercâmbio, montagem, impressão, usinagem | escolhe quais verificações são exigidas |
 
-Não imponha reconstrução nem impressão a todo pedido. Ajuste visual não precisa do
-mesmo rigor de peça para fabricação. Se a finalidade não foi dita e muda o que é
-exigido, **pergunte**.
+Não imponha reconstrução nem impressão a todo pedido. Se a finalidade não foi dita e muda o
+que é exigido, **pergunte**. "Borda", "casca" ou "fechado" são declaração de topologia,
+separada da representação: casca **aberta** (borda obrigatória) ou **fechada** sem sólido
+(borda proibida). Não deduza uma da outra.
 
-Se o pedido usar "borda", "casca" ou "fechado", trate topologia como declaração
-separada da representação: superfície pode ser casca **aberta** (borda obrigatória)
-ou casca **fechada** sem sólido (borda proibida). Não deduza uma da outra.
+## Editar no Blender: qual rota
 
-## Blender aberto com o operador na tela: edição por letras
-
-Rota padrão quando o operador está apontando na tela: `referencias/edicao_por_letras.md`.
-Instale as letras (`python scripts/ponte_letras.py instalar_letras`), ligue os Overlays
-se estiverem desligados, e siga o protocolo de quatro passos: **operador marca → agente
-repete em uma frase → operador diz "aplica" → agente aplica e devolve a medida em uma
-linha**. Os verbos (`scripts/verbos_letras.py`: mover, extrudar, preencher, arredondar,
-desfazer; `ponte_letras.py apagar`) operam em todas as malhas em edição, guardam a malha
-anterior e restauram sozinhos se a malha piorar. Regras que custaram rodada estão nessa
-referência; três valem em qualquer rota: pedido com "igual a" exige perguntar qual lado
-é o modelo; a correção tem o tamanho do defeito (resíduo se apaga no lugar, nunca se
-reconstrói a peça); remover uma feição é remover todas as ocorrências dela.
-
-## Ajustes simples no Blender: chamada pronta primeiro
-
-Selecao do usuario + pedido claro: use uma operacao pronta, confirme a alteracao
-na sessao conectada e devolva uma frase com o efeito medido e eventual limite.
-As chamadas prontas abaixo exigem um só objeto em edição, malha não compartilhada e
-cena em mm; quando o operador tem várias peças em edição, use os verbos da rota por letras.
-Nao escreva outro script para mudar um numero. Nao refaca inventario completo a
-cada clique. Se o dominio nao servir, explique a diferenca e siga a rota especializada.
-
-| Operacao delimitada | Receita |
+| Situação | Rota |
 |---|---|
-| mover faces existentes em X/Y/Z global | `referencias/mover_selecao.md` |
-| expandir uma face por conectividade ou plano | `referencias/expandir_selecao.md` |
-| criar extrusao de patch planar conectado | `referencias/extrudar_selecao.md` |
-| projetar faces em plano global declarado | `referencias/alinhar_selecao.md` |
-| fechar contorno convexo ou ligar duas arestas | `referencias/preencher_selecao.md` |
-| arredondar uma quina convexa de 90 graus | `referencias/arredondar_selecao.md` |
+| **O operador aponta na tela** (letras por clique, traços), uma ou várias malhas em edição | `referencias/edicao_por_letras.md` |
+| Um objeto só, operação simples e delimitada (mover, expandir, extrudar, alinhar, preencher, arredondar), cena em mm | `referencias/chamadas_prontas.md` |
+| Deformação delimitada com transição e região protegida (subir borda, patamar, preservar encontros) | `referencias/sessao_e_edicao_guiada.md` |
 
-Para orientar selecao e evitar repeticao de operacao em timeout, leia
-`referencias/fluxo_interativo.md`. As chamadas exigem nome real do objeto e porta
-confirmada da sessao; nomes dos exemplos nao identificam o objeto do usuario.
+Nas letras, o protocolo é: **operador marca → agente repete em uma frase → operador diz
+"aplica" → agente aplica e devolve a medida em uma linha**. Três regras de lá valem em
+qualquer rota: pedido com "igual a" exige perguntar qual lado é o modelo; a correção tem o
+tamanho do defeito (resíduo se apaga no lugar, nunca se reconstrói a peça); remover uma
+feição é remover todas as ocorrências dela.
 
-## Rotas e onde está cada receita
+Não escreva outro script para mudar um número: use a operação pronta. Antes de mover
+vértice, identifique alvo, transição e região protegida; acertar a altura do alvo não aprova
+a parede vizinha.
 
-**Deslocamento rígido de faces já selecionadas:** use primeiro
-`referencias/mover_selecao.md` e a chamada pronta. Não gere um script para cada
-valor de distância. Para pedidos que exigem conservar ou reconstruir encontros,
-continue na rota de edição guiada abaixo.
+## Onde está cada receita
 
-
-**Blender aberto + ajuste indicado pelo usuário:** comece em
-`referencias/sessao_e_edicao_guiada.md`. Execute o diagnóstico pronto; não escreva
-outro cliente de socket nem escolha o objeto pela maior quantidade de flags.
-Antes de mover qualquer vértice, identifique alvo, transição e região protegida.
-Seleção é indicação da feição. Acertar a altura do alvo não aprova a parede adjacente.
-
-**Escolha a construção pelo resultado pedido, depois a verificação compatível.**
-Não force uma reconstrução a ser deslocamento só para caber no verificador pronto.
-Fixe referências, região comparada e critérios antes da tentativa. Se a medição
-contradiz uma cota explícita, esclareça a referência sem substituir a instrução.
-Para mudança de topologia ou de ferramenta, leia a seção 2 de
-`referencias/sessao_e_edicao_guiada.md`: os critérios mudam com a representação,
-mas o pedido permanece.
-
-| Pedido | Referência a carregar |
+| Pedido | Referência |
 |---|---|
-| **operador apontando na tela: letras por clique, traços, apagar, verbos, prévia e "aplica"** | `referencias/edicao_por_letras.md` |
-| peça gerada por código com feições nomeadas: identificar, acender, trocar a malha na cena | `referencias/edicao_por_letras.md`, seção de identidade |
-| sessão viva, seleção parcial, subir borda/patamar, preservar encontros | `referencias/sessao_e_edicao_guiada.md` |
-| criar ou parametrizar peça por código, com verificação | `referencias/criar_e_parametrizar.md` |
+| peça gerada por código com feições nomeadas: identificar, acender, trocar a malha na cena | `referencias/edicao_por_letras.md`, identidade |
+| criar ou parametrizar peça por código (manifold3d; build123d quando precisar de STEP) | `referencias/criar_e_parametrizar.md` |
 | abrir, inspecionar, orientar seleção, ler o que está selecionado | `referencias/inspecionar_e_selecionar.md` |
-| deslocar região delimitada; preencher vão entre dois limites; engrossar feição fina | `referencias/editar_localizado.md` |
+| deslocar região delimitada; preencher vão entre dois limites | `referencias/editar_localizado.md` |
 | combinar versões da mesma malha sem booleana; achar de qual malha um cupom saiu | `referencias/transplante_de_deslocamento.md` |
-| conferir malha, junção, região preservada, dimensões | `referencias/verificar.md` |
-| **projetar para imprimir: folga calibrada, rosca e porca, garra, espessura mínima, rebaixo para dedo, gravação de marca, família de tamanhos, licença de peça de terceiros** | `referencias/projetar_para_imprimir.md` |
-| **conferir a FORMA antes de entregar: quatro vistas ortográficas** | `referencias/render_de_conferencia.md` |
-| entregar visualizador 3D interativo (.html) ou GIF/MP4 de montagem/vista explodida | `referencias/entregas_em_movimento.md` |
+| conferir malha, junção, região preservada, dimensões, furo passante | `referencias/verificar.md` |
+| **projetar para imprimir**: folgas calibradas, rosca, espessura mínima, rebaixo, ranhura, gravação, família de tamanhos, licença de peça de terceiros | `referencias/projetar_para_imprimir.md` |
+| **conferir a FORMA antes de entregar**: quatro vistas ortográficas | `referencias/render_de_conferencia.md` |
+| visualizador 3D (.html) ou GIF/MP4 de montagem/vista explodida | `referencias/entregas_em_movimento.md` |
 | desfazer, refazer, salvar, exportar, deixar retomável | `referencias/recuperar_salvar_exportar.md` |
-| que ferramenta existe, o que ela exige, o que **não** existe | `referencias/mapa_de_ferramentas.md` |
-| como registrar o trabalho para outro agente continuar | `referencias/registro_de_trabalho.md` |
-| **escrever o meu próprio script que roda dentro do Blender** | `referencias/sessao_e_edicao_guiada.md`, seção 5: invólucro executável com traceback |
+| que ferramenta existe, o que exige, rodar o Blender em processo separado | `referencias/mapa_de_ferramentas.md` |
+| registrar o trabalho para outro agente continuar | `referencias/registro_de_trabalho.md` |
+| escrever o meu próprio script que roda dentro do Blender | `referencias/sessao_e_edicao_guiada.md`, seção 5 |
 
-Carregue **uma** referência por vez, a da rota em uso. Elas repetem de propósito o
-que é crítico, para não obrigar a carregar tudo.
-
-Para edicao ao vivo, aplique o contrato curto de `referencias/fluxo_interativo.md`: identidade da captura, limites decisivos, recuperacao e confirmacao da entrega. Essas instrucoes nao significam que todos os auxiliares as automatizam.
+Carregue a referência da rota em uso; ela aponta para as outras quando precisa.
 
 ## Antes de editar qualquer coisa de outra pessoa
 
-- Use o destino já combinado; pergunte apenas se ele faltar. **Não sobrescreva o arquivo de origem** para gravar uma
-  prévia.
-- Se houver uma sessão do Blender aberta com trabalho do usuário, não carregue outro
-  arquivo nela e não a encerre. Cena com alterações não salvas perde trabalho.
-- Trabalhe no objeto atual se for a preferência do usuário; não duplique a peça a
-  cada operação sem que ele queira.
+- Use o destino já combinado; pergunte só se faltar. **Não sobrescreva o arquivo de origem**
+  para gravar uma prévia.
+- Com sessão do Blender aberta e trabalho do usuário, não carregue outro arquivo nela nem a
+  encerre: cena com alterações não salvas perde trabalho.
+- Trabalhe no objeto atual se for a preferência do usuário; não duplique a peça a cada
+  operação.
 - Registre um ponto de recuperação antes de alterar, e confira a recuperação pelo
   **conteúdo**, não por a chamada ter retornado.
 
-## Licença
-
-**MIT**, com o texto completo em `LICENSE`, na raiz deste pacote. Pode usar, copiar, modificar, distribuir e vender, **mantendo o aviso de copyright e o texto da licença**. O pacote contém somente código do autor: nenhuma biblioteca de terceiros e nenhum binário são redistribuídos aqui.
-
 ## O que este pacote não faz
 
-Não reconstrói CAD a partir de malha, não seleciona por imagem, não decide folga de
-encaixe fora das condições calibradas (pino em furo, disco parado em tubo, lingueta em
-entalhe, rosca; ver `referencias/projetar_para_imprimir.md`, seção 1), não mede silhueta, e não
-aprova peça para fabricação. Espessura de parede em malha se mede com
-`scripts/piso_espessura.py`, valendo só nas condições registradas. Quando o pedido cair
-fora, diga qual é o limite e o que seria necessário — não improvise o trecho difícil.
+Não reconstrói CAD a partir de malha, não seleciona por imagem, não decide folga fora das
+condições calibradas (`referencias/projetar_para_imprimir.md`, seção 1), não mede silhueta e
+não aprova peça para fabricação. Espessura de parede em malha: `scripts/piso_espessura.py`,
+só nas condições registradas. Quando o pedido cair fora, diga o limite e o que seria preciso.
 
-**E não verifica que um furo é passante.** Isto merece linha própria porque é o
-requisito mais comum da rota de criar. Nenhum dos oito tipos de requisito decide
-passagem: o tipo `furo` mede **duas seções**, o que é amostragem, e ele mesmo diz isso
-no campo `o_que_isto_nao_diz` da própria saída — só que diz **depois** de medir, dentro
-do JSON, num requisito que sai `APROVADA`. Ler `furo_A: APROVADA` e concluir "o furo
-atravessa" é o erro que esta linha existe para evitar. Se a passagem importa, diga que
-ela **não foi verificada** e ofereça o que dá para medir: `euler` e o número de
-componentes conexos em `check_mesh.py` (malha fechada, orientação consistente, 1
-componente e `euler = −2` implicam dois túneis atravessando o sólido), e o `volume`
-comparado ao valor calculado assumindo passagem, que limita o material residual à
-tolerância declarada. Isso é dedução a partir de medida, não veredito de verificador, e
-tem que ser apresentado como tal.
+**Não verifica que um furo é passante.** `furo: APROVADA` mede duas seções, não a passagem.
+Se a passagem importa, diga que ela não foi verificada e use a dedução de
+`referencias/verificar.md` (euler, componentes e volume).
+
+## Licença
+
+**MIT**, texto em `LICENSE`. Pode usar, copiar, modificar, distribuir e vender, mantendo o
+aviso de copyright e a licença. A doutrina das vistas de conferência deriva de
+earthtojake/text-to-cad (MIT), com crédito em `referencias/render_de_conferencia.md`.
