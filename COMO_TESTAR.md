@@ -97,6 +97,12 @@ obsoleta, retesselação, medidas ausentes ou inválidas, erro com traceback e r
 reprovado mantido como reprovado. Não conecta à porta da sessão aberta. Para testar um
 pacote montado ou instalado, acrescente `--pacote "<raiz do pacote>"`.
 
+Espere `{"estado": "ATENDIDO", "comandos": 6}` e, em `execucoes.json`, cada comando com o código
+esperado: 9 testes do hospedeiro `OK`; 14 testes no Blender com `veredito_global: ATENDIDO`;
+o exemplo documentado nas duas alturas (1,0 e 1,5) `CONCLUIDA`; a falha sintética com código
+1, `ERRO` e traceback; o resultado reprovado mantido como reprovado. O `usage: ...
+COLISAO_ENTRADA_SAIDA` no stderr do primeiro comando é um teste de recusa, não falha.
+
 **8. Falhas, captura e exportação das chamadas prontas**
 
 ```powershell
