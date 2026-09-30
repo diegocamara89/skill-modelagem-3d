@@ -116,6 +116,11 @@ casos esperada, não só o código de saída. Cobre exportação atômica, respo
 e contraditórias, token antigo por mudança de geometria, seleção ou conectividade, falha
 antes e depois da escrita e as quatro operações.
 
+Espere 6 comandos com `exit_code` 0: os 4 testes de unidade do comando 3, **13 casos**
+headless (`headless.json`, todos `passou: true`) e **4 casos** de Undo/Redo na janela
+(`gui.json`, `undo_exato` e `redo_exato` verdadeiros). Abre uma janela do Blender própria,
+que fecha sozinha.
+
 ## O que nenhum destes testes mostra
 
 Se um agente sem histórico escolhe a estratégia certa. Para isso: monte o pacote numa pasta
