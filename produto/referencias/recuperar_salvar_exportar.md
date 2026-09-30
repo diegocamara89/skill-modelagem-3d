@@ -1,11 +1,11 @@
 # Recuperar, salvar, exportar e deixar retomável
 
-O histórico do Blender é útil e **não é garantido**. Esta referência diz exatamente o
-que foi medido, em que condição, e o que fazer quando a garantia não existe.
+O histórico do Blender é útil e **não é garantido**. Esta referência diz em que condição
+ele vale e o que fazer quando a garantia não existe.
 
-## O que foi medido sobre desfazer e refazer
+## Desfazer e refazer: o que vale em background
 
-Blender 5.2.1 LTS, modo background, 07/09/2026.
+Quatro fatos do modo background.
 
 **Fato 1 — o sistema nasce desligado em background.** Sem nenhum `ed.undo_push` na
 sessão, a chamada falha com *"Undo disabled at startup in background-mode (call
@@ -17,17 +17,17 @@ de passar no `poll()` e a mensagem muda para *"poll() failed, context is incorre
 Não há estado anterior ao qual voltar. Com dois pontos, funciona.
 
 **Fato 3 — mutação direta de dados não entra no histórico.** Escrever a malha por
-`bm.to_mesh(obj.data)` altera a geometria e **não** registra nada. Medido: depois de
-uma limpeza feita assim, `redo` devolvia a peça ao estado anterior à limpeza e a
-conferência por assinatura acusava `recuperou: False`. Não era o `redo` que falhava;
-era a limpeza que nunca tinha sido registrada.
+`bm.to_mesh(obj.data)` altera a geometria e **não** registra nada. Depois de uma limpeza
+feita assim, `redo` devolve a peça ao estado anterior à limpeza e a conferência por
+assinatura acusa `recuperou: False`. Quem falha não é o `redo`: é a limpeza, que nunca foi
+registrada.
 
 **Fato 4 — um ponto por operação lógica, não por chamada.** Empilhar um ponto ao fim
 da união e outro ao fim da limpeza faz um `undo` parar no meio: a assinatura não bate
 com a de antes da operação, e parece falha de recuperação quando foi recuperação pela
 metade.
 
-## A regra que sai dos quatro fatos
+## A regra dos quatro fatos
 
 ```python
 F.marca_recuperacao("antes de <a operação lógica>")   # 1 ponto ANTES
@@ -62,9 +62,6 @@ Duas cautelas embutidas nas funções:
 - o objeto é relido **pelo nome** depois do undo. Referências a objeto e malha podem
   ficar inválidas; guardar o objeto numa variável e reusá-lo depois do undo é erro.
 
-Medido no cenário sintético, variantes `correta` e `ranhura`: `undo` recupera a
-assinatura anterior e `redo` a posterior, nos dois casos.
-
 **Alcance:** isso vale para o caminho ensaiado — construção por dados, união
 booleana com `EXACT`, limpeza local, tudo em background. Não vale como promessa para
 todo operador e todo modo. Em sessão viva com o usuário editando, não fique testando
@@ -93,9 +90,9 @@ câmera, seleção ou iluminação.** Para geometria, use a assinatura.
 F.exporta_malha("Peca", "<destino>.stl")
 ```
 
-MEDIDO no 5.2.1: o operador é `wm.stl_export` com `export_selected_objects=True`. O
-nome antigo `export_mesh.stl` **não existe** nesta versão. A função tenta os dois e
-registra qual funcionou, para a receita não depender de adivinhação.
+O operador é `wm.stl_export` com `export_selected_objects=True`. O nome antigo
+`export_mesh.stl` **não existe** nesta versão do Blender. A função tenta os dois e registra
+qual funcionou, para a receita não depender de adivinhação.
 
 O retorno traz `bytes`, `sha256` do arquivo e `assinatura_da_geometria`, que amarra o
 artefato entregue à geometria medida. Limite declarado: **exportação bem-sucedida não
@@ -105,8 +102,19 @@ prova validade geométrica.** Confira o artefato entregue:
 python verificadores/check_mesh.py --malha <destino>.stl
 ```
 
-Medido num cubo exportado por este caminho: 12 triângulos, 0 arestas abertas, 0
-não-manifold, estanque, 1 componente, `apto_para_booleana: true`.
+`exporta_malha` grava em temporário, valida estrutura binária e números finitos, e só então
+publica. Destino existente é recusado por padrão; `sobrescrever=True` exige autorização do
+usuário. Falha preserva o arquivo anterior. Modo e seleção são restaurados. Essa validação
+não decide fechamento, colisão nem imprimibilidade: confira o STL reaberto.
+
+### Entrega para impressão
+
+Quando o pedido incluir imprimir ou testar, exporte a geometria atual do objeto correto
+para destino combinado, sem substituir silenciosamente um arquivo anterior. Confira o STL
+reaberto: escala/dimensões, correspondência com a origem exportada, fechamento, orientação
+e componentes segundo a finalidade. A verificação local não cobre a malha inteira. Entregue
+o caminho absoluto e as pendências; exportado não significa aprovado para impressão. Não
+repare automaticamente regiões fora do pedido.
 
 ## Deixar o trabalho retomável
 
@@ -126,19 +134,4 @@ o usuário continuar selecionando. Não encerre a sessão do Blender do usuário
 cumprir prazo. Tempo esgotado do MCP **não prova** que o código parou lá dentro: em
 estado incerto, inspecione antes de repetir.
 
-Antes de executar codigo especifico ou entregar uma edicao, consulte o contrato de
-`fluxo_interativo.md`: captura anterior real, limites de aceite, identidade da selecao,
-recuperacao e verificacao do arquivo exportado.
-
-STL: exporta_malha grava em temporario, valida estrutura binaria e numeros finitos,
-e so entao publica. Destino existente e recusado por padrao; sobrescrever=True exige
-autorizacao do usuario. Falha preserva o arquivo anterior. Modo e selecao sao restaurados.
-Essa validacao nao decide fechamento, colisao ou imprimibilidade: confira o STL reaberto.
-
-## Entre etapas de malha: `.npy`, não STL
-
-O STL não guarda a identidade dos vértices: ao reimportar, o importador funde vértices e
-retriangula n-gons. Um resultado de booleana saiu com euler −138 e voltou do STL com −79
-e arestas não-manifold. Para passar malha de um passo para outro, gravar
-`np.save(V)` + `np.save(F)`; exportar STL/3MF uma vez só, no fim, a partir da malha em
-memória.
+Antes de executar código específico ou entregar uma edição, consulte `chamadas_prontas.md`.

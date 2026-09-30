@@ -3,15 +3,9 @@
 Rota para: **toda geometria criada ou visivelmente alterada**, antes de dizer que está
 pronta. Quatro vistas ortográficas, conferidas por quem entrega.
 
-Ferramenta: `scripts/render_conferencia.py`, versão **1.0.0**. Roda **dentro do
+Ferramenta: `scripts/render_conferencia.py`. Roda **dentro do
 Blender**, pelo contrato `executar(config)` de `scripts/executa_com_relatorio.py`, ou
 por `renderizar(config)` na sessão viva.
-
-Origem da doutrina: `skills/cad/references/snapshot-review.md` de
-[earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad) (MIT). A política,
-o pacote de quatro vistas e a regra do "diagnóstico, não veredito" vêm de lá. O código
-aqui é próprio: o renderizador de lá é Chromium headless sobre documento STEP, que não
-serve para malha em sessão do Blender.
 
 ## A política
 
@@ -48,10 +42,9 @@ toda face cuja normal não seja perpendicular a essa direção aparece em **uma 
 Cobertura por construção, não por suspeita — não é preciso desconfiar da base para
 que a base seja conferida.
 
-**Medido neste pacote, em 17/09/2026.** Uma peça com bolso raso e furo cego **só na
-face de baixo** saiu como um bloco perfeitamente liso na `iso`, sem nenhum vestígio
-dos dois defeitos, e mostrou os dois com clareza na `iso_oposto`. Uma vista isométrica
-sozinha teria aprovado a peça.
+Exemplo do que isso pega: bolso raso ou furo cego **só na face de baixo** não deixa
+vestígio na `iso` e aparece com clareza na `iso_oposto`. Uma vista isométrica sozinha
+aprovaria a peça.
 
 As quatro vistas são o padrão, fora dos casos da tabela de pulo acima. Olhe cada uma com
 mais atenção quando o erro semântico é plausível — montagem ou mais de um corpo, furos em
@@ -94,7 +87,7 @@ enquadramento errado, objeto oculto, malha sem face. Resolva antes de olhar as i
 O fundo é transparente de propósito. Com alfa zero no fundo, a silhueta é medida e não
 estimada — um PNG em branco não consegue se passar por render bom.
 
-## Três armadilhas medidas
+## Três armadilhas
 
 **1. Em EDIT_MESH o datablock está atrasado.** O render sairia da malha **anterior**, e
 o defeito que você acabou de introduzir não apareceria. O script chama
@@ -103,30 +96,19 @@ o defeito que você acabou de introduzir não apareceria. O script chama
 
 **2. A cena do usuário não é tocada.** Todo o render acontece numa cena temporária,
 criada e removida ali mesmo; os objetos são apenas **vinculados**, nunca copiados nem
-movidos. Motor, resolução, câmera e caminho de saída do usuário ficam como estavam.
-Conferido no teste: mesma contagem de cenas, mesmos objetos, nenhuma câmera órfã,
-motor e `filepath` idênticos antes e depois.
+movidos. Motor, resolução, câmera e caminho de saída do usuário ficam como estavam: mesma
+contagem de cenas, mesmos objetos, nenhuma câmera órfã.
 
-**3. A vista de baixo sai escura — e isso NÃO é o problema.** Vale registrar porque a
-suposição óbvia está errada, e foi derrubada por medida em 17/09/2026, na vista de
-baixo da peça de teste com defeito:
+**3. A vista de baixo sai escura, e isso NÃO é o problema.** Trocar o modo de luz
+(`STUDIO` por `MATCAP`) ou `use_world_space_lighting = False` não clareia a vista de baixo,
+e bolso raso e furo cego na face de baixo aparecem nos dois modos. O que revela o defeito
+nunca foi o brilho: foi **olhar a face certa**.
 
-| Modo de luz | brilho mín. | brilho médio | contraste |
-|---|---|---|---|
-| `STUDIO` | 0,058 | 0,367 | 0,148 |
-| `MATCAP` | 0,039 | 0,341 | 0,159 |
-
-`MATCAP` é **levemente mais escuro**, não mais claro. `use_world_space_lighting = False`
-também não muda nada no render — testado. E abaixo de 0,15 de brilho ficam apenas
-0,2–0,4% da silhueta: bolso raso e furo cego na face de baixo **aparecem nos dois
-modos**. O que revelava o defeito nunca foi o brilho; foi **olhar a face certa**.
-
-O script usa `MATCAP` porque ele ilumina no espaço da câmera e as quatro vistas recebem
-a luz do mesmo jeito — consistência entre vistas, não correção de escuridão. Mais
-`show_cavity`, que realça quina, vinco e faceta sem depender da direção da luz.
-
-Se um dia a escuridão realmente atrapalhar numa peça sua, a saída não é trocar a luz:
-é acrescentar a vista que olha aquela face de frente.
+O script usa `MATCAP` porque ele ilumina no espaço da câmera e as quatro vistas recebem a
+luz do mesmo jeito (consistência entre vistas, não correção de escuridão), mais
+`show_cavity`, que realça quina, vinco e faceta sem depender da direção da luz. Se a
+escuridão atrapalhar numa peça, a saída não é trocar a luz: é acrescentar a vista que olha
+aquela face de frente.
 
 ## O limite, que é o mais importante desta página
 
@@ -154,3 +136,7 @@ verificações determinísticas sustentam cada achado visual.
 O rasterizador numpy com laço por face leva minutos em 400 mil faces. Para conferir uma
 região (óculos, colar), renderizar só as faces dentro da caixa de interesse — o laço cai na
 mesma proporção — e manter a mesma escala em px/mm entre as imagens comparadas.
+
+## Créditos
+
+Política, quatro vistas e regra do "diagnóstico, não veredito" adaptadas de [earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad) (MIT, `skills/cad/references/snapshot-review.md`); o código é próprio.

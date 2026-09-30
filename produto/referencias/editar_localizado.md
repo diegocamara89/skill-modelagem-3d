@@ -1,7 +1,7 @@
 # Editar região delimitada: deslocar e preencher entre limites
 
 Para apenas mover rigidamente uma seleção já definida, use a rota curta
-`mover_selecao.md`. Reutilize a ferramenta pronta, sem gerar outra implementação.
+`chamadas_prontas.md` (mover). Reutilize a ferramenta pronta, sem gerar outra implementação.
 
 Duas operações, com o mesmo cuidado: **a operação retornar não prova que ela fez
 efeito**, e efeito não prova que o efeito é o pedido.
@@ -11,7 +11,7 @@ de seleção saem no sistema de coordenadas errado.
 
 ---
 
-# Parte 1 — Deslocar uma região delimitada
+# Deslocar uma região delimitada
 
 **Se o pedido é alterar a forma de uma borda/patamar e conservar seus encontros,
 comece em `sessao_e_edicao_guiada.md`.** A translação abaixo é uma operação rígida
@@ -29,10 +29,8 @@ ou inverter enquanto a altura do alvo e a topologia global continuam corretas.
 ## Sequência executável
 
 ```python
-# dentro do Blender. O caminho e relativo a RAIZ DO PACOTE, sem prefixo `produto/`:
-# esse prefixo existe apenas na arvore de desenvolvimento e NAO resolve no pacote
-# extraido — o proprio INVENTARIO.json diz isso, e estas duas linhas ficaram para
-# tras quando o manifesto foi corrigido.
+# dentro do Blender. O caminho e relativo a RAIZ DO PACOTE, sem prefixo `produto/`
+# (esse prefixo so existe na arvore de desenvolvimento e nao resolve no pacote extraido).
 import sys
 sys.dont_write_bytecode = True          # nao criar __pycache__ dentro do pacote
 sys.path.insert(0, r"<raiz do pacote>\scripts")
@@ -56,12 +54,10 @@ O que conferir no retorno de `desloca_selecao`, e **por que não basta olhar um 
 | `retorno_do_operador` | `FINISHED` ou `CANCELLED` | `CANCELLED` com seleção não vazia: investigue, não repita |
 | `geometria_mudou` | assinatura antes ≠ depois | **`FINISHED` com `geometria_mudou` falso é o sinal de que algo está errado** |
 
-MEDIDO, e é um defeito que eu mesmo produzi e corrigi durante a construção desta
-receita: se a assinatura for lida de `obj.data` enquanto o objeto está em Edit Mode,
+MEDIDO: se a assinatura for lida de `obj.data` enquanto o objeto está em Edit Mode,
 ela compara **duas leituras da mesma cópia velha** e reporta "não mudou" mesmo com o
-deslocamento aplicado. `F.assinatura` agora lê a malha viva em Edit Mode e declara a
-fonte no campo `fonte_da_leitura`. Se você escrever sua própria comparação, faça o
-mesmo.
+deslocamento aplicado. `F.assinatura` lê a malha viva em Edit Mode e declara a fonte
+no campo `fonte_da_leitura`. Se você escrever sua própria comparação, faça o mesmo.
 
 Confirme também a medida externa, que é independente da assinatura:
 
@@ -83,7 +79,7 @@ No cenário sintético, subir 2 unidades o topo do patamar alto leva a altura de
 
 ---
 
-# Parte 2 — Preencher um vão entre dois limites
+# Preencher um vão entre dois limites
 
 ## Quando esta receita se aplica, e quando não
 
@@ -132,26 +128,22 @@ coincidente. Ela devolve os pontos unidos por proximidade, os segmentos, a conta
 faces coplanares ignoradas, **quantos pontos ela uniu**, e declara que prova **aquele
 plano**, não a peça.
 
-**Sobre o limiar de união, que já esteve errado.** Os pontos vêm de interpolação sobre
-coordenada de precisão simples, cujo ruído foi medido entre **1e-6 e 3e-6**. A versão
-anterior unia arredondando a **7 casas** — mais fino que o próprio ruído. Medido numa
-varredura de 33 planos: **4 deles devolviam 20 pontos em vez de 10**, cada ponto em
-duplicata, com y em 9,999999 e 10,000002. Quem contasse pontos de seção para decidir
-tiraria conclusão errada.
+**Limiar de união.** Os pontos vêm de interpolação sobre coordenada de precisão
+simples, cujo ruído foi medido entre **1e-6 e 3e-6**. Unir arredondando a **7 casas**
+(mais fino que o ruído) deixou, numa varredura de 33 planos, **4 deles devolvendo 20
+pontos em vez de 10**, cada ponto em duplicata, com y em 9,999999 e 10,000002; quem
+contasse pontos de seção para decidir tiraria conclusão errada. O padrão é
+`tolerancia_de_uniao=1e-5`, uma ordem **acima** do ruído medido e abaixo de qualquer
+detalhe dos cenários.
 
-O padrão agora é `tolerancia_de_uniao=1e-5`, uma ordem **acima** do ruído medido e
-abaixo de qualquer detalhe dos cenários.
-
-**Dois campos do retorno são oráculo, e a versão anterior desta página mandava
-conferi-los sem dizer qual é o valor esperado** — o que é pedir conferência e negar o
-critério:
+**Dois campos do retorno são oráculo**, com valor esperado:
 
 | Campo | Valor saudável | O que outro valor significa |
 |---|---|---|
 | `pontos_unidos_por_coincidencia` | **igual a `n_pontos`** | numa poligonal fechada, cada ponto é alcançado por **duas** faces vizinhas, então o segundo encontro de cada ponto é uma união. Valor **menor** que `n_pontos` indica seção aberta; **maior** indica face cortada em mais de dois pontos |
 | `faces_com_mais_de_dois_cruzamentos` | **0** | a poligonal está **incompleta**: uma face não convexa foi cortada em mais de dois pontos e o par escolhido é arbitrário. O campo `limite` do retorno também avisa. **Descarte a seção** e secione em outro plano |
 
-Medido numa sessão limpa independente: seccionando na costura de um limite (normal
+Medido: seccionando na costura de um limite (normal
 `[1,0,0]`), o retorno trouxe `faces_com_mais_de_dois_cruzamentos: 2`, `n_pontos: 9`,
 `n_segmentos: 12` com segmentos repetidos e um ponto espúrio — e a mesma peça,
 seccionada com normal `[0,1,0]`, deu contagem **0** e um segmento único ligando os dois
@@ -174,15 +166,13 @@ vão**: 1,0 unidade num vão de 20; e 1,5 num vão de 30, na variante de outra m
 `limite_a.x − ov` até `limite_b.x + ov`, e a base desce a `z_da_base − ov`. Não há
 sobreposição por extremidade: é um valor só, simétrico.
 
-**Correção de um critério que, como estava escrito, não era satisfazível.** A versão
-anterior pedia uma sobreposição "pequena o bastante para não alcançar a região
-protegida". Isso é impossível por construção: qualquer valor positivo **entra em
-planta** na região protegida — é justamente assim que ele intercepta o material. Um
-ensaio independente apontou a contradição, depois de tentar contorná-la
-reparametrizando os limites e produzir uma prateleira de 0,296 abaixo do perfil
+Não se exige sobreposição "pequena o bastante para não alcançar a região protegida":
+isso é impossível por construção, porque qualquer valor positivo **entra em planta**
+na região protegida — é assim que ele intercepta o material. Contornar isso
+reparametrizando os limites produziu, medido, uma prateleira de 0,296 abaixo do perfil
 acordado.
 
-O critério correto é sobre **altura**, não sobre planta:
+O critério é sobre **altura**, não sobre planta:
 
 - em planta, a sobreposição **alcança** a região protegida e **retessela** a face de
   topo dela. Isso é esperado, e aparece como uma aresta de costura em
@@ -213,23 +203,22 @@ r = F.preenche_entre_limites(
 A superfície superior é **horizontal na altura de cada limite dentro da zona de
 sobreposição** e inclinada apenas **entre** os limites.
 
-Isto é uma correção, e vale contar por que: a primeira versão prolongava a
-**inclinação** para dentro do material. MEDIDO: com inclinação −0,3 e sobreposição
-1,0, o topo do volume chegava a **z = 20,3** em x = 19, ou seja, subia **0,3 acima da
-superfície que se prometeu preservar**. Uma saliência, exatamente sobre a região
-protegida.
+Prolongar a **inclinação** para dentro do material é erro. MEDIDO: com inclinação −0,3
+e sobreposição 1,0, o topo do volume chegava a **z = 20,3** em x = 19, ou seja, subia
+**0,3 acima da superfície que se prometeu preservar**: uma saliência exatamente sobre
+a região protegida.
 
-Pior: a medição de perfil **não pegou**, porque a grade uniforme caía em x = 17,
-18,86 e 20,71 e passava por cima do trecho entre 19 e 20. **Quem revelou foi a
+A medição de perfil por grade uniforme **não pegou** isso, porque a grade caía em
+x = 17, 18,86 e 20,71 e passava por cima do trecho entre 19 e 20. **Quem revelou foi a
 seção** (`secao_por_plano`), que mostrou dois pontos distintos em x = 19: z = 20,0 e
-z = 20,3. Daí duas consequências obrigatórias: o topo virou horizontal na
-sobreposição, e a amostragem de perfil passou a incluir **pontos densos na vizinhança
-de cada limite**, não só uma grade que cobre o vão.
+z = 20,3. Daí duas consequências: o topo é horizontal na sobreposição, e a amostragem
+de perfil inclui **pontos densos na vizinhança de cada limite**, não só uma grade que
+cobre o vão.
 
-E uma previsão minha que a medição derrubou: eu esperava que a coplanaridade do topo
-horizontal com o material criasse degeneração. Ela criou **menos**: 33 faces com 4
-degeneradas antes, 27 faces com **zero** degeneradas depois. O solver `EXACT` lida
-melhor com faces coplanares coincidentes do que com interseção oblíqua.
+A coplanaridade do topo horizontal com o material cria **menos** degeneração, não
+mais: 33 faces com 4 degeneradas com o topo inclinado, 27 faces com **zero**
+degeneradas com o topo horizontal. O solver `EXACT` lida melhor com faces coplanares
+coincidentes do que com interseção oblíqua.
 
 ### 5b. A sobreposição serviu? Meça, não confie no parâmetro
 
@@ -244,11 +233,9 @@ prisma tem que encontrar com material são medidas **separadamente**, por inters
 booleana numa **cópia**: a sobreposição do limite a, a do limite b, e a faixa abaixo do
 piso. Se qualquer uma delas vier vazia, a função **recusa e não altera nada**.
 
-Isto corrige dois defeitos que uma revisão independente apontou juntos: a medida
-anterior era um **único escalar** de volume, que prova "alguma" interseção — interseção
-só com a base passava —, e ela era feita **depois** da união, então a falha deixava um
-corpo flutuante grudado na peça e a receita mandava revisar coordenadas sem desfazer
-nada.
+Por zona, e não por um **único escalar** de volume (que prova "alguma" interseção:
+interseção só com a base passaria). E **antes** da união: medida depois, a falha
+deixaria um corpo flutuante grudado na peça.
 
 Medido, na peça do cenário: `extremo_do_limite_a` = 440,0, `extremo_do_limite_b` =
 200,0, `abaixo_do_piso` = 880,0 — os três exatos, iguais a `11×1×40`, `5×1×40` e
@@ -330,16 +317,14 @@ F.mede_topo_em_pontos("Peca", pontos, tolerancia=0.01)
 O perfil esperado vem dos **limites combinados com o usuário**, não do que foi
 construído. É por isso que ele detecta uma rampa construída baixa demais.
 
-**A tolerância é a única desta rota sem procedência, e isto é assimetria reconhecida.**
-`limpa_degeneracoes_na_regiao` **exige** `justificativa_da_tolerancia` como parâmetro
-obrigatório — e essa é a tolerância cosmética. Esta aqui, que é **a única medida que
-pega ranhura**, tem padrão silencioso `0.01`. Uma sessão limpa apontou a inversão. Até
-que ela seja fechada (ver `PENDENCIAS_PRODUTO.md`, D6), **derive o seu número e
-declare-o no registro do trabalho**: ele tem que ser maior que o ruído da leitura de
-altura, que sai de coordenada de precisão simples e foi medido entre 1e-6 e 3e-6, e
-**menor** que o menor desvio que você precisa pegar — numa ranhura de 0,5, qualquer
-valor entre 1e-5 e 0,1 serve, e 0,01 é uma escolha confortável no meio, não uma
-constante da natureza.
+**A tolerância de `mede_topo_em_pontos` não exige justificativa**, ao contrário de
+`limpa_degeneracoes_na_regiao`, que exige `justificativa_da_tolerancia` — e essa é a
+tolerância cosmética. Esta aqui, que é **a única medida que pega ranhura**, tem padrão
+silencioso `0.01`. **Derive o seu número e declare-o no registro do trabalho**: ele
+tem que ser maior que o ruído da leitura de altura, que sai de coordenada de precisão
+simples e foi medido entre 1e-6 e 3e-6, e **menor** que o menor desvio que você
+precisa pegar — numa ranhura de 0,5, qualquer valor entre 1e-5 e 0,1 serve, e 0,01 é
+uma escolha confortável no meio, não uma constante da natureza.
 
 MEDIDO, e é o controle negativo desta receita: com a rampa 0,5 abaixo dos limites
 acordados, a peça fica **fechada, sem não-manifold e sem degeneração**, a região
@@ -350,14 +335,12 @@ todos os pontos do trecho da rampa. Um defeito, um detector.
 uma saliência de 0,3 escapou. Amostre a grade **mais** pontos densos em torno de cada
 limite, em frações da sobreposição.
 
-A lista de `k` tem que ser **simétrica**, e isto é uma correção: a versão anterior
-prescrevia `k` em `−1, −0,75, −0,5, −0,25, 0, +0,25, +0,5`, que é assimétrica. Uma
-sessão limpa independente seguiu a receita ao pé da letra e mediu a consequência:
-"para dentro do material" tem **sinal oposto** em cada limite, então `k = −1` acerta a
-costura do limite `a`, em `xa − ov`, e **nada** na lista alcança a costura do limite
-`b`, que fica em `xb + ov`. Com `ov = 1,2`, o maior x amostrado foi 48,6 e a costura
-estava em 49,2: **nunca medida**. É o mesmo tipo de furo de cobertura que deixou passar
-a saliência de 0,3.
+A lista de `k` tem que ser **simétrica**. Uma lista assimétrica (`k` em `−1, −0,75,
+−0,5, −0,25, 0, +0,25, +0,5`) falha porque "para dentro do material" tem **sinal
+oposto** em cada limite: `k = −1` acerta a costura do limite `a`, em `xa − ov`, e
+**nada** na lista alcança a costura do limite `b`, que fica em `xb + ov`. Medido, com
+`ov = 1,2`: o maior x amostrado foi 48,6 e a costura estava em 49,2, **nunca medida**.
+É o mesmo tipo de furo de cobertura que deixou passar a saliência de 0,3.
 
 Use `k` em `−1,5, −1, −0,5, −0,25, 0, +0,25, +0,5, +1, +1,5` em torno de **cada**
 limite, ou espelhe a lista por limite. As duas costuras ficam em `limite ∓ ov`, e as
@@ -366,45 +349,30 @@ duas precisam de ponto.
 Com a lista simétrica a amostragem sai em **99 pontos**: 33 posições distintas em x,
 em 3 planos de y.
 
-**Esse 99 é parâmetro da amostragem, não medida da peça** — e a distinção não é
-pedantismo. Uma sessão limpa independente construiu uma peça com dimensões
-completamente diferentes (vão de 40 em vez de 20, sobreposição 2,0 em vez de 1,0) e
-obteve **exatamente** 99 pontos e 33 posições em x. Não foi confirmação de nada: o
-número é consequência aritmética da receita de amostragem (a grade mais os `k` de cada
-limite, menos as coincidências, vezes 3 planos), e é **invariante às dimensões**. Ler
-"99 pontos" como evidência sobre a peça é confundir parâmetro com medida.
+**Esse 99 é parâmetro da amostragem, não medida da peça.** Uma peça com dimensões
+completamente diferentes (vão de 40 em vez de 20, sobreposição 2,0 em vez de 1,0)
+também deu **exatamente** 99 pontos e 33 posições em x: o número é consequência
+aritmética da receita de amostragem (a grade mais os `k` de cada limite, menos as
+coincidências, vezes 3 planos) e é **invariante às dimensões**. Ler "99 pontos" como
+evidência sobre a peça é confundir parâmetro com medida.
 
-O que **é** medida é o desvio: 0,0 nesses 99 pontos, na peça do pacote, e 0,0 nos 99
-pontos da peça da sessão limpa. E vale dizer por que o número já mudou uma vez: a
-versão anterior deste texto dizia 87, contagem da lista **assimétrica**; ao corrigir a
-lista eu deixei o número antigo, e uma revisão independente pegou. O que importa é a
-densidade perto do limite, e que as duas costuras, em `limite − ov` e `limite + ov`,
-estejam entre os pontos — o ensaio **exige** isso como critério executável.
+O que **é** medida é o desvio: 0,0 nesses 99 pontos, tanto na peça do pacote quanto na
+de dimensões diferentes. O que importa é a densidade perto do limite, e que as duas
+costuras, em `limite − ov` e `limite + ov`, estejam entre os pontos — o ensaio
+**exige** isso como critério executável.
 
-Aviso de método: **não** meça o "degrau" comparando dois pontos vizinhos de cada lado
-do limite. Numa superfície inclinada isso mede a inclinação. Medido: numa rampa de
-inclinação 0,3, amostras a ±0,01 produziam um "degrau" de 0,006 que era artefato do
-próprio método. Compare sempre com o **esperado**.
+Não meça o "degrau" comparando dois pontos vizinhos de cada lado do limite; compare
+sempre com o **esperado** (método e medida em `verificar.md`, seção "Verificação de
+forma").
 
 ### 9. Conferir a região protegida
 
-Três ferramentas, e escolher errado dá resposta errada:
-
-| Ferramenta | Use quando | Natureza |
-|---|---|---|
-| **`check_intent.py`, tipo `regiao_intacta`** | você exportou a peça **antes** de editar e pode passá-la em `--referencia` | **exata**: recorta as duas peças pela caixa e mede o volume da diferença simétrica |
-| `mede_topo_em_pontos` sobre a região | houve booleana e não há referência em arquivo | amostragem: prova os pontos amostrados |
-| `captura_regiao_protegida` + `compara_regiao_protegida` | a operação **não** retessela, por exemplo um deslocamento puro | conjunto de posições **e área**; depois de booleana acusaria retesselação como alteração. Devolve `veredito`: `PRESERVADA` só com as duas medidas iguais; `ALTERADA` se a área mudar, ainda que o conjunto de posições seja idêntico; `INDETERMINADO` se a captura vier de versão que não media área |
-
-**Exporte a peça antes de editar.** Custa um comando e transforma "0,0 em 45 pontos"
-em "0,0 mm³ na caixa inteira". Medido num ensaio independente: `regiao_intacta`
-devolveu **0,0 mm³** de divergência na região preservada e **5.616,0 mm³** quando a
-caixa foi apontada para o vão que deveria mudar — o segundo número é o que prova que o
-primeiro é medida e não silêncio. Ver `verificar.md` para o formato do requisito.
-
-A comparação por posições agora **recusa** capturar ou comparar conjunto vazio. Isso
-também foi um defeito meu durante a construção: a captura devolvia zero posições em
-silêncio e a comparação ainda emitia veredito.
+Escolher a ferramenta errada dá resposta errada. A tabela de escolha (`regiao_intacta`
+exata, amostragem de altura, captura/comparação de posições e área) e o formato do
+requisito estão em `verificar.md`, seção "Preservação". **Exporte a peça antes de
+editar**: é o que permite a medida exata. Sem referência em arquivo, depois de
+booleana, use amostragem de altura (`mede_topo_em_pontos`), nunca conjunto de
+posições.
 
 Medido no cenário correto: 18 pontos amostrados na superfície protegida, desvio
 máximo **0.0** antes e depois.
@@ -433,13 +401,10 @@ Ver `recuperar_salvar_exportar.md`.
 
 `cenarios/ensaio_preenchimento.py` executa o procedimento inteiro em três variantes.
 
-
-> **Rodado assim, nesta máquina, em 08/09/2026.** O comando abaixo é uma linha só, de
-> propósito: `\` no fim da linha é continuação de shell POSIX e **não** funciona no
-> PowerShell, e `/tmp` não existe no Windows. O `--passa-resultado` entrega o caminho
-> de `--resultado` ao script como último argumento, então ele é escrito **num lugar
-> só** — antes era preciso repeti-lo dentro do arquivo de parâmetros, e duas grafias
-> que divergissem davam `SEM_RESULTADO` com o arquivo existindo em outra pasta.
+O comando abaixo é uma linha só, de propósito: `\` no fim da linha é continuação de
+shell POSIX e **não** funciona no PowerShell, e `/tmp` não existe no Windows. O
+`--passa-resultado` entrega o caminho de `--resultado` ao script na bandeira `--resultado-em`, no fim dos argumentos,
+então ele é escrito **num lugar só**.
 
 `cfg.json`: só a variante — o destino vem do `--passa-resultado`. O vocabulário é
 **fechado** (`correta`, `ranhura`, `tangente`, `duplicado`, `flutuante`, `parcial`);
@@ -482,26 +447,7 @@ Nas variantes barradas, o relatório registra: *"o preenchimento não foi execut
 nada depois dele foi medido. Um resultado de etapa não prova outra."*
 
 Antes de executar codigo especifico ou entregar uma edicao, consulte o contrato de
-`fluxo_interativo.md`: captura anterior real, limites de aceite, identidade da selecao,
+`chamadas_prontas.md`: captura anterior real, limites de aceite, identidade da selecao,
 recuperacao e verificacao do arquivo exportado.
 
-## Engrossar feição fina até um mínimo imprimível (piso de espessura)
-
-Script: `scripts/piso_espessura.py V.npy F.npy --alvo 0.9 --saida X`. Etapas, aprendidas
-errando numa escultura (19–20/09/2026):
-
-1. medir a espessura em **todos** os vértices (raio para dentro ao longo de −normal);
-2. separar feição fina de **vinco de relevo**: vinco também dá raio curto, mas o material em
-   volta é grosso. Só conta como fino se a **mediana** da espessura dos vizinhos num raio
-   (padrão 1,5 mm) também estiver abaixo do alvo;
-3. deslocar pela **magnitude escalar** suavizada ao longo da normal. **Nunca suavizar o
-   vetor**: numa lâmina as duas faces têm normais opostas e a média se anula;
-4. Taubin (λ 0,5 / μ −0,53) só onde mexeu, +2 anéis; forte em caixas indicadas.
-
-Medido: aro de óculos 0,63 → 1,09 mm (fechou na impressão); elos de colar 0,30 → 0,9 mm
-(fio contínuo), sem serrilhar o rosto.
-
-**Limite do filtro:** o raio tem de ser **menor** que a feição. Em pétala pequena a
-vizinhança pega o miolo grosso e descarta a feição como vinco — reduzir `--raio-relevo`
-e conferir no render quais vértices mexeram. O filtro foi **reimplementado** em 23/09 a
-partir da descrição registrada; o código original não foi salvo.
+Engrossar feição fina até um mínimo imprimível (piso de espessura): `scripts/piso_espessura.py`, descrito em `projetar_para_imprimir.md`.

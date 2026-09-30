@@ -1,8 +1,7 @@
 # Inspecionar e orientar seleção
 
-Para sessão aberta, descubra e teste primeiro o MCP específico do Blender
-conforme `../SKILL.md`, seção "Conectar ao Blender aberto". Como alternativa
-local, use `scripts/sessao_blender.py --diagnosticar`:
+Para sessão aberta, ver `../SKILL.md`, "Conectar ao Blender, por agente". Como
+alternativa local, use `scripts/sessao_blender.py --diagnosticar`:
 `referencias/sessao_e_edicao_guiada.md` documenta o retorno e o próximo passo.
 Flags persistidas de objetos ocultos não são a seleção viva do operador.
 
@@ -14,16 +13,9 @@ selecionar, e transformar "essa região aí" num alvo com coordenadas.
 Nunca oriente nem edite antes de ler o estado. **A aparência engana em três pontos
 diferentes**, todos medidos.
 
-```python
-# dentro do Blender. O caminho e relativo a RAIZ DO PACOTE, sem prefixo `produto/`:
-# esse prefixo existe apenas na arvore de desenvolvimento e NAO resolve no pacote
-# extraido — o proprio INVENTARIO.json diz isso, e estas duas linhas ficaram para
-# tras quando o manifesto foi corrigido.
-import sys
-sys.dont_write_bytecode = True          # nao criar __pycache__ dentro do pacote
-sys.path.insert(0, r"<raiz do pacote>\scripts")
-import bl_ferramentas as F
-```
+Dentro do Blender, importe `bl_ferramentas as F` como em `mapa_de_ferramentas.md`
+("Como importar quando o seu script vive FORA do pacote"; o caminho é relativo à raiz do
+pacote).
 
 ```python
 d = F.diagnostico("NomeDoObjeto")   # ou sem argumento, para o objeto ativo
@@ -173,21 +165,17 @@ Não infira que uma região é dispensável porque parece pequena ou feia.
 
 > **Os números abaixo são desta cena de exemplo, não da sua.** Copiar a caixa daqui
 > para outra peça costuma selecionar **zero faces**; copiar o índice de face costuma
-> "funcionar" por coincidência e selecionar a face errada. Num ensaio independente, o
-> topo do degrau alto de uma peça 44 × 26 × 21 era **também** o índice 10 — a
-> coincidência premiaria quem copiasse o índice. Sempre derive a caixa do
+> "funcionar" por coincidência e selecionar a face errada (medido: o topo do degrau alto
+> de uma peça 44 × 26 × 21 também era o índice 10). Sempre derive a caixa do
 > `diagnostico` da **sua** peça.
 
 Gerador: `cenarios/gera_cenario.py` (bloco 60 × 40 × 10 com patamar alto em z=20 de
 x=0 a 20, patamar baixo em z=14 de x=40 a 60, vão entre eles).
 
-
 > **Rodado assim, nesta máquina, em 08/09/2026.** O comando abaixo é uma linha só, de
 > propósito: `\` no fim da linha é continuação de shell POSIX e **não** funciona no
-> PowerShell, e `/tmp` não existe no Windows. O `--passa-resultado` entrega o caminho
-> de `--resultado` ao script como último argumento, então ele é escrito **num lugar
-> só** — antes era preciso repeti-lo dentro do arquivo de parâmetros, e duas grafias
-> que divergissem davam `SEM_RESULTADO` com o arquivo existindo em outra pasta.
+> PowerShell, e `/tmp` não existe no Windows. Sobre `--passa-resultado`, `--exigir` e os
+> estados do auxiliar: `mapa_de_ferramentas.md`, "Rodar o Blender em processo separado".
 
 `param.json`, no diretório onde você vai rodar (só o que muda em relação ao padrão;
 `{}` também serve):
@@ -205,9 +193,7 @@ Resultado esperado, **medido** com esse comando: `"estado": "OK"` no auxiliar e,
 não-manifold, 0 degeneradas, volume 35200. O `gabarito.objeto` é `peca_de_ensaio`.
 
 `estado: "OK"` significa apenas que o script escreveu um relatório legível. Para o
-auxiliar **reprovar** um relatório que se declara ruim, acrescente
-`--exigir CAMPO=VALOR` — sem isso, um relatório com veredito negativo sai como OK e
-com código de saída zero.
+auxiliar **reprovar** um relatório que se declara ruim, acrescente `--exigir CAMPO=VALOR`.
 
 Selecionar o topo do patamar alto com a caixa de mundo
 `[−0.001, −0.001, 19.999] … [20.001, 40.001, 20.001]` deve dar **1 face**, índice 10.
@@ -215,21 +201,20 @@ Selecionar o topo do patamar alto com a caixa de mundo
 Controle negativo: a caixa `[1000,1000,1000] … [1001,1001,1001]` deve **barrar** com
 `ErroDePrecondicao`, e nada deve ser editado.
 
-**Este controle só é válido em Edit Mode, e é preciso conferir a MENSAGEM.** Um ensaio
-independente executou-o em Object Mode: ele barrou, mas com *"a selecao de faces exige
-Edit Mode"* — ou seja, **passou sem ter testado a guarda de seleção vazia**. Crédito
-por defeito não exercitado é o erro que estes controles existem para evitar, e o
-próprio controle caiu nele.
+**Este controle só é válido em Edit Mode, e é preciso conferir a MENSAGEM.** Em Object
+Mode ele também barra, mas com *"a selecao de faces exige Edit Mode"* — ou seja,
+**passa sem testar a guarda de seleção vazia**. Crédito por defeito não exercitado é o
+erro que estes controles existem para evitar.
 
 Chame `F.entra_em_edicao(...)` antes, e exija que a mensagem contenha *"nao contem
 nenhuma face"*. Só assim o controle prova o que diz provar.
 
 ## Identificar corpo pela geometria, nunca por nome ou contagem de faces
 
-Dois corpos podem ter **a mesma contagem de faces** (variantes da mesma malha: os dois
-cupons de colar tinham 16.496). E num 3MF "dividido em objetos" pelo Bambu Studio, os nomes
-dos nós que o trimesh devolve **não** batem com os nomes mostrados no Studio. Foi assim que
-duas peças foram trocadas e um arquivo com as peças erradas foi entregue (22/09/2026).
+Dois corpos podem ter **a mesma contagem de faces** (variantes da mesma malha). E num
+3MF "dividido em objetos" pelo Bambu Studio, os nomes dos nós que o trimesh devolve
+**não** batem com os nomes mostrados no Studio: nome e contagem de faces podem trocar
+duas peças sem aviso.
 
 `scripts/componentes.py arquivo.3mf` lista cada corpo com faces, dimensões, canto e
 centro, e o nome do Studio com o centro gravado no `transform` do `<item>` — case pelo

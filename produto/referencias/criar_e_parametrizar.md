@@ -1,47 +1,54 @@
 # Criar e parametrizar geometria simples
 
 Rota para: "faça uma peça assim", "gere essa família de tamanhos", sem exigir
-reconstrução de nada nem impressão.
+reconstrução de nada nem impressão. Esta referência trata de criar por código. Se a
+peça já existe como malha, ou o trabalho é de edição, use o Blender: ver
+`editar_localizado.md`.
 
-Duas ferramentas possíveis, e a escolha não é de gosto:
+## Rota manifold3d (padrão do dono)
 
-| Backend | Quando |
-|---|---|
-| **build123d** (código, sólido) | a peça é descrita por parâmetros e operações; você quer sólido analítico, STEP e varredura de família |
-| **Blender** | a peça já existe como malha, ou o trabalho é de edição; ver `editar_localizado.md` |
+Peça funcional para impressão sai de um gerador Python com **manifold3d** (sólidos e booleanas),
+**numpy** e **trimesh** (exportação e medidas). Um arquivo `gera.py` por projeto, com as cotas em
+constantes no topo e uma função por peça; `pecas()` devolve `[(nome, Manifold)]` e o montador
+grava STL ou 3MF.
 
-Esta referência trata do primeiro caso.
+**Construir**
 
-## Reaproveitar mecanismos antes de inventar
+- Perfil 2D em `mf.CrossSection` (retângulo, `circle(r, n)`, polígono) e `Manifold.extrude`.
+  Para extrudar em outro eixo, `transform` com matriz 3×4 de **determinante +1**: com −1 a malha
+  sai de dentro para fora e a booleana seguinte erra sem aviso.
+- Círculo com `n` explícito (96 a 128 para furo ou encaixe); o padrão faceta e muda a folga.
+- Várias peças somadas ou subtraídas de uma vez: `batch_boolean(lista, OpType.Add)`.
 
-Para encaixes ou mecanismos, procure primeiro referências existentes e evidência de
-uso compatível antes de criar outra solução ou propor um cupom. Prefira arquivos já
-fornecidos e peças que o usuário usa; amplie a busca se faltar referência adequada.
-Popularidade, download ou malha fechada não equivalem a validação funcional.
+**Booleana sem face coincidente**
 
-| Função necessária | Construção a considerar | Limite |
-|---|---|---|
-| orientar deslizamento | guia e ranhura correspondentes | não garantem retenção contra retirada |
-| limitar fechamento e esconder folga | frente alargada ou ombro | não impedem saída no sentido oposto |
-| impedir separação numa direção | colar, ressalto ou trava | conferir montagem, curso permitido e resistência separadamente |
-| eliminar teto difícil de imprimir | separar corpo e tampa/bandeja | acrescenta interface de montagem a conferir |
+- Todo cortador passa **0,1 mm além** da face que atravessa (`z0 - 0,1`, `y1 + 0,5`). Face
+  coincidente deixa lasca de área zero ou parede de espessura nula.
+- Peça somada a outra entra na outra (raiz de 0,5 a 1 mm), e não só encosta.
 
-Estas são opções de construção, não produtos certificados. Inspecione os dois lados
-da interface no referencial de montagem. Preserve as condições relevantes ao adaptar:
-perfil, folga, engate, espessura, orientação de impressão, material/processo e carga.
-Não escale automaticamente uma folga nem transfira aprovação para a parte modificada.
+**Da malha do manifold3d para o arquivo**
 
-No registro do trabalho, use uma ficha curta: **função → construção → origem/licença
-→ evidência → condições preservadas/alteradas → limite e próxima verificação**.
-Diferencie geometria nominal, uso relatado e medição física; registre o que cada um
-sustenta. Reutilize arquivos conforme a licença; refazer a geometria não dispensa
-conferir os termos aplicáveis (caso medido: `projetar_para_imprimir.md`, seção 10). Referências privadas permanecem fora do pacote.
+- Converta e confira como o fatiador vai ver: junte vértices (`merge_vertices`) e exija malha
+  fechada **e** sem face de área < 1e-10. Se falhar, `m.simplify(1e-5)` e tente de novo (até 4
+  vezes; a função `robusto()` dos geradores faz isso). Sem vértices soldados o fatiador fecha
+  furos: ver `projetar_para_imprimir.md`, seção 11.
+- Orientação de impressão depois, na malha do trimesh: rotação (`rotation_matrix`) e translação
+  para `bounds[0] = 0`. Modele sempre na posição de uso.
 
-Experiência anterior pode reduzir ou dispensar cupons quando cobre a incerteza atual.
-Se mudou uma condição crítica, teste apenas essa diferença, com alcance declarado;
-não revalide automaticamente tudo nem chame a adaptação inteira de validada.
+**Conferir antes de entregar**
 
-## Passo 1 — escrever a peça como função de parâmetros
+- Interferência entre peças montadas: volume de `a ^ b` na posição de uso. Zero é encaixe sem
+  interferência; aperto proposital aparece como volume positivo e deve bater com o calculado.
+- `verificadores/check_mesh.py` em cada STL, e as quatro vistas de `render_de_conferencia.md`.
+- 3MF com várias placas, configuração do fatiador e conferência no G-code: skill `bambu-a1`,
+  `references/operacao.md`.
+
+## Rota build123d (quando precisar de STEP/CAD)
+
+Use quando a peça é descrita por parâmetros e operações e você quer sólido analítico,
+STEP e varredura de família.
+
+### Escrever a peça como função de parâmetros
 
 Uma função que devolve o sólido, com **todos** os parâmetros nomeados e com padrão.
 O pacote traz duas prontas em `cenarios/familia_exemplo.py`; esta é a primeira
@@ -59,46 +66,16 @@ def familia_placa(L=80.0, P=50.0, T=6.0, d=5.0):
 Duas regras que evitam a maior parte dos defeitos desta rota:
 
 1. **Atravesse de verdade.** O cilindro do furo tem altura `T * 3`, não `T`. Corte com
-   a mesma altura da parede produz faces coincidentes e o resultado degenera.
+   a mesma altura da parede produz faces coincidentes e o resultado pode degenerar
+   (ver "Booleana e ida e volta por STL").
 2. **Nada de constante mágica.** Se um valor precisa existir, ele é parâmetro ou sai
    de outro parâmetro.
 
-## Passo 2 — varrer a família, não uma amostra
+### Varrer a família, não uma amostra
 
-O mesmo código sai limpo num valor e defeituoso no vizinho. Isso não é hipótese: é o
-achado mais reusável deste projeto.
-
-**Coincidência paramétrica gera contato tangente, e o defeito é a IGUALDADE entre
-duas expressões, não o valor.** Medido — e leia a coluna da direita antes de usar
-qualquer número daqui:
-
-| Diâmetro do furo | Espessura da parede | Arestas não-manifold | Em que código |
-|---|---|---|---|
-| 4 | 4 | **6** | corte com altura **igual** à parede |
-| 5 | 5 | **6** | idem |
-| 3 | 4 | 0 | idem |
-| 6 | 4 | 0 | idem |
-
-Repare: 4/4 e 5/5 quebram igualmente. O valor não importa; a igualdade importa.
-
-**Esta tabela não reproduz com o `familia_placa` que acompanha o pacote, e isso é
-deliberado.** Ela mede o corte com altura igual à parede; a função entregue atravessa
-com `T * 3`, justamente para não cair nisso. Rodando a igualdade na função entregue —
-`--grade "T=4,5;d=4,5"` — dá **4 variantes, 4 aprovadas, 0 arestas não-manifold, 0
-abertas**. Uma sessão limpa gastou um comando para descobrir isso e quase deixou de
-usar `d=8` sem motivo. Ou seja: a tabela é o registro do defeito que a folga resolve,
-**não** um aviso sobre o código atual. Se você escrever sua própria família, é aí que
-ela volta a valer.
-
-E não adianta trocar por `d != parede`: 4,0 e 4,5 são diferentes, e a única medição
-de meio milímetro que existe, no par análogo, deu **4 arestas defeituosas contra 2 da
-igualdade exata** — ou seja, foi **pior**. **A separação mínima segura é
-`A_CALIBRAR`: não há número medido, e este documento não é lugar de inventar um.**
-Ela sai de varredura com a geometria real. O que existe medido é a folga que
-**funciona** na família entregue: altura de corte `T * 3`, com 0 defeitos em toda a
-grade ensaiada.
-
-Varra:
+O mesmo código sai limpo num valor e defeituoso no vizinho: varra a grade, não uma
+amostra. O defeito de coincidência paramétrica (a IGUALDADE entre duas expressões, não
+o valor) está medido em "Booleana e ida e volta por STL".
 
 A varredura importa o seu módulo pelo nome, então o diretório dele tem que estar no
 caminho de importação. **A sintaxe difere por shell**, e o ambiente medido deste
@@ -118,17 +95,14 @@ PYTHONPATH=cenarios python verificadores/sweep_params.py \
 ```
 
 `PYTHONPATH=... comando` **não** funciona em PowerShell: lá não existe prefixo de
-variável na linha de comando. Uma revisão independente apontou que documentar só a
-forma POSIX obriga o operador a improvisar justamente o caminho de importação de que a
-receita depende.
+variável na linha de comando.
 
 Medido nessa grade: 4 variantes, **4 aprovadas**, 0 reprovadas por geometria, 0 erros
 operacionais.
 
 **`--saida` e `--json` são resolvidos contra o diretório de execução, e o padrão de
 `--saida` é relativo (`varredura`).** Como a receita manda executar de dentro do
-pacote, seguir os exemplos ao pé da letra **grava dentro da pasta da habilidade**. Uma
-sessão limpa criou `<pacote>/varredura/` com dois arquivos assim, sondando o `--help`.
+pacote, seguir os exemplos ao pé da letra **grava dentro da pasta da habilidade**.
 Use **caminho absoluto** nos dois, apontando para a sua pasta de trabalho. Os exemplos
 acima usam caminho curto para caber na linha; num trabalho de verdade, escreva o
 caminho inteiro.
@@ -139,12 +113,11 @@ Cada variante passa por três portões:
 |---|---|
 | 1. sólido | contagem de corpos declarada e volume positivo — o contrato vem da **representação** |
 | 2. malha | zero arestas abertas, zero não-manifold, zero degeneradas, orientação consistente, estanque |
-| 3. formato fechado | o escritor de 3MF aceita |
+| 3. formato fechado | o escritor de 3MF aceita (não é portão de graça: ver `verificar.md`, "Exportação não é verificação") |
 
 **Declare a representação, mesmo no caso simples.** `--representacao` e `--n-solidos`
 são opcionais na linha de comando e valem `solido` e `1` quando omitidos — que é
-exatamente o caso dos exemplos desta página, e por isso eles funcionam sem declarar
-nada. Uma sessão limpa teve que adivinhar isso. Escrever
+exatamente o caso dos exemplos desta página. Escrever
 `--representacao solido --n-solidos 1` torna o contrato explícito, e é o que se deve
 fazer quando o número de corpos importa: se a sua família produzir 2 corpos e você não
 declarar, o portão 1 **reprova** com `n_solidos_esperado: 1`, e a reprovação é
@@ -154,7 +127,7 @@ O portão 1 muda com a representação declarada: `superficie` exige faces e **z
 sólidos; `montagem` exige a contagem declarada de corpos. Para superfície, a borda é
 declarada, não deduzida: `--borda obrigatoria|proibida|indiferente`.
 
-## Passo 3 — separar falha operacional de reprovação geométrica
+### Falha operacional separada de reprovação geométrica
 
 Isto vem pronto e é o motivo de a varredura ser confiável. No relatório:
 
@@ -169,19 +142,11 @@ Falha de escrita **nunca** entra na contagem de reprovadas por geometria. Se voc
 escrever sua própria varredura, replique isso: sem essa separação, um problema de
 ambiente vira evidência sobre a peça.
 
-Nota medida, que contraria uma crença comum: o escritor de 3MF **não** é portão de
-graça. Na variante com tangência ele **aceitou** a malha, e quem reprovou foi o
-portão de malha.
+### Exportar para medir e declarar o que a peça tem que atender
 
-## Passo 4 — exportar para poder medir, e declarar o que a peça tem que atender
-
-**A ordem aqui já esteve errada, e uma validação independente bateu nela:** o passo 4
-mandava rodar `check_intent.py --malha peca.stl` e o passo 5 dizia «só então
-exportar» — de modo que o arquivo a medir ainda não existia, e a sequência literal
-devolvia traceback de arquivo inexistente. Os `v_*.stl` que a varredura grava são das
-**variantes**, não o `peca.stl` deste comando.
-
-Então exporte **antes de medir**, e trate esta exportação como intermediária:
+Exporte **antes de medir**, e trate esta exportação como intermediária: os `v_*.stl`
+que a varredura grava são das **variantes**, não do `peca_para_medir.stl` do comando de
+medida.
 
 ```python
 from build123d import export_stl
@@ -201,25 +166,20 @@ de exportar**:
  ]}
 ```
 
-**Cuidado com o nome do requisito contra o que ele mede.** A versao anterior deste
-exemplo declarava `{"id": "dois_furos", "tipo": "n_solidos", "valor": 1}`. O nome diz
-furos e o tipo conta **corpos desconexos**: uma placa macica, sem furo nenhum, tem um
-corpo e passaria. Uma revisao independente pegou isso. Quem conta furos e
-`n_furos_no_plano`, e ele precisa do plano onde medir — aqui `z = 3,0`, no meio da
-espessura de 6.
+O nome do requisito tem de bater com o que o tipo mede: quem conta furos é
+`n_furos_no_plano`, que precisa do plano onde medir — aqui `z = 3,0`, no meio da
+espessura de 6. Formato, tolerâncias, estados (`NAO_IMPLEMENTADA` barra quando o papel
+é decisivo) e a guarda `valida_requisitos.py`: `verificar.md`.
 
 ```bash
 python verificadores/check_intent.py --malha peca_para_medir.stl --requisitos req.json
 ```
 
-Requisitos com o mesmo identificador são recusados; um requisito sem medidor sai como
-`NAO_IMPLEMENTADA`, que barra quando o papel é decisivo.
+### Exportação final
 
-## Passo 5 — a exportação final
-
-A do passo 4 existe para **medir**. Esta é a que você entrega, e vale re-exportar com
-o nome final depois de os requisitos passarem — inclusive porque o formato de
-intercâmbio pode ser outro:
+A anterior existe para **medir**. Esta é a que você entrega, e vale re-exportar com o
+nome final depois de os requisitos passarem — inclusive porque o formato de intercâmbio
+pode ser outro:
 
 ```python
 from build123d import export_stl, export_step
@@ -227,28 +187,13 @@ export_stl(peca, "peca.stl", tolerance=0.01, angular_tolerance=0.1)
 export_step(peca, "peca.step")
 ```
 
-Armadilha medida em M0: **reexportar a MESMA forma com outra tolerância devolve a
-malha em cache**, com a contagem de triângulos idêntica, sem aviso nenhum. O kernel
-guarda a triangulação. Se a tolerância importa, construa do zero.
-
 Confira o artefato entregue, e não a peça que você acha que exportou:
 
 ```bash
 python verificadores/check_mesh.py --malha peca.stl
 ```
 
-## Decisão por sintoma
-
-| Sintoma | Diagnóstico | Ação |
-|---|---|---|
-| uma variante da grade quebra e as vizinhas não | provável coincidência paramétrica | procure a **igualdade** entre expressões, não o valor |
-| malha com arestas não-manifold e você não mudou nada | **pode ser** corte com altura igual à parede, e há outras causas | atravesse com folga; a folga é parâmetro, não constante. **A igualdade de altura não implica degeneração:** uma validação independente construiu placa 30 × 20 × 4 com corte cilíndrico de altura 4, ambos `Align.MIN` em Z, e mediu **zero** não-manifold e zero degeneradas. O que produz o defeito é a coincidência de **faces** — que depende do alinhamento, e não só do número. Com os dois começando em z=0 e a mesma altura, as faces de topo e de base coincidem em par e o kernel resolve; foi com outro alinhamento que as 6 arestas foram medidas. Diagnostique pela medida, não por esta linha |
-| a varredura devolve erro operacional | ambiente, não geometria | corrija o ambiente; **não** conte como reprovação |
-| tolerância de malha "não faz efeito" | triangulação em cache | construa do zero em vez de reexportar |
-| pedem folga de encaixe | há **quatro valores calibrados** (pino em furo, disco parado em tubo, lingueta em entalhe, rosca), cada um com as suas condições | use a tabela de `projetar_para_imprimir.md`, seção 1; fora das condições, `A_CALIBRAR`: diga o que seria preciso medir |
-| pedem parede mínima ou silhueta | para **malha**: `scripts/piso_espessura.py` mede a espessura por raio; valores que imprimiram estão em `projetar_para_imprimir.md`, seção 4. Silhueta: sem medidor | silhueta segue `NAO_IMPLEMENTADA`; parede fora das condições medidas, não estime |
-
-## Armadilhas do build123d (medidas em 26/09/2026, versão 0.11.1)
+### Armadilhas do build123d
 
 | Sintoma | Causa | O que fazer |
 |---|---|---|
@@ -258,22 +203,87 @@ python verificadores/check_mesh.py --malha peca.stl
 | extrusão "para cima" de um `Polygon` vai para baixo | a normal do polígono segue a ordem dos pontos (o `convex_hull` do shapely a inverte) | passe `dir=(0, 0, ±1)` explícito em todo `extrude` de polígono vindo de outra biblioteca, e confira por corte em várias alturas |
 | `extrude(..., taper=…)` sai alargando em vez de afunilar | o sinal do `taper` é relativo à direção da extrusão | extruda a partir da face aberta, na direção do fundo, com `taper` positivo; meça a área em 3 cortes |
 
+## Booleana e ida e volta por STL
+
+**Coincidência paramétrica gera contato tangente, e o defeito é a IGUALDADE entre
+duas expressões, não o valor.** Medido com corte de altura **igual** à parede:
+
+| Diâmetro do furo | Espessura da parede | Arestas não-manifold |
+|---|---|---|
+| 4 | 4 | **6** |
+| 5 | 5 | **6** |
+| 3 | 4 | 0 |
+| 6 | 4 | 0 |
+
+4/4 e 5/5 quebram igualmente: o valor não importa; a igualdade importa. Esta tabela
+**não reproduz com o `familia_placa` que acompanha o pacote**, e isso é deliberado: ela
+mede o corte com altura igual à parede, e a função entregue atravessa com `T * 3`.
+Rodando a igualdade na função entregue — `--grade "T=4,5;d=4,5"` — dá **4 variantes, 4
+aprovadas, 0 arestas não-manifold, 0 abertas**. A tabela é o registro do defeito que a
+folga resolve, não um aviso sobre o código atual; numa família sua, ela volta a valer.
+
+Trocar por `d != parede` não resolve: 4,0 e 4,5 são diferentes, e a única medição de
+meio milímetro que existe, no par análogo, deu **4 arestas defeituosas contra 2 da
+igualdade exata** — **pior**. **A separação mínima segura é `A_CALIBRAR`: não há número
+medido, e este documento não é lugar de inventar um.** Ela sai de varredura com a
+geometria real. O que existe medido é a folga que **funciona** na família entregue:
+altura de corte `T * 3`, com 0 defeitos em toda a grade ensaiada.
+
+**A igualdade de altura não implica degeneração.** Placa 30 × 20 × 4 com corte
+cilíndrico de altura 4, ambos `Align.MIN` em Z, mediu **zero** não-manifold e zero
+degeneradas: o que produz o defeito é a coincidência de **faces**, que depende do
+alinhamento e não só do número. Com os dois começando em z=0 e a mesma altura, as
+faces de topo e de base coincidem em par e o kernel resolve; foi com outro alinhamento
+que as 6 arestas foram medidas. Diagnostique pela medida, não pelo padrão do código.
+
+Setores revolvidos em separado e fundidos (cilindros coincidentes entre setores) têm a
+mesma raiz, faces coincidentes: ver "Armadilhas do build123d".
+
+**Malha, fora do kernel:**
+
+- **`manifold3d` não resolve auto-interseção.** `trimesh.boolean.union([m])` com uma malha
+  só devolve a mesma malha: mover vértices para dentro do próprio sólido não muda o volume
+  (175,485 cm³ antes e depois). O que ele faz bem é unir **sólidos separados**; quando
+  fragmenta, o maior componente costuma ser o correto.
+- **Resultado de booleana não sobrevive à ida e volta por STL** (euler −138 → −79, arestas
+  não-manifold). Encadeie em memória; entre etapas, `.npy` de vértices e faces.
+- **Recortar antes de engrossar.** Depois de engrossado, `slice_plane(cap=True)` deixa borda
+  aberta (35 a 332 arestas). Recortando a malha limpa e engrossando dentro do cupom, sai
+  fechado.
+- Se a peça final precisa de uma booleana já feita numa versão antiga, prefira
+  `transplante_de_deslocamento.md` a refazê-la na versão engrossada.
+
+**Ida e volta por STL:**
+
+- **Reexportar a MESMA forma com outra tolerância devolve a malha em cache**, com a
+  contagem de triângulos idêntica, sem aviso nenhum: o kernel guarda a triangulação.
+  Se a tolerância importa, construa do zero.
+- **STL não compartilha vértices**: ao reler, solde (`merge_vertices`) antes de contar
+  topologia. `check_mesh.py` já solda (números em `verificar.md`).
+- O status do kernel de malha não é oráculo de validade; confie nas contagens
+  topológicas (`verificar.md`).
+- Exportar com sucesso, inclusive em 3MF, não prova validade geométrica; confira o
+  artefato entregue com `check_mesh.py`.
+
+## Decisão por sintoma
+
+| Sintoma | Diagnóstico | Ação |
+|---|---|---|
+| uma variante da grade quebra e as vizinhas não | provável coincidência paramétrica | procure a **igualdade** entre expressões, não o valor |
+| malha com arestas não-manifold e você não mudou nada | **pode ser** corte com altura igual à parede, e há outras causas | atravesse com folga; a folga é parâmetro, não constante (ver "Booleana e ida e volta por STL") |
+| a varredura devolve erro operacional | ambiente, não geometria | corrija o ambiente; **não** conte como reprovação |
+| tolerância de malha "não faz efeito" | triangulação em cache | construa do zero em vez de reexportar |
+| pedem folga de encaixe | há valores calibrados, cada um com as suas condições | `projetar_para_imprimir.md`, seção 1; fora das condições, `A_CALIBRAR`: diga o que seria preciso medir |
+
 ## Exemplo sintético completo
 
 Gerador: `cenarios/familia_exemplo.py`, que acompanha o pacote. **Nada aqui
 depende de arquivo fora dele.**
 
-```powershell
-$env:PYTHONPATH = "cenarios"
-python verificadores/sweep_params.py --modulo familia_exemplo --funcao familia_placa --grade "L=70,80;d=4,5" --saida saida --json varredura.json
-```
+Varredura da seção "Varrer a família": `n_variantes: 4`, `n_aprovadas: 4`,
+`n_reprovadas_por_geometria: 0`, `n_com_erro_operacional: 0` (medido).
 
-Em bash, a forma equivalente é `PYTHONPATH=cenarios python ...` numa linha.
-
-Esperado, **medido**: `n_variantes: 4`, `n_aprovadas: 4`,
-`n_reprovadas_por_geometria: 0`, `n_com_erro_operacional: 0`.
-
-Defeito plantado, para conferir que o detector está vivo: grade `"L=80;d=5,40"`.
+Defeito plantado, para conferir que o detector está vivo: `--grade "L=80;d=5,40"`.
 Com `d=40` num comprimento 80 os furos alcançam as bordas e o vizinho.
 
 **Medido:** 2 variantes, 1 aprovada, **1 reprovada por geometria**, **0 erros
@@ -284,24 +294,22 @@ ambiente.
 O mesmo arquivo traz `familia_suporte_em_L`, para exercitar a rota com outra
 topologia de parâmetros.
 
-Controle de erro operacional, que tem que ficar **separado**. **O controle que esta
-página trazia antes não reproduzia:** ela mandava apontar `--saida` para um caminho sem
-permissão de escrita, e o que acontece é um traceback cru de `os.makedirs`
-(`PermissionError` ou `FileNotFoundError`), sem JSON, sem `codigo` e sem `etapa` — a
-criação do diretório de saída acontece **antes** do laço e fora do tratamento de
-exceção. Uma sessão limpa mediu isso duas vezes. Ou seja: a separação de que esta
-página mais se orgulha era contornada precisamente pela falha que ela mandava usar
-para testá-la.
-
-O controle que **reproduz** deixa o diretório criável e faz falhar a *escrita*: crie,
-dentro de `--saida`, um **diretório** com o nome exato do 3MF da primeira variante.
+**Controle de erro operacional**, que tem que ficar **separado**. Apontar `--saida`
+para um caminho sem permissão de escrita **não serve**: a criação do diretório de
+saída acontece **antes** do laço e fora do tratamento de exceção, e o resultado é um
+traceback cru de `os.makedirs` (`PermissionError` ou `FileNotFoundError`), sem JSON,
+sem `codigo` e sem `etapa`. O controle que **reproduz** deixa o diretório criável e
+faz falhar a *escrita*: crie, dentro de `--saida`, um **diretório** com o nome exato do
+3MF da primeira variante.
 
 ```powershell
 $T = "C:\caminho\da\sua\pasta\controle"
 New-Item -ItemType Directory -Force "$T\saida\v_L70_d4.3mf" | Out-Null
 $env:PYTHONPATH = "cenarios"
-python verificadores/sweep_params.py --modulo familia_exemplo --funcao familia_placa --grade "L=70,80;d=4,5" --saida "$T\saida" --json "$T\rel.json"
 ```
+
+E rode a varredura da grade `"L=70,80;d=4,5"` com `--saida "$T\saida"` e
+`--json "$T\rel.json"`.
 
 **Medido:** código de saída 1, `n_aprovadas: 3`, **`n_reprovadas_por_geometria: 0`**,
 `n_com_erro_operacional: 1`, e o erro traz `codigo: "E_EXPORT_3MF"`, `etapa:
@@ -309,11 +317,9 @@ python verificadores/sweep_params.py --modulo familia_exemplo --funcao familia_p
 `etapas_concluidas: ["portao_1_solido", "exportacao_malha"]` — que é a prova de que a
 injeção atingiu a etapa pretendida, e não uma anterior.
 
-Limite conhecido, e ele fica aqui em vez de ser corrigido no verificador porque o
-verificador tem comportamento controlado por testes e divergências registradas: **falha na
-criação do diretório de saída sobe como traceback**, não como erro operacional
-classificado. Se o seu `--saida` não puder ser criado, você recebe um traceback de
-`os.makedirs` e nenhum JSON. Confira o caminho antes de varrer.
+Limite conhecido: **falha na criação do diretório de saída sobe como traceback**, não
+como erro operacional classificado. Se o seu `--saida` não puder ser criado, você
+recebe um traceback de `os.makedirs` e nenhum JSON. Confira o caminho antes de varrer.
 
 ## Regras de impressão (folga, espessura mínima, feição delicada, rosca, negativos, gravação)
 

@@ -1,19 +1,21 @@
 # Blender aberto: diagnosticar, interpretar e editar a forma
 
-Para apenas mover rigidamente uma seleção já definida, use a rota curta
-`mover_selecao.md`. Reutilize a ferramenta pronta, sem gerar outra implementação.
+Esta é a rota da **deformação delimitada** (alvo, transição e região protegida). As outras
+duas não competem com ela: para o operador apontar com letras, vários objetos ou cena em
+metros, `edicao_por_letras.md`; para apenas mover, extrudar, alinhar, preencher ou
+arredondar uma seleção já definida em um objeto, `chamadas_prontas.md` (reutilize a
+ferramenta pronta, sem gerar outra implementação).
 
-Use para “suba esta borda”, “corrija este desnivel”, “este lado deve acompanhar
-aquele”. Leia esta rota **antes** de escolher vertices ou chamar translação.
-`scripts/edicao_guiada.py` é uma biblioteca adicional, versão 1.0.0; não substitui
-os verificadores existentes. O agente ainda precisa identificar a feição.
+Use para “suba esta borda”, “corrija este desnível”, “este lado deve acompanhar
+aquele”. Leia esta rota **antes** de escolher vértices ou chamar translação.
+`scripts/edicao_guiada.py` é uma biblioteca adicional; não substitui os verificadores
+existentes. O agente ainda precisa identificar a feição.
 
 ## 1. Entrada na sessão
 
-Primeiro descubra e teste o MCP específico do Blender, conforme a seção
-"Conectar ao Blender aberto" de `../SKILL.md`. Uma falha do controle de desktop
-não prova falha dessa conexão. Com MCP funcional, execute `G.diagnostica()`
-dentro do Blender pelo `execute_blender_code`, como no exemplo abaixo.
+Primeiro conecte ao Blender aberto: ver `../SKILL.md`, "Conectar ao Blender, por
+agente". Com a conexão funcional, execute `G.diagnostica()` dentro do Blender, como no
+exemplo abaixo.
 
 Como alternativa local, ou para diagnóstico detalhado pelo cliente do pacote,
 no Python do hospedeiro, usando o caminho real da instalação:
@@ -233,11 +235,16 @@ se piorou, nem invalida pedido de repará-la. Compare o outro lado somente quand
 for uma referência válida. Retesselação perde correspondência por índice: este
 verificador recusa essa comparação; use comparação de superfície/seção apropriada.
 
-## 5. Erros e exemplo executável sem improvisar o invólucro
+## 5. Escrever o meu próprio script
 
-Para headless, escreva `def executar(config): ...; return resultado_dict` num arquivo.
-Use o invólucro pronto, que captura sintaxe, importação, configuração e exceção da
-operação com traceback. Não precisa recriar `com_traceback.py`:
+Antes de executar código específico ou entregar uma edição, consulte
+`chamadas_prontas.md` (captura anterior real, limites de aceite, identidade da seleção,
+recuperação); a verificação do arquivo exportado está em `recuperar_salvar_exportar.md`.
+
+### Headless com relatório
+
+Escreva `def executar(config): ...; return resultado_dict` num arquivo e use o invólucro
+pronto, que captura sintaxe, importação, configuração e exceção da operação com traceback:
 
 ```powershell
 python "<raiz do pacote>/scripts/trabalho_blender.py" --script "<raiz do pacote>/cenarios/exemplo_edicao_guiada.py" --resultado "<pasta de trabalho>/resultado.json"
@@ -247,15 +254,27 @@ Para parâmetros, acrescente `--config "<pasta de trabalho>/config.json"`, por e
 com `{"altura": 1.5}`. `trabalho_blender` reutiliza `roda_blender`, sempre em processo
 headless separado, e encaminha corretamente os argumentos nomeados do invólucro.
 
-O exemplo completo cria apenas uma superfície sintética aberta em headless. Não é
-peça fabricável nem reconstrutor automático. `CONCLUIDA` é estado operacional;
-abra `resultado.estado` e as medidas. Se for REPROVADA/INDETERMINADA, não entregue
-como aprovada. Timeout, encerramento forçado e falha de disco podem impedir o JSON;
-nesses casos, ausência de relatório é impedimento, nunca sucesso.
+O exemplo cria apenas uma superfície sintética aberta em headless. Não é peça fabricável
+nem reconstrutor automático. `CONCLUIDA` é estado operacional; abra `resultado.estado` e as
+medidas. Se for REPROVADA/INDETERMINADA, não entregue como aprovada. Timeout, encerramento
+forçado e falha de disco podem impedir o JSON; nesses casos, ausência de relatório é
+impedimento, nunca sucesso. Todo cenário do pacote é sintético.
 
-Os testes reproduzíveis da oficina estão em `tests/test_edicao_guiada_blender.py`
-e `tests/test_contratos_guiados.py`, fora do pacote instalado. Todo cenário é sintético.
+### BMesh, datablock e visibilidade são verificações distintas
 
-Antes de executar codigo especifico ou entregar uma edicao, consulte o contrato de
-`fluxo_interativo.md`: captura anterior real, limites de aceite, identidade da selecao,
-recuperacao e verificacao do arquivo exportado.
+Em Edit Mode, leia a geometria de edição por `bmesh.from_edit_mesh`. Depois da edição,
+atualize normais e use `bmesh.update_edit_mesh` com parâmetros adequados à mudança de
+topologia. Para consultar `obj.data.vertices` atualizado, sincronize explicitamente com
+`obj.update_from_editmode()` antes da leitura. Essa sincronização não substitui a medição
+contra o alvo e a captura anterior. Fora de Edit Mode use os dados adequados ao objeto,
+considerando modificadores quando existirem.
+
+Divergência entre BMesh e `obj.data` não prova viewport parado nem perda ao salvar.
+Concordância entre eles também não prova atendimento ao pedido. Não memorize regras como
+"nunca medir pela BMesh". Identifique a janela/sessão, solicite redesenho e confira captura
+posterior no mesmo enquadramento quando houver dúvida visual. `tag_redraw` é uma
+solicitação, não prova de exibição. Sem essa evidência, informe que a geometria foi medida
+mas a exibição ainda não foi confirmada; não culpe o viewport por inferência.
+
+Referências técnicas: https://docs.blender.org/api/5.2/bmesh.html e
+https://docs.blender.org/api/5.2/bpy.types.Object.html#bpy.types.Object.update_from_editmode

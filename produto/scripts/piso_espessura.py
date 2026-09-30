@@ -1,6 +1,6 @@
 """Piso de espessura: engrossa feicao fina ate um minimo imprimivel sem estragar o resto.
 
-Etapas (as tres primeiras aprendidas errando, 19-20/09/2026, numa escultura):
+Etapas:
   1. medir a espessura em TODOS os vertices (raio para dentro ao longo de -normal);
   2. separar feicao fina de VINCO DE RELEVO: vinco de rosto/roupa tambem da raio curto,
      mas o material em volta e grosso. Vertice so conta como fino se a MEDIANA da
@@ -11,16 +11,9 @@ Etapas (as tres primeiras aprendidas errando, 19-20/09/2026, numa escultura):
   4. Taubin (lambda 0,5 / mu -0,53) so na regiao que mexeu (+2 aneis), para nao serrilhar.
 
 LIMITE DO FILTRO: o raio tem de ser MENOR que a feicao. Em feicao do tamanho do raio
-(petala pequena) a vizinhanca pega o miolo grosso e a feicao e descartada como vinco.
-Testado na flor ja engrossada: 4.672 abaixo de 0,9 mm, 138 mantidos. Em peca nova com
-petala, reduzir --raio-relevo (ex.: 0,6) e conferir no render quais vertices mexeram.
-
-O filtro de vinco da etapa 2 foi REIMPLEMENTADO em 23/09/2026 a partir da descricao
-registrada — o codigo original rodou em linha de comando e nao foi salvo. As etapas 1, 3
-e 4 sao as do script que gerou a versao validada (piso de 0,9 mm).
-
-Resultado medido com essas etapas: aro de oculos 0,63 -> 1,09 mm (fechou na impressao),
-elos de colar 0,30 -> 0,9 mm (fio continuo), sem serrilhar o rosto.
+(ex.: petala pequena) a vizinhanca pega o miolo grosso e a feicao e descartada como
+vinco. Nesse caso, reduzir --raio-relevo (ex.: 0,6) e conferir no render quais vertices
+mexeram.
 
 Uso:
   python piso_espessura.py V.npy F.npy --alvo 0.9 --saida saida [--raio-relevo 1.5]
