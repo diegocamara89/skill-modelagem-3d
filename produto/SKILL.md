@@ -79,6 +79,26 @@ que é exigido, **pergunte**. "Borda", "casca" ou "fechado" são declaração de
 separada da representação: casca **aberta** (borda obrigatória) ou **fechada** sem sólido
 (borda proibida). Não deduza uma da outra.
 
+## Pré-mortem antes de fechar peça para imprimir
+
+Antes de gerar ou entregar o arquivo, suponha: **"a peça saiu da mesa e não serviu. Por
+quê?"**. Liste as causas concretas desta peça, e cada uma termina numa verificação rodada
+antes da entrega. Causa sem verificação possível vai ao registro como "não verificado". Não
+escreva a história da falha: a prova é medida.
+
+| Causa provável | Verificação |
+|---|---|
+| não encaixa na peça existente | interface medida no arquivo ou na peça original, nunca redesenhada; folga pela tabela de `projetar_para_imprimir.md`, seção 1 |
+| malha com defeito no fatiador | `verificar.md`, topologia, medida no **arquivo exportado**, não na malha da cena |
+| furo fechado ou não passante | `verificar.md`, furo passante; conferir no G-code |
+| flutua ou balanço sem suporte | `scripts/mapa_balanco.py`: contato com a mesa maior que zero |
+| parede fina some ou fura | `scripts/piso_espessura.py`; `projetar_para_imprimir.md`, seção 4 |
+| quebra entre camadas | orientação com a carga ao longo das camadas; `projetar_para_imprimir.md`, seção 11 |
+| forma errada, embora a malha seja válida | quatro vistas de `render_de_conferencia.md` |
+| ajuste do projeto ignorado pelo fatiador | conferir no G-code (skill `bambu-a1`) |
+
+Inclua as causas que só esta peça tem; a tabela é o piso, não a lista inteira.
+
 ## Editar no Blender: qual rota
 
 | Situação | Rota |
