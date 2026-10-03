@@ -108,6 +108,27 @@ margem elástica de um arco em C que abre muito para receber uma garrafa. Nesse 
 registre diâmetro interno, boca, espessura e abertura necessária; confira inserção e
 retorno à forma no teste físico, sem presumir margem por ser PETG.
 
+### Garra circular em PETG — teste funcional real de 03/10/2026
+
+O operador confirmou expressamente que o teste da garra foi real: ela abriu para receber
+a garrafa e a segurou com firmeza e segurança no uso testado. Isso valida **abertura por
+flexão e sustentação funcional desta garra**, além da conferência geométrica. O problema
+de retirada da cabeça na guia (seção 1) é outra interface e não invalida esse resultado.
+Aqui, "dilatação" descreve a abertura mecânica na inserção; não é dilatação térmica.
+
+Geometria nominal da versão testada: arco em C com Ø interno relaxado de **43 mm**,
+parede de **1,8 mm**, altura de **18,6 mm** e boca de aproximadamente **18,32 mm**;
+garrafa de **Ø49,5 mm**, informado pelo operador. As pontas acompanham o círculo,
+com prolongamento herdado de 1,5 mm por lado no arco anterior. Modelo entregue com
+garra deitada para flexão no plano das camadas; processo efetivo não documentado em detalhe.
+
+**O que se pode reaproveitar:** esta geometria em PETG é referência de garra que abriu
+para inserir a garrafa e a manteve firme no teste físico relatado. Preserve arco, boca,
+parede, pontas e orientação relevante ao comparar outra garra. Não classifique mais
+essa versão como "flexão e firmeza ainda sem teste". O ensaio não mediu força, carga
+máxima, retorno completo à forma ou vida em ciclos; não fornece porcentagem de
+deformação admissível do PETG nem aprovação automática para apertar mais.
+
 ## 3. Rosca helicoidal: gere o filete como malha, não por varredura do kernel
 
 Medido em 26/09/2026, build123d 0.11.1:
@@ -318,8 +339,9 @@ Não escale automaticamente uma folga nem transfira aprovação para a parte mod
 
 **Garra e parafuso separados — experiência desta família:** a rosca integrada ao corpo,
 impressa horizontalmente com suporte, rosqueava mas teve acabamento inferior reprovado
-pelo operador. A solução com parafuso separado e garra deitada recebeu aprovação de uso,
-com a ressalva de desmontagem da seção 1. Integrar tudo e imprimir em pé foi rejeitado
+pelo operador. A solução com parafuso separado e garra deitada teve abertura e firmeza
+da garra aprovadas no teste físico da seção 2, com a ressalva de desmontagem da guia
+na seção 1. Integrar tudo e imprimir em pé foi rejeitado
 por orientação das camadas na flexão, brim e tempo; não foi ensaio de quebra. Uma rampa
 a 45° é candidata a dispensar suporte, não comprovação sem fatiamento ou teste específico.
 

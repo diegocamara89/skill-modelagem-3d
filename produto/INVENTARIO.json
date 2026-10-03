@@ -1,5 +1,5 @@
 {
-  "versao_do_pacote": "2.14.4",
+  "versao_do_pacote": "2.14.5",
   "versao_de_bl_ferramentas": "1.5.2",
   "congelado_em": "2026-10-03",
   "nota": "caminhos relativos a raiz do pacote, que e a pasta onde este arquivo vive.",
@@ -18,7 +18,7 @@
     "referencias/entregas_em_movimento.md": "f26b5558571171de17f984b0eac972722c4f100e2a6dd06e4d5b8177fb866f0a",
     "referencias/inspecionar_e_selecionar.md": "2dcb421aed1b76936293c7353fc5630cb3f980b70d5e9065eef9f211b256bb0c",
     "referencias/mapa_de_ferramentas.md": "03fd40a8a960513b1ad2ae81524a67309906968d14c899eac5411d5e98e0cbbe",
-    "referencias/projetar_para_imprimir.md": "7166eb0c33705bc2da74e625786145ff2ae1ee5fb78bd8b499b4af0f2cf88da3",
+    "referencias/projetar_para_imprimir.md": "6b6e100acab09c8e4e949c167ecb8dcde18dbc0dff8b3b9762476c8e7b6cd8eb",
     "referencias/recuperar_salvar_exportar.md": "7bcbc8844864e8bdfd519193533103de3b94517df88ab708654a4eaa87b0bfb5",
     "referencias/registro_de_trabalho.md": "5926083690a43e23d8434062b94e437955422ab8dccda60e14beadf4ea65ba34",
     "referencias/render_de_conferencia.md": "d429efab8c70276061ed8f438c61f8a2e0fe680ce3a5911c3d24c070ea26516c",
