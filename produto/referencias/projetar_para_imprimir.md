@@ -9,6 +9,20 @@ Condição comum a todas as linhas medidas, salvo indicação: Bambu Lab A1, bic
 
 ## 1. Folgas calibradas
 
+**Escolha por interface, não por hábito.** Antes de definir ou alterar a folga, consulte
+as linhas abaixo e os registros do projeto que já funcionou. Diga: função da união
+(deslizamento, giro ou sustentação parada), origem do número, folga total e por lado,
+material, orientação e condições preservadas ou diferentes. Não crie uma folga permanente
+para todos os encaixes; nem reduza pela metade só porque a tentativa anterior ficou solta.
+Referência comparável sustenta um candidato, não aprovação automática. Se faltar evidência
+compatível, declare `A_CALIBRAR` e peça a medida ou confirmação decisiva antes de fixar
+o valor de fabricação. Preserve interfaces já aprovadas pelo operador.
+
+**Não-interferência não prova firmeza.** Para união que sustenta carga, verifique também
+o movimento livre e os batentes contra giro e retirada, no referencial montado. Distinga
+folga nominal medida no arquivo, medida física da impressão e uso relatado pelo operador.
+Um STL fechado ou uma montagem sem invasão não prova ausência de balanço nem segurança.
+
 | Encaixe | Folga | Condições | Resultado |
 |---|---|---|---|
 | Pino em furo | **0,3 no diâmetro** (0,15 por lado) | furo ⌀3,2 × 5,0, pino ⌀2,9 × 4,7; camada 0,08; pino deitado a 30°, furo em pé | encaixe perfeito |

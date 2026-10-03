@@ -68,6 +68,12 @@ resultado. Detalhes em `referencias/mapa_de_ferramentas.md`.
 
 ## Classificar o pedido antes de agir
 
+**Continuidade na modelagem:** correções de medidas, marcações e esclarecimentos do
+operador mantêm a tarefa e a autorização já dadas. Reconheça e continue a próxima etapa
+autorizada; não encerre apenas prometendo agir. Pare se houver cancelamento, limite
+obrigatório ou informação indispensável ausente. Uma consulta ou planejamento isolado
+continua sendo consulta ou planejamento, sem autorização implícita para fabricar outra versão.
+
 | Pergunta | Respostas | Consequência |
 |---|---|---|
 | **O que fazer** | criar, editar, reconstruir, parametrizar | escolhe a rota |
@@ -80,6 +86,11 @@ separada da representação: casca **aberta** (borda obrigatória) ou **fechada*
 (borda proibida). Não deduza uma da outra.
 
 ## Pré-mortem antes de fechar peça para imprimir
+
+Para reconstruir ou adaptar uma peça a partir de fotos e medidas do operador, use o
+**HTML de validação de medidas** de `referencias/validacao_medidas_html.md` antes de fechar
+as dimensões. É o padrão de revisão visual: cotas identificadas, fotos associadas,
+interpretações editáveis e pendências explícitas. Aproveite a página existente nas revisões.
 
 Antes de gerar ou entregar o arquivo, suponha: **"a peça saiu da mesa e não serviu. Por
 quê?"**. Liste as causas concretas desta peça, e cada uma termina numa verificação rodada
@@ -128,6 +139,7 @@ a parede vizinha.
 | combinar versões da mesma malha sem booleana; achar de qual malha um cupom saiu | `referencias/transplante_de_deslocamento.md` |
 | conferir malha, junção, região preservada, dimensões, furo passante | `referencias/verificar.md` |
 | **projetar para imprimir**: folgas calibradas, rosca, espessura mínima, rebaixo, ranhura, gravação, família de tamanhos, licença de peça de terceiros | `referencias/projetar_para_imprimir.md` |
+| validar a interpretação das fotos e medidas com o operador antes de modelar | `referencias/validacao_medidas_html.md` |
 | **conferir a FORMA antes de entregar**: quatro vistas ortográficas | `referencias/render_de_conferencia.md` |
 | visualizador 3D (.html) ou GIF/MP4 de montagem/vista explodida | `referencias/entregas_em_movimento.md` |
 | desfazer, refazer, salvar, exportar, deixar retomável | `referencias/recuperar_salvar_exportar.md` |
