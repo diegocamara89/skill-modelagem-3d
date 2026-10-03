@@ -28,6 +28,7 @@ ORIGEM = os.path.join(AQUI, "produto")      # sobrescrito por --origem
 
 # Somente estes vao. Caminho relativo a produto/.
 PERMITIDOS = [
+    "scripts/rosca.py",
     "scripts/captura_estado.py",
     "scripts/capturar_selecao.py",
     "scripts/cliente_operacao.py",
