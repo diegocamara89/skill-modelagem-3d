@@ -1,7 +1,7 @@
 {
-  "versao_do_pacote": "2.14.2",
+  "versao_do_pacote": "2.14.3",
   "versao_de_bl_ferramentas": "1.5.2",
-  "congelado_em": "2026-10-02",
+  "congelado_em": "2026-10-03",
   "nota": "caminhos relativos a raiz do pacote, que e a pasta onde este arquivo vive.",
   "como_conferir": "para cada entrada, sha256 do arquivo em <raiz>/<caminho>, com <raiz> = a pasta deste arquivo",
   "arquivos": {
@@ -18,7 +18,7 @@
     "referencias/entregas_em_movimento.md": "f26b5558571171de17f984b0eac972722c4f100e2a6dd06e4d5b8177fb866f0a",
     "referencias/inspecionar_e_selecionar.md": "2dcb421aed1b76936293c7353fc5630cb3f980b70d5e9065eef9f211b256bb0c",
     "referencias/mapa_de_ferramentas.md": "03fd40a8a960513b1ad2ae81524a67309906968d14c899eac5411d5e98e0cbbe",
-    "referencias/projetar_para_imprimir.md": "a4a7709908f77b5d7b6dbe38ff0da58340a1566ac2d3801110d22bdb4f796630",
+    "referencias/projetar_para_imprimir.md": "9a473ef7e137e67a4321e122e53a876d59e33381eab4db963d071fedd4b8c895",
     "referencias/recuperar_salvar_exportar.md": "7bcbc8844864e8bdfd519193533103de3b94517df88ab708654a4eaa87b0bfb5",
     "referencias/registro_de_trabalho.md": "8210d4cf6fd3d0f4240e24d294a40e4ed21face245d3a1f7247591d22d1b346a",
     "referencias/render_de_conferencia.md": "d429efab8c70276061ed8f438c61f8a2e0fe680ce3a5911c3d24c070ea26516c",
@@ -58,6 +58,7 @@
     "scripts/recorta_cupom.py": "4165334cee00fe1049471fc240cedf48c2054205c9abfc642b6204d5e567af4a",
     "scripts/render_conferencia.py": "55141049addb76a52baed1b46c2a96f1d05a2ee58bba2abc75e8a4769488754f",
     "scripts/roda_blender.py": "b4512368ed5ab9b95683982b59946c0ed5ad91494ec269436adcdca7c534da98",
+    "scripts/rosca.py": "c79eb9a2102ee15aa6647c97e7b65867e8ca349b66cdbd4aaf99034621d44840",
     "scripts/selecao_regiao.py": "b85af1925d1135a5214252bc963eaed1e78579d3de29dea65a2f886e81ef422a",
     "scripts/selecionar_regiao.py": "e46a6bc98127d05a2d4c4d333040575ea7e750c60f480821770aca9f7a21cbbb",
     "scripts/sessao_blender.py": "764aff7ab16ea832dc7f91f60113d4ce3e29d04fa7ac228776eb76dd6b426c36",

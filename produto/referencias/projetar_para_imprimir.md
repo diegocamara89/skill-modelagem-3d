@@ -106,6 +106,32 @@ Conferência mínima:
 
 Peça roscada gerada assim sai só em STL; não há STEP.
 
+## 3a. Rosca impressa M6 que funciona (parafuso de dedo, porca, furo roscado)
+
+Pronta em `scripts/rosca.py` (`parafuso`, `porca`, `furo_roscado`, `confere_encaixe`). Use esta antes de
+inventar outra. Números medidos em 02/10/2026 no 3MF do Pegmount (Jalba, MakerWorld), parafuso que o operador
+imprimiu dezenas de vezes na A1 sem espanar:
+
+| | Macho | Fêmea |
+|---|---|---|
+| Ø maior (crista do macho / fundo da fêmea) | 5,90 | 6,56 |
+| Ø menor (fundo do macho / crista da fêmea) | 4,76 | 5,42 |
+| Passo | 1,0 | 1,0 |
+| Perfil | 60° (tipo métrico), profundidade 0,57, crista plana 0,15 | idem |
+| Folga | — | 0,33 radial nas duas pontas, 0,19 axial em cada flanco |
+
+- **Sobreposição de fio = 0,24 mm** (crista do macho 2,95 contra crista da fêmea 2,71). É isso que segura.
+- **Contraexemplo medido:** o M4 de um suporte SKÅDIS (passo 0,7, profundidade 0,4) usa quase a mesma folga
+  (~0,3) e por isso sobram ~0,1 mm de fio: o operador relata que "fica remoendo a rosca". **Não use rosca
+  impressa menor que M6 com essa folga.**
+- **Comprimento de rosca:** 6 mm no mínimo (porca de 6); o Pegmount usa 10.
+- **Orientação:** todo eixo roscado imprime **em pé** (macho de cabeça para baixo, fêmea com o furo na
+  vertical). Furo roscado deitado sai ovalado: troque por furo liso + porca impressa em pé.
+- **Passagem lisa** para o parafuso não rosquear: Ø 6,6 (`folga_passagem()`).
+- **Conferência:** `confere_encaixe()` gira o parafuso dentro da porca (72 posições) e mede a interferência:
+  mínima 0,000 mm³ (entra) e máxima > 0 (há fio engatado). Validado assim e pelo uso do operador; não precisa
+  de cupom de teste.
+
 ## 4. Espessura mínima que imprimiu (PETG, bico 0,4, camada 0,08, arachne)
 
 | feição | falhou | imprimiu |
