@@ -115,6 +115,20 @@ aplicável). Identifique entregas substituídas como históricas, sem apagá-las
 automaticamente. Uma prévia aprovada precisa corresponder ao artefato final; resultado do
 fatiador não é confirmação física. Não reabra decisões já aprovadas.
 
+## Retorno de impressão física
+
+Acrescente o relato associado à versão/arquivo testado. Separe parâmetros nominais do
+modelo, medidas físicas e avaliação do operador. Em encaixe desmontável, registre
+entrada até o fim, retirada, jogo e sustentação separadamente; sucesso na entrada não
+aprova a retirada. Consulte `projetar_para_imprimir.md`, seção 1, para o caso da guia em T.
+
+Uma confirmação posterior pode mudar o critério escolhido sem apagar uma observação
+anterior: "0,15 tinha jogo" e "0,15 permite entrar e sair" não são contraditórios.
+Registre qual critério foi aprovado e qual segue sem prova. Mudanças de cabeça, guia,
+orientação ou perfil impedem atribuir toda a diferença somente à folga. Identifique
+condições de impressão não informadas; uma recomendação para nova geometria não é um
+novo teste já realizado.
+
 ## Registro mínimo aceitável
 
 Se o trabalho for pequeno, o registro pode ser curto — mas estes cinco campos não

@@ -1,17 +1,18 @@
 # Projetar para imprimir: regras medidas
 
 Rota para: "que folga eu uso?", "como prendo isso num tampo?", "vai imprimir sem suporte?",
-"põe minha marca", "gera em vários tamanhos". Cada regra abaixo saiu de peça impressa e
-conferida pelo operador. **Todo valor vale nas condições declaradas**; fora delas é
-`A_CALIBRAR`, e o que se diz é o que seria preciso medir.
+"põe minha marca", "gera em vários tamanhos". As referências distinguem resultado de
+impressão, relato do operador e critério de projeto. **Todo valor vale nas condições
+declaradas**; fora delas é `A_CALIBRAR`, e o que se diz é o que seria preciso medir.
 
-Condição comum a todas as linhas medidas, salvo indicação: Bambu Lab A1, bico 0,4, PETG Masterprint 240 °C.
+Condição comum às referências de impressão, salvo indicação: Bambu Lab A1, bico 0,4, PETG Masterprint 240 °C.
 
 ## 1. Folgas calibradas
 
 **Escolha por interface, não por hábito.** Antes de definir ou alterar a folga, consulte
 as linhas abaixo e os registros do projeto que já funcionou. Diga: função da união
-(deslizamento, giro ou sustentação parada), origem do número, folga total e por lado,
+(deslizamento, giro ou sustentação parada), necessidade de desmontagem, extensão da guia
+e faces próximas durante o curso, origem do número, folga total e por lado,
 material, orientação e condições preservadas ou diferentes. Não crie uma folga permanente
 para todos os encaixes; nem reduza pela metade só porque a tentativa anterior ficou solta.
 Referência comparável sustenta um candidato, não aprovação automática. Se faltar evidência
@@ -34,13 +35,42 @@ Um STL fechado ou uma montagem sem invasão não prova ausência de balanço nem
 | Trilho rabo de andorinha a 45° (base 5, ponta 10, altura 2,5) | **0,15** no trilho de baixo, **0,2** nos laterais | módulo corre da frente para trás; peças de costas na mesa; camada 0,2 | encaixa firme, sem jogo |
 | Trava de lingueta (estalo) | lingueta 1,2 de espessura, ressalto 1,0 com rampa de 45° atrás, fenda 0,8 dos lados | lingueta na parede de cima do módulo; camada 0,2 | estala e segura |
 
-**Encaixe parado aceita folga menor que encaixe que gira.** O disco da segunda linha não
-se move depois de montado: folga pequena demais só pede um empurrão para entrar, não
-trava nada. Numa peça que gira, a folga que decide é a do eixo, não a do alojamento. Antes
-de apertar, diga qual das duas é, e por que a outra não muda.
+**Parado durante o uso não significa montagem permanente.** Os 0,10 mm do disco e da
+lingueta valem para aquelas interfaces; não aprovam uma guia extensa que precisa entrar
+e sair. Confira entrada completa, retirada e jogo separadamente. Numa peça que gira,
+distinga folga do eixo e folga do alojamento antes de alterar qualquer uma.
 
-Abaixo de 0,10 por lado a primeira camada, mais larga, tende a prender, mesmo com
-`elefant_foot_compensation` no perfil.
+Folga pequena também pode prender na primeira camada, mais larga, mesmo com
+`elefant_foot_compensation` no perfil. Localize onde prende: na entrada, durante o curso
+ou na retirada. Esse aviso não estabelece um mínimo universal nem prova a causa do aperto.
+
+### Guia em T desmontável: relato de impressão de 03/10/2026
+
+Caso: cabeça retangular do parafuso desliza na guia da garra. Valores **nominais por
+lado**, medidos nos arquivos; não são medições da folga da peça impressa. A guia tem
+contato extenso e várias faces próximas. Material do projeto: PETG; arquivos entregues
+com garra deitada e eixo roscado vertical. Bico, camada, temperatura, compensações e
+orientação efetivamente usada no fatiamento não foram confirmados para estes testes;
+não herde automaticamente as condições da tabela anterior.
+
+| Folga por lado | Folga total entre faces opostas | Resultado relatado pelo operador |
+|---|---|---|
+| 0,05 mm | 0,10 mm | entra muito apertado e não chega ao final |
+| 0,10 mm | 0,20 mm | entra, mas não sai; inadequado quando é preciso desmontar |
+| 0,15 mm | 0,30 mm | escolhido pelo operador como ideal para entrar e sair |
+
+Na versão com 0,10, a cabeça nominal mede 16 × 3,4 × 12 mm e a cavidade tem
+16,2 × 3,6 mm na seção correspondente. As tentativas de 0,05 e 0,15 usavam uma guia
+anterior, com outra cabeça; não é um ensaio que isolou somente a folga. Há também relato
+anterior de jogo com 0,15. A confirmação atual escolhe 0,15 para montagem/desmontagem,
+sem converter isso em prova de ausência de jogo, retenção ou resistência sob carga.
+Aplicar 0,15 à geometria compacta final ainda pede confirmação nessa geometria.
+
+**Uso da referência:** nesta família, 0,15 por lado é a referência para entrada e
+retirada; 0,10 não atende ao ciclo completo, apesar de permitir montar. Contato extenso
+é uma condição relevante para comparar guias, não uma causa isolada comprovada nem uma
+fórmula que manda aumentar toda folga. Não transfira estes números à porca/rosca,
+ao disco parado, à lingueta curta ou a uma trava flexível.
 
 **Medir encaixe no conjunto montado.** Use a transformação real dos objetos na
 configuração montada, não a posição aberta.
@@ -72,8 +102,11 @@ Para caber no furo, a crista da rosca fica abaixo do furo menos a folga. Para n�
 parede no fundo da rosca, engrosse por dentro onde a passagem já é estreitada por outra
 feição.
 
-Se garra for inevitável: calcule a deformação (1,5·t·δ/L²) antes de desenhar, e oriente a
-peça para a garra não dobrar entre camadas.
+Se garra for inevitável: oriente a peça para a garra não dobrar entre camadas. A estimativa
+1,5·t·δ/L² vale para uma lingueta reta em balanço e pequena deflexão; não comprova a
+margem elástica de um arco em C que abre muito para receber uma garrafa. Nesse arco,
+registre diâmetro interno, boca, espessura e abertura necessária; confira inserção e
+retorno à forma no teste físico, sem presumir margem por ser PETG.
 
 ## 3. Rosca helicoidal: gere o filete como malha, não por varredura do kernel
 
@@ -227,6 +260,9 @@ o suporte ligado só para localizar balanço, e confirme que o único aviso é e
   de 55), além do kit completo.
 - Guarde cada versão (`saida/vN/`, e a malha anterior no Blender como `.ANTES_vN`); nunca
   sobrescreva.
+- Relato posterior complementa o histórico: registre entrada completa, retirada, jogo e
+  uso sob carga como resultados distintos. "Entrou" não valida uma união desmontável;
+  "ficou perfeito" não mede vida útil ou resistência. Condição não informada permanece assim.
 
 ## 10. Peça de terceiros: licença lida na fonte original
 
@@ -273,11 +309,26 @@ Popularidade, download ou malha fechada não equivalem a validação funcional.
 | limitar fechamento e esconder folga | frente alargada ou ombro | não impedem saída no sentido oposto |
 | impedir separação numa direção | colar, ressalto ou trava | conferir montagem, curso permitido e resistência separadamente |
 | eliminar teto difícil de imprimir | separar corpo e tampa/bandeja | acrescenta interface de montagem a conferir |
+| conciliar garra flexível e rosca bem impressa | garra deitada e parafuso separado com eixo vertical | guia nova precisa permitir montagem, retirada e sustentação |
 
 Estas são opções de construção, não produtos certificados. Inspecione os dois lados
 da interface no referencial de montagem. Preserve as condições relevantes ao adaptar:
 perfil, folga, engate, espessura, orientação de impressão, material/processo e carga.
 Não escale automaticamente uma folga nem transfira aprovação para a parte modificada.
+
+**Garra e parafuso separados — experiência desta família:** a rosca integrada ao corpo,
+impressa horizontalmente com suporte, rosqueava mas teve acabamento inferior reprovado
+pelo operador. A solução com parafuso separado e garra deitada recebeu aprovação de uso,
+com a ressalva de desmontagem da seção 1. Integrar tudo e imprimir em pé foi rejeitado
+por orientação das camadas na flexão, brim e tempo; não foi ensaio de quebra. Uma rampa
+a 45° é candidata a dispensar suporte, não comprovação sem fatiamento ou teste específico.
+
+**Compactar no referencial montado.** Meça a distância da superfície da garrafa até a
+face do arame, não apenas o comprimento do parafuso. Confira paredes frontal, traseira
+e laterais da guia após aproximá-la; preservar a folga pode afinar essas paredes.
+Na garra circular, reduzir diâmetro interno, prolongar as pontas e fechar a boca são
+mudanças distintas; declare quais medidas ficam preservadas. Uma montagem visual
+sem invasão não simula a flexão do arco nem prova resistência.
 
 No registro do trabalho, use uma ficha curta: **função → construção → origem/licença
 → evidência → condições preservadas/alteradas → limite e próxima verificação**.
