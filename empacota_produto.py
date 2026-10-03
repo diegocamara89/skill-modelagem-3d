@@ -80,6 +80,7 @@ PERMITIDOS = [
     "referencias/render_de_conferencia.md",
     "scripts/render_conferencia.py",
     "referencias/entregas_em_movimento.md",
+    "referencias/validacao_medidas_html.md",
     "scripts/visualizador_3d.py",
     "scripts/animacao_montagem.py",
     "referencias/edicao_por_letras.md",
