@@ -100,11 +100,12 @@ escreva a história da falha: a prova é medida.
 | Causa provável | Verificação |
 |---|---|
 | não encaixa na peça existente | interface medida no arquivo ou na peça original, nunca redesenhada; folga pela tabela de `projetar_para_imprimir.md`, seção 1 |
+| encaixa, mas não permite desmontar | conferir entrada completa e retirada, além de jogo; distinguir guia extensa de lingueta curta, `projetar_para_imprimir.md`, seção 1 |
 | malha com defeito no fatiador | `verificar.md`, topologia, medida no **arquivo exportado**, não na malha da cena |
 | furo fechado ou não passante | `verificar.md`, furo passante; conferir no G-code |
 | flutua ou balanço sem suporte | `scripts/mapa_balanco.py`: contato com a mesa maior que zero |
 | parede fina some ou fura | `scripts/piso_espessura.py`; `projetar_para_imprimir.md`, seção 4 |
-| quebra entre camadas | orientação com a carga ao longo das camadas; `projetar_para_imprimir.md`, seção 11 |
+| quebra entre camadas | orientar a flexão da garra no plano das camadas; avaliar construção separada em `projetar_para_imprimir.md`, seções 2 e 12 |
 | forma errada, embora a malha seja válida | quatro vistas de `render_de_conferencia.md` |
 | ajuste do projeto ignorado pelo fatiador | conferir no G-code (skill `bambu-a1`) |
 
