@@ -1,6 +1,6 @@
 ---
 name: modelagem-3d
-description: Use quando o pedido envolver criar, inspecionar, editar ou verificar geometria 3D — criar peça paramétrica por código, abrir e inspecionar malha, orientar seleção no Blender, editar pelas letras apontadas na tela, deslocar região delimitada, preencher vão entre limites, conferir malha e junção, projetar folga e encaixe para imprimir, desfazer, salvar ou exportar. TRIGGERS (PT) modelar, criar peça, geometria, malha, STL, 3MF, Blender, letras na tela, selecionar face, rampa, preencher vão, região protegida, não-manifold, folga, encaixe, exportar STL, desfazer no Blender, conferir malha. TRIGGERS (EN) model this part, mesh, select face, fill gap, ramp, non-manifold, clearance, export STL, undo in Blender.
+description: Use quando o pedido envolver projetar, criar, inspecionar, editar ou verificar geometria 3D — desde o conceito (peça nova para prender, travar ou apoiar em objeto existente, a partir de fotos e medidas) até criar peça paramétrica por código, abrir e inspecionar malha, orientar seleção no Blender, editar pelas letras apontadas na tela, deslocar região delimitada, preencher vão entre limites, conferir malha e junção, projetar folga e encaixe para imprimir, desfazer, salvar ou exportar. Inclui a página HTML de bancada (conceitos, cotas e fotos) do projeto 3D. TRIGGERS (PT) modelar, vamos modelar, projetar peça, criar peça, conceito, ideias de peça, prendedor, trava, clipe, presilha, suporte, gancho, encaixe em grade ou gaiola, fotos da peça, medidas com paquímetro, comparar conceitos, página de revisão, geometria, malha, STL, 3MF, Blender, letras na tela, selecionar face, rampa, preencher vão, região protegida, não-manifold, folga, exportar STL, desfazer no Blender, conferir malha. TRIGGERS (EN) design a part, concept, latch, clip, bracket, model this part, mesh, select face, fill gap, ramp, non-manifold, clearance, export STL, undo in Blender.
 ---
 
 # Modelagem 3D — receitas para executar e conferir
@@ -53,6 +53,16 @@ operação, confira objetos, arquivo e vista antes de dizer que está pronto.
 --achar` mostra a resolução. Terminal vazio não é falha: o auxiliar confere o arquivo de
 resultado. Detalhes em `referencias/mapa_de_ferramentas.md`.
 
+**Mostrar ao operador.** `python scripts/mostrar_no_blender.py peca.stl [outra.stl]` abre o Blender se estiver
+fechado, carrega na cena `TRABALHO_AGENTE` como `AG_<arquivo>` e, nas vezes seguintes, troca só a malha: depois da
+primeira vez nunca muda a cena da janela nem a vista. Devolve o peso do volume sólido e o contato com a mesa
+(`mapa_balanco.py`). Mostre a cada geometria nova, sem esperar o pedido: o operador aponta o defeito mais cedo do que
+qualquer verificação. Para pedir medida, marque no modelo (`--marcar A=x,y,z B=x,y,z`, em mm) e pergunte "meça de A
+até B", em vez de descrever o ponto em texto.
+
+**Letras.** O complemento `blender/bancada_viva.py`, instalado por `scripts/instala_bancada_viva.py`, deixa as letras
+A, B, C ligadas a cada abertura do Blender, com Overlays e anotação na superfície. Não é preciso instalar por sessão.
+
 ## Três regras que valem em todas as rotas
 
 1. **Meça, não presuma.** Ferramenta que devolve "concluído" não prova efeito:
@@ -85,6 +95,28 @@ que é exigido, **pergunte**. "Borda", "casca" ou "fechado" são declaração de
 separada da representação: casca **aberta** (borda obrigatória) ou **fechada** sem sólido
 (borda proibida). Não deduza uma da outra.
 
+## Fase 0: conceito e página de bancada
+
+Carregue esta skill já no **primeiro** pedido de peça ("vamos modelar um prendedor"), antes
+de qualquer geometria: a fase de conceito faz parte da modelagem.
+
+- **Gatilho por evento:** chegaram fotos do objeto onde a peça vai prender, ou há mais de
+  um mecanismo possível → crie **na hora** a página de bancada (`revisao.html` do projeto),
+  com `scripts/nova_pagina_bancada.py` (modelo escuro em `assets/pagina_bancada.html`).
+  Não substitua por esboço solto no chat nem por outro HTML.
+- A mesma página evolui: conceitos → cotas → revisões. Peça **nova** que prende em objeto
+  medido por foto (grade, porta, gaveta) segue a mesma rota de "reconstruir ou adaptar".
+- **Precedência:** em projeto 3D, este padrão vence a skill genérica `html-handoff` (que usa
+  CDN e não tem cotas editáveis). Pedido de "HTML conforme a skill" num projeto 3D = esta página.
+- Ferragem: pergunte o que o operador tem antes de propor mecanismo que dependa de mola,
+  ímã ou rolamento; mecanismo que depende de o plástico dobrar precisa ser dito como tal.
+- **Estado do projeto:** medida e resposta que o operador confirmou, decisão tomada e teto combinado vão para
+  `ESTADO.md` na raiz do projeto no momento em que são confirmados. Depois do resumo automático da conversa, esse
+  arquivo é a memória: não pergunte de novo o que está nele.
+- **Teto antes de fatiar:** antes do primeiro fatiamento do conjunto, combine o teto de material e de tempo e grave no
+  `ESTADO.md` (`Teto de material: 50 g`, `Teto de tempo: 3 h`). Passar do teto não se apresenta como pronto: mostre
+  o número e pergunte.
+
 ## Pré-mortem antes de fechar peça para imprimir
 
 Para reconstruir ou adaptar uma peça a partir de fotos e medidas do operador, use o
@@ -107,6 +139,11 @@ escreva a história da falha: a prova é medida.
 | parede fina some ou fura | `scripts/piso_espessura.py`; `projetar_para_imprimir.md`, seção 4 |
 | quebra entre camadas | orientar a flexão da garra no plano das camadas; avaliar construção separada em `projetar_para_imprimir.md`, seções 2 e 12 |
 | forma errada, embora a malha seja válida | quatro vistas de `render_de_conferencia.md` |
+| encaixe em objeto existente (pino, furo, rosca) falha na peça inteira | cupom de teste antes do conjunto: série de 3 a 5 tamanhos, letra gravada em cada um; o operador diz qual serviu |
+| consumo ou tempo fora do que o operador aceita | teto no `ESTADO.md` antes do 1º fatiamento; o `fatiado-confere` alerta |
+| peça modular sobrepõe a vizinha | montar o arranjo mais denso permitido (em cruz, com vizinhos nos quatro lados) e checar interferência, não só em linha |
+| quebra no aperto | caminho da força: para cada parafuso, contra o que ele empurra e a espessura ali; parede fina empurrada por parafuso não passa |
+| pediu "sem suporte" e o fatiador gera suporte | fatiar com suporte automático ligado ANTES de mostrar; conferir `; FEATURE: Support` no G-code |
 | ajuste do projeto ignorado pelo fatiador | conferir no G-code (skill `bambu-a1`) |
 
 Inclua as causas que só esta peça tem; a tabela é o piso, não a lista inteira.
@@ -140,7 +177,7 @@ a parede vizinha.
 | combinar versões da mesma malha sem booleana; achar de qual malha um cupom saiu | `referencias/transplante_de_deslocamento.md` |
 | conferir malha, junção, região preservada, dimensões, furo passante | `referencias/verificar.md` |
 | **projetar para imprimir**: folgas calibradas, rosca, espessura mínima, rebaixo, ranhura, gravação, família de tamanhos, licença de peça de terceiros | `referencias/projetar_para_imprimir.md` |
-| validar a interpretação das fotos e medidas com o operador antes de modelar | `referencias/validacao_medidas_html.md` |
+| conceitos e validação das fotos e medidas com o operador antes de modelar (página de bancada) | `referencias/validacao_medidas_html.md`, `assets/pagina_bancada.html`, `scripts/nova_pagina_bancada.py` |
 | **conferir a FORMA antes de entregar**: quatro vistas ortográficas | `referencias/render_de_conferencia.md` |
 | visualizador 3D (.html) ou GIF/MP4 de montagem/vista explodida | `referencias/entregas_em_movimento.md` |
 | desfazer, refazer, salvar, exportar, deixar retomável | `referencias/recuperar_salvar_exportar.md` |

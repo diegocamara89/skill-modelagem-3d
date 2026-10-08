@@ -5,6 +5,46 @@ Antes de fechar dimensões, mostre como cada cota foi entendida numa página loc
 português. Reutilize a mesma página nas revisões. Não exige HTML para uma edição simples
 com região e medida já inequívocas no Blender.
 
+## Começar pelo modelo pronto
+
+Não escreva a página do zero. Gere a partir do modelo:
+
+```
+python scripts/nova_pagina_bancada.py --pasta "<pasta do projeto>" --projeto "<nome>" foto1.jpg foto2.jpg
+```
+
+O script cria `<pasta>/revisao.html` a partir de `assets/pagina_bancada.html` (tema escuro,
+sem CDN), copia as fotos para `imagens/` sem sobrescrever e preenche projeto, data e fotos.
+Depois, edite **só** o bloco `/*DADOS*/ ... /*FIM DADOS*/`:
+
+- `conceitos`: `{id, nome, tag, rec, como, pro[], con[], svg}`. Use quando houver mais de um
+  mecanismo; o recomendado leva `rec:true`.
+- `vistas`: `{titulo, tag, svg, legenda}`. Cada cota no SVG usa
+  `<tspan data-value="C"></tspan>`, que a tabela atualiza.
+- `cotas`: `{id, valor|null, visor|null, estado:'confirmado'|'interpretado'|'pendente', descricao, foto}`.
+- `fotos`, `listas` (pendências, hipóteses, referências) e `rodape`.
+
+**Conceito de mecanismo se mostra renderizado, não em croqui.** O operador recusou desenho
+de traços ("parece desenho de criança") e quer cena do Blender: um trecho do objeto real
+(grade, porta) mais a peça, em cada estado (fechado, aberto) e a peça sozinha. Modele por
+script e renderize em processo separado (`trabalho_blender.py`), em Workbench com
+`color_type="OBJECT"` (uma cor por papel: objeto existente, peça) e as quatro vistas com
+`_camera_para` de `render_conferencia.py`, usando a **mesma** caixa de enquadramento em
+todos os estados, para que eles se comparem. Exemplo completo:
+`Modelagem 3D/Trava porta gaiola hamster/conceitos_r01.py`.
+
+- `renders`: `{titulo, nota, pasta, nomes:{iso:'...'}, opcoes:[{valor:'<prefixo>', rotulo, vistas:[...]}]}`
+  vira o seletor com quatro vistas, como em `Suporte garrafinha ratos/modelo_v1.html`.
+- Cota em cima do render: `<svg class="render" viewBox="0 0 1000 750"><image href=...>` e as
+  linhas por cima. Os pixels dos pontos saem do próprio Blender
+  (`bpy_extras.object_utils.world_to_camera_view`, `x*largura`, `(1-y)*altura`), nunca no olho.
+- Medida que falta entra **suposta** no modelo e aparece assim na tabela de cotas.
+
+Classes de desenho já prontas no CSS: `part`, `part-ghost` (posição alternativa), `dim` e
+`dim-text` (cota), `uncertain`, `wire`, `wire-dot`, `door`, `door-thin`, `pivot`, `label`.
+Funções auxiliares de desenho podem ficar dentro do bloco DADOS. Diagramas são SVG locais:
+não use Mermaid nem outro CDN. Na impressão, a página passa sozinha para tema claro.
+
 ## Página de revisão
 
 - Identificação, data, revisão e unidades (normalmente mm).
@@ -37,8 +77,10 @@ o JSON exportado guarda as correções. Ao receber os ajustes, incorpore-os aos 
 
 ## Conferir a entrega
 
-Confira sintaxe do JS, caminhos das imagens, letras, valores e descrições; abra a página
-e confira visualmente. Para captura headless local, use a receita já disponível em
+Confira sintaxe do JS (`node --check` no conteúdo do `<script>`), caminhos das imagens,
+letras, valores e descrições; abra a página e confira visualmente. O painel de navegador
+do Claude abre `file://` como cópia estática sem as imagens de `imagens/`: confira as fotos
+pelo screenshot headless do Edge. Para captura headless local, use a receita já disponível em
 `entregas_em_movimento.md`. Exercite ao menos alteração de uma cota, atualização do rótulo
 e exportação JSON. Se a conferência visual ou funcional não puder ser feita, declare o
 alcance realizado. HTML não substitui CAD, medição física, quatro vistas da geometria

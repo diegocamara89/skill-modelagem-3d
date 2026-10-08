@@ -9,6 +9,7 @@ Espera CONFIG (dict) definido antes do exec.
 import bpy
 import bmesh
 import json
+import pathlib
 import sys
 import numpy as np
 
@@ -20,17 +21,9 @@ MARCA = "LETRAS_RESULTADO="
 
 
 def _le_stl(caminho):
-    with open(caminho, "rb") as f:
-        f.read(80)
-        n = int(np.frombuffer(f.read(4), dtype="<u4")[0])
-        dt = np.dtype([("n", "<f4", 3), ("v", "<f4", (3, 3)), ("a", "<u2")])
-        dados = np.frombuffer(f.read(n * 50), dtype=dt)
-    tri = dados["v"].astype(np.float64).reshape(-1, 3)
-    chave = np.round(tri, 5)
-    _, idx, inv = np.unique(chave, axis=0, return_index=True, return_inverse=True)
-    verts = tri[idx]
-    faces = inv.reshape(-1, 3)
-    return verts, faces
+    """STL binário ou em texto (scripts/le_stl.py, testado no hospedeiro)."""
+    import le_stl
+    return le_stl.le_stl(caminho)
 
 
 def _cena():
@@ -40,6 +33,7 @@ def _cena():
         sc.unit_settings.system = "METRIC"
         sc.unit_settings.scale_length = 0.001
         sc.unit_settings.length_unit = "MILLIMETERS"
+        sc.tool_settings.annotation_stroke_placement_view3d = "SURFACE"
     return sc
 
 
@@ -113,8 +107,8 @@ def _rotula(obj, me, verts, faces, fe):
     return resumo
 
 
-def carregar(stl, feicoes_json, nome):
-    fe = F.carrega(feicoes_json)["feicoes"]
+def carregar(stl, feicoes_json, nome, trazer=True):
+    fe = F.carrega(feicoes_json)["feicoes"] if feicoes_json else []
     sc = _cena()
     obj = sc.objects.get(nome) or bpy.data.objects.get(nome)
     me, verts, faces = _malha_de(stl, f"{nome}.malha")
@@ -124,11 +118,11 @@ def carregar(stl, feicoes_json, nome):
     else:
         obj.data = me
     obj["fonte_stl"] = stl
-    resumo = _rotula(obj, me, verts, faces, fe)
-    win = _mostra_cena(sc)
-    if win is not None:
+    resumo = _rotula(obj, me, verts, faces, fe) if fe else {}
+    win = _mostra_cena(sc) if trazer else _janela()
+    if trazer and win is not None:
         sc.view_layers[0].objects.active = obj
-    enquadrou = _enquadra(obj)
+    enquadrou = _enquadra(obj) if trazer else False
     return {"estado": "CARREGADO", "objeto": obj.name, "vertices": len(me.vertices), "faces": len(me.polygons),
             "grupos": resumo, "cena_na_janela": win.scene.name if win else None, "enquadrou": enquadrou,
             "redesenho_pedido": _redesenha()}
@@ -550,14 +544,14 @@ def atualizar(stl, feicoes_json, nome):
                     erro = str(e)
         if not saiu:
             return {"estado": "PRECISA_OBJECT_MODE", "motivo": "não consegui sair do Edit Mode pelo MCP; peça Tab ao usuário", "erro": erro if 'erro' in dir() else None}
-    fe = F.carrega(feicoes_json)["feicoes"]
+    fe = F.carrega(feicoes_json)["feicoes"] if feicoes_json else []
     antiga = obj.data
     me, verts, faces = _malha_de(stl, f"{nome}.malha")
     obj.data = me
     antiga.name = f"{nome}.anterior"
     antiga.use_fake_user = True
     obj["fonte_stl"] = stl
-    resumo = _rotula(obj, me, verts, faces, fe)
+    resumo = _rotula(obj, me, verts, faces, fe) if fe else {}
     return {"estado": "ATUALIZADO", "objeto": obj.name, "vertices": len(me.vertices), "faces": len(me.polygons),
             "malha_anterior_guardada": antiga.name, "grupos": resumo, "redesenho_pedido": _redesenha()}
 
@@ -600,7 +594,49 @@ def estado(nome):
             "alteracoes_nao_salvas": bpy.data.is_dirty}
 
 
-ACOES = {"carregar": carregar, "identificar": identificar, "expandir": expandir, "letras": letras, "tracos": tracos, "apagar": apagar_selecao, "mover": mover, "extrudar": extrudar, "preencher": preencher, "arredondar": arredondar, "desfazer": desfazer_verbo, "atualizar": atualizar,
+def mostrar(stls):
+    """Atualiza no lugar o que já está na cena de trabalho e cria o que falta. Só troca a cena da janela e enquadra
+    quando a cena acabou de ser criada: depois disso nunca mexe na vista do operador."""
+    nova = bpy.data.scenes.get(CENA) is None
+    sc = _cena()
+    feitos = []
+    for stl in stls:
+        nome = "AG_" + pathlib.Path(stl).stem
+        try:
+            if nome in sc.objects:
+                r = atualizar(stl, None, nome)
+            else:
+                r = carregar(stl, None, nome, trazer=False)
+        except Exception as e:  # um STL ruim não derruba o lote
+            r = {"estado": "ERRO", "motivo": repr(e)}
+        feitos.append({"objeto": nome, "estado": r.get("estado"), "motivo": r.get("motivo")})
+    if nova:
+        _mostra_cena(sc)
+        _enquadra(None)
+    return {"estado": "MOSTRADO", "cena_nova": nova, "objetos": feitos, "redesenho_pedido": _redesenha()}
+
+
+def marcar(pontos, limpar=False):
+    """Marcas do agente (letra ciano no modelo) para pedir medida: 'meça de A até B'. Coordenadas em mm."""
+    sc = _cena()
+    if limpar:
+        for o in [o for o in sc.objects if o.get("marca_agente")]:
+            bpy.data.objects.remove(o, do_unlink=True)
+    for letra, xyz in (pontos or {}).items():
+        nome = f"MARCA_{letra}"
+        o = bpy.data.objects.get(nome)
+        if o is None:
+            o = bpy.data.objects.new(nome, None)
+            o.empty_display_type = "SPHERE"
+            o.empty_display_size = 1.5
+            sc.collection.objects.link(o)
+        o.location = xyz
+        o["marca_agente"] = letra
+    return {"estado": "MARCADO", "marcas": sorted(o.name for o in sc.objects if o.get("marca_agente")),
+            "redesenho_pedido": _redesenha()}
+
+
+ACOES = {"mostrar": mostrar, "marcar": marcar, "carregar": carregar, "identificar": identificar, "expandir": expandir, "letras": letras, "tracos": tracos, "apagar": apagar_selecao, "mover": mover, "extrudar": extrudar, "preencher": preencher, "arredondar": arredondar, "desfazer": desfazer_verbo, "atualizar": atualizar,
          "salvar_copia": salvar_copia, "exportar_stl": exportar_stl, "estado": estado}
 
 try:
