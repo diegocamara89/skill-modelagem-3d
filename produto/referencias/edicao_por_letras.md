@@ -25,12 +25,11 @@ metros ou há vários objetos em edição, é esta rota que vale.
 ## Antes de tudo (o agente faz, não pede)
 
 - `python scripts/mcp_blender.py --testa-conexao`.
-- **Ligar Overlays** do viewport se estiverem desligados: sem eles a seleção laranja não
-  aparece e o operador conclui que não marcou nada.
-- `python scripts/ponte_letras.py instalar_letras`. Some ao fechar o Blender; reinstalar por
-  sessão.
-- Anotação grudada na superfície: `tool_settings.annotation_stroke_placement_view3d =
-  "SURFACE"` na cena ativa (é por cena).
+- Letras, Overlays e anotação na superfície vêm do complemento `bancada_viva`
+  (`blender/bancada_viva.py`), ligado nas preferências e carregado a cada abertura do Blender. Se faltarem
+  (`driver_namespace` sem `poc_letras_handler`), rodar `python scripts/instala_bancada_viva.py`.
+- A captura do MCP (`ponte_letras.py captura`) desenha a cena por fora da janela e **não mostra as letras**. Para
+  ver as letras numa imagem, capture a janela do Blender pelo sistema (no Windows, `PrintWindow` com a flag 2).
 - Conferir `select_mouse` no keymap e dizer ao operador qual botão seleciona. Com o padrão,
   `Shift+botão direito` move o cursor 3D, não seleciona.
 

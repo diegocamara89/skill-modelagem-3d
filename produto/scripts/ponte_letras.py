@@ -66,8 +66,8 @@ if __name__ == "__main__":
     ap.add_argument("--objeto")
     a = ap.parse_args()
     if a.acao == "instalar_letras":
-        codigo = (AQUI / "letras_viewport.py").read_text(encoding="utf-8")
-        out = chama("execute_code", {"code": codigo}, permitir_escrita=True)
+        from instala_bancada_viva import instala
+        out = instala()
     elif a.acao == "captura":
         out = captura(a.caminho)
     elif a.acao in ("carregar", "atualizar"):
