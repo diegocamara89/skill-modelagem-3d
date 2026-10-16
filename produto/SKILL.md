@@ -60,6 +60,20 @@ primeira vez nunca muda a cena da janela nem a vista. Devolve o peso do volume s
 qualquer verificação. Para pedir medida, marque no modelo (`--marcar A=x,y,z B=x,y,z`, em mm) e pergunte "meça de A
 até B", em vez de descrever o ponto em texto.
 
+**Peça ao vivo (padrão para peça nova).** Escreva o gerador no contrato da ponte: `PARAMS = [("chave", "Rótulo",
+padrão, mín, máx), ...]` (mm) e `def gera(**medidas) -> Manifold`; exponha como medida tudo que o operador pode querer
+ajustar (larguras, folgas, diâmetro de cada furo). Mostre com `python scripts/mostrar_no_blender.py gera.py`: vira
+`AG_<pasta>_<arquivo>` com painel na chave inglesa (Modificadores), onde o operador muda as medidas e a peça se refaz em
+ms, grava arredondamento/chanfro em arestas selecionadas (refeitos a cada geração) e pega a face inteira (face lógica:
+aresta viva = dobra > 30° ou troca de forma do gera.py fora do plano). Chamar de novo recarrega o código e mantém o
+que o operador mexeu: **leia `medidas` e `acabamentos` do retorno antes de mudar qualquer coisa**. Erro no gera.py
+mantém a peça anterior (`ERRO_NO_GERA`). Para imprimir, `--exportar peca.stl` grava a peça como está no Blender, com
+acabamentos. O gancho `mostra-ao-gerar` mostra sozinho todo `gera*.py` gravado em projeto 3D (blender/ponte_peca.py).
+
+**Um Blender por sessão.** A porta vem de `scripts/porta_sessao.py` (registro em
+`%LOCALAPPDATA%\mods-diego\blender-sessoes.json`); sem o Blender desta sessão, `mostrar_no_blender.py` abre outro já
+na porta dela. Nunca use o Blender de outra sessão; `python scripts/porta_sessao.py --lista` mostra quem usa qual.
+
 **Letras.** O complemento `blender/bancada_viva.py`, instalado por `scripts/instala_bancada_viva.py`, deixa as letras
 A, B, C ligadas a cada abertura do Blender, com Overlays e anotação na superfície. Não é preciso instalar por sessão.
 
@@ -172,6 +186,7 @@ a parede vizinha.
 |---|---|
 | peça gerada por código com feições nomeadas: identificar, acender, trocar a malha na cena | `referencias/edicao_por_letras.md`, identidade |
 | criar ou parametrizar peça por código (manifold3d; build123d quando precisar de STEP) | `referencias/criar_e_parametrizar.md` |
+| sólido exato quando a malha não basta (rosca fora do padrão, arredondamento exato, STEP): FreeCAD, só se pedido | `referencias/freecad.md` |
 | abrir, inspecionar, orientar seleção, ler o que está selecionado | `referencias/inspecionar_e_selecionar.md` |
 | deslocar região delimitada; preencher vão entre dois limites | `referencias/editar_localizado.md` |
 | combinar versões da mesma malha sem booleana; achar de qual malha um cupom saiu | `referencias/transplante_de_deslocamento.md` |

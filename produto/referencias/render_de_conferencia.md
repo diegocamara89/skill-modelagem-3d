@@ -137,6 +137,15 @@ O rasterizador numpy com laço por face leva minutos em 400 mil faces. Para conf
 região (óculos, colar), renderizar só as faces dentro da caixa de interesse — o laço cai na
 mesma proporção — e manter a mesma escala em px/mm entre as imagens comparadas.
 
+## Contagem automática em imagem: controle positivo primeiro
+
+Contar pixels de uma cor de marcação (ex.: magenta) para dizer "aparece / não aparece" só vale depois
+de testar o mesmo filtro numa imagem em que a marca **sabidamente** aparece. A luz escurece a cor
+(magenta puro sai ≈ 155,60,160; na sombra ≈ 117,31,122): o filtro r,b > 200 deu 0 em tudo e sustentou
+uma conclusão falsa ("escondido de 7 direções") em 09/10/2026. Registre também o número de faces
+marcadas: seleção vazia também dá 0. Implementação conferida: `bambu-a1/scripts/render_pintura_3mf.py`.
+"Escondido" exige 0 inclusive na vista **de baixo**.
+
 ## Créditos
 
 Política, quatro vistas e regra do "diagnóstico, não veredito" adaptadas de [earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad) (MIT, `skills/cad/references/snapshot-review.md`); o código é próprio.

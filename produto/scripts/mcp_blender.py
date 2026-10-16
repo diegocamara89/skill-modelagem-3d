@@ -38,7 +38,14 @@ import socket
 import sys
 
 HOST_PADRAO = "127.0.0.1"
-PORTA_PADRAO = 9876
+import porta_sessao  # noqa: E402  um Blender por sessão: a porta vem do registro de sessões
+
+try:
+    PORTA_PADRAO = porta_sessao.porta()
+except Exception:
+    if porta_sessao.sessao():  # com sessão, cair na 9876 usaria o Blender de outra sessão ou do operador
+        raise
+    PORTA_PADRAO = 9876
 TEMPO_PADRAO = 30.0
 
 # Comandos que apenas LEEM. Qualquer coisa fora desta lista e tratada como
