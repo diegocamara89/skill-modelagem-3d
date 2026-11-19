@@ -1,6 +1,6 @@
 # Inspecionar e orientar seleção
 
-Para sessão aberta, ver `../SKILL.md`, "Conectar ao Blender, por agente". Como
+Para sessão aberta, ver `blender.md`, "Conectar ao Blender, por agente". Como
 alternativa local, use `scripts/sessao_blender.py --diagnosticar`:
 `referencias/sessao_e_edicao_guiada.md` documenta o retorno e o próximo passo.
 Flags persistidas de objetos ocultos não são a seleção viva do operador.

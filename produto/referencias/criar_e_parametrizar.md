@@ -1,11 +1,12 @@
 # Criar e parametrizar geometria simples
 
 Rota para: "faça uma peça assim", "gere essa família de tamanhos", sem exigir
-reconstrução de nada nem impressão. Esta referência trata de criar por código. Se a
-peça já existe como malha, ou o trabalho é de edição, use o Blender: ver
-`editar_localizado.md`.
+reconstrução de nada nem impressão. A prioridade atual é FreeCAD (`freecad.md`): peça **nova** nasce lá.
+As rotas abaixo (manifold3d, build123d) valem para projeto que **já** tem gerador nelas e para as
+receitas validadas (rosca, pintura); esta referência as preserva, sem obrigar reconstrução. Para malha existente,
+escolha pela operação, conforme `SKILL.md`; não abra Blender só por ser malha.
 
-## Rota manifold3d (padrão do dono)
+## Rota manifold3d (reuso de receitas existentes)
 
 Peça funcional para impressão sai de um gerador Python com **manifold3d** (sólidos e booleanas),
 **numpy** e **trimesh** (exportação e medidas). Um arquivo `gera.py` por projeto, com as cotas em

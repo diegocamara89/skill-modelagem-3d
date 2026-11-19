@@ -4,6 +4,10 @@ Medidas feitas nesta máquina em 07/09/2026, salvo data indicada. Ausência de a
 não é impossibilidade geométrica. As versões do pacote e de `bl_ferramentas` ficam só
 em `INVENTARIO.json`. O que o pacote não faz: ver `SKILL.md`, "O que este pacote não faz".
 
+**Roteamento atual (10/11/2026):** FreeCAD prioritário, com a bancada de marcas (`freecad.md`);
+SolidCraft só a pedido (`solidcraft.md`); detalhes da sessão Blender em `blender.md`. A lista abaixo registra
+dependências existentes, não muda a escolha de ferramenta da `SKILL.md`.
+
 **Ambiente e dependências**
 
 - **Blender** 5.2.1 LTS, Python 3.13.13. Confirmar: `python scripts/roda_blender.py
@@ -176,7 +180,7 @@ O transporte da sessão aberta é um socket em `127.0.0.1:9876` mantido pelo com
 dentro do Blender. Protocolo: `{"type": "<comando>", "params": {...}}` →
 `{"status": "success", "result": {...}}`. O comando `get_scene_info` é leitura e serve de
 teste de conexão. **Não crie outro transporte.** Como o agente descobre e usa as
-ferramentas do Blender: ver `SKILL.md`, "Conectar ao Blender, por agente".
+ferramentas do Blender: ver `blender.md`, "Conectar ao Blender, por agente".
 
 MCP sem resposta: confira handshake, se a aplicação está aberta e a versão. No
 experimento, abrir a aplicação restabeleceu a conexão: falha de conexão **não** prova

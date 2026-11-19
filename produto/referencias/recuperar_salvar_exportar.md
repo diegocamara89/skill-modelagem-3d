@@ -118,6 +118,22 @@ repare automaticamente regiões fora do pedido.
 
 ## Deixar o trabalho retomável
 
+### Preservar uma versão aprovada após edições manuais
+
+Registre a revisão do arquivo realmente testado e o relato do operador. Teste físico bem-sucedido vale para
+aquela revisão/uso relatado; não acrescente ensaio de carga, temperatura ou durabilidade que não ocorreu.
+Preserve o artefato e seu hash. Se o gerador ficou anterior às edições, marque-o como desatualizado para não
+desfazer correções ao regenerar. Quando consolidar o gerador estiver no escopo, faça-o em arquivo próprio:
+
+- Inclua cotas e contornos estimados adotados, sem depender da sequência de edições na cena aberta.
+- Gere em destino de conferência e compare com a referência aprovada: cotas críticas, fechamento e forma.
+  Retriangulação exige comparação de superfícies/seções; igualdade de caixa e volume sozinha não basta.
+- Registre a tolerância e os limites da comparação. Saída equivalente pode se tornar a fonte para futuras
+  revisões; não substitua o arquivo que funcionou só para uniformizar nomes ou triangulação.
+
+STL exportado por `ponte_peca` ou `exportar_stl` da ponte de letras já corresponde ao objeto vivo. O gancho
+`mostra_ao_gerar.py` reconhece seus cabeçalhos e evita importá-lo outra vez. STL externo continua sendo mostrado.
+
 Ver `registro_de_trabalho.md`. O mínimo, para outro agente continuar sem conversar
 com você:
 

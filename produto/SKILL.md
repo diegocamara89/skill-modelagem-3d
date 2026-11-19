@@ -1,6 +1,6 @@
 ---
 name: modelagem-3d
-description: Use quando o pedido envolver projetar, criar, inspecionar, editar ou verificar geometria 3D — desde o conceito (peça nova para prender, travar ou apoiar em objeto existente, a partir de fotos e medidas) até criar peça paramétrica por código, abrir e inspecionar malha, orientar seleção no Blender, editar pelas letras apontadas na tela, deslocar região delimitada, preencher vão entre limites, conferir malha e junção, projetar folga e encaixe para imprimir, desfazer, salvar ou exportar. Inclui a página HTML de bancada (conceitos, cotas e fotos) do projeto 3D. TRIGGERS (PT) modelar, vamos modelar, projetar peça, criar peça, conceito, ideias de peça, prendedor, trava, clipe, presilha, suporte, gancho, encaixe em grade ou gaiola, fotos da peça, medidas com paquímetro, comparar conceitos, página de revisão, geometria, malha, STL, 3MF, Blender, letras na tela, selecionar face, rampa, preencher vão, região protegida, não-manifold, folga, exportar STL, desfazer no Blender, conferir malha. TRIGGERS (EN) design a part, concept, latch, clip, bracket, model this part, mesh, select face, fill gap, ramp, non-manifold, clearance, export STL, undo in Blender.
+description: Projetar, reconstruir, editar e verificar peças 3D a partir de fotos, medidas ou malhas. FreeCAD por código como prioridade, com a bancada de marcas (o operador clica na peça e vê A, B, C…); Blender para ajuste orgânico de malha e apresentação; SolidCraft só a pedido. Preserva receitas, versões e verificações de encaixe e exportação.
 ---
 
 # Modelagem 3D — receitas para executar e conferir
@@ -13,69 +13,47 @@ Dentro do Blender, `bl_ferramentas.confere_versao("<versão do inventário>")` r
 errada; no Python do hospedeiro o módulo não importa (`No module named 'bmesh'`): leia o
 inventário.
 
-## Conectar ao Blender, por agente
+## Padrão: FreeCAD por código, com a bancada de marcas
 
-A sessão aberta do Blender atende no socket **127.0.0.1:9876** (complemento MCP do Blender).
-Os scripts desta skill falam com ele por `scripts/mcp_blender.py` e servem a qualquer agente
-com terminal: `python scripts/sessao_blender.py --diagnosticar` confere a conexão. Não escreva
-outro cliente de socket.
+Peças novas, edição CAD e **revisão com o operador** acontecem no **FreeCAD**, numa janela só
+(decisão do dono em 10/11/2026; antes era SolidCraft). Leia `referencias/freecad.md`. Motivo: o
+operador precisa marcar vários pontos na peça, ver cada marca e o agente ler sem print; só o FreeCAD
+deixou fazer isso dentro do próprio CAD.
 
-**Claude Code.** As ferramentas `mcp__Blender__*` podem vir diferidas: carregue pelo
-`ToolSearch` (`execute_blender_code`, `get_objects_summary`, `get_screenshot_of_area_as_image`,
-`render_viewport_to_path`). Antes de editar, consulte `bpy.data.filepath`, `bpy.data.is_dirty`,
-objeto ativo e modo. A rota por letras usa o socket pelos scripts.
+- **Operador vai apontar algo na peça** (falha, local de furo, região): abra a bancada com
+  `python scripts/abrir_bancada_freecad.py <projeto> [--documento X.FCStd] [--importar a.stl b.step]`
+  e leia `<projeto>/marcas.json`. Nunca peça print, nunca mande marcar em outro programa.
+- **Cálculo sem janela:** `FreeCADCmd.exe script.py`.
+- A execução e a verificação não dependem de automação de mouse, teclado, menus ou capturas do
+  desktop: **não usar Computer Use**.
 
-**Codex.** Com ferramentas diferidas, procure em `ALL_TOOLS` por nome ou descrição contendo
-`blender`; se houver `tool_search`, use a descoberta do ambiente. Não conclua que o MCP está
-ausente só porque não aparece na lista inicial.
+Mantenha parâmetros e operações editáveis na fonte e no `.FCStd`. Preserve originais aprovados;
+confira o estado do documento, geometria e exportações. Mostre alterações significativas pela
+janela/API ou imagens geradas pelo CAD; não acumule toda a modelagem sem retorno ao operador.
+Capturas internas são artefatos de conferência, não controle de computador; gere em lote,
+sem repetir por rotina. Exportar STL ou gravar um gerador não deve abrir Blender automaticamente.
 
-1. Use `get_scene_info` (nesta integração, `mcp__blender_community__get_scene_info`) com
-   `user_prompt` igual ao pedido real do usuário. Confira a cena retornada.
-2. Para o contexto antes de carregar ou editar, `execute_blender_code` com `bpy.data.filepath`,
-   `bpy.data.is_dirty`, objeto ativo e modo; para acompanhar marcações,
-   `get_viewport_screenshot`. Uma chamada descoberta pode ser executada por `functions.exec`
-   usando `tools.<nome>`.
-3. `cua.getState()` com `apps: []`, métodos nativos ausentes ou `Codex auth token is
-   unavailable` são do conector de computador/navegador, não do MCP do Blender. Não oriente
-   logout, reinício ou reinstalação do Blender por causa deles; relate qual conexão foi testada.
+## Quando mudar de ferramenta
 
-**Antigravity.** Não tem MCP do Blender configurado: use o socket pelos scripts
-(`sessao_blender.py --diagnosticar`, `ponte_letras.py`, `verbos_letras.py`) e renderize por
-`scripts/render_conferencia.py`.
+- **SolidCraft:** só quando o dono pedir (ex.: ver a árvore de operações sendo construída). Não tem
+  marcação por letras: se o operador precisar apontar na peça, volte ao FreeCAD. Leia
+  `referencias/solidcraft.md`. Fórmulas de vigas, seções e estimativas em Python existentes
+  continuam disponíveis com qualquer CAD; não são FEM (FEM: `referencias/freecad.md`, seção 5).
+- **Blender:** edição orgânica/local de malha, scripts que dependem de `bpy`/`bmesh`, render de
+  apresentação ou preservação da fonte Blender já editada pelo operador. Leia `referencias/blender.md`
+  e a referência da operação. Malha triangulada por si só não obriga Blender: FreeCAD possui
+  ferramentas de malha e a bancada marca em malha e em sólido. As letras do Blender
+  (`edicao_por_letras.md`) valem só quando o trabalho já está no Blender.
+- **Receitas externas:** rosca, pintura3MF, NumPy/manifold3d e verificadores validados continuam
+  em uso, sem reescrita só para torná-los nativos do CAD. Não carregar as três rotas por rotina.
 
-Em qualquer agente: se as duas vias falharem, investigue complemento e servidor a partir do
-erro concreto, preservando a cena. Conexão confirmada não é modelo carregado: depois da
-operação, confira objetos, arquivo e vista antes de dizer que está pronto.
-
-**Blender em processo separado** (sem a sessão aberta): `scripts/trabalho_blender.py`, que usa
-`roda_blender.py`. O executável vem de `--blender`, `BLENDER_EXE` ou
-`%LOCALAPPDATA%/modelagem-3d/ambiente.json` (`{"blender_exe": "..."}`); `roda_blender.py
---achar` mostra a resolução. Terminal vazio não é falha: o auxiliar confere o arquivo de
-resultado. Detalhes em `referencias/mapa_de_ferramentas.md`.
-
-**Mostrar ao operador.** `python scripts/mostrar_no_blender.py peca.stl [outra.stl]` abre o Blender se estiver
-fechado, carrega na cena `TRABALHO_AGENTE` como `AG_<arquivo>` e, nas vezes seguintes, troca só a malha: depois da
-primeira vez nunca muda a cena da janela nem a vista. Devolve o peso do volume sólido e o contato com a mesa
-(`mapa_balanco.py`). Mostre a cada geometria nova, sem esperar o pedido: o operador aponta o defeito mais cedo do que
-qualquer verificação. Para pedir medida, marque no modelo (`--marcar A=x,y,z B=x,y,z`, em mm) e pergunte "meça de A
-até B", em vez de descrever o ponto em texto.
-
-**Peça ao vivo (padrão para peça nova).** Escreva o gerador no contrato da ponte: `PARAMS = [("chave", "Rótulo",
-padrão, mín, máx), ...]` (mm) e `def gera(**medidas) -> Manifold`; exponha como medida tudo que o operador pode querer
-ajustar (larguras, folgas, diâmetro de cada furo). Mostre com `python scripts/mostrar_no_blender.py gera.py`: vira
-`AG_<pasta>_<arquivo>` com painel na chave inglesa (Modificadores), onde o operador muda as medidas e a peça se refaz em
-ms, grava arredondamento/chanfro em arestas selecionadas (refeitos a cada geração) e pega a face inteira (face lógica:
-aresta viva = dobra > 30° ou troca de forma do gera.py fora do plano). Chamar de novo recarrega o código e mantém o
-que o operador mexeu: **leia `medidas` e `acabamentos` do retorno antes de mudar qualquer coisa**. Erro no gera.py
-mantém a peça anterior (`ERRO_NO_GERA`). Para imprimir, `--exportar peca.stl` grava a peça como está no Blender, com
-acabamentos. O gancho `mostra-ao-gerar` mostra sozinho todo `gera*.py` gravado em projeto 3D (blender/ponte_peca.py).
-
-**Um Blender por sessão.** A porta vem de `scripts/porta_sessao.py` (registro em
-`%LOCALAPPDATA%\mods-diego\blender-sessoes.json`); sem o Blender desta sessão, `mostrar_no_blender.py` abre outro já
-na porta dela. Nunca use o Blender de outra sessão; `python scripts/porta_sessao.py --lista` mostra quem usa qual.
-
-**Letras.** O complemento `blender/bancada_viva.py`, instalado por `scripts/instala_bancada_viva.py`, deixa as letras
-A, B, C ligadas a cada abertura do Blender, com Overlays e anotação na superfície. Não é preciso instalar por sessão.
+Antes de sair do FreeCAD, indique a necessidade concreta e o que será transferido. Uma falha
+não autoriza reconstruir tudo em outro programa: investigue, preserve a versão válida e escolha
+a menor intervenção. Não converter projeto aprovado só para cumprir a prioridade do CAD.
+**Trocar de ferramenta padrão exige testar o fluxo inteiro do operador (marcar, ver, corrigir,
+o agente ler), não só criar e exportar:** a troca para o SolidCraft em 07/11/2026 falhou por isso.
+Para MakerWorld parametrizável, preparar e testar SCAD explícito; STL/STEP/CSG não provam
+preservação do gerador. Nenhum conversor geral entre estes CADs e SCAD está comprovado.
 
 ## Três regras que valem em todas as rotas
 
@@ -89,6 +67,16 @@ A, B, C ligadas a cada abertura do Blender, com Overlays e anotação na superf�
    geometria criada ou visivelmente alterada.
 3. **Diga o alcance.** Amostragem prova os pontos amostrados; uma seção prova aquele plano.
    Conclusão sem alcance declarado não vale.
+
+**Na reconstrução por medidas e fotos:** nomeie os dois contatos, eixo e tipo de distância antes de aplicar a
+cota (face interna/externa, projeção ou percurso). Espessura de parede inclinada é a distância perpendicular
+entre suas faces, não a altura vertical. Em cada correção, confira também as cotas confirmadas que precisam
+permanecer fixas; uma consequência em outra dimensão deve ser mostrada, não escondida como compensação.
+Detalhes e estimativas por foto: `referencias/validacao_medidas_html.md`.
+
+**Versão aprovada:** edição manual não atualiza o gerador. Registre qual é a fonte vigente; antes de reutilizar
+um gerador antigo, incorpore as correções e compare sua saída com o artefato aprovado, sem sobrescrevê-lo.
+Não imponha reconstrução paramétrica a uma edição simples. Ver `referencias/recuperar_salvar_exportar.md`.
 
 ## Classificar o pedido antes de agir
 
@@ -166,7 +154,8 @@ Inclua as causas que só esta peça tem; a tabela é o piso, não a lista inteir
 
 | Situação | Rota |
 |---|---|
-| **O operador aponta na tela** (letras por clique, traços), uma ou várias malhas em edição | `referencias/edicao_por_letras.md` |
+| **O operador aponta na tela** e o trabalho NÃO está no Blender | bancada do FreeCAD: `referencias/freecad.md`, seção 0 |
+| **O operador aponta na tela** com o trabalho já no Blender (letras por clique, traços) | `referencias/edicao_por_letras.md` |
 | Um objeto só, operação simples e delimitada (mover, expandir, extrudar, alinhar, preencher, arredondar), cena em mm | `referencias/chamadas_prontas.md` |
 | Deformação delimitada com transição e região protegida (subir borda, patamar, preservar encontros) | `referencias/sessao_e_edicao_guiada.md` |
 
@@ -185,18 +174,21 @@ a parede vizinha.
 | Pedido | Referência |
 |---|---|
 | peça gerada por código com feições nomeadas: identificar, acender, trocar a malha na cena | `referencias/edicao_por_letras.md`, identidade |
-| criar ou parametrizar peça por código (manifold3d; build123d quando precisar de STEP) | `referencias/criar_e_parametrizar.md` |
-| sólido exato quando a malha não basta (rosca fora do padrão, arredondamento exato, STEP): FreeCAD, só se pedido | `referencias/freecad.md` |
-| abrir, inspecionar, orientar seleção, ler o que está selecionado | `referencias/inspecionar_e_selecionar.md` |
+| criar ou editar CAD no FreeCAD (prioridade); bancada de marcas; cálculo estrutural FEM | `referencias/freecad.md` |
+| operador marcar pontos/traços com letras e notas na peça | `scripts/abrir_bancada_freecad.py`, `freecad/bancada_freecad.py` |
+| reaproveitar geradores de malha e verificadores existentes | `referencias/criar_e_parametrizar.md` |
+| SolidCraft, só a pedido do dono | `referencias/solidcraft.md` |
+| no Blender: abrir, inspecionar e ler seleção | `referencias/inspecionar_e_selecionar.md` |
 | deslocar região delimitada; preencher vão entre dois limites | `referencias/editar_localizado.md` |
 | combinar versões da mesma malha sem booleana; achar de qual malha um cupom saiu | `referencias/transplante_de_deslocamento.md` |
 | conferir malha, junção, região preservada, dimensões, furo passante | `referencias/verificar.md` |
 | **projetar para imprimir**: folgas calibradas, rosca, espessura mínima, rebaixo, ranhura, gravação, família de tamanhos, licença de peça de terceiros | `referencias/projetar_para_imprimir.md` |
+| malha pintada (3MF multicor): reduzir sem perder a pintura, marcar região por vinco, mexer na forma para tirar suporte, relevo de tecido | `referencias/malha_pintada.md` |
 | conceitos e validação das fotos e medidas com o operador antes de modelar (página de bancada) | `referencias/validacao_medidas_html.md`, `assets/pagina_bancada.html`, `scripts/nova_pagina_bancada.py` |
 | **conferir a FORMA antes de entregar**: quatro vistas ortográficas | `referencias/render_de_conferencia.md` |
 | visualizador 3D (.html) ou GIF/MP4 de montagem/vista explodida | `referencias/entregas_em_movimento.md` |
 | desfazer, refazer, salvar, exportar, deixar retomável | `referencias/recuperar_salvar_exportar.md` |
-| que ferramenta existe, o que exige, rodar o Blender em processo separado | `referencias/mapa_de_ferramentas.md` |
+| dependências e execução do Blender em processo separado | `referencias/mapa_de_ferramentas.md` |
 | registrar o trabalho para outro agente continuar | `referencias/registro_de_trabalho.md` |
 | escrever o meu próprio script que roda dentro do Blender | `referencias/sessao_e_edicao_guiada.md`, seção 5 |
 

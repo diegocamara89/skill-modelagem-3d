@@ -65,6 +65,22 @@ vistas, cotas e fotos devem ter correspondência direta; layout responsivo.
 
 ## Correção e persistência
 
+**Cota com contatos identificados.** Registre início, fim, eixo e natureza da medida. Por exemplo,
+“face interna traseira até início da ranhura, projeção longitudinal” não é a distância desde a face
+externa. Em rampa, diferencie espessura perpendicular às faces de profundidade/altura vertical.
+Se dois valores parecem conflitantes, confira os contatos antes de distribuir a diferença por outras paredes.
+
+**Estimativa autorizada por foto.** Quando o operador pedir estimar o contorno, use as fotos já disponíveis e
+as cotas confirmadas como referências; não peça novamente uma medida que ele dispensou. Separe no registro:
+medido/relatado, derivado e estimado. Declare a referência longitudinal do perfil (onde começa a engrossar,
+onde atinge o máximo e onde afina), a foto usada e o limite da perspectiva/resolução. Não atribua uma
+incerteza numérica à foto sem método que a sustente. Um perfil simétrico idealizado pode ser útil, mas não
+vira reprodução exata comprovada. Não crie rebaixo, parede ou compensação sem evidência ou pedido.
+
+**Uma correção por vez.** Declare a região alterada e as cotas já confirmadas que ficam fixas; mostre a
+alteração no Blender e confira essas referências antes da próxima. Atualize a página se ela continuar sendo
+a referência ativa; se ficou histórica, identifique claramente a revisão e a fonte vigente.
+
 Uma correção pode mudar o número ou o trecho que ele representa. Atualize o valor adotado
 na página e no registro do projeto, sem apagar a leitura original da foto. Confirmação
 de uma cota não aprova as demais, folgas, orientação ou mecanismo. Não transforme uma

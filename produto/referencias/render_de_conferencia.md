@@ -3,9 +3,17 @@
 Rota para: **toda geometria criada ou visivelmente alterada**, antes de dizer que está
 pronta. Quatro vistas ortográficas, conferidas por quem entrega.
 
-Ferramenta: `scripts/render_conferencia.py`. Roda **dentro do
-Blender**, pelo contrato `executar(config)` de `scripts/executa_com_relatorio.py`, ou
-por `renderizar(config)` na sessão viva.
+**SolidCraft (só a pedido):** use imagens geradas pelo próprio CAD por CLI/API/MCP.
+**FreeCAD (padrão):** use a API Python de visualização, com câmera ortográfica e transição de câmera
+temporariamente desligada. Não abrir Blender somente para produzir as vistas. Nos dois casos,
+gere iso, iso oposto (incluindo base), topo e frente, enquadradas; confira as quatro imagens.
+Sem captura do desktop, mouse ou teclado automatizados. A API local descreve os nomes de vista;
+se não houver preset oposto, configure a câmera pela API ou exporte a cópia para um renderizador.
+
+**Na rota Blender:** `scripts/render_conferencia.py`, dentro do Blender,
+pelo contrato `executar(config)` de `scripts/executa_com_relatorio.py`, ou por
+`renderizar(config)` na sessão viva. Os parâmetros e relatórios técnicos abaixo pertencem
+a esse auxiliar; os mesmos princípios de forma/cobertura valem para os renders nativos dos CADs.
 
 ## A política
 
