@@ -76,9 +76,15 @@ python scripts/abrir_bancada_freecad.py "<pasta vazia>" --testar                
 
 - Pacote portátil oficial: release estável em github.com/FreeCAD/FreeCAD/releases, arquivo
   `FreeCAD_<versão>-Windows-x86_64-py311.7z`. Confira o SHA256 publicado no release antes de extrair.
-  Ocupa ~2,2 GB. Instalação existente:
-  `D:/Diego/Pessoal/3D/Ferramentas/FreeCAD/FreeCAD_1.1.4-Windows-x86_64-py311/`.
-  Confira existência/versão; não reinstale por rotina.
+  Ocupa ~2,2 GB. O instalador comum (Arquivos de Programas) também serve. Confira existência/versão; não
+  reinstale por rotina.
+- **Onde cada programa está** (nada fixo no pacote; `freecad/ambiente.py`): variável de ambiente, depois a chave em
+  `%LOCALAPPDATA%/modelagem-3d/ambiente.json`, depois o local padrão. Chaves: `freecad_exe` (`FREECAD_EXE`; padrão
+  `%ProgramFiles%/FreeCAD*/bin/freecad.exe`), `bambu_studio_exe` (`BAMBU_STUDIO_EXE`; padrão
+  `%ProgramFiles%/Bambu Studio/bambu-studio.exe`), `modelo_3mf` (`MODELO_3MF`; padrão `assets/perfil_A1_PETG.3mf`, só o
+  perfil, sem peça). FreeCAD portátil: grave `{"freecad_exe": "<pasta>/bin/freecad.exe"}` nesse arquivo.
+- **Máquina nova:** Python 3 no Windows, FreeCAD 1.1 e, para a aba Fatiar, Bambu Studio. Prova de que ficou pronto:
+  `python scripts/abrir_bancada_freecad.py "<pasta vazia>" --testar` termina com `"resultado": "PASSOU"`.
 - Não abre sozinho: não há atalho de inicialização e o servidor de automação vem com o início automático
   desligado. Abra a janela quando o operador for olhar ou marcar a peça (seção 0).
 - Sem janela (preferido para cálculo do agente): `bin/FreeCADCmd.exe script.py`. Partida 0,05 s; a presilha de teste

@@ -25,14 +25,16 @@ try:
 except ImportError:
     QtWidgets = QtGui
 
+import ambiente
 import marcas
 importlib.reload(marcas)
 Marcas = marcas.Marcas
 
 MALHAS = {'.stl', '.obj', '.ply', '.3mf', '.off', '.amf'}
-FATIADOR = Path(os.environ.get('BAMBU_STUDIO_EXE', 'C:/Program Files/Bambu Studio/bambu-studio.exe'))
-# 3MF salvo pelo Bambu Studio de onde sai o perfil (máquina, filamento, processo). Trocar: variável MODELO_3MF.
-MODELO_3MF = Path(os.environ.get('MODELO_3MF', 'D:/Diego/Pessoal/3D/Modelagem 3D/Prateleira grande ratos/saida/varanda_v41/varanda_ratos_v41.3mf'))
+FATIADOR = ambiente.caminho('bambu_studio_exe', 'BAMBU_STUDIO_EXE', '%ProgramFiles%/Bambu Studio/bambu-studio.exe')
+# 3MF salvo pelo Bambu Studio de onde sai o perfil (máquina, filamento, processo). Padrão: A1, PETG genérico, 0,20 mm,
+# que vem no pacote. Trocar: variável MODELO_3MF ou chave "modelo_3mf" no ambiente.json.
+MODELO_3MF = ambiente.caminho('modelo_3mf', 'MODELO_3MF', Path(__file__).resolve().parent.parent / 'assets' / 'perfil_A1_PETG.3mf')
 NS_3MF = ('xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02" xmlns:BambuStudio="http://schemas.bambulab.com/package/2021" '
           'xmlns:p="http://schemas.microsoft.com/3dmanufacturing/production/2015/06" requiredextensions="p"')
 SUPORTE = {'enable_support': '1', 'support_type': 'tree(auto)', 'support_threshold_angle': '30'}

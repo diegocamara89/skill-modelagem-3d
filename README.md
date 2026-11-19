@@ -1,8 +1,14 @@
 # skill-modelagem-3d
 
 Skill para [Claude Code](https://claude.com/claude-code) (e compatível com outros agentes que
-suportem o formato de skills) para **criar, inspecionar, editar e verificar geometria 3D** —
-por script (build123d) e via sessão viva do Blender (bpy/bmesh).
+suportem o formato de skills) para **criar, inspecionar, editar e verificar geometria 3D**.
+
+- **Padrão: FreeCAD por código**, numa janela só, com a **bancada de marcas**: o operador clica
+  na peça e aparece A, B, C… no ponto (arrastar faz traço), cada marca aceita uma nota, e o agente
+  lê tudo em `marcas.json`, sem print. O painel também tem Antes/Depois, mapa de suporte e parede
+  fina, fatiamento pelo Bambu Studio e edição de medidas.
+- **Blender** (bpy/bmesh) para ajuste orgânico de malha e render de apresentação.
+- **SolidCraft** só a pedido.
 
 Não é doutrina: é um conjunto de receitas com chamadas testadas, cada uma com uma referência
 carregável sob demanda e um verificador que mede o resultado em vez de aceitar "concluído" por
@@ -20,8 +26,11 @@ produto/
 ├── SKILL.md              # ponto de entrada: quando usar, como classificar o pedido, onde está cada receita
 ├── INVENTARIO.json        # versão do pacote e da biblioteca, com hash de cada arquivo
 ├── LICENSE
-├── referencias/           # uma referência por rota (mover, preencher, arredondar, verificar, ...)
-├── scripts/                # bl_ferramentas.py e os scripts que rodam dentro/fora do Blender
+├── freecad/               # bancada de marcas (painel Qt dentro do FreeCAD), ensaio e localizador de programas
+├── assets/                # página de bancada (HTML) e perfil de fatiamento A1/PETG (só configurações)
+├── blender/               # complementos do Blender (letras na peça, ponte ao vivo)
+├── referencias/           # uma referência por rota (freecad.md primeiro; mover, preencher, verificar, ...)
+├── scripts/                # abrir_bancada_freecad.py, bl_ferramentas.py e scripts dentro/fora do Blender
 ├── cenarios/               # cenas de exemplo para testar as rotas
 └── verificadores/          # checagem de malha, de intenção do requisito, matriz de cobertura
 ```
@@ -34,14 +43,34 @@ Copie (ou faça symlink de) `produto/` para o diretório de skills do seu agente
 cp -r produto/ ~/.claude/skills/modelagem-3d
 ```
 
-Configure o executável do Blender uma única vez por máquina, fora do pacote:
+Requisitos (Windows): Python 3, **FreeCAD 1.1** e, para a aba Fatiar da bancada, Bambu Studio.
+Blender só se for usar a rota de malha orgânica.
+
+Instalados em Arquivos de Programas, FreeCAD e Bambu Studio são achados sozinhos. Em outro lugar
+(ex.: FreeCAD portátil), grave o caminho uma vez por máquina, fora do pacote:
 
 ```
 %LOCALAPPDATA%/modelagem-3d/ambiente.json
 ```
 ```json
-{"blender_exe": "CAMINHO_ABSOLUTO_DO_EXECUTAVEL_OU_LAUNCHER"}
+{
+  "freecad_exe": "CAMINHO/bin/freecad.exe",
+  "bambu_studio_exe": "CAMINHO/bambu-studio.exe",
+  "modelo_3mf": "opcional: 3MF salvo pelo Bambu Studio com o seu perfil",
+  "blender_exe": "CAMINHO_ABSOLUTO_DO_EXECUTAVEL_OU_LAUNCHER"
+}
 ```
+
+As variáveis de ambiente `FREECAD_EXE`, `BAMBU_STUDIO_EXE` e `MODELO_3MF` têm precedência sobre o
+arquivo. Sem `modelo_3mf`, a bancada fatia com o perfil do pacote (A1, PETG genérico, 0,20 mm).
+
+Prova de que a bancada ficou pronta (abre uma janela de teste do FreeCAD, que fecha sozinha):
+
+```bash
+python scripts/abrir_bancada_freecad.py "PASTA_VAZIA" --testar
+```
+
+O resultado esperado é `"resultado": "PASSOU"`, com 14 verificações.
 
 No Windows Store, use o alias `blender-launcher.exe`, não o binário protegido dentro de
 `Program Files/WindowsApps`. Para conferir a resolução sem executar nada:

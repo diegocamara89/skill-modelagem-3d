@@ -1,6 +1,6 @@
 ---
 name: modelagem-3d
-description: Projetar, reconstruir, editar e verificar peças 3D a partir de fotos, medidas ou malhas. FreeCAD por código como prioridade, com a bancada de marcas (o operador clica na peça e vê A, B, C…); Blender para ajuste orgânico de malha e apresentação; SolidCraft só a pedido. Preserva receitas, versões e verificações de encaixe e exportação.
+description: Projetar, reconstruir, editar e verificar peças 3D a partir de fotos, medidas ou malhas. FreeCAD por código como prioridade, com a bancada de marcas (o operador clica na peça e vê A, B, C…, com notas); Blender para ajuste orgânico de malha e apresentação; SolidCraft só a pedido. Preserva receitas, versões e verificações de encaixe e exportação. Use desde o primeiro pedido de peça 3D, inclusive só conceito ("vamos modelar...").
 ---
 
 # Modelagem 3D — receitas para executar e conferir

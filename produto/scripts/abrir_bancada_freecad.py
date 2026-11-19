@@ -7,7 +7,8 @@
 - --documento: .FCStd a abrir (padrão: <nome da pasta, espaços viram _>.FCStd dentro do projeto). Se não existir,
   é criado a partir de --importar (STL/3MF/OBJ entram como malha; STEP/IGES/BREP como sólido).
 - Reaproveita o FreeCAD já aberto (--single-instance): uma janela só. O ensaio abre outra, à parte.
-Não usa mouse/teclado do sistema. Caminho do FreeCAD: variável FREECAD_EXE ou a instalação portátil.
+Não usa mouse/teclado do sistema. Caminho do FreeCAD: variável FREECAD_EXE, chave "freecad_exe" em
+%LOCALAPPDATA%/modelagem-3d/ambiente.json, ou instalação padrão em Arquivos de Programas.
 """
 import argparse
 import json
@@ -17,8 +18,12 @@ import sys
 import time
 from pathlib import Path
 
-FREECAD = Path(os.environ.get('FREECAD_EXE', 'D:/Diego/Pessoal/3D/Ferramentas/FreeCAD/FreeCAD_1.1.4-Windows-x86_64-py311/bin/freecad.exe'))
 PACOTE = Path(__file__).resolve().parent.parent / 'freecad'
+sys.path.insert(0, str(PACOTE))
+import ambiente  # noqa: E402
+
+FREECAD = ambiente.caminho('freecad_exe', 'FREECAD_EXE', '%ProgramFiles%/FreeCAD*/bin/freecad.exe',
+                           '%LOCALAPPDATA%/Programs/FreeCAD*/bin/freecad.exe')
 
 
 def main():
@@ -31,7 +36,8 @@ def main():
     ap.add_argument('--nova-janela', action='store_true', help='não reaproveita o FreeCAD já aberto')
     a = ap.parse_args()
     if not FREECAD.exists():
-        sys.exit(f'FreeCAD não encontrado em {FREECAD}. Defina FREECAD_EXE.')
+        sys.exit(f'FreeCAD não encontrado ({FREECAD}). Instale o FreeCAD 1.1 e, se não estiver em Arquivos de Programas, '
+                 f'grave {{"freecad_exe": "<pasta>/bin/freecad.exe"}} em {ambiente.ARQUIVO} ou defina FREECAD_EXE.')
     projeto = a.projeto.resolve()
     projeto.mkdir(parents=True, exist_ok=True)
     doc = a.documento or Path(projeto.name.replace(' ', '_') + '.FCStd')
